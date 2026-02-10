@@ -7,8 +7,8 @@ file(GLOB_RECURSE SOURCES CONFIGURE_DEPENDS
 add_library(${TARGET_NAME} ${SOURCES})
 
 target_link_libraries(${TARGET_NAME} PUBLIC
-        Qt5::Core
-        Qt5::Qml
+        Qt6::Core
+        Qt6::Qml
         )
 
 target_include_directories(${TARGET_NAME} PUBLIC

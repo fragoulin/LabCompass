@@ -6,7 +6,9 @@ set(CMAKE_AUTOMOC TRUE)
 set(CMAKE_AUTOUIC TRUE)
 set(CMAKE_AUTORCC TRUE)
 
-find_package(Qt5 REQUIRED
+add_compile_definitions(QT_DISABLE_DEPRECATED_BEFORE=0x050F00)
+
+find_package(Qt6 REQUIRED
         Core
         Gui
         Widgets

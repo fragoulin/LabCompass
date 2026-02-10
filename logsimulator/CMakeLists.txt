@@ -16,5 +16,5 @@ target_precompile_headers(${TARGET_NAME} PRIVATE
 
 target_link_libraries(${TARGET_NAME} PRIVATE
         common
-        Qt5::Widgets
+        Qt6::Widgets
         )

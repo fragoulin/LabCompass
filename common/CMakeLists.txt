@@ -18,11 +18,11 @@ target_link_libraries(${TARGET_NAME} PUBLIC
         QtSuperMacros
         HungarianAlgorithm
         QtJsonSchema
-        Qt5::Core
-        Qt5::Gui
-        Qt5::Widgets
-        Qt5::Network
-        Qt5::Qml
-        Qt5::QuickWidgets
-        Qt5::QuickControls2
+        Qt6::Core
+        Qt6::Gui
+        Qt6::Widgets
+        Qt6::Network
+        Qt6::Qml
+        Qt6::QuickWidgets
+        Qt6::QuickControls2
         )
