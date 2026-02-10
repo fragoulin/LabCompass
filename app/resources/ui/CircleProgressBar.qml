@@ -1,6 +1,6 @@
 import QtQuick 2.8
 import QtQuick.Controls 2.2
-import Qt5Compat.GraphicalEffects
+import QtQuick.Shapes
 
 ProgressBar {
   id: root
@@ -22,14 +22,19 @@ ProgressBar {
       visible: false
     }
 
-    ConicalGradient {
-      source: ring
+    Shape {
       anchors.fill: parent
-      gradient: Gradient {
-        GradientStop { position: 0; color: root.color }
-        GradientStop { position: root.value; color: root.color }
-        GradientStop { position: root.value + 0.001; color: 'transparent' }
-        GradientStop { position: 1; color: 'transparent' }
+
+      ShapePath {
+          strokeWidth: 0
+          strokeColor: "transparent"
+          fillGradient: ConicalGradient {
+            angle: 0.0
+            GradientStop { position: 0; color: root.color }
+            GradientStop { position: root.value; color: root.color }
+            GradientStop { position: root.value + 0.001; color: 'transparent' }
+            GradientStop { position: 1; color: 'transparent' }
+          }
       }
     }
   }

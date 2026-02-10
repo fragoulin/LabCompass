@@ -1,5 +1,5 @@
 import QtQuick 2.8
-import Qt5Compat.GraphicalEffects
+import QtQuick.Effects
 import com.labcompass 1.0
 import '..'
 
@@ -70,13 +70,13 @@ Rectangle {
         }
       }
 
-      DropShadow {
-        anchors.fill: rect
+      MultiEffect {
         source: rect
-        verticalOffset: 2
-        radius: 4.0
-        samples: 8
-        color: '#80000000'
+        anchors.fill: rect
+        shadowBlur: 4.0
+        shadowEnabled: true
+        shadowColor: "#80000000"
+        shadowVerticalOffset: 2
       }
 
       RoomContentView {
@@ -103,13 +103,13 @@ Rectangle {
           visible: false
         }
 
-        DropShadow {
-          anchors.fill: targetMarker
+        MultiEffect {
           source: targetMarker
-          verticalOffset: 1
-          radius: 2.0
-          samples: 8
-          color: '#A0000000'
+          anchors.fill: targetMarker
+          shadowBlur: 2.0
+          shadowEnabled: true
+          shadowColor: "#A0000000"
+          shadowVerticalOffset: 1
         }
       }
 
@@ -145,13 +145,14 @@ Rectangle {
         source: 'qrc:/images/lab-content/golden-door.svg'
         visible: false
       }
-      DropShadow {
-        anchors.fill: goldenDoorIcon
+
+      MultiEffect {
         source: goldenDoorIcon
-        verticalOffset: 2
-        radius: 4.0
-        samples: 8
-        color: '#80000000'
+        anchors.fill: goldenDoorIcon
+        shadowBlur: 4.0
+        shadowEnabled: true
+        shadowColor: "#80000000"
+        shadowVerticalOffset: 2
       }
     }
   }

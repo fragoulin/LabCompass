@@ -1,6 +1,6 @@
 import QtQuick 2.8
-import Qt5Compat.GraphicalEffects
 import com.labcompass 1.0
+import QtQuick.Effects
 
 Item {
   id: root
@@ -17,12 +17,12 @@ Item {
     source: content in Global.contentIconMapping ? 'qrc:/images/lab-content/' + Global.contentIconMapping[content] + '.svg' : ''
   }
 
-  DropShadow {
-    anchors.fill: parent
+  MultiEffect {
     source: icon
-    verticalOffset: 1
-    radius: 2.0
-    samples: 8
-    color: '#80000000'
+    anchors.fill: parent
+    shadowBlur: 2.0
+    shadowEnabled: true
+    shadowColor: "#80000000"
+    shadowVerticalOffset: 1
   }
 }

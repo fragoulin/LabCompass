@@ -1,6 +1,6 @@
-import QtQuick 2.8
-import Qt5Compat.GraphicalEffects
+import QtQuick
 import com.labcompass 1.0
+import QtQuick.Effects
 
 Item {
   id: root
@@ -9,7 +9,8 @@ Item {
 
   default property alias content: contents.children
   property var root: contents
-
+  // TODO use RectangularGlow from QT 6.10
+/*
   RectangularGlow {
     x: 10
     y: 13
@@ -20,7 +21,7 @@ Item {
     color: Qt.rgba(0, 0, 0, 0.8)
     cornerRadius: glowRadius
   }
-
+*/
   Item {
     id: contents
     x: 10
@@ -31,6 +32,7 @@ Item {
     Rectangle {
       anchors.fill: parent
       color: Global.backgroundColor
+      radius: 8
     }
   }
 }

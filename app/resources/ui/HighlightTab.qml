@@ -1,6 +1,6 @@
 import QtQuick 2.8
-import Qt5Compat.GraphicalEffects
 import com.labcompass 1.0
+import QtQuick.Effects
 
 Item {
   id: root
@@ -48,9 +48,10 @@ Item {
     visible: false
   }
 
-  OpacityMask {
-    anchors.fill: parent
+  MultiEffect {
     source: activeLayerLoader
+    anchors.fill: parent
+    maskEnabled: false
     maskSource: mask
   }
 
