@@ -45,5 +45,5 @@ Build
 
 After installing the latest version of Qt, run the following command to build:
 
-    qmake LabCompass.pro
-    make
+    cmake -B build -S .
+    cmake --build build
