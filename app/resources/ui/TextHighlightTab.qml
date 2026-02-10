@@ -6,7 +6,7 @@ HighlightTab {
   property var model: []
 
   items: model.length ? model.length : 1
-  onItemClicked: currentItem = index
+  onItemClicked: index => currentItem = index
 
   activeLayerComponent: Row {
     Repeater {
