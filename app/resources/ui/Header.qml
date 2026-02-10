@@ -19,7 +19,7 @@ Row {
     }
     DragMoveArea {
       anchors.fill: parent
-      onDrag: root.drag(dx, dy)
+      onDrag: (dx, dy) => root.drag(dx, dy)
     }
   }
 
