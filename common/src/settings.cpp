@@ -67,7 +67,7 @@ QVariant Settings::toVariant() const
     for (const auto& propertyName : settings->allKeys()) {
         auto value = settings->value(propertyName);
 
-        switch (value.type()) {
+        switch (value.typeId()) {
         case QVariant::Point:
             value = QVariantMap { { "x", value.toPoint().x() }, { "y", value.toPoint().y() } };
             break;
