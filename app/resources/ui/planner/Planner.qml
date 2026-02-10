@@ -35,7 +35,7 @@ WindowWithShadow {
         DragMoveArea {
           width: 350
           height: 80
-          onDrag: window.drag(dx, dy)
+          onDrag: (dx, dy) => window.drag(dx, dy)
 
           Text {
             text: 'Labyrinth Planner'
