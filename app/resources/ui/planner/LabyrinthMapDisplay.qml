@@ -231,7 +231,11 @@ Rectangle {
 
   Connections {
     target: connectionModel
-    onModelReset: connectionView.requestPaint()
-    onDataChanged: connectionView.requestPaint()
+    function onModelReset() {
+      connectionView.requestPaint()
+    }
+    function onDataChanged() {
+      connectionView.requestPaint()
+    }
   }
 }
