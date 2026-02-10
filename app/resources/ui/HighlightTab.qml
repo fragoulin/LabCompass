@@ -57,6 +57,6 @@ Item {
   MouseArea {
     cursorShape: Qt.PointingHandCursor
     anchors.fill: parent
-    onClicked: itemClicked(Math.floor(mouse.x * items / root.width));
+    onClicked: (mouse) => itemClicked(Math.floor(mouse.x * items / root.width));
   }
 }
