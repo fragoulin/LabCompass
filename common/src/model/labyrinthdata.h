@@ -32,7 +32,7 @@ struct LabyrinthData {
     Section sections[3];
     QList<std::pair<RoomId, RoomId>> goldenDoors;
 
-    QHash<RoomId, int> roomIdIndex;
+    QMultiHash<RoomId, int> roomIdIndex;
 
 public:
     LabyrinthData();

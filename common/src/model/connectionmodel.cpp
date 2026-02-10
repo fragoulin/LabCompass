@@ -33,7 +33,7 @@ void ConnectionModel::loadFromData(const LabyrinthData& lab, const NavigationDat
     }
 
     ConnectionModelData afterLastRoom;
-    const auto& lastRoom = lab.rooms[lab.roomIdIndex[lab.sections[2].trialRoom]];
+    const auto& lastRoom = lab.rooms[lab.roomIdIndex.value(lab.sections[2].trialRoom)];
     afterLastRoom.fromCoordinate = lastRoom.coordinate;
     afterLastRoom.toCoordinate = lastRoom.coordinate + QPoint(300, 0);
     afterLastRoom.isSecretPassage = false;

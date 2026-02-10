@@ -30,7 +30,7 @@ void LabyrinthController::onRoomPresetSet(const QString& id, const QString& area
 {
     auto& lab = model->labyrinthData;
     if (lab.roomIdIndex.contains(id)) {
-        auto& room = lab.rooms[lab.roomIdIndex[id]];
+        auto& room = lab.rooms[lab.roomIdIndex.value(id)];
         room.areaCode = areaCode;
 
         lab.normalizeDoorDirections(id);

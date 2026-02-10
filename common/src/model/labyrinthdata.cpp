@@ -208,7 +208,7 @@ bool LabyrinthData::loadRooms(const QJsonArray& array)
     // create index
     roomIdIndex.clear();
     for (int i = 0; i < rooms.size(); i++)
-        roomIdIndex[rooms[i].id] = i;
+        roomIdIndex.insert(rooms[i].id, i);
 
     return true;
 }
@@ -265,7 +265,7 @@ bool LabyrinthData::loadConnectionMatrix(const QJsonArray& array)
         for (auto i = exitsJson.constBegin(); i != exitsJson.constEnd(); i++) {
             auto toId = i.value().toString();
             auto direction = i.key();
-            if (direction != "C" && !hasConnection(toId, roomId) && !(roomIsTrial(roomId) && rooms[roomIdIndex[toId]].isFirstRoomInSection))
+            if (direction != "C" && !hasConnection(toId, roomId) && !(roomIsTrial(roomId) && rooms[roomIdIndex.value(toId)].isFirstRoomInSection))
                 connections[toId][roomId].append("");
         }
     }
@@ -316,7 +316,7 @@ bool LabyrinthData::loadSections()
     }
 
     for (int i = 0; i < 3; i++)
-        for (int j = roomIdIndex[sections[i].firstRoom]; j < (i == 2 ? rooms.size() : roomIdIndex[sections[i + 1].firstRoom]); j++) {
+        for (int j = roomIdIndex.value(sections[i].firstRoom); j < (i == 2 ? rooms.size() : roomIdIndex.value(sections[i + 1].firstRoom)); j++) {
             rooms[j].section = i;
             sections[i].roomIds.append(rooms[j].id);
         }
