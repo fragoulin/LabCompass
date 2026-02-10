@@ -48,7 +48,7 @@ WindowWithShadow {
           MaterialInk {
             width: 32
             height: 32
-            onClicked: openUrl('https://github.com/yznpku/LabCompass')
+            onClicked: openUrl('https://github.com/fragoulin/LabCompass')
             SvgImage {
               width: 24
               height: 24
@@ -63,7 +63,7 @@ WindowWithShadow {
         width: 150
         height: 30
         visible: Global.model.newVersionAvailable
-        onClicked: openUrl('https://github.com/yznpku/LabCompass/releases/tag/' + Global.model.settings.latestVersion)
+        onClicked: openUrl('https://github.com/fragoulin/LabCompass/releases/tag/' + Global.model.settings.latestVersion)
         Rectangle {
           anchors.fill: parent
           color: Global.accentColor
