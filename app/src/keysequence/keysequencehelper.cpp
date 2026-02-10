@@ -336,11 +336,11 @@ QKeySequence KeySequenceHelperPrivate::appendToSequence(const QKeySequence& seq,
     case 0:
         return QKeySequence(keyQt);
     case 1:
-        return QKeySequence(seq[0], keyQt);
+        return QKeySequence(seq[0], QKeyCombination::fromCombined(keyQt));
     case 2:
-        return QKeySequence(seq[0], seq[1], keyQt);
+        return QKeySequence(seq[0], seq[1], QKeyCombination::fromCombined(keyQt));
     case 3:
-        return QKeySequence(seq[0], seq[1], seq[2], keyQt);
+        return QKeySequence(seq[0], seq[1], seq[2], QKeyCombination::fromCombined(keyQt));
     default:
         return seq;
     }
