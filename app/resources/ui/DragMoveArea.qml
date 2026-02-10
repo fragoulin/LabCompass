@@ -9,14 +9,14 @@ MouseArea {
   property point clickPos
 
   cursorShape: dragging ? Qt.ClosedHandCursor : Qt.OpenHandCursor
-  onPressed: {
+  onPressed: (mouse) => {
     dragging = true;
     clickPos = Qt.point(mouse.x, mouse.y);
   }
   onReleased: {
     dragging = false;
   }
-  onPositionChanged: {
+  onPositionChanged: (mouse) => {
     root.drag(mouse.x - clickPos.x, mouse.y - clickPos.y);
   }
 }
