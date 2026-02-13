@@ -1,4 +1,4 @@
-set(TARGET_NAME app)
+set(TARGET_NAME labcompass)
 
 file(GLOB_RECURSE SOURCES CONFIGURE_DEPENDS
         *.cpp *.h *.qrc
