@@ -45,5 +45,7 @@ Build
 
 After installing the latest version of Qt, run the following command to build:
 
-    cmake -B build -S .
+    cmake . -B build
     cmake --build build
+
+    Labcompass binary is located in build/bin directory.

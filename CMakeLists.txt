@@ -6,6 +6,8 @@ set(CMAKE_AUTOMOC TRUE)
 set(CMAKE_AUTOUIC TRUE)
 set(CMAKE_AUTORCC TRUE)
 
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
+
 find_package(Qt6 REQUIRED
         Core
         Gui
@@ -24,6 +26,6 @@ add_subdirectory(vendor/QHotkey)
 
 add_subdirectory(common)
 
-add_subdirectory(app)
+add_subdirectory(app labcompass)
 add_subdirectory(logsimulator)
 add_subdirectory(tests)
