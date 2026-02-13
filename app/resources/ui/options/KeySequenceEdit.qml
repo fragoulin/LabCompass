@@ -43,11 +43,11 @@ Button {
     }
   }
 
-  Keys.onPressed: {
+  Keys.onPressed: (event) => {
     helper.keyPressed(event.key, event.modifiers);
     event.accepted = true;
   }
-  Keys.onReleased: {
+  Keys.onReleased: (event) => {
     helper.keyReleased(event.key, event.modifiers);
     event.accepted = true;
   }
