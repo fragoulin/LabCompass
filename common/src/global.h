@@ -2,8 +2,7 @@
 #define GLOBAL_H
 
 #include "stdafx.h"
-
-static const QString VERSION = "dev-version";
+#include "version.h"
 
 using RoomId = QString;
 using DirectionCode = QString; // [""(Unknown), "C"(Secret Passage), "N", "NE", "E", "SE", "S", "SW", "W", "NW"]
