@@ -21,7 +21,7 @@ MouseArea {
       exitTimer.restart();
     }
   }
-  onPressed: {
+  onPressed: (mouse) => {
     enterTimer.stop();
     shouldDisplayTooltip = false;
     mouse.accepted = false;
