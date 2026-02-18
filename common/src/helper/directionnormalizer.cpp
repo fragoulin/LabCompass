@@ -1,6 +1,9 @@
 #include "stdafx.h"
 
 #include "directionnormalizer.h"
+#include <vector>
+
+using namespace std;
 
 static const QList<DirectionCode> REGULAR_DIRECTION_LIST { "N", "NE", "E", "SE", "S", "SW", "W", "NW" };
 
@@ -18,12 +21,12 @@ RoomConnections DirectionNormalizer::normalize(const RoomConnections& original, 
 
     // normalize regular directions
     if (regularCount) {
-        QVector<QVector<double>> costMatrix(regularCount, QVector<double>(patternSize, 0));
+        vector<vector<double>> costMatrix(regularCount, vector<double>(patternSize, 0));
         for (auto i = 0; i < regularCount; i++)
             for (auto j = 0; j < patternSize; j++)
                 costMatrix[i][j] = costBetweenDirections(breakdown.regularDirectionRooms[i].first, pattern[j]);
 
-        QVector<int> assignment;
+        vector<int> assignment;
         hungarian.Solve(costMatrix, assignment);
         for (int i = 0; i < regularCount; i++)
             breakdown.regularDirectionRooms[i].first = pattern[assignment[i]];

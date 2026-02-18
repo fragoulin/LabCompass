@@ -26,7 +26,6 @@ find_package(Qt6 REQUIRED
 qt_standard_project_setup(REQUIRES 6.8)
 
 add_subdirectory(vendor/QtSuperMacros)
-add_subdirectory(vendor/HungarianAlgorithm)
 add_subdirectory(vendor/QtJsonSchema)
 
 add_subdirectory(common)
