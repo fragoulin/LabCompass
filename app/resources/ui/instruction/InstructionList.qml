@@ -67,13 +67,14 @@ Column {
 
   Connections {
     target: logWatcher
+    ignoreUnknownSignals: true
     function onRoomChanged() {
       if (typeof izaroInstructionItemIcon !== "undefined") {
         izaroInstructionItemIcon.state = ''
       }
     }
     function onIzaroBattleStarted() {
-      if (typeof izaroInstructionItemIcon !== "undefined") {
+      if (typeof izaroInstructionItem !== "undefined") {
         izaroInstructionItem.onIzaroBattleStarted()
       }
     }

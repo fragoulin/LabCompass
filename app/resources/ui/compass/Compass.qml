@@ -111,6 +111,7 @@ Item {
 
   Connections {
     target: logWatcher
+    ignoreUnknownSignals: true
     function onLabStarted() {
       restartTimer()
     }
