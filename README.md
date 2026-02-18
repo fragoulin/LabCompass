@@ -42,7 +42,7 @@ A: They are provided by [poelab.com](http://www.poelab.com). The download links 
 
 **Q: LabCompass window cannot be moved on Wayland display**
 
-A: Wayland display forbid window positionning programatically, by design. So LabCompass window, which use a custom window, cannot be moved. To fix this problem, you can use the following command to force LabCompass to be executed under X11:
+A: Wayland display forbid window positionning programmatically, by design. So LabCompass window, which use a custom display, cannot be moved. To fix this problem, you can use the following command to force LabCompass to be executed under X11:
 
     QT_QPA_PLATFORM=xcb labcompass
 
