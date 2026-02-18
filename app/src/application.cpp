@@ -9,7 +9,6 @@
 Application::Application(int& argc, char** argv)
     : QApplication(argc, argv)
 {
-    setQuitOnLastWindowClosed(false);
     connect(this, &Application::aboutToQuit,
         this, &Application::onAboutToQuit);
 
@@ -90,41 +89,21 @@ void Application::initHelpers()
 
 void Application::initWindows()
 {
-    dummyWindow.reset(new Window(&engine, true));
-    dummyWindow->setSource(QUrl("qrc:/ui/Dummy.qml"));
-    dummyWindow->show();
-
-    headerWindow.reset(new HeaderWindow(&engine));
-    connect(headerWindow.get(), &HeaderWindow::moved,
+    mainWindow.reset(new MainWindow(&engine));
+    connect(mainWindow.get(), &MainWindow::moved,
         [this](int x, int y) { model.get_settings()->set_mainWindowPosition(QPoint(x, y)); });
 
     auto mainWindowPosition = model.get_settings()->get_mainWindowPosition();
-    auto screenGeometry = headerWindow->quickWindow()->screen()->geometry();
+    auto screenGeometry = mainWindow->quickWindow()->screen()->geometry();
     if (!screenGeometry.contains(mainWindowPosition))
         mainWindowPosition = screenGeometry.center();
-    headerWindow->move(mainWindowPosition);
+    mainWindow->move(mainWindowPosition);
 
-    compassWindow.reset(new CompassWindow(&engine));
-    compassWindow->setParentWindow(headerWindow.get(), QPoint(-88, 26));
-
-    compassToolbarWindow.reset(new CompassToolbarWindow(&engine));
-    compassToolbarWindow->setParentWindow(compassWindow.get(), QPoint(172, 132));
-
-    toolbarWindow.reset(new ToolbarWindow(&engine));
-    toolbarWindow->setParentWindow(headerWindow.get(), QPoint(124, 28));
-
-    instructionListWindow.reset(new InstructionListWindow(&engine));
-    instructionListWindow->setParentWindow(headerWindow.get(), QPoint(-112, 198));
-
-    headerWindow->show();
-    compassWindow->show();
-    toolbarWindow->show();
-    instructionListWindow->show();
+    mainWindow->show();
 
     plannerWindow.reset(new PlannerWindow(&engine));
 
     puzzleWindow.reset(new PuzzleWindow(&engine));
-    puzzleWindow->setParentWindow(headerWindow.get(), QPoint(-122, 220));
 
     optionsWindow.reset(new OptionsWindow(&engine, model.get_settings()));
 
@@ -134,17 +113,8 @@ void Application::initWindows()
 void Application::initWorkers()
 {
     logWatcher.reset(new LogWatcher(&model));
-    connect(logWatcher.get(), &LogWatcher::labStarted,
-        compassWindow.get(), &CompassWindow::restartTimer);
-    connect(logWatcher.get(), &LogWatcher::labFinished,
-        compassWindow.get(), &CompassWindow::stopTimer);
-    connect(logWatcher.get(), &LogWatcher::labExit,
-        compassWindow.get(), &CompassWindow::closeTimer);
 
-    connect(logWatcher.get(), &LogWatcher::roomChanged,
-        instructionListWindow.get(), &InstructionListWindow::onRoomChanged);
-    connect(logWatcher.get(), &LogWatcher::izaroBattleStarted,
-        instructionListWindow.get(), &InstructionListWindow::onIzaroBattleStarted);
+    engine.rootContext()->setContextProperty("logWatcher", logWatcher.get());
 
     versionChecker.reset(new VersionChecker(&model));
     dateChecker.reset(new DateChecker(&model));

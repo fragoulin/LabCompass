@@ -9,10 +9,11 @@ Row {
   signal exit()
 
   Rectangle {
-    height: 24
-    width: 120
+    implicitWidth: text.implicitWidth + close.width
+    implicitHeight: Math.max(text.implicitHeight, close.implicitHeight)
     color: Global.lightPrimaryColor
     Text {
+      id: text
       text: 'LabCompass'
       color: Global.primaryTextColor
       anchors.centerIn: parent
@@ -24,6 +25,7 @@ Row {
   }
 
   ToolbarButton {
+    id: close
     source: 'qrc:/images/close.svg'
     onClicked: exit()
   }

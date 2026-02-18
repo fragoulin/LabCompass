@@ -24,8 +24,8 @@ InstructionItem {
 
       SvgImage {
         source: modelData in Global.contentIconMapping ? 'qrc:/images/lab-content/' + Global.contentIconMapping[modelData] + '.svg' : ''
-        width: 16
-        height: 16
+        sourceSize.width: 16
+        sourceSize.height: 16
       }
 
       Text {

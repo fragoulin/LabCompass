@@ -37,6 +37,7 @@ Column {
   }
 
   IzaroInstructionItem {
+    id: izaroInstructionItem
     visible: showInstructions &&
              instructionModel.atTrialRoom &&
              instructionModel.shouldKillIzaro &&
@@ -63,4 +64,18 @@ Column {
   }
 
   Item { width: 1; height: 1 }
+
+  Connections {
+    target: logWatcher
+    function onRoomChanged() {
+      if (typeof izaroInstructionItemIcon !== "undefined") {
+        izaroInstructionItemIcon.state = ''
+      }
+    }
+    function onIzaroBattleStarted() {
+      if (typeof izaroInstructionItemIcon !== "undefined") {
+        izaroInstructionItem.onIzaroBattleStarted()
+      }
+    }
+  }
 }

@@ -6,7 +6,7 @@ Column {
   spacing: 4
 
   ToolbarButton {
-    height: 40
+    implicitHeight: 40
     source: 'qrc:/images/navigation-light.svg'
     active: Global && Global.plannerWindowOpen
     onClicked: {
@@ -23,7 +23,7 @@ Column {
   }
 
   ToolbarButton {
-    height: 40
+    implicitHeight: 40
     source: 'qrc:/images/puzzle-light.svg'
     active: Global && Global.puzzleWindowOpen
     onClicked: {
@@ -37,7 +37,7 @@ Column {
   }
 
   ToolbarButton {
-    height: 40
+    implicitHeight: 40
     source: 'qrc:/images/settings-light.svg'
     active: Global && Global.optionsWindowOpen
     onClicked: {

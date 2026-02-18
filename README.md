@@ -1,5 +1,5 @@
 LabCompass
-[![Github All Releases](https://img.shields.io/github/downloads/yznpku/LabCompass/total.svg)](https://github.com/yznpku/LabCompass/releases)
+[![Github All Releases](https://img.shields.io/github/downloads/fragoulin/LabCompass/total.svg)](https://github.com/fragoulin/LabCompass/releases)
 [![Donate by PayPal](https://img.shields.io/badge/donate-%F0%9F%92%B0-1A1A1A.svg)](https://www.paypal.me/futurecode)
 [![Become a Patreon](https://img.shields.io/badge/patreon-%F0%9F%8E%AF-orange.svg)](https://www.patreon.com/futurecode)
 ===
@@ -17,13 +17,13 @@ Features
 System Requirements
 ---
 
-- Windows 7/8/10.
+- Windows 7/8/10/11.
 - OpenGL 2.1 or higher. Update your graphics card drivers if you experience display issues.
 
 Downloads
 ---
 
-See the [release](https://github.com/yznpku/LabCompass/releases) section.
+See the [release](https://github.com/fragoulin/LabCompass/releases) section.
 
 FAQ
 ---
@@ -40,6 +40,12 @@ A: [It's legal.](https://i.imgur.com/Es321K1.png)
 
 A: They are provided by [poelab.com](http://www.poelab.com). The download links are right below the corresponding images. Make sure you grab the latest version every day!
 
+**Q: LabCompass window cannot be moved on Wayland display**
+
+A: Wayland display forbid window positionning programatically, by design. So LabCompass window, which use a custom window, cannot be moved. To fix this problem, you can use the following command to force LabCompass to be executed under X11:
+
+    QT_QPA_PLATFORM=xcb labcompass
+
 Build
 ---
 
@@ -48,4 +54,4 @@ After installing the latest version of Qt, run the following command to build:
     cmake . -B build
     cmake --build build
 
-    Labcompass binary is located in build/bin directory.
+Labcompass binary is located in build/bin directory.

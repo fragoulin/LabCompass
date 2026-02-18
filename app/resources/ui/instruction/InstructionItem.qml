@@ -9,14 +9,14 @@ Item {
   property alias iconComponent: iconComponentLoader.sourceComponent
   default property alias content: column.children
 
-  width: 260
-  height: background.height + 8
+  implicitWidth: background.implicitWidth
+  implicitHeight: background.implicitHeight + 8
 
   Rectangle {
     id: background
     color: root.color
-    width: root.width
-    height: Math.max(40, column.height + 12)
+    implicitWidth: 260
+    implicitHeight: Math.max(40, column.height + 12)
     opacity: 0.75
   }
   SvgImage {
@@ -24,8 +24,8 @@ Item {
     source: root.iconSource
     anchors.verticalCenter: background.verticalCenter
     x: (40 - width) / 2
-    width: 20
-    height: 20
+    sourceSize.width: 20
+    sourceSize.height: 20
   }
   Column {
     id: column

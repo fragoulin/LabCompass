@@ -32,8 +32,8 @@ InstructionItem {
       visible: izaroInstructionItemIcon.state === ''
       source: root.mechanics === 'ChargeDisruptors' || root.mechanics === 'Idols' ? 'qrc:/images/instruction/izaro-wait.svg'
                                                                                   : 'qrc:/images/instruction/izaro-kill.svg'
-      width: 20
-      height: 20
+      sourceSize.width: 20
+      sourceSize.height: 20
     }
 
     property real countdownStart: 0
@@ -71,8 +71,8 @@ InstructionItem {
       anchors.centerIn: parent
       visible: izaroInstructionItemIcon.state === 'countdownFinished'
       source: 'qrc:/images/instruction/izaro-kill.svg'
-      width: 20
-      height: 20
+      sourceSize.width: 20
+      sourceSize.height: 20
 
       SequentialAnimation on opacity {
         loops: Animation.Infinite

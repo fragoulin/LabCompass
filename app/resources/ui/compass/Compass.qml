@@ -5,22 +5,26 @@ import '..'
 Item {
   id: root
 
-  width: 210
-  height: 170
+  implicitWidth: useMinimapDisplay ? minimapDisplay.implicitWidth : directionDisplay.implicitWidth + 40
+  implicitHeight: useMinimapDisplay ? minimapDisplay.implicitHeight : directionDisplay.implicitHeight
 
   property bool displayActive: Global.model.inLab && Global.model.currentRoomDetermined
   property bool useMinimapDisplay: Global.model.settings.showMinimap && displayActive && Object.keys(Global.model.instructionModel.preset).length
+  property bool compassToolbarVisible: Global.compassToolbarVisible
 
   Item {
     id: directionDisplay
-    width: 170
-    height: 170
+    implicitWidth: directionHud.implicitWidth
+    implicitHeight: directionHud.implicitHeight
     anchors.right: parent.right
     visible: !useMinimapDisplay
 
     SvgImage {
+      id: directionHud
       anchors.fill: parent
       source: 'qrc:/images/compass/direction-hud.svg'
+      sourceSize.width: 170
+      sourceSize.height: 170
     }
 
     Loader {
@@ -34,12 +38,17 @@ Item {
 
   Item {
     id: minimapDisplay
+    implicitWidth: minimapHud.implicitWidth
+    implicitHeight: minimapHud.implicitHeight
     anchors.fill: parent
     visible: useMinimapDisplay
 
     SvgImage {
+      id: minimapHud
       anchors.fill: parent
       source: 'qrc:/images/compass/minimap-hud.svg'
+      sourceSize.width: 210
+      sourceSize.height: 170
     }
 
     Loader {
@@ -53,13 +62,20 @@ Item {
     }
   }
 
+  CompassToolbar {
+    objectName: "compassToolbar"
+    visible: compassToolbarVisible
+    x: 172
+    y: 132
+  }
+
   Rectangle {
     id: timerView
     color: '#88000000'
     x: 150
     y: 10
-    width: 50
-    height: 20
+    width: timerViewText.implicitWidth
+    height: timerViewText.implicitHeight
     visible: false
     Text {
       id: timerViewText
@@ -91,5 +107,18 @@ Item {
   function closeTimer() {
     stopTimer();
     timerView.visible = false;
+  }
+
+  Connections {
+    target: logWatcher
+    function onLabStarted() {
+      restartTimer()
+    }
+    function onLabFinished() {
+      stopTimer()
+    }
+    function onLabExit() {
+      closeTimer()
+    }
   }
 }
