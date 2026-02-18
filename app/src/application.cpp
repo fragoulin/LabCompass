@@ -34,11 +34,11 @@ void Application::init()
     qInfo() << "Init helpers";
     initHelpers();
 
-    qInfo() << "Init windows";
-    initWindows();
-
     qInfo() << "Init workers";
     initWorkers();
+
+    qInfo() << "Init windows";
+    initWindows();
 
     qInfo() << "Init controllers";
     initControllers();
