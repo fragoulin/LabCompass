@@ -1,6 +1,7 @@
 set(TARGET_NAME common)
 
 include(HungarianAlgorithm.cmake)
+include(QtSuperMacros.cmake)
 
 file(GLOB_RECURSE SOURCES CONFIGURE_DEPENDS
         *.cpp *.h *.qrc
@@ -13,11 +14,11 @@ configure_file (
     "include/version.h"
 )
 
-ExternalProject_Get_Property(HungarianAlgorithm SOURCE_DIR)
 target_include_directories(${TARGET_NAME} PUBLIC
         src
         "${PROJECT_BINARY_DIR}/${TARGET_NAME}/include"
-        "${SOURCE_DIR}"
+        "${SOURCE_DIR_HUNGARIAN}"
+#        "${SOURCE_DIR_QT_SUPER_MACROS}"
         )
 
 target_precompile_headers(${TARGET_NAME} PRIVATE

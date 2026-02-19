@@ -1,14 +1,12 @@
-include(ExternalProject)
-find_program(MAKE_EXE NAMES gmake nmake make)
+include(FetchContent)
 
 set(TARGET_HUNGARIAN HungarianAlgorithm)
 
-ExternalProject_Add(${TARGET_HUNGARIAN}
+FetchContent_Declare(${TARGET_HUNGARIAN}
   GIT_REPOSITORY    git@github.com:mcximing/hungarian-algorithm-cpp.git
-  CONFIGURE_COMMAND ""
-  BUILD_COMMAND ""
-  INSTALL_COMMAND ""
-  SOURCE_DIR ${CMAKE_BINARY_DIR}/${TARGET_HUNGARIAN}
 )
+FetchContent_MakeAvailable(${TARGET_HUNGARIAN})
 
-add_library(hungarian ${CMAKE_BINARY_DIR}/${TARGET_HUNGARIAN}/Hungarian.cpp ${CMAKE_BINARY_DIR}/${TARGET_HUNGARIAN}/Hungarian.h)
+set(SOURCE_DIR_HUNGARIAN ${FETCHCONTENT_BASE_DIR}/hungarianalgorithm-src)
+
+add_library(hungarian ${SOURCE_DIR_HUNGARIAN}/Hungarian.cpp ${SOURCE_DIR_HUNGARIAN}/Hungarian.h)
