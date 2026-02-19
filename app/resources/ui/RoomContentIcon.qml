@@ -1,6 +1,6 @@
 import QtQuick 2.8
 import com.labcompass 1.0
-import QtQuick.Effects
+import QtQuick.Effects 2.8
 
 Item {
   id: root

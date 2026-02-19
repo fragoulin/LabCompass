@@ -1,6 +1,6 @@
 import QtQuick 2.8
 import QtQuick.Controls 2.2
-import QtQuick.Shapes
+import QtQuick.Shapes 1.8
 
 ProgressBar {
   id: root

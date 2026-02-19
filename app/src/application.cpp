@@ -1,7 +1,4 @@
-#include "stdafx.h"
-
 #include "application.h"
-#include "global.h"
 #include "helper/roompresethelper.h"
 #include "keysequence/keysequencehelper.h"
 #include "tray/trayiconmenu.h"
