@@ -1,4 +1,7 @@
+#include "stdafx.h"
+
 #include "application.h"
+#include "global.h"
 #include "util/setupdebugoutput.h"
 
 int main(int argc, char** argv)

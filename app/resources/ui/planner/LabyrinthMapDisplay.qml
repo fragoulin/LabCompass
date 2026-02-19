@@ -1,5 +1,5 @@
 import QtQuick 2.8
-import QtQuick.Effects 2.8
+import QtQuick.Effects
 import com.labcompass 1.0
 import '..'
 
