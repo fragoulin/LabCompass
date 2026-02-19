@@ -1,10 +1,6 @@
 set(TARGET_NAME common)
 
-include(FetchContent)
-FetchContent_Declare(HungarianAlgorithm
-  GIT_REPOSITORY git@github.com:jinac/hungarian-algorithm-cpp.git
-)
-FetchContent_MakeAvailable(HungarianAlgorithm)
+include(HungarianAlgorithm.cmake)
 
 file(GLOB_RECURSE SOURCES CONFIGURE_DEPENDS
         *.cpp *.h *.qrc
