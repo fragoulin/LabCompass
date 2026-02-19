@@ -13,9 +13,11 @@ configure_file (
     "include/version.h"
 )
 
+ExternalProject_Get_Property(HungarianAlgorithm SOURCE_DIR)
 target_include_directories(${TARGET_NAME} PUBLIC
         src
         "${PROJECT_BINARY_DIR}/${TARGET_NAME}/include"
+        "${SOURCE_DIR}"
         )
 
 target_precompile_headers(${TARGET_NAME} PRIVATE
