@@ -1,5 +1,3 @@
-#include "stdafx.h"
-
 #include "helper/directionnormalizer.h"
 #include "helper/roompresethelper.h"
 #include "labyrinthdata.h"

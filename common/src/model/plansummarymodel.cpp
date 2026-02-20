@@ -1,5 +1,3 @@
-#include "stdafx.h"
-
 #include "plansummarymodel.h"
 
 static const QStringList TROVE_LIST {

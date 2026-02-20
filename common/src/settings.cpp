@@ -1,7 +1,5 @@
-#include "stdafx.h"
-
-#include "global.h"
 #include "settings.h"
+#include "version.h"
 
 QVariantMap defaultSettings {
     { "mainWindowPosition", QPoint(-1, -1) },

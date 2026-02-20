@@ -1,5 +1,3 @@
-#include "stdafx.h"
-
 #include "labyrinthdata.h"
 #include "labyrinthmodel.h"
 

@@ -1,5 +1,3 @@
-#include "stdafx.h"
-
 #include "navigationcontroller.h"
 
 NavigationController::NavigationController(ApplicationModel* model)

@@ -1,5 +1,3 @@
-#include "stdafx.h"
-
 #include "datechecker.h"
 
 DateChecker::DateChecker(ApplicationModel* model, QObject* parent)

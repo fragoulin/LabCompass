@@ -1,5 +1,3 @@
-#include "stdafx.h"
-
 #include "roompresethelper.h"
 
 RoomPresetHelper* RoomPresetHelper::instance = nullptr;

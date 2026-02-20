@@ -1,5 +1,3 @@
-#include "stdafx.h"
-
 #include "goldendoormodel.h"
 
 GoldenDoorModel::GoldenDoorModel(QObject* parent)

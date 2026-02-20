@@ -1,5 +1,3 @@
-#include "stdafx.h"
-
 #include "labyrinthcontroller.h"
 
 LabyrinthController::LabyrinthController(ApplicationModel* model)
