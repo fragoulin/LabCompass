@@ -3,7 +3,10 @@
 #include "helper/directionnormalizer.h"
 #include "helper/roompresethelper.h"
 #include "labyrinthdata.h"
-#include <QtJsonSchema>
+#include <nlohmann/json-schema.hpp>
+
+using nlohmann::json;
+using nlohmann::json_schema::json_validator;
 
 static const QHash<QString, qreal> ROOM_PREFIX_COST {
     { "Sepulchre", 3 },
@@ -26,7 +29,6 @@ static const QHash<QString, qreal> ROOM_SUFFIX_COST {
 };
 
 static DirectionNormalizer directionNormalizer;
-static JsonSchema mapSchema = JsonSchema::fromVariant(QVariant());
 
 LabyrinthData::LabyrinthData()
 {
@@ -46,35 +48,41 @@ bool LabyrinthData::loadFromString(const QByteArray& str)
     return doc.isObject() && loadFromJson(doc.object());
 }
 
-bool LabyrinthData::loadFromJson(const QJsonObject& json)
+bool LabyrinthData::loadFromJson(const QJsonObject& jsonLab)
 {
-    if (!mapSchema.isValid()) {
-        QFile f(":/map.schema.json");
-        f.open(QIODevice::ReadOnly);
-        mapSchema = JsonSchema::fromJsonString(f.readAll());
+    QFile fileSchema(":/map.schema.json");
+    if (!fileSchema.open(QIODevice::ReadOnly))
+        return false;
+    const std::string schema = fileSchema.readAll().toStdString();
+    fileSchema.close();
+    try {
+        json_validator validator(json::parse(schema));
+        QJsonDocument doc(jsonLab);
+        QString strJson(doc.toJson(QJsonDocument::Compact));
+        validator.validate(json::parse(strJson.toStdString()));
+    } catch (const std::exception &e) {
+        qCritical() << "Error occurred during json validation: " << e.what();
+        return false;
     }
 
-    if (!mapSchema.validate(QJsonValue(json)))
-        return false;
+    difficulty = jsonLab["difficulty"].toString();
+    date = QDate::fromString(jsonLab["date"].toString(), "yyyy-MM-dd");
 
-    difficulty = json["difficulty"].toString();
-    date = QDate::fromString(json["date"].toString(), "yyyy-MM-dd");
+    weapon = jsonLab["weapon"].toString();
+    sectionMechanics[0] = jsonLab["phase1"].toString();
+    sectionMechanics[1] = jsonLab["phase2"].toString();
 
-    weapon = json["weapon"].toString();
-    sectionMechanics[0] = json["phase1"].toString();
-    sectionMechanics[1] = json["phase2"].toString();
+    if (jsonLab["trap1"].toString() != "NoTrap")
+        traps.append(jsonLab["trap1"].toString());
+    if (jsonLab["trap2"].toString() != "NoTrap")
+        traps.append(jsonLab["trap2"].toString());
 
-    if (json["trap1"].toString() != "NoTrap")
-        traps.append(json["trap1"].toString());
-    if (json["trap2"].toString() != "NoTrap")
-        traps.append(json["trap2"].toString());
-
-    if (!(loadRooms(json["rooms"].toArray())))
+    if (!(loadRooms(jsonLab["rooms"].toArray())))
         return false;
 
     predictRoomAreaCodes();
 
-    if (!loadConnectionMatrix(json["rooms"].toArray()))
+    if (!loadConnectionMatrix(jsonLab["rooms"].toArray()))
         return false;
 
     if (!loadGoldenDoors())
