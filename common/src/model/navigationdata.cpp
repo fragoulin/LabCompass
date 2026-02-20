@@ -1,6 +1,5 @@
-#include "stdafx.h"
-
 #include "navigationdata.h"
+#include <queue>
 
 void NavigationData::loadFromData(const LabyrinthData* lab, const PlanData& plan)
 {
