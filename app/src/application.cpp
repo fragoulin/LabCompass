@@ -56,8 +56,6 @@ void Application::init()
 void Application::initTranslations()
 {
     auto locale = QLocale::system();
-    QString localeName = locale.name();
-    localeName.truncate(localeName.lastIndexOf('_'));
     auto filename = QApplication::applicationName();
     auto directory = ":/i18n";
 
@@ -65,7 +63,7 @@ void Application::initTranslations()
         installTranslator(&translator);
     }
     else
-        qWarning() << "Failed to load translation file" << filename << "from directory" << directory << "and locale" << localeName;
+        qWarning() << "Failed to load translation file" << filename << "from directory" << directory << "and locale" << locale;
 }
 
 void Application::initResources()
