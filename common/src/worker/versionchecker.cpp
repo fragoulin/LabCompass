@@ -25,7 +25,7 @@ void VersionChecker::work()
         model->get_settings()->set_lastVersionCheckAttempt(now);
 
         qInfo() << "Checking github for latest version";
-        auto reply = nam.get(QNetworkRequest(QUrl("https://api.github.com/repos/yznpku/LabCompass/releases/latest")));
+        auto reply = nam.get(QNetworkRequest(QUrl("https://api.github.com/repos/fragoulin/LabCompass/releases/latest")));
         connect(reply, &QNetworkReply::finished,
             this, &VersionChecker::onReplyFinished);
     }
