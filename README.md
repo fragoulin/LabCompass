@@ -38,13 +38,18 @@ A: [It's legal.](https://i.imgur.com/Es321K1.png)
 
 **Q: Where can I get lab notes to import?**
 
-A: They are provided by [poelab.com](http://www.poelab.com). The download links are right below the corresponding images. Make sure you grab the latest version every day!
+A: They are provided by [poelab.com](https://www.poelab.com). The download links are right below the corresponding images. Make sure you grab the latest version every day!
 
 **Q: LabCompass window cannot be moved on Wayland display**
 
-A: Wayland display forbid window positionning programmatically, by design. So LabCompass window, which use a custom display, cannot be moved. To fix this problem, you can use the following command to force LabCompass to be executed under X11:
+A: Wayland display forbid window positionning programmatically, by design. So LabCompass window, which use a custom display, cannot be moved. To fix this problem, you can use the following command to force LabCompass to use X11 display:
 
     QT_QPA_PLATFORM=xcb labcompass
+
+**Q: Hotkey to hide/show LabCompass window doesn't work on Wayland display**
+
+A: Wayland display forbid window visibility programmatically, by design. There is currently an [issue opened](https://github.com/Skycoder42/QHotkey/issues/14) on QHotkey library repo.
+
 
 Build
 ---
@@ -52,6 +57,6 @@ Build
 After installing the latest version of Qt, run the following command to build:
 
     cmake . -B build
-    cmake --build build
+    cmake --build build --config release
 
 Labcompass binary is located in build/bin directory.
