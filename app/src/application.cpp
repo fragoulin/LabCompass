@@ -62,8 +62,7 @@ void Application::initTranslations()
     auto directory = ":/i18n";
 
     if (translator.load(locale, filename, "_", directory)) {
-        if (!installTranslator(&translator))
-            qWarning() << "Failed to install translator";
+        installTranslator(&translator);
     }
     else
         qWarning() << "Failed to load translation file" << filename << "from directory" << directory << "and locale" << localeName;
