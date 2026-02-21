@@ -71,7 +71,8 @@ WindowWithShadow {
           z: -1
           Text {
             anchors.centerIn: parent
-            text: 'Update Available'
+            text: qsTr('Update Available')
+            font.preferShaping: false
             color: Global.primaryTextColor
           }
         }
@@ -88,7 +89,8 @@ WindowWithShadow {
     Text {
       x: 40
       color: Global.primaryTextColor
-      text: 'Options'
+      text: qsTr('Options')
+      font.preferShaping: false
       font.pixelSize: 24
     }
 
@@ -100,7 +102,7 @@ WindowWithShadow {
         anchors.fill: parent
         anchors.leftMargin: 50
         anchors.rightMargin: 50
-        model: ['Client', 'UI', 'Navigation', 'Hotkeys']
+        model: [qsTr('Client'), qsTr('UI'), qsTr('Navigation'), qsTr('Hotkeys')]
       }
     }
 
@@ -118,7 +120,8 @@ WindowWithShadow {
         Text {
           Layout.columnSpan: 2
           color: Global.primaryTextColor
-          text: 'Game Client Path'
+          text: qsTr('Game Client Path')
+          font.preferShaping: false
         }
         TextField {
           id: clientPathInput
@@ -140,7 +143,8 @@ WindowWithShadow {
 
         Text {
           color: Global.primaryTextColor
-          text: 'Multi-client Support (Experimental)'
+          text: qsTr('Multi-client Support (Experimental)')
+          font.preferShaping: false
           font.pixelSize: 20
         }
         CheckBox {
@@ -155,7 +159,8 @@ WindowWithShadow {
         Text {
           Layout.fillWidth: true
           color: Global.primaryTextColor
-          text: 'Show Minimap When Available'
+          text: qsTr('Show Minimap When Available')
+          font.preferShaping: false
           font.pixelSize: 20
         }
         CheckBox {
@@ -167,7 +172,8 @@ WindowWithShadow {
         Text {
           Layout.fillWidth: true
           color: Global.primaryTextColor
-          text: 'UI Scale Factor <sup>*</sup>'
+          text: qsTr('UI Scale Factor <sup>*</sup>')
+          font.preferShaping: false
           font.pixelSize: 20
         }
         ComboBox {
@@ -181,7 +187,8 @@ WindowWithShadow {
         Text {
           Layout.fillWidth: true
           color: Global.primaryTextColor
-          text: 'Taking Portals Skips Current Section'
+          text: qsTr('Taking Portals Skips Current Section')
+          font.preferShaping: false
           font.pixelSize: 20
         }
         CheckBox {
@@ -196,7 +203,8 @@ WindowWithShadow {
         Text {
           Layout.fillWidth: true
           color: Global.primaryTextColor
-          text: 'Hide/Show Compass'
+          text: qsTr('Hide/Show Compass')
+          font.preferShaping: false
           font.pixelSize: 20
         }
         KeySequenceEdit {
@@ -208,7 +216,8 @@ WindowWithShadow {
     Text {
       x: 40
       color: Global.secondaryTextColor
-      text: '<sup>*</sup> Restart LabCompass to Apply Changes'
+      text: qsTr('<sup>*</sup> Restart LabCompass to Apply Changes')
+      font.preferShaping: false
       font.pixelSize: 16
     }
   }
@@ -247,7 +256,7 @@ WindowWithShadow {
       z: -1
       Text {
         anchors.centerIn: parent
-        text: 'OK'
+        text: qsTr('OK')
         color: Global.primaryTextColor
       }
     }

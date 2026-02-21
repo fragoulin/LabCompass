@@ -29,7 +29,7 @@ WindowWithShadow {
         onDrag: window.drag(dx, dy)
 
         Text {
-          text: 'Room Layout Presets'
+          text: qsTr('Room Layout Presets')
           anchors.centerIn: parent
           color: Global.primaryTextColor
           font.pixelSize: 32
@@ -179,7 +179,7 @@ WindowWithShadow {
               anchors.centerIn: parent
               font.pixelSize: 24
               color: Global.primaryTextColor
-              text: 'No Presets Available for This Room'
+              text: qsTr('No Presets Available for This Room')
             }
           }
         }
@@ -192,7 +192,7 @@ WindowWithShadow {
               anchors.centerIn: parent
               font.pixelSize: 24
               color: Global.primaryTextColor
-              text: 'Presets Will Be Disabled for This Room'
+              text: qsTr('Presets Will Be Disabled for This Room')
             }
           }
         }
@@ -222,7 +222,7 @@ WindowWithShadow {
             z: -1
             Text {
               anchors.centerIn: parent
-              text: 'Apply Preset'
+              text: qsTr('Apply Preset')
               color: Global.primaryTextColor
             }
           }
@@ -233,15 +233,15 @@ WindowWithShadow {
 
   states: [
     State {
-      name: 'NoPresets'
+      name: qsTr('NoPresets')
       when: roomPresetModel.presets.length === 0
     },
     State {
-      name: 'NotSelected'
+      name: qsTr('NotSelected')
       when: presetListView.currentIndex === -1
     },
     State {
-      name: 'Disabled'
+      name: qsTr('Disabled')
       when: presetListView.currentIndex === presetListView.count - 1
     }
   ]

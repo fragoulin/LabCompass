@@ -1,5 +1,3 @@
-#include "stdafx.h"
-
 #include "trayiconmenu.h"
 
 TrayIconMenu::TrayIconMenu()
@@ -10,7 +8,7 @@ TrayIconMenu::TrayIconMenu()
 
 void TrayIconMenu::addResetAction()
 {
-    resetAction.reset(new QAction("Reset LabCompass"));
+    resetAction.reset(new QAction(tr("Reset LabCompass")));
     addAction(resetAction.get());
 
     connect(resetAction.get(), &QAction::triggered, []() {
@@ -22,7 +20,7 @@ void TrayIconMenu::addResetAction()
 
 void TrayIconMenu::addQuitAction()
 {
-    quitAction.reset(new QAction("Quit"));
+    quitAction.reset(new QAction(tr("Quit")));
     addAction(quitAction.get());
 
     connect(quitAction.get(), &QAction::triggered,

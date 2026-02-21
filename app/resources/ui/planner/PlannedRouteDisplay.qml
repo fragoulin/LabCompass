@@ -14,7 +14,7 @@ Item {
     anchors.verticalCenter: parent.verticalCenter
     Text {
       anchors.verticalCenter: parent.verticalCenter
-      text: 'Plan: '
+      text: qsTr('Plan: ')
       color: Global.primaryTextColor
       font.pixelSize: 20
     }

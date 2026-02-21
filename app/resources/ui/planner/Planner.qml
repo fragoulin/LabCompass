@@ -37,7 +37,7 @@ WindowWithShadow {
           onDrag: (dx, dy) => window.drag(dx, dy)
 
           Text {
-            text: 'Labyrinth Planner'
+            text: qsTr('Labyrinth Planner')
             anchors.centerIn: parent
             color: Global.primaryTextColor
             font.pixelSize: 32
@@ -49,7 +49,8 @@ WindowWithShadow {
           height: 30
           Text {
             anchors.centerIn: parent
-            text: labyrinthModel.title ? 'Layout: ' + labyrinthModel.title : 'No lab notes loaded'
+            //: Layout: room title
+            text: labyrinthModel.title ? qsTr('Layout: %1').arg(labyrinthModel.title) : qsTr('No lab notes loaded')
             color: Global.primaryTextColor
           }
         }
@@ -57,10 +58,10 @@ WindowWithShadow {
         MaterialInk {
           width: 120
           height: 30
-          onClicked: openUrl('http://www.poelab.com')
+          onClicked: openUrl('https://www.poelab.com')
           Text {
             anchors.centerIn: parent
-            text: 'Get Maps'
+            text: qsTr('Get Maps')
             color: Global.primaryTextColor
           }
           NotificationIndicator {
@@ -79,7 +80,7 @@ WindowWithShadow {
             z: -1
             Text {
               anchors.centerIn: parent
-              text: 'Import Maps'
+              text: qsTr('Import Maps')
               color: Global.primaryTextColor
             }
           }

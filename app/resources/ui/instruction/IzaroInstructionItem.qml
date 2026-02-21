@@ -8,7 +8,7 @@ InstructionItem {
   property string mechanics
 
   Text {
-    text: 'Defeat Izaro'
+    text: qsTr('Defeat Izaro')
     color: Global.primaryTextColor
   }
   Row {

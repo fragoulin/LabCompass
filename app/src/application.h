@@ -20,6 +20,7 @@ class Application : public QApplication {
     ApplicationModel model;
     QQmlApplicationEngine engine;
     QObject* global;
+    QTranslator translator;
 
     std::unique_ptr<QSystemTrayIcon> trayIcon;
     std::unique_ptr<QMenu> trayIconMenu;
@@ -47,6 +48,7 @@ private slots:
 
 private:
     void init();
+    void initTranslations();
     void initResources();
     void initSystemTrayIcon();
     void initHelpers();

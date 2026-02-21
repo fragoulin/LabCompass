@@ -1,5 +1,6 @@
 set(TARGET_NAME labcompass)
 
+include(Translations.cmake)
 include(QHotkey.cmake)
 
 file(GLOB_RECURSE SOURCES CONFIGURE_DEPENDS

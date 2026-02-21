@@ -26,7 +26,7 @@ Item {
     Text {
       font.pixelSize: 20
       color: Global.primaryTextColor
-      text: 'Legend'
+      text: qsTr('Legend')
     }
 
     Grid {
@@ -41,16 +41,16 @@ Item {
         SvgImage { width: 26; height: 20; source: 'qrc:/images/compass/tile-full.svg' }
         SvgImage { width: 26; height: 20; source: 'qrc:/images/compass/tile-cross.svg' }
       }
-      Text { color: Global.primaryTextColor; text: 'Path' }
+      Text { color: Global.primaryTextColor; text: qsTr('Path') }
 
       SvgImage { width: 26; height: 20; source: 'qrc:/images/compass/tile-trap.svg' }
-      Text { color: Global.primaryTextColor; text: 'Traps' }
+      Text { color: Global.primaryTextColor; text: qsTr('Traps') }
 
       SvgImage { width: 26; height: 20; source: 'qrc:/images/compass/door-target.svg' }
-      Text { color: Global.primaryTextColor; text: 'Exit' }
+      Text { color: Global.primaryTextColor; text: qsTr('Exit') }
 
       SvgImage { width: 26; height: 20; source: 'qrc:/images/compass/loot-normal.svg' }
-      Text { color: Global.primaryTextColor; text: 'Loot' }
+      Text { color: Global.primaryTextColor; text: qsTr('Loot') }
     }
   }
 }

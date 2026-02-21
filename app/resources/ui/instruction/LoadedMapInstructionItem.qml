@@ -22,7 +22,7 @@ InstructionItem {
 
   Text {
     color: Global.primaryTextColor
-    text: 'Loaded Map:'
+    text: qsTr('Loaded Map:')
   }
   Text {
     color: Global.primaryTextColor

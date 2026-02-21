@@ -11,7 +11,7 @@ InstructionItem {
 
   Text {
     color: Global.primaryTextColor
-    text: 'Loot:'
+    text: qsTr('Loot:')
   }
 
   Repeater {

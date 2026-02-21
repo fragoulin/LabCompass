@@ -1,5 +1,3 @@
-#include "stdafx.h"
-
 #include "plannerwindow.h"
 #include "settings.h"
 
@@ -42,9 +40,9 @@ void PlannerWindow::onImportLabNotesFileClicked()
         }
     }
 
-    const auto& fileName = QFileDialog::getOpenFileName(nullptr, "Import Lab Notes",
+    const auto& fileName = QFileDialog::getOpenFileName(nullptr, tr("Import Lab Notes"),
         importDirectory,
-        "Lab Maps (*.json *.map)");
+        tr("Lab Maps (*.json *.map)"));
     if (!fileName.isEmpty()) {
         importLabNotesFromFile(fileName);
     }

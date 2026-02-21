@@ -66,7 +66,7 @@ Item {
 
       Text {
         color: Global.primaryTextColor
-        text: 'Drop to Import'
+        text: qsTr('Drop to Import')
         font.pixelSize: 16
       }
     }

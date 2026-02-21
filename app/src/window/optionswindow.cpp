@@ -1,5 +1,3 @@
-#include "stdafx.h"
-
 #include "optionswindow.h"
 
 static const QStringList UI_SCALE_FACTORS {
@@ -48,7 +46,7 @@ void OptionsWindow::onWindowOpenChanged()
 
 void OptionsWindow::onBrowseClientPath()
 {
-    const auto& file = QFileDialog::getOpenFileName(this, "Find Game Client", "", "Path of Exile Client (*.exe)");
+    const auto& file = QFileDialog::getOpenFileName(this, tr("Find Game Client"), "", tr("Path of Exile Client (*.exe)"));
     if (!file.isEmpty()) {
         rootObject()->setProperty("poeClientPath", QFileInfo(file).dir().absolutePath());
     }

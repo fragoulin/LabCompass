@@ -20,22 +20,24 @@ InstructionItem {
   Text {
     visible: atPlaza
     color: Global.primaryTextColor
-    text: 'Enter the Labyrinth'
+    text: qsTr('Enter the Labyrinth')
   }
 
   Text {
     visible: !atPlaza
     color: Global.primaryTextColor
-    text: nextRoomIsPreviousRoom ? 'Back to Previous Room' :
-          direction in Global.directionMapping ? Global.directionMapping[direction].name + ' Exit' :
-          connectionType == 'secret' ? 'Secret Passage' :
-          nextRoomIsUnmarkedOppositeDirection ? 'Opposite Exit' :
-          'Unmarked Exit'
+    text: nextRoomIsPreviousRoom ? qsTr('Back to Previous Room') :
+                                   //: Direction exit (e.g. North Exit)
+          direction in Global.directionMapping ? qsTr("%1 %2").arg(Global.directionMapping[direction].name).arg(qsTr('Exit')) :
+          connectionType == 'secret' ? qsTr('Secret Passage') :
+          nextRoomIsUnmarkedOppositeDirection ? qsTr('Opposite Exit') :
+          qsTr('Unmarked Exit')
   }
 
   Text {
     visible: !atPlaza
     color: Global.primaryTextColor
-    text: (nextRoomIsPreviousRoom ? '' : 'To ') + nextRoomName
+    //: To next room (e.g. To Aspirant Trial)
+    text: qsTr("%1 %2 ").arg(nextRoomIsPreviousRoom ? '' : qsTr('To')).arg(nextRoomName)
   }
 }

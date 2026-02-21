@@ -1,5 +1,3 @@
-#include "stdafx.h"
-
 #include "setupdebugoutput.h"
 #include <QDir>
 #include <QFile>

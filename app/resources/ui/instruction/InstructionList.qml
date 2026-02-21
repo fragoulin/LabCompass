@@ -13,22 +13,22 @@ Column {
 
   WarningInstructionItem {
     visible: !Global.model.logFileOpen
-    text: 'Unable to locate PoE installation.\n\nYou can try to:\n- run PoE client\n- set the path in Options window.'
+    text: qsTr('Unable to locate PoE installation.\n\nYou can try to:\n- run PoE client\n- set the path in Options window.')
   }
 
   WarningInstructionItem {
     visible: inLab && !currentRoomDetermined
-    text: 'Unable to determine your location.\n\n- Open Planner window and click on your current room.'
+    text: qsTr('Unable to determine your location.\n\n- Open Planner window and click on your current room.')
   }
 
   WarningInstructionItem {
     visible: !modelValid && atPlaza && !inLab
-    text: 'No map loaded.\n\n- Import a map in Planner window before starting lab.'
+    text: qsTr('No map loaded.\n\n- Import a map in Planner window before starting lab.')
   }
 
   WarningInstructionItem {
     visible: modelValid && !Global.loadedMapUpToDate && atPlaza && !inLab
-    text: 'Loaded map is outdated.\n\n- Checkout poelab.com for latest maps.'
+    text: qsTr('Loaded map is outdated.\n\n- Checkout poelab.com for latest maps.')
   }
 
   LoadedMapInstructionItem {

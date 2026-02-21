@@ -1,5 +1,3 @@
-#include "stdafx.h"
-
 #include "mainwindow.h"
 #include "util/detectdisplay.h"
 

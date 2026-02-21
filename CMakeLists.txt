@@ -14,6 +14,7 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
 find_package(Qt6 REQUIRED
         Core
+        LinguistTools
         Gui
         Widgets
         Network
@@ -23,7 +24,10 @@ find_package(Qt6 REQUIRED
         Test
         )
 
-qt_standard_project_setup(REQUIRES 6.8)
+qt_standard_project_setup(
+  REQUIRES 6.8
+  I18N_TRANSLATED_LANGUAGES fr
+)
 
 add_subdirectory(common)
 add_subdirectory(app labcompass)

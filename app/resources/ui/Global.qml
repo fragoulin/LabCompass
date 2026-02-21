@@ -40,84 +40,84 @@ QtObject {
   }
 
   property var nameMapping: {
-    'Switch puzzle': 'Switch Puzzle',
-    'Lever puzzle': 'Lever Puzzle',
-    'Floor puzzle': 'Floor Puzzle',
-    'Escort gauntlet': 'Escort Gauntlet',
-    'Trap gauntlet': 'Trap Gauntlet',
-    'darkshrine': 'Darkshrine',
-    'argus': 'Argus',
-    'golden-key': 'Golden Key',
-    'golden-door': 'Golden Door',
-    'silver-key': 'Silver Key',
-    'silver-door': 'Silver Cache',
-    'NoPhase': 'Unknown',
-    'ChargeDisruptors': 'Charge Disruptors',
-    'Conduits': 'Conduits',
-    'Essences': 'Essences',
-    'Fonts': 'Fonts',
-    'Gargoyles': 'Gargoyles',
-    'Idols': 'Idols',
-    'Lieutenants': 'Lieutenants',
-    'Portals': 'Portals',
-    'NoTrap': 'Unknown',
-    'BladeSentries': 'Blade Sentries',
-    'Darts': 'Darts',
-    'FurnaceTraps': 'Furnace Traps',
-    'Saws': 'Saws',
-    'Spikes': 'Spikes',
-    'SpinningBlades': 'Spinning Blades',
-    'NoWeapon': 'Unknown',
-    'TwoSwords': 'Two Swords',
-    'SwordAndShield': 'Sword and Shield',
-    'TwoHandedMace': 'Two-handed Mace'
+    'Switch puzzle': qsTr('Switch Puzzle'),
+    'Lever puzzle': qsTr('Lever Puzzle'),
+    'Floor puzzle': qsTr('Floor Puzzle'),
+    'Escort gauntlet': qsTr('Escort Gauntlet'),
+    'Trap gauntlet': qsTr('Trap Gauntlet'),
+    'darkshrine': qsTr('Darkshrine'),
+    'argus': qsTr('Argus'),
+    'golden-key': qsTr('Golden Key'),
+    'golden-door': qsTr('Golden Door'),
+    'silver-key': qsTr('Silver Key'),
+    'silver-door': qsTr('Silver Cache'),
+    'NoPhase': qsTr('Unknown'),
+    'ChargeDisruptors': qsTr('Charge Disruptors'),
+    'Conduits': qsTr('Conduits'),
+    'Essences': qsTr('Essences'),
+    'Fonts': qsTr('Fonts'),
+    'Gargoyles': qsTr('Gargoyles'),
+    'Idols': qsTr('Idols'),
+    'Lieutenants': qsTr('Lieutenants'),
+    'Portals': qsTr('Portals'),
+    'NoTrap': qsTr('Unknown'),
+    'BladeSentries': qsTr('Blade Sentries'),
+    'Darts': qsTr('Darts'),
+    'FurnaceTraps': qsTr('Furnace Traps'),
+    'Saws': qsTr('Saws'),
+    'Spikes': qsTr('Spikes'),
+    'SpinningBlades': qsTr('Spinning Blades'),
+    'NoWeapon': qsTr('Unknown'),
+    'TwoSwords': qsTr('Two Swords'),
+    'SwordAndShield': qsTr('Sword and Shield'),
+    'TwoHandedMace': qsTr('Two-handed Mace')
   }
 
   property var directionMapping: {
     'N': {
-      name: 'North',
+      name: qsTr('North'),
       rotation: 0,
       dx: 0,
       dy: -1
     },
     'NE': {
-      name: 'Northeast',
+      name: qsTr('Northeast'),
       rotation: 45,
       dx: 0.71,
       dy: -0.71
     },
     'E': {
-      name: 'East',
+      name: qsTr('East'),
       rotation: 90,
       dx: 1,
       dy: 0
     },
     'SE': {
-      name: 'Southeast',
+      name: qsTr('Southeast'),
       rotation: 135,
       dx: 0.71,
       dy: 0.71
     },
     'S': {
-      name: 'South',
+      name: qsTr('South'),
       rotation: 180,
       dx: 0,
       dy: 1
     },
     'SW': {
-      name: 'Southwest',
+      name: qsTr('Southwest'),
       rotation: 225,
       dx: -0.71,
       dy: 0.71,
     },
     'W': {
-      name: 'West',
+      name: qsTr('West'),
       rotation: 270,
       dx: -1,
       dy: 0
     },
     'NW': {
-      name: 'Northwest',
+      name: qsTr('Northwest'),
       rotation: 315,
       dx: -0.71,
       dy: -0.71

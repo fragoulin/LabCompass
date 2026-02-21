@@ -5,6 +5,7 @@
 #include "helper/roompresethelper.h"
 #include "keysequence/keysequencehelper.h"
 #include "tray/trayiconmenu.h"
+#include "version.h"
 
 Application::Application(int& argc, char** argv)
     : QApplication(argc, argv)
@@ -24,6 +25,9 @@ void Application::onAboutToQuit()
 void Application::init()
 {
     qInfo() << "Initialization started";
+
+    qInfo() << "Init translations";
+    initTranslations();
 
     qInfo() << "Init resources";
     initResources();
@@ -47,6 +51,22 @@ void Application::init()
     initHotkeys();
 
     qInfo() << "Initialization finished";
+}
+
+void Application::initTranslations()
+{
+    auto locale = QLocale::system();
+    QString localeName = locale.name();
+    localeName.truncate(localeName.lastIndexOf('_'));
+    auto filename = QApplication::applicationName();
+    auto directory = ":/i18n";
+
+    if (translator.load(locale, filename, "_", directory)) {
+        if (!installTranslator(&translator))
+            qWarning() << "Failed to install translator";
+    }
+    else
+        qWarning() << "Failed to load translation file" << filename << "from directory" << directory << "and locale" << localeName;
 }
 
 void Application::initResources()
@@ -77,7 +97,7 @@ void Application::initSystemTrayIcon()
         trayIcon.reset(new QSystemTrayIcon(QIcon(":/LabCompass.ico")));
         trayIconMenu.reset(new TrayIconMenu());
         trayIcon->setContextMenu(trayIconMenu.get());
-        trayIcon->setToolTip("LabCompass");
+        trayIcon->setToolTip(tr("LabCompass"));
         trayIcon->show();
     }
 }
