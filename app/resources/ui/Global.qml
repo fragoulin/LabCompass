@@ -1,5 +1,6 @@
 pragma Singleton
 import QtQuick 2.8
+import com.labcompass 1.0
 
 QtObject {
   property string version
@@ -11,10 +12,10 @@ QtObject {
   property bool puzzleWindowOpen: false
   property bool optionsWindowOpen: false
   property bool roomPresetsWindowOpen: false
-  property var lastActiveTooltipHoverArea
+  property MouseArea lastActiveTooltipHoverArea
 
   property var model
-  property var loadedMapUpToDate: model ? String(model.currentUtcDate) === String(model.labyrinthModel.date) : true
+  property bool loadedMapUpToDate: model ? String(model.currentUtcDate) === String(model.labyrinthModel.date) : true
 
   property color backgroundColor: '#181818'
   property color primaryColor: '#212121'

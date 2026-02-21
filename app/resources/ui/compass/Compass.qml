@@ -85,7 +85,7 @@ Item {
     }
     Timer {
       id: timer
-      property var startTime
+      property double startTime
       interval: 100
       repeat: true
       triggeredOnStart: true

@@ -8,7 +8,7 @@ Item {
   height: contents.height + 20
 
   default property alias content: contents.children
-  property var root: contents
+  property Item root: contents
   // TODO use RectangularGlow from QT 6.10
 /*
   RectangularGlow {
