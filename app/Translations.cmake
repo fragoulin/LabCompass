@@ -15,8 +15,4 @@ qt_add_lupdate(
 
 qt_add_lrelease(
     TS_FILES i18n/LabCompass_fr.ts
-    QM_FILES_OUTPUT_VARIABLE qm_files
 )
-message(STATUS "QM FILES: ${qm_files}")
-message(STATUS "CMAKE_INSTALL_PREFIX: ${CMAKE_INSTALL_PREFIX}")
-install(FILES ${qm_files} DESTINATION "translations")
