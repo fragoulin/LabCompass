@@ -1,21 +1,23 @@
 import QtQuick 2.8
 import com.labcompass 1.0
+import QtQuick.VectorImage
 
 Rectangle {
   id: root
   property string source
   property bool active
+  property double buttonHeight: 40
   signal clicked()
 
-  implicitWidth: image.implicitWidth
-  implicitHeight: image.implicitHeight
+  width: 24
+  height: root.buttonHeight
+
   color: active ? Global.lightPrimaryColor : Global.backgroundColor
-  SvgImage {
-    id: image
+  VectorImage {
     source: root.source
     anchors.centerIn: parent
-    sourceSize.width: 24
-    sourceSize.height: 24
+    width: 16
+    height: 16
   }
   MaterialInk {
     anchors.fill: parent

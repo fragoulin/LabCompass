@@ -30,7 +30,6 @@
         <file>images/navigation-light.svg</file>
         <file>images/puzzle-light.svg</file>
         <file>images/settings-light.svg</file>
-        <file>ui/SvgImage.qml</file>
         <file>ui/HighlightTab.qml</file>
         <file>images/star-gold.svg</file>
         <file>images/star-light.svg</file>

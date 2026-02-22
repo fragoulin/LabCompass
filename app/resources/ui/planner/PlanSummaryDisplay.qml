@@ -1,4 +1,5 @@
 import QtQuick 2.8
+import QtQuick.VectorImage
 import '..'
 
 Rectangle {
@@ -25,27 +26,28 @@ Rectangle {
       Text { color: Global.primaryTextColor; width: 30; horizontalAlignment: Text.AlignHCenter; text: model.rooms }
       Text { color: Global.primaryTextColor; text: qsTr('Length') }
       Text { color: Global.primaryTextColor; width: 30; horizontalAlignment: Text.AlignHCenter; text: model.length }
+      // TODO make a custom component for the 4 Rows and Texts
       Row {
         spacing: 4
-        SvgImage { source: 'qrc:/images/lab-content/argus.svg' }
+        VectorImage { source: 'qrc:/images/lab-content/argus.svg'; width: 16; height: 16 }
         Text { color: Global.primaryTextColor; text: qsTr('Argus') }
       }
       Text { color: Global.primaryTextColor; width: 30; horizontalAlignment: Text.AlignHCenter; text: model.argus }
       Row {
         spacing: 4
-        SvgImage { source: 'qrc:/images/lab-content/gauntlet-puzzle.svg' }
+        VectorImage { source: 'qrc:/images/lab-content/gauntlet-puzzle.svg'; width: 16; height: 16 }
         Text { color: Global.primaryTextColor; text: qsTr('Trove/Lockbox') }
       }
       Text { color: 'white'; width: 30; horizontalAlignment: Text.AlignHCenter; text: model.troves }
       Row {
         spacing: 4
-        SvgImage { source: 'qrc:/images/lab-content/darkshrine.svg' }
+        VectorImage { source: 'qrc:/images/lab-content/darkshrine.svg'; width: 16; height: 16 }
         Text { color: Global.primaryTextColor; text: qsTr('Darkshrine') }
       }
       Text { color: 'white'; width: 30; horizontalAlignment: Text.AlignHCenter; text: model.darkshrines }
       Row {
         spacing: 4
-        SvgImage { source: 'qrc:/images/lab-content/silver-door.svg' }
+        VectorImage { source: 'qrc:/images/lab-content/silver-door.svg'; width: 16; height: 16 }
         Text { color: Global.primaryTextColor; text: qsTr('Silver Cache') }
       }
       Text { color: Global.primaryTextColor; width: 30; horizontalAlignment: Text.AlignHCenter; text: model.silverCaches }

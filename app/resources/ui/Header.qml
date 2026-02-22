@@ -9,8 +9,8 @@ Row {
   signal exit()
 
   Rectangle {
-    implicitWidth: text.implicitWidth + close.width
-    implicitHeight: Math.max(text.implicitHeight, close.implicitHeight)
+    width: text.implicitWidth + close.width
+    height: 24
     color: Global.lightPrimaryColor
     Text {
       id: text
@@ -28,5 +28,6 @@ Row {
     id: close
     source: 'qrc:/images/close.svg'
     onClicked: exit()
+    buttonHeight: 24
   }
 }

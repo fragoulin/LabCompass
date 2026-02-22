@@ -1,4 +1,5 @@
 import QtQuick 2.8
+import QtQuick.VectorImage
 import com.labcompass 1.0
 import '..'
 
@@ -29,8 +30,10 @@ Rectangle {
         model: roomContents
         Row {
           spacing: 2
-          SvgImage {
+          VectorImage {
             source: modelData in Global.contentIconMapping ? 'qrc:/images/lab-content/' + Global.contentIconMapping[modelData] + '.svg' : ''
+            width: 16
+            height: 16
           }
           Text {
             text: modelData in Global.nameMapping ? Global.nameMapping[modelData] : modelData

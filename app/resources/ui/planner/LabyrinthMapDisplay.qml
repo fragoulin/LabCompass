@@ -1,5 +1,6 @@
 import QtQuick 2.8
 import QtQuick.Effects
+import QtQuick.VectorImage
 import com.labcompass 1.0
 import '..'
 
@@ -62,7 +63,7 @@ Rectangle {
         visible: false
         radius: 24
         color: model.name === 'Aspirant\'s Trial' ? '#101010' : '#E0E0E0'
-        SvgImage {
+        VectorImage {
           anchors.centerIn: parent
           width: 32
           height: 32
@@ -96,11 +97,13 @@ Rectangle {
         Behavior on opacity { StandardAnimation {} }
         Behavior on scale { StandardAnimation {} }
 
-        SvgImage {
+        VectorImage {
           id: targetMarker
           anchors.centerIn: parent
           source: 'qrc:/images/star-gold.svg'
           visible: false
+          width: 16
+          height: 16
         }
 
         MultiEffect {
@@ -139,11 +142,13 @@ Rectangle {
       x: coordinate.x
       y: coordinate.y
 
-      SvgImage {
+      VectorImage {
         id: goldenDoorIcon
         anchors.centerIn: parent
         source: 'qrc:/images/lab-content/golden-door.svg'
         visible: false
+        width: 16
+        height: 16
       }
 
       MultiEffect {
@@ -163,7 +168,7 @@ Rectangle {
     Item {
       x: coordinate.x
       y: coordinate.y
-      SvgImage {
+      VectorImage {
         id: mapMarker
         width: 36
         height: 36

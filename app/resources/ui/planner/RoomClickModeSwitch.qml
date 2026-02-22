@@ -1,4 +1,5 @@
 import QtQuick 2.8
+import QtQuick.VectorImage
 import '..'
 
 HighlightTab {
@@ -13,17 +14,21 @@ HighlightTab {
     Item {
       width: 24
       height: 24
-      SvgImage {
+      VectorImage {
         anchors.centerIn: parent
         source: 'qrc:/images/star-gold.svg'
+        width: 16
+        height: 16
       }
     }
     Item {
       width: 24
       height: 24
-      SvgImage {
+      VectorImage {
         anchors.centerIn: parent
         source: 'qrc:/images/map-marker-orange.svg'
+        width: 16
+        height: 16
       }
     }
   }
@@ -32,17 +37,21 @@ HighlightTab {
     Item {
       width: 24
       height: 24
-      SvgImage {
+      VectorImage {
         anchors.centerIn: parent
         source: 'qrc:/images/star-light.svg'
+        width: 16
+        height: 16
       }
     }
     Item {
       width: 24
       height: 24
-      SvgImage {
+      VectorImage {
         anchors.centerIn: parent
         source: 'qrc:/images/map-marker-light.svg'
+        width: 16
+        height: 16
       }
     }
   }

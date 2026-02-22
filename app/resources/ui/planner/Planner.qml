@@ -1,6 +1,7 @@
 import QtQuick 2.8
 import QtQuick.Controls 2.2
 import QtQuick.Controls.Material 2.2
+import QtQuick.VectorImage
 import com.labcompass 1.0
 import '..'
 
@@ -95,9 +96,11 @@ WindowWithShadow {
         anchors.rightMargin: 20
         anchors.top: parent.top
         onClicked: Global.plannerWindowOpen = false;
-        SvgImage {
+        VectorImage {
           anchors.centerIn: parent
           source: 'qrc:/images/close.svg'
+          width: 16
+          height: 16
         }
       }
     }
@@ -160,18 +163,22 @@ WindowWithShadow {
             width: 24
             height: 24
             onClicked: openUrl('https://www.paypal.me/futurecode')
-            SvgImage {
+            VectorImage {
               source: 'qrc:/images/paypal.svg'
               anchors.fill: parent
+              width: 16
+              height: 16
             }
           }
           MaterialInk {
             width: 24
             height: 24
             onClicked: openUrl('https://www.patreon.com/futurecode')
-            SvgImage {
+            VectorImage {
               source: 'qrc:/images/patreon.svg'
               anchors.fill: parent
+              width: 16
+              height: 16
             }
           }
         }

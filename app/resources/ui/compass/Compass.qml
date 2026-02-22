@@ -1,4 +1,5 @@
 import QtQuick 2.8
+import QtQuick.VectorImage
 import com.labcompass 1.0
 import '..'
 
@@ -14,17 +15,17 @@ Item {
 
   Item {
     id: directionDisplay
-    implicitWidth: directionHud.implicitWidth
-    implicitHeight: directionHud.implicitHeight
+    implicitWidth: 170
+    implicitHeight: 170
     anchors.right: parent.right
     visible: !useMinimapDisplay
 
-    SvgImage {
+    VectorImage {
       id: directionHud
       anchors.fill: parent
       source: 'qrc:/images/compass/direction-hud.svg'
-      sourceSize.width: 170
-      sourceSize.height: 170
+      width: 16
+      height: 16
     }
 
     Loader {
@@ -38,17 +39,16 @@ Item {
 
   Item {
     id: minimapDisplay
-    implicitWidth: minimapHud.implicitWidth
-    implicitHeight: minimapHud.implicitHeight
+    implicitWidth: 210
+    implicitHeight: 170
     anchors.fill: parent
     visible: useMinimapDisplay
 
-    SvgImage {
-      id: minimapHud
+    VectorImage {
       anchors.fill: parent
       source: 'qrc:/images/compass/minimap-hud.svg'
-      sourceSize.width: 210
-      sourceSize.height: 170
+      width: 16
+      height: 16
     }
 
     Loader {

@@ -1,4 +1,5 @@
 import QtQuick 2.8
+import QtQuick.VectorImage
 import '..'
 
 Item {
@@ -40,7 +41,7 @@ Item {
 
     Behavior on width { StandardAnimation { duration: 200 } }
 
-    SvgImage {
+    VectorImage {
       anchors.centerIn: parent
       width: 200
       height: 200
@@ -52,7 +53,7 @@ Item {
       columns: 1
       horizontalItemAlignment: Grid.AlignHCenter
 
-      SvgImage {
+      VectorImage {
         width: 64
         height: 64
         source: 'qrc:/images/planner/map.svg'

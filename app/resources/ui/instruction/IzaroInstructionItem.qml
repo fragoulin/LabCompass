@@ -1,4 +1,5 @@
 import QtQuick 2.8
+import QtQuick.VectorImage
 import com.labcompass 1.0
 import '..'
 
@@ -14,8 +15,10 @@ InstructionItem {
   Row {
     visible: mechanics
     spacing: 4
-    SvgImage {
+    VectorImage {
       source: 'qrc:/images/instruction/mechanics.svg'
+      width: 16
+      height: 16
     }
     Text {
       text: mechanics in Global.nameMapping ? Global.nameMapping[mechanics] : mechanics
@@ -27,13 +30,13 @@ InstructionItem {
     id: izaroInstructionItemIcon
     objectName: 'izaroInstructionItemIcon'
 
-    SvgImage {
+    VectorImage {
       anchors.centerIn: parent
       visible: izaroInstructionItemIcon.state === ''
       source: root.mechanics === 'ChargeDisruptors' || root.mechanics === 'Idols' ? 'qrc:/images/instruction/izaro-wait.svg'
                                                                                   : 'qrc:/images/instruction/izaro-kill.svg'
-      sourceSize.width: 20
-      sourceSize.height: 20
+      width: 20
+      height: 20
     }
 
     property real countdownStart: 0
@@ -67,12 +70,12 @@ InstructionItem {
       }
     }
 
-    SvgImage {
+    VectorImage {
       anchors.centerIn: parent
       visible: izaroInstructionItemIcon.state === 'countdownFinished'
       source: 'qrc:/images/instruction/izaro-kill.svg'
-      sourceSize.width: 20
-      sourceSize.height: 20
+      width: 20
+      height: 20
 
       SequentialAnimation on opacity {
         loops: Animation.Infinite

@@ -1,4 +1,5 @@
 import QtQuick 2.8
+import QtQuick.VectorImage
 import com.labcompass 1.0
 import '..'
 
@@ -38,21 +39,19 @@ Item {
 
       Row {
         spacing: 2
-        SvgImage { width: 26; height: 20; source: 'qrc:/images/compass/tile-full.svg' }
-        SvgImage { width: 26; height: 20; source: 'qrc:/images/compass/tile-cross.svg' }
+        VectorImage { width: 26; height: 20; source: 'qrc:/images/compass/tile-full.svg' }
+        VectorImage { width: 26; height: 20; source: 'qrc:/images/compass/tile-cross.svg' }
       }
       Text { color: Global.primaryTextColor; text: qsTr('Path') }
 
-      SvgImage { width: 26; height: 20; source: 'qrc:/images/compass/tile-trap.svg' }
+      VectorImage { width: 26; height: 20; source: 'qrc:/images/compass/tile-trap.svg' }
       Text { color: Global.primaryTextColor; text: qsTr('Traps') }
 
-      SvgImage { width: 26; height: 20; source: 'qrc:/images/compass/door-target.svg' }
+      VectorImage { width: 26; height: 20; source: 'qrc:/images/compass/door-target.svg' }
       Text { color: Global.primaryTextColor; text: qsTr('Exit') }
 
-      SvgImage { width: 26; height: 20; source: 'qrc:/images/compass/loot-normal.svg' }
+      VectorImage { width: 26; height: 20; source: 'qrc:/images/compass/loot-normal.svg' }
       Text { color: Global.primaryTextColor; text: qsTr('Loot') }
     }
   }
 }
-
-

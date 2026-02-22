@@ -1,4 +1,5 @@
 import QtQuick 2.8
+import QtQuick.VectorImage
 import com.labcompass 1.0
 import '..'
 
@@ -26,7 +27,7 @@ WindowWithShadow {
         width: 350
         height: 80
         anchors.verticalCenter: parent.verticalCenter
-        onDrag: window.drag(dx, dy)
+        onDrag: (dx, dy) => window.drag(dx, dy)
 
         Text {
           text: qsTr('Room Layout Presets')
@@ -44,9 +45,11 @@ WindowWithShadow {
         anchors.rightMargin: 20
         anchors.top: parent.top
         onClicked: Global.roomPresetsWindowOpen = false;
-        SvgImage {
+        VectorImage {
           anchors.centerIn: parent
           source: 'qrc:/images/close.svg'
+          width: 16
+          height: 16
         }
       }
     }
@@ -96,7 +99,7 @@ WindowWithShadow {
                 text: modelData.areaCode
               }
             }
-            SvgImage {
+            VectorImage {
               anchors.top: parent.top
               anchors.right: parent.right
               width: 32
