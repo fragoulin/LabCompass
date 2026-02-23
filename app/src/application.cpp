@@ -59,9 +59,8 @@ void Application::initTranslations()
     auto filename = QApplication::applicationName();
     auto directory = ":/translations";
 
-    if (translator.load(locale, filename, "_", directory)) {
+    if (translator.load(locale, filename, "_", directory))
         installTranslator(&translator);
-    }
     else
         qWarning() << "Failed to load translation file" << filename << "from directory" << directory << "and locale" << locale;
 }
