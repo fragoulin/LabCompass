@@ -57,7 +57,7 @@ void Application::initTranslations()
 {
     auto locale = QLocale::system();
     auto filename = QApplication::applicationName();
-    auto directory = ":/i18n";
+    auto directory = ":/translations";
 
     if (translator.load(locale, filename, "_", directory)) {
         installTranslator(&translator);
@@ -70,10 +70,9 @@ void Application::initResources()
 {
     QQuickStyle::setStyle("Material");
 
-    qmlRegisterSingletonType(QUrl("qrc:/ui/Global.qml"), "com.labcompass", 1, 0, "Global");
+    qmlRegisterSingletonType(QUrl("qrc:/labcompass/qml/Global.qml"), "com.labcompass", 1, 0, "Global");
     qmlRegisterType<KeySequenceHelper>("com.labcompass", 1, 0, "KeySequenceHelper");
-    engine.load(QUrl("qrc:/ui/GlobalAccessor.qml"));
-
+    engine.load(QUrl("qrc:/labcompass/qml/GlobalAccessor.qml"));
     global = engine.rootObjects()[0]->property("o").value<QObject*>();
     global->setProperty("model", QVariant::fromValue<QObject*>(&model));
     global->setProperty("version", VERSION);
@@ -81,8 +80,11 @@ void Application::initResources()
     global->setProperty("debug", true);
 #endif
 
-    QFontDatabase::addApplicationFont(":/Fontin-SmallCaps.ttf");
-    QFontDatabase::addApplicationFont(":/OpenSans-Regular.ttf");
+    if (-1 == QFontDatabase::addApplicationFont(":/assets/fonts/Fontin-SmallCaps.ttf"))
+        qWarning() << "Failed to load font Fontin-SmallCaps.ttf";
+    if (-1 == QFontDatabase::addApplicationFont(":/assets/fonts/OpenSans-Regular.ttf"))
+        qWarning() << "Failed to load font OpenSans-Regular.ttf";
+
     QFont font("Fontin SmallCaps");
     font.setPixelSize(16);
     setFont(font);

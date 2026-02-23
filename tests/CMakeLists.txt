@@ -1,5 +1,7 @@
 set(TARGET_NAME tests)
 
+set_directory_properties(PROPERTIES QT_EXCLUDE_FROM_TRANSLATION ON)
+
 file(GLOB_RECURSE SOURCES CONFIGURE_DEPENDS
         *.cpp *.h
         )

@@ -1,8 +1,8 @@
 set(TARGET_NAME common)
 
-include(HungarianAlgorithm.cmake)
-include(QtSuperMacros.cmake)
-include(JsonSchemaValidator.cmake)
+include(CMake/HungarianAlgorithm.cmake)
+include(CMake/QtSuperMacros.cmake)
+include(CMake/JsonSchemaValidator.cmake)
 
 file(GLOB_RECURSE SOURCES CONFIGURE_DEPENDS
         *.cpp *.h *.qrc

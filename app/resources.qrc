@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>assets/fonts/Fontin-SmallCaps.ttf</file>
+        <file>assets/fonts/OpenSans-Regular.ttf</file>
+    </qresource>
+</RCC>

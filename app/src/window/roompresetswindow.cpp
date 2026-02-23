@@ -5,7 +5,7 @@
 RoomPresetsWindow::RoomPresetsWindow(QQmlEngine* engine)
     : Window(engine, false)
 {
-    setSource(QUrl("qrc:/ui/roompresets/RoomPresets.qml"));
+    setSource(QUrl("qrc:/labcompass/qml/roompresets/RoomPresets.qml"));
 
     roomPresetModel = global()->property("model").value<QObject*>()->property("roomPresetModel").value<QObject*>();
 
