@@ -3,7 +3,7 @@ include(FetchContent)
 set(TARGET_HUNGARIAN HungarianAlgorithm)
 
 FetchContent_Declare(${TARGET_HUNGARIAN}
-  GIT_REPOSITORY    git@github.com:mcximing/hungarian-algorithm-cpp.git
+  GIT_REPOSITORY    https://github.com/mcximing/hungarian-algorithm-cpp.git
 )
 FetchContent_MakeAvailable(${TARGET_HUNGARIAN})
 
