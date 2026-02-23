@@ -2,5 +2,6 @@
     <qresource prefix="/">
         <file>assets/fonts/Fontin-SmallCaps.ttf</file>
         <file>assets/fonts/OpenSans-Regular.ttf</file>
+        <file>assets/icons/LabCompass.ico</file>
     </qresource>
 </RCC>
