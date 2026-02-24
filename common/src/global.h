@@ -1,7 +1,7 @@
 #ifndef GLOBAL_H
 #define GLOBAL_H
 
-#include "stdafx.h"
+#include "stdafx.h" // IWYU pragma: export
 
 using RoomId = QString;
 using DirectionCode = QString; // [""(Unknown), "C"(Secret Passage), "N", "NE", "E", "SE", "S", "SW", "W", "NW"]

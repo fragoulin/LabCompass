@@ -1,7 +1,5 @@
-#include "stdafx.h"
-
 #include "application.h"
-#include "global.h"
+#include "global.h" // IWYU pragma: export
 #include "helper/roompresethelper.h"
 #include "keysequence/keysequencehelper.h"
 #include "tray/trayiconmenu.h"

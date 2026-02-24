@@ -1,4 +1,4 @@
-#include "stdafx.h"
+#include "stdafx.h" // IWYU pragma: export
 
 #include "window.h"
 
