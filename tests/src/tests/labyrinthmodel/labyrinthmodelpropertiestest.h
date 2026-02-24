@@ -1,7 +1,7 @@
 #ifndef LABYRINTHMODELPROPERTIESTEST_H
 #define LABYRINTHMODELPROPERTIESTEST_H
 
-#include <QtTest>
+#include <QTest>
 
 class LabyrinthModelPropertiesTest : public QObject {
     Q_OBJECT

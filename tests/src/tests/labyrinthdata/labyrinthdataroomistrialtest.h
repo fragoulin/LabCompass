@@ -1,7 +1,7 @@
 #ifndef LABYRINTHDATAROOMISTRIALTEST_H
 #define LABYRINTHDATAROOMISTRIALTEST_H
 
-#include <QtTest>
+#include <QTest>
 
 class LabyrinthDataRoomIsTrialTest : public QObject {
     Q_OBJECT

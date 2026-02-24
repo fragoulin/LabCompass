@@ -3,7 +3,7 @@
 
 using namespace std;
 
-static const QList<DirectionCode> REGULAR_DIRECTION_LIST { "N", "NE", "E", "SE", "S", "SW", "W", "NW" };
+Q_GLOBAL_STATIC(QList<DirectionCode>, REGULAR_DIRECTION_LIST, {"N", "NE", "E", "SE", "S", "SW", "W", "NW"})
 
 DirectionNormalizer::DirectionNormalizer()
 {
@@ -65,7 +65,7 @@ DirectionNormalizer::ConnectionDetails DirectionNormalizer::breakdownConnections
             if (direction == "C")
                 breakdown.secretPassageRooms.append(room);
 
-            if (REGULAR_DIRECTION_LIST.contains(direction))
+            if (REGULAR_DIRECTION_LIST->contains(direction))
                 breakdown.regularDirectionRooms.append({ direction, room });
         }
     }
@@ -97,8 +97,8 @@ RoomConnections DirectionNormalizer::reconstructConnections(const DirectionNorma
 
 qreal DirectionNormalizer::costBetweenDirections(const DirectionCode& d1, const DirectionCode& d2)
 {
-    int i1 = REGULAR_DIRECTION_LIST.indexOf(d1);
-    int i2 = REGULAR_DIRECTION_LIST.indexOf(d2);
+    int i1 = REGULAR_DIRECTION_LIST->indexOf(d1);
+    int i2 = REGULAR_DIRECTION_LIST->indexOf(d2);
 
     auto diff = abs(i1 - i2) <= 4 ? abs(i1 - i2) : 8 - abs(i1 - i2);
     return diff * diff;

@@ -38,7 +38,8 @@ void VersionChecker::onReplyFinished()
     if (reply->error() == QNetworkReply::NoError) {
         auto json = QJsonDocument::fromJson(reply->readAll());
         if (json.isObject() && json.object().contains("tag_name")) {
-            auto latestVersion = json.object()["tag_name"].toString();
+            auto object = json.object();
+            auto latestVersion = object["tag_name"].toString();
             model->get_settings()->set_latestVersion(latestVersion);
             model->get_settings()->set_lastVersionCheckSuccess(QDateTime::currentSecsSinceEpoch());
 

@@ -1,7 +1,6 @@
 #ifndef INSTRUCTIONMODEL_H
 #define INSTRUCTIONMODEL_H
 
-#include "global.h"
 #include "model/navigationdata.h"
 
 class InstructionModel : public QObject {

@@ -5,20 +5,22 @@
 #include "windows.h"
 #endif
 
-static const QStringList START_LINES {
+Q_GLOBAL_STATIC(QStringList, START_LINES, {
     "Izaro: Ascend with precision.",
     "Izaro: The Goddess is watching.",
     "Izaro: Justice will prevail.",
-};
-static const QStringList FINISH_LINES {
+})
+
+Q_GLOBAL_STATIC(QStringList, FINISH_LINES, {
     "Izaro: I die for the Empire!",
     "Izaro: Delight in your gilded dungeon, ascendant.",
     "Izaro: Your destination is more dangerous than the journey, ascendant.",
     "Izaro: Triumphant at last!",
     "Izaro: You are free!",
     "Izaro: The trap of tyranny is inescapable.",
-};
-static const QStringList IZARO_BATTLE_START_LINES {
+})
+
+Q_GLOBAL_STATIC(QStringList, IZARO_BATTLE_START_LINES, {
     "Izaro: Complex machinations converge to a single act of power.",
     "Izaro: Slowness lends strength to one\'s enemies.",
     "Izaro: When one defiles the effigy, one defiles the emperor.",
@@ -27,20 +29,33 @@ static const QStringList IZARO_BATTLE_START_LINES {
     "Izaro: Some things that slumber should never be awoken.",
     "Izaro: An emperor is only as efficient as those he commands.",
     "Izaro: The emperor beckons and the world attends.",
-};
-static const QStringList SECTION_FINISH_LINES {
+})
+
+Q_GLOBAL_STATIC(QStringList, SECTION_FINISH_LINES, {
     "Izaro: By the Goddess! What ambition!",
     "Izaro: Such resilience!",
     "Izaro: You are inexhaustible!",
     "Izaro: You were born for this!",
-};
-static const QStringList PORTAL_SPAWN_LINES {
+})
+
+Q_GLOBAL_STATIC(QStringList, PORTAL_SPAWN_LINES, {
     ": A portal to Izaro appears."
-};
-static const QStringList LAB_ROOM_PREFIX { "Estate", "Domain", "Basilica", "Mansion", "Sepulchre", "Sanitorium" };
-static const QStringList LAB_ROOM_SUFFIX { "Walkways", "Path", "Crossing", "Annex", "Halls", "Passage", "Enclosure", "Atrium" };
-static const QRegularExpression LOG_REGEX { "^\\d+/\\d+/\\d+ \\d+:\\d+:\\d+.*?\\[.*?(\\d+)\\] (.*)$" };
-static const QRegularExpression ROOM_CHANGE_REGEX { "^: You have entered (.*?)\\.$" };
+})
+
+Q_GLOBAL_STATIC(QStringList, LAB_ROOM_PREFIX, {
+    "Estate", "Domain", "Basilica", "Mansion", "Sepulchre", "Sanitorium"
+})
+
+Q_GLOBAL_STATIC(QStringList, LAB_ROOM_SUFFIX, {
+    "Walkways", "Path", "Crossing", "Annex", "Halls", "Passage", "Enclosure", "Atrium"
+})
+
+Q_GLOBAL_STATIC(QRegularExpression, LOG_REGEX, {
+    "^\\d+/\\d+/\\d+ \\d+:\\d+:\\d+.*?\\[.*?(\\d+)\\] (.*)$"
+})
+Q_GLOBAL_STATIC(QRegularExpression, ROOM_CHANGE_REGEX, {
+    "^: You have entered (.*?)\\.$"
+})
 
 LogWatcher::LogWatcher(ApplicationModel* model)
 {
@@ -96,14 +111,14 @@ void LogWatcher::work()
 
 void LogWatcher::parseLine(const QString line)
 {
-    auto logMatch = LOG_REGEX.match(line);
+    auto logMatch = LOG_REGEX->match(line);
     if (logMatch.hasMatch()) {
         auto clientId = logMatch.captured(1);
 
         auto logContent = logMatch.captured(2).trimmed();
-        auto roomChangeMatch = ROOM_CHANGE_REGEX.match(logContent);
+        auto roomChangeMatch = ROOM_CHANGE_REGEX->match(logContent);
 
-        if (START_LINES.contains(logContent)) {
+        if (START_LINES->contains(logContent)) {
             setActiveClient(clientId);
             emit labStarted();
 
@@ -115,7 +130,7 @@ void LogWatcher::parseLine(const QString line)
                 setActiveClient(clientId);
                 emit plazaEntered();
 
-            } else if (roomName == "Aspirant\'s Trial" || (affixes.size() == 2 && LAB_ROOM_PREFIX.contains(affixes[0]) && LAB_ROOM_SUFFIX.contains(affixes[1]))) {
+            } else if (roomName == "Aspirant\'s Trial" || (affixes.size() == 2 && LAB_ROOM_PREFIX->contains(affixes[0]) && LAB_ROOM_SUFFIX->contains(affixes[1]))) {
                 if (isLogFromValidClient(clientId)) {
                     emit roomChanged(roomName);
                 }
@@ -126,23 +141,23 @@ void LogWatcher::parseLine(const QString line)
                 }
             }
 
-        } else if (FINISH_LINES.contains(logContent)) {
+        } else if (FINISH_LINES->contains(logContent)) {
             if (isLogFromValidClient(clientId)) {
                 emit sectionFinished();
                 emit labFinished();
             }
 
-        } else if (IZARO_BATTLE_START_LINES.contains(logContent)) {
+        } else if (IZARO_BATTLE_START_LINES->contains(logContent)) {
             if (isLogFromValidClient(clientId)) {
                 emit izaroBattleStarted();
             }
 
-        } else if (SECTION_FINISH_LINES.contains(logContent)) {
+        } else if (SECTION_FINISH_LINES->contains(logContent)) {
             if (isLogFromValidClient(clientId)) {
                 emit sectionFinished();
             }
 
-        } else if (PORTAL_SPAWN_LINES.contains(logContent)) {
+        } else if (PORTAL_SPAWN_LINES->contains(logContent)) {
             if (isLogFromValidClient(clientId)) {
                 emit portalSpawned();
             }

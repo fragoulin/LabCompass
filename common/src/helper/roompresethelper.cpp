@@ -41,7 +41,8 @@ DoorExitLocationModel RoomPresetHelper::getDoorExitLocationModel(const Preset& p
 {
     DoorExitLocationModel result;
 
-    for (const auto& direction : preset["doorLocations"].toStringList())
+    auto list = preset["doorLocations"].toStringList();
+    for (const auto& direction : std::as_const(list))
         result.append(QVariantMap { { "direction", direction }, { "tileRect", getTileRect(preset, direction) } });
 
     return result;
@@ -54,17 +55,20 @@ ContentLocationModel RoomPresetHelper::getContentLocationModel(const Preset& pre
     const auto& contentLocations = preset["contentLocations"].toMap();
 
     if (generalLocations && contentLocations.contains("generic")) {
-        for (const auto& direction : contentLocations["generic"].toStringList())
+        auto list = contentLocations["generic"].toStringList();
+        for (const auto& direction : std::as_const(list))
             result.append(QVariantMap { { "direction", direction }, { "major", false }, { "tileRect", getTileRect(preset, direction) } });
     }
 
     if (majorLocations && contentLocations.contains("major")) {
-        for (const auto& direction : contentLocations["major"].toStringList())
+        auto list = contentLocations["major"].toStringList();
+        for (const auto& direction : std::as_const(list))
             result.append(QVariantMap { { "direction", direction }, { "major", true }, { "tileRect", getTileRect(preset, direction) } });
     }
 
     if (minorLocations && contentLocations.contains("minor")) {
-        for (const auto& direction : contentLocations["minor"].toStringList())
+        auto list = contentLocations["minor"].toStringList();
+        for (const auto& direction : std::as_const(list))
             result.append(QVariantMap { { "direction", direction }, { "major", false }, { "tileRect", getTileRect(preset, direction) } });
     }
 

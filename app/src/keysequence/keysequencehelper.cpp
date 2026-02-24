@@ -113,11 +113,13 @@ bool KeySequenceHelper::multiKeyShortcutsAllowed() const
 void KeySequenceHelper::setMultiKeyShortcutsAllowed(bool allowed)
 {
     d->multiKeyShortcutsAllowed = allowed;
+    emit(multiKeyShortcutsChanged(allowed));
 }
 
 void KeySequenceHelper::setModifierlessAllowed(bool allow)
 {
     d->allowModifierless = allow;
+    emit(modifierlessAllowedChanged(allow));
 }
 
 bool KeySequenceHelper::isModifierlessAllowed()

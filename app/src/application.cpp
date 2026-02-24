@@ -69,7 +69,8 @@ void Application::initResources()
 
     qmlRegisterType<KeySequenceHelper>("labcompass", 1, 0, "KeySequenceHelper");
     engine.load(QUrl("qrc:/qt/qml/labcompass/GlobalAccessor.qml"));
-    global = engine.rootObjects()[0]->property("o").value<QObject*>();
+    auto rootObjects = engine.rootObjects();
+    global = rootObjects[0]->property("o").value<QObject*>();
     global->setProperty("model", QVariant::fromValue<QObject*>(&model));
     global->setProperty("version", VERSION);
 #ifdef QT_DEBUG
@@ -105,7 +106,7 @@ void Application::initHelpers()
 void Application::initWindows()
 {
     mainWindow.reset(new MainWindow(&engine));
-    connect(mainWindow.get(), &MainWindow::moved,
+    connect(mainWindow.get(), &MainWindow::moved, this,
         [this](int x, int y) { model.get_settings()->set_mainWindowPosition(QPoint(x, y)); });
 
     auto mainWindowPosition = model.get_settings()->get_mainWindowPosition();
@@ -166,7 +167,7 @@ void Application::initControllers()
 void Application::initHotkeys()
 {
     toggleHideUiHotkey.reset(new HotkeyBinding(global, model.get_settings(), "toggleHideUiHotkey", SIGNAL(toggleHideUiHotkeyChanged(QString))));
-    connect(toggleHideUiHotkey.get(), &HotkeyBinding::activated,
+    connect(toggleHideUiHotkey.get(), &HotkeyBinding::activated, this,
         [this]() {
             bool visible = global->property("compassVisible").toBool();
             global->setProperty("compassVisible", !visible);

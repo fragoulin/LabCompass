@@ -1,7 +1,7 @@
 #ifndef LABYRINTHMODELLOADTEST_H
 #define LABYRINTHMODELLOADTEST_H
 
-#include <QtTest>
+#include <QTest>
 
 class LabyrinthDataLoadTest : public QObject {
     Q_OBJECT

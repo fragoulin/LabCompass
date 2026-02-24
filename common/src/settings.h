@@ -1,7 +1,7 @@
 #ifndef SETTINGS_H
 #define SETTINGS_H
 
-#include "qtsupermacros.h"
+#include "qtsupermacros.h" // IWYU pragma: export
 
 class Settings : public QObject {
     Q_OBJECT

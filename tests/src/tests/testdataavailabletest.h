@@ -1,7 +1,7 @@
 #ifndef TESTDATAAVAILABLETEST_H
 #define TESTDATAAVAILABLETEST_H
 
-#include <QtTest>
+#include <QTest>
 
 class TestDataAvailableTest : public QObject {
     Q_OBJECT

@@ -1,6 +1,6 @@
 #include "optionswindow.h"
 
-static const QStringList UI_SCALE_FACTORS {
+Q_GLOBAL_STATIC(QStringList, UI_SCALE_FACTORS, {
     "0.5",
     "0.75",
     "1",
@@ -9,7 +9,7 @@ static const QStringList UI_SCALE_FACTORS {
     "1.75",
     "2",
     "2.5"
-};
+})
 
 OptionsWindow::OptionsWindow(QQmlEngine* engine, Settings* settings)
     : Window(engine, false, true)
@@ -19,7 +19,7 @@ OptionsWindow::OptionsWindow(QQmlEngine* engine, Settings* settings)
     setSource(QUrl("qrc:/qt/qml/labcompass/options/Options.qml"));
 
     QStringList uiScaleFactorModel;
-    std::transform(UI_SCALE_FACTORS.constBegin(), UI_SCALE_FACTORS.constEnd(), std::back_inserter(uiScaleFactorModel),
+    std::transform(UI_SCALE_FACTORS->constBegin(), UI_SCALE_FACTORS->constEnd(), std::back_inserter(uiScaleFactorModel),
         [](const QString& s) { return s + 'x'; });
     rootObject()->findChild<QObject*>("uiScaleFactorInput")->setProperty("model", uiScaleFactorModel);
 
@@ -65,9 +65,9 @@ void OptionsWindow::load()
         rootObject()->setProperty(s, settings->property(s));
     }
 
-    int uiScaleFactorIndex = UI_SCALE_FACTORS.indexOf(settings->get_scaleFactor());
+    int uiScaleFactorIndex = UI_SCALE_FACTORS->indexOf(settings->get_scaleFactor());
     if (uiScaleFactorIndex == -1) {
-        uiScaleFactorIndex = UI_SCALE_FACTORS.indexOf("1");
+        uiScaleFactorIndex = UI_SCALE_FACTORS->indexOf("1");
     }
     rootObject()->setProperty("uiScaleFactorIndex", uiScaleFactorIndex);
 }

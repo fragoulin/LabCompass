@@ -9,7 +9,7 @@
 #include <QtDebug>
 #include <QtGlobal>
 
-static QString logFilePath;
+Q_GLOBAL_STATIC(QString, logFilePath)
 static bool logToFile = false;
 
 void customMessageOutput(QtMsgType type, const QMessageLogContext& context, const QString& msg)
@@ -24,7 +24,7 @@ void customMessageOutput(QtMsgType type, const QMessageLogContext& context, cons
 
     if (logToFile) {
         QString txt = QString("%1 %2: %3").arg(formattedTime, logLevelName, msg);
-        QFile outFile(logFilePath);
+        QFile outFile(*logFilePath);
         outFile.open(QIODevice::WriteOnly | QIODevice::Append);
         QTextStream ts(&outFile);
         ts << txt << Qt::endl;
@@ -51,9 +51,9 @@ void setupDebugOutput()
     if (logToFile) {
         QDir dir(QStandardPaths::writableLocation(QStandardPaths::AppDataLocation));
         dir.mkpath(".");
-        logFilePath = dir.absoluteFilePath("log.txt");
+        *logFilePath = dir.absoluteFilePath("log.txt");
         qInfo() << "Log file path:" << logFilePath;
-        QFile outFile(logFilePath);
+        QFile outFile(*logFilePath);
         outFile.open(QIODevice::WriteOnly);
         outFile.close();
     }

@@ -7,9 +7,9 @@ class KeySequenceHelper : public QObject {
     Q_OBJECT
 
     Q_PROPERTY(QKeySequence keySequence READ keySequence WRITE setKeySequence NOTIFY keySequenceChanged)
-    Q_PROPERTY(bool multiKeyShortcutsAllowed READ multiKeyShortcutsAllowed WRITE setMultiKeyShortcutsAllowed)
+    Q_PROPERTY(bool multiKeyShortcutsAllowed READ multiKeyShortcutsAllowed WRITE setMultiKeyShortcutsAllowed NOTIFY multiKeyShortcutsChanged)
     Q_PROPERTY(QString shortcutDisplay READ shortcutDisplay NOTIFY shortcutDisplayChanged)
-    Q_PROPERTY(bool modifierlessAllowed READ isModifierlessAllowed WRITE setModifierlessAllowed)
+    Q_PROPERTY(bool modifierlessAllowed READ isModifierlessAllowed WRITE setModifierlessAllowed NOTIFY modifierlessAllowedChanged)
 
 public:
     enum ShortcutType {
@@ -68,7 +68,9 @@ public:
 
 Q_SIGNALS:
     void keySequenceChanged(const QKeySequence& seq);
+    void multiKeyShortcutsChanged(bool changed);
     void shortcutDisplayChanged(const QString& string);
+    void modifierlessAllowedChanged(bool changed);
     void captureFinished();
 
 public Q_SLOTS:

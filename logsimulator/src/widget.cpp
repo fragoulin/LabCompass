@@ -1,5 +1,3 @@
-#include "stdafx.h"
-
 #include "ui_widget.h"
 #include "widget.h"
 
@@ -18,14 +16,14 @@ Widget::Widget(Settings* settings, QWidget* parent)
 
     ui->clientPathEdit->setText(settings->get_poeClientPath());
 
-    connect(ui->mapBrowseButton, &QPushButton::clicked,
+    connect(ui->mapBrowseButton, &QPushButton::clicked, this,
         [this]() {
             auto fileName = QFileDialog::getOpenFileName(this, "Open File", this->settings->get_importDirectory(), "Maps (*.json *.map)");
             if (!fileName.isEmpty())
                 loadMapFile(fileName);
         });
 
-    connect(ui->goButton, &QPushButton::clicked,
+    connect(ui->goButton, &QPushButton::clicked, this,
         [this]() {
             auto selection = ui->roomTable->selectionModel();
             if (!selection->hasSelection())
@@ -36,25 +34,25 @@ Widget::Widget(Settings* settings, QWidget* parent)
             emit roomChanged(roomName);
         });
 
-    connect(ui->startButton, &QPushButton::clicked,
+    connect(ui->startButton, &QPushButton::clicked, this,
         [this]() { emit labStarted(); });
 
-    connect(ui->izaroStartButton, &QPushButton::clicked,
+    connect(ui->izaroStartButton, &QPushButton::clicked, this,
         [this]() { emit izaroBattleStarted(); });
 
-    connect(ui->finishSectionButton, &QPushButton::clicked,
+    connect(ui->finishSectionButton, &QPushButton::clicked, this,
         [this]() { emit sectionFinished(); });
 
-    connect(ui->finishButton, &QPushButton::clicked,
+    connect(ui->finishButton, &QPushButton::clicked, this,
         [this]() { emit labFinished(); });
 
-    connect(ui->plazaButton, &QPushButton::clicked,
+    connect(ui->plazaButton, &QPushButton::clicked, this,
         [this]() { emit roomChanged("Aspirants\' Plaza"); });
 
-    connect(ui->hideoutButton, &QPushButton::clicked,
+    connect(ui->hideoutButton, &QPushButton::clicked, this,
         [this]() { emit roomChanged("Coastal Hideout"); });
 
-    connect(ui->invalidRoomButton, &QPushButton::clicked,
+    connect(ui->invalidRoomButton, &QPushButton::clicked, this,
         [this]() { emit roomChanged("Estate Annex"); });
 }
 

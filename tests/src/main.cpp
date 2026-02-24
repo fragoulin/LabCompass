@@ -3,7 +3,7 @@
 #include "tests/labyrinthdata/labyrinthdataroomistrialtest.h"
 #include "tests/labyrinthmodel/labyrinthmodelpropertiestest.h"
 #include "tests/testdataavailabletest.h"
-#include <QtTest>
+#include <QTest>
 #include <memory>
 
 int main(int argc, char** argv)

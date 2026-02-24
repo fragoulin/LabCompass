@@ -6,8 +6,8 @@ PlannerWindow::PlannerWindow(QQmlEngine* engine)
 {
     setSource(QUrl("qrc:/qt/qml/labcompass/planner/Planner.qml"));
 
-    connect(rootObject(), SIGNAL(drag(int, int)),
-        this, SLOT(onDrag(int, int)));
+    connect(rootObject(), SIGNAL(drag(int,int)),
+        this, SLOT(onDrag(int,int)));
     connect(global(), SIGNAL(plannerWindowOpenChanged()),
         this, SLOT(onWindowOpenChanged()));
     connect(rootObject(), SIGNAL(importLabNotesButtonClicked()),
@@ -17,8 +17,8 @@ PlannerWindow::PlannerWindow(QQmlEngine* engine)
     connect(rootObject(), SIGNAL(openUrl(QString)),
         this, SLOT(onOpenUrl(QString)));
 
-    connect(rootObject()->findChild<QObject*>("labyrinthMapDisplay"), SIGNAL(setRoomIsTarget(QString, bool)),
-        this, SIGNAL(setRoomIsTarget(QString, bool)));
+    connect(rootObject()->findChild<QObject*>("labyrinthMapDisplay"), SIGNAL(setRoomIsTarget(QString,bool)),
+        this, SIGNAL(setRoomIsTarget(QString,bool)));
     connect(rootObject()->findChild<QObject*>("labyrinthMapDisplay"), SIGNAL(setCurrentRoom(QString)),
         this, SIGNAL(setCurrentRoom(QString)));
 }

@@ -6,16 +6,18 @@
 using nlohmann::json;
 using nlohmann::json_schema::json_validator;
 
-static const QHash<QString, qreal> ROOM_PREFIX_COST {
+typedef QHash<QString, qreal> TypeSr;
+
+Q_GLOBAL_STATIC(TypeSr, ROOM_PREFIX_COST, {
     { "Sepulchre", 3 },
     { "Estate", 5 },
     { "Basilica", 7 },
     { "Sanitorium", 8 },
     { "Mansion", 9 },
     { "Domain", 10 },
-};
+})
 
-static const QHash<QString, qreal> ROOM_SUFFIX_COST {
+Q_GLOBAL_STATIC(TypeSr, ROOM_SUFFIX_COST, {
     { "Path", 6 },
     { "Passage", 6 },
     { "Walkways", 8 },
@@ -24,9 +26,9 @@ static const QHash<QString, qreal> ROOM_SUFFIX_COST {
     { "Enclosure", 10 },
     { "Crossing", 12 },
     { "Atrium", 12 },
-};
+})
 
-static DirectionNormalizer directionNormalizer;
+Q_GLOBAL_STATIC(DirectionNormalizer, directionNormalizer)
 
 LabyrinthData::LabyrinthData()
 {
@@ -101,7 +103,7 @@ void LabyrinthData::normalizeDoorDirections(const RoomId& id)
 
     if (!preset.isEmpty()) {
         const auto& pattern = preset["doorLocations"].toStringList();
-        auto normalized = directionNormalizer.normalize(originalConnections, pattern);
+        auto normalized = directionNormalizer->normalize(originalConnections, pattern);
         normalizedConnections[id] = normalized;
 
         qInfo() << "Normalizing room" << id;
@@ -180,7 +182,7 @@ qreal LabyrinthData::roomCost(const RoomId& id) const
     if (roomIsTrial(id))
         return 5;
     auto affixes = getRoomFromId(id).name.split(' ');
-    return ROOM_PREFIX_COST[affixes[0]] + ROOM_SUFFIX_COST[affixes[1]];
+    return (*ROOM_PREFIX_COST)[affixes[0]] + (*ROOM_SUFFIX_COST)[affixes[1]];
 }
 
 bool LabyrinthData::loadRooms(const QJsonArray& array)

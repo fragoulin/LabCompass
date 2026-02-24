@@ -7,8 +7,8 @@ MainWindow::MainWindow(QQmlEngine* engine)
     setSource(QUrl("qrc:/qt/qml/labcompass/MainWindow.qml"));
 
     const auto& header = rootObject()->findChild<QObject*>("header");
-    connect(header, SIGNAL(drag(int, int)),
-        this, SLOT(onDrag(int, int)));
+    connect(header, SIGNAL(drag(int,int)),
+        this, SLOT(onDrag(int,int)));
     connect(header, SIGNAL(exit()),
         QCoreApplication::instance(), SLOT(quit()));
 

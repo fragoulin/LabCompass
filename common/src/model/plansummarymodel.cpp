@@ -35,8 +35,9 @@ void PlanSummaryModel::loadFromData(const NavigationData& data)
 
     for (const auto& roomId : rooms) {
         auto room = data.lab->getRoomFromId(roomId);
+        auto roomContents = room.contents;
 
-        for (const auto& content : room.contents) {
+        for (const auto& content : roomContents) {
             if (content == "argus")
                 argus += 1;
             if (content == "darkshrine")
@@ -47,7 +48,7 @@ void PlanSummaryModel::loadFromData(const NavigationData& data)
                 troves += 1;
         }
 
-        for (const auto& content : room.contents) {
+        for (const auto& content : roomContents) {
             if (content == "silver-door" && unusedSilverKeys > 0) {
                 silverCaches += 1;
                 unusedSilverKeys -= 1;

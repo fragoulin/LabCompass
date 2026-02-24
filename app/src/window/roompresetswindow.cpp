@@ -9,8 +9,8 @@ RoomPresetsWindow::RoomPresetsWindow(QQmlEngine* engine)
 
     roomPresetModel = global()->property("model").value<QObject*>()->property("roomPresetModel").value<QObject*>();
 
-    connect(rootObject(), SIGNAL(drag(int, int)),
-        this, SLOT(onDrag(int, int)));
+    connect(rootObject(), SIGNAL(drag(int,int)),
+        this, SLOT(onDrag(int,int)));
     connect(rootObject(), SIGNAL(applyPresetButtonClicked(QString)),
         this, SLOT(onApplyPresetButtonClicked(QString)));
     connect(global(), SIGNAL(roomPresetsWindowOpenChanged()),

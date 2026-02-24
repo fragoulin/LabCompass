@@ -62,14 +62,15 @@ void Settings::save()
 QVariant Settings::toVariant() const
 {
     QVariantMap result;
-    for (const auto& propertyName : settings->allKeys()) {
+    auto allKeys = settings->allKeys();
+    for (const auto& propertyName : std::as_const(allKeys)) {
         auto value = settings->value(propertyName);
 
         switch (value.typeId()) {
-        case QVariant::Point:
+        case QMetaType::QPoint:
             value = QVariantMap { { "x", value.toPoint().x() }, { "y", value.toPoint().y() } };
             break;
-        case QVariant::Date:
+        case QMetaType::QDate:
             value = value.toDate().toString("yyyy-MM-dd");
             break;
         default:;
