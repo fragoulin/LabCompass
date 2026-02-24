@@ -52,7 +52,7 @@ void setupDebugOutput()
         QDir dir(QStandardPaths::writableLocation(QStandardPaths::AppDataLocation));
         dir.mkpath(".");
         *logFilePath = dir.absoluteFilePath("log.txt");
-        qInfo() << "Log file path:" << logFilePath;
+        qInfo() << "Log file path:" << *logFilePath;
         QFile outFile(*logFilePath);
         outFile.open(QIODevice::WriteOnly);
         outFile.close();
