@@ -1,5 +1,5 @@
 import QtQuick 2.8
-import com.labcompass 1.0
+import labcompass
 
 MouseArea {
   id: root
@@ -31,7 +31,7 @@ MouseArea {
     id: enterTimer
     interval: 800
     onTriggered: {
-      shouldDisplayTooltip = true;
+      root.shouldDisplayTooltip = true;
       Global.lastActiveTooltipHoverArea = root;
     }
   }
@@ -39,7 +39,7 @@ MouseArea {
     id: exitTimer
     interval: 300
     onTriggered: {
-      shouldDisplayTooltip = false;
+      root.shouldDisplayTooltip = false;
     }
   }
 }

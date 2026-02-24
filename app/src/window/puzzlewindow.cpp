@@ -5,7 +5,7 @@
 PuzzleWindow::PuzzleWindow(QQmlEngine* engine)
     : Window(engine, false)
 {
-    setSource(QUrl("qrc:/labcompass/qml/Puzzle.qml"));
+    setSource(QUrl("qrc:/qt/qml/labcompass/Puzzle.qml"));
 
     connect(global(), SIGNAL(puzzleWindowOpenChanged()),
         this, SLOT(onWindowOpenChanged()));

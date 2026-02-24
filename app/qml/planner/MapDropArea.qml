@@ -45,7 +45,7 @@ Item {
       anchors.centerIn: parent
       width: 200
       height: 200
-      source: 'qrc:/labcompass/assets/images/planner/drop-area-border.svg'
+      source: 'qrc:/qt/qml/labcompass/assets/images/planner/drop-area-border.svg'
     }
 
     Grid {
@@ -56,7 +56,7 @@ Item {
       VectorImage {
         width: 64
         height: 64
-        source: 'qrc:/labcompass/assets/images/planner/map.svg'
+        source: 'qrc:/qt/qml/labcompass/assets/images/planner/map.svg'
       }
 
       Item {

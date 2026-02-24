@@ -1,6 +1,6 @@
 import QtQuick 2.8
 import QtQuick.VectorImage
-import com.labcompass 1.0
+import labcompass
 import '..'
 
 Rectangle {
@@ -31,7 +31,7 @@ Rectangle {
         Row {
           spacing: 2
           VectorImage {
-            source: modelData in Global.contentIconMapping ? 'qrc:/labcompass/assets/images/lab-content/' + Global.contentIconMapping[modelData] + '.svg' : ''
+            source: modelData in Global.contentIconMapping ? 'qrc:/qt/qml/labcompass/assets/images/lab-content/' + Global.contentIconMapping[modelData] + '.svg' : ''
             width: 16
             height: 16
           }

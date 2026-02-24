@@ -16,7 +16,7 @@ HighlightTab {
       height: 24
       VectorImage {
         anchors.centerIn: parent
-        source: 'qrc:/labcompass/assets/images/star-gold.svg'
+        source: 'qrc:/qt/qml/labcompass/assets/images/star-gold.svg'
         width: 16
         height: 16
       }
@@ -26,7 +26,7 @@ HighlightTab {
       height: 24
       VectorImage {
         anchors.centerIn: parent
-        source: 'qrc:/labcompass/assets/images/map-marker-orange.svg'
+        source: 'qrc:/qt/qml/labcompass/assets/images/map-marker-orange.svg'
         width: 16
         height: 16
       }
@@ -39,7 +39,7 @@ HighlightTab {
       height: 24
       VectorImage {
         anchors.centerIn: parent
-        source: 'qrc:/labcompass/assets/images/star-light.svg'
+        source: 'qrc:/qt/qml/labcompass/assets/images/star-light.svg'
         width: 16
         height: 16
       }
@@ -49,7 +49,7 @@ HighlightTab {
       height: 24
       VectorImage {
         anchors.centerIn: parent
-        source: 'qrc:/labcompass/assets/images/map-marker-light.svg'
+        source: 'qrc:/qt/qml/labcompass/assets/images/map-marker-light.svg'
         width: 16
         height: 16
       }

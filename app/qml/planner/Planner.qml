@@ -2,7 +2,7 @@ import QtQuick 2.8
 import QtQuick.Controls 2.2
 import QtQuick.Controls.Material 2.2
 import QtQuick.VectorImage
-import com.labcompass 1.0
+import labcompass
 import '..'
 
 WindowWithShadow {
@@ -98,7 +98,7 @@ WindowWithShadow {
         onClicked: Global.plannerWindowOpen = false;
         VectorImage {
           anchors.centerIn: parent
-          source: 'qrc:/labcompass/assets/images/close.svg'
+          source: 'qrc:/qt/qml/labcompass/assets/images/close.svg'
           width: 16
           height: 16
         }
@@ -164,7 +164,7 @@ WindowWithShadow {
             height: 24
             onClicked: openUrl('https://www.paypal.me/futurecode')
             VectorImage {
-              source: 'qrc:/labcompass/assets/images/paypal.svg'
+              source: 'qrc:/qt/qml/labcompass/assets/images/paypal.svg'
               anchors.fill: parent
               width: 16
               height: 16
@@ -175,7 +175,7 @@ WindowWithShadow {
             height: 24
             onClicked: openUrl('https://www.patreon.com/futurecode')
             VectorImage {
-              source: 'qrc:/labcompass/assets/images/patreon.svg'
+              source: 'qrc:/qt/qml/labcompass/assets/images/patreon.svg'
               anchors.fill: parent
               width: 16
               height: 16

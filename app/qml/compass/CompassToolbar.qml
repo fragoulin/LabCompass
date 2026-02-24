@@ -1,5 +1,5 @@
 import QtQuick 2.8
-import com.labcompass 1.0
+import labcompass
 import '..'
 
 ToolbarButton {
@@ -7,7 +7,7 @@ ToolbarButton {
 
   width: 24
   height: 24
-  source: 'qrc:/labcompass/assets/images/view-list-light.svg'
+  source: 'qrc:/qt/qml/labcompass/assets/images/view-list-light.svg'
   active: Global && Global.roomPresetsWindowOpen
   onClicked: {
     if (Global) {

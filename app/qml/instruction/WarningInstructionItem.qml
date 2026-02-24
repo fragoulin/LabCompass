@@ -1,5 +1,5 @@
 import QtQuick 2.8
-import com.labcompass 1.0
+import labcompass
 
 InstructionItem {
   id: root
@@ -7,7 +7,7 @@ InstructionItem {
   property string text
 
   color: '#D32F2F'
-  iconSource: 'qrc:/labcompass/assets/images/instruction/warning.svg'
+  iconSource: 'qrc:/qt/qml/labcompass/assets/images/instruction/warning.svg'
 
   Text {
     width: parent.width

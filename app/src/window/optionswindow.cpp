@@ -16,7 +16,7 @@ OptionsWindow::OptionsWindow(QQmlEngine* engine, Settings* settings)
 {
     this->settings = settings;
 
-    setSource(QUrl("qrc:/labcompass/qml/options/Options.qml"));
+    setSource(QUrl("qrc:/qt/qml/labcompass/options/Options.qml"));
 
     QStringList uiScaleFactorModel;
     std::transform(UI_SCALE_FACTORS.constBegin(), UI_SCALE_FACTORS.constEnd(), std::back_inserter(uiScaleFactorModel),

@@ -1,6 +1,6 @@
 import QtQuick 2.8
 import QtQuick.VectorImage
-import com.labcompass 1.0
+import labcompass
 import '..'
 
 WindowWithShadow {
@@ -47,7 +47,7 @@ WindowWithShadow {
         onClicked: Global.roomPresetsWindowOpen = false;
         VectorImage {
           anchors.centerIn: parent
-          source: 'qrc:/labcompass/assets/images/close.svg'
+          source: 'qrc:/qt/qml/labcompass/assets/images/close.svg'
           width: 16
           height: 16
         }
@@ -79,7 +79,7 @@ WindowWithShadow {
           id: presetListView
           anchors.fill: parent
           clip: true
-          model: roomPresetModel.presets
+          model: window.roomPresetModel.presets
           highlightFollowsCurrentItem: false
           delegate: Item {
             width: 240
@@ -104,8 +104,8 @@ WindowWithShadow {
               anchors.right: parent.right
               width: 32
               height: 32
-              source: 'qrc:/labcompass/assets/images/check.svg'
-              visible: roomPresetModel.current === index
+              source: 'qrc:/qt/qml/labcompass/assets/images/check.svg'
+              visible: window.roomPresetModel.current === index
             }
 
             MouseArea {
@@ -139,7 +139,7 @@ WindowWithShadow {
           active: window.state === ''
           anchors.fill: parent
           sourceComponent: Item {
-            property var model: roomPresetModel.presets[presetListView.currentIndex]
+            property var model: window.roomPresetModel.presets[presetListView.currentIndex]
             Item {
               id: presetName
               anchors {
@@ -151,7 +151,7 @@ WindowWithShadow {
               Text {
                 x: 20
                 anchors.verticalCenter: parent.verticalCenter
-                text: model ? roomPresetModel.roomName + ' > ' + model.areaCode : ''
+                text: model ? window.roomPresetModel.roomName + ' > ' + model.areaCode : ''
                 font.pixelSize: 24
                 color: Global.primaryTextColor
               }
@@ -216,8 +216,8 @@ WindowWithShadow {
           width: 220
           height: 40
           anchors.centerIn: parent
-          visible: (window.state === '' || window.state === 'Disabled') && presetListView.currentIndex !== roomPresetModel.current
-          onClicked: applyPresetButtonClicked(roomPresetModel.presets[presetListView.currentIndex].areaCode)
+          visible: (window.state === '' || window.state === 'Disabled') && presetListView.currentIndex !== window.roomPresetModel.current
+          onClicked: applyPresetButtonClicked(window.roomPresetModel.presets[presetListView.currentIndex].areaCode)
           Rectangle {
             anchors.fill: parent
             color: Global.accentColor
@@ -237,7 +237,7 @@ WindowWithShadow {
   states: [
     State {
       name: qsTr('NoPresets')
-      when: roomPresetModel.presets.length === 0
+      when: window.roomPresetModel.presets.length === 0
     },
     State {
       name: qsTr('NotSelected')

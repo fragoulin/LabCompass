@@ -24,7 +24,7 @@ Item {
     id: icon
     source: root.iconSource
     anchors.verticalCenter: background.verticalCenter
-    x: (40 - width) / 2
+    x: (40 - icon.width) / 2
     width: 20
     height: 20
   }

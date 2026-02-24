@@ -29,25 +29,25 @@ Rectangle {
       // TODO make a custom component for the 4 Rows and Texts
       Row {
         spacing: 4
-        VectorImage { source: 'qrc:/labcompass/assets/images/lab-content/argus.svg'; width: 16; height: 16 }
+        VectorImage { source: 'qrc:/qt/qml/labcompass/assets/images/lab-content/argus.svg'; width: 16; height: 16 }
         Text { color: Global.primaryTextColor; text: qsTr('Argus') }
       }
       Text { color: Global.primaryTextColor; width: 30; horizontalAlignment: Text.AlignHCenter; text: model.argus }
       Row {
         spacing: 4
-        VectorImage { source: 'qrc:/labcompass/assets/images/lab-content/gauntlet-puzzle.svg'; width: 16; height: 16 }
+        VectorImage { source: 'qrc:/qt/qml/labcompass/assets/images/lab-content/gauntlet-puzzle.svg'; width: 16; height: 16 }
         Text { color: Global.primaryTextColor; text: qsTr('Trove/Lockbox') }
       }
       Text { color: 'white'; width: 30; horizontalAlignment: Text.AlignHCenter; text: model.troves }
       Row {
         spacing: 4
-        VectorImage { source: 'qrc:/labcompass/assets/images/lab-content/darkshrine.svg'; width: 16; height: 16 }
+        VectorImage { source: 'qrc:/qt/qml/labcompass/assets/images/lab-content/darkshrine.svg'; width: 16; height: 16 }
         Text { color: Global.primaryTextColor; text: qsTr('Darkshrine') }
       }
       Text { color: 'white'; width: 30; horizontalAlignment: Text.AlignHCenter; text: model.darkshrines }
       Row {
         spacing: 4
-        VectorImage { source: 'qrc:/labcompass/assets/images/lab-content/silver-door.svg'; width: 16; height: 16 }
+        VectorImage { source: 'qrc:/qt/qml/labcompass/assets/images/lab-content/silver-door.svg'; width: 16; height: 16 }
         Text { color: Global.primaryTextColor; text: qsTr('Silver Cache') }
       }
       Text { color: Global.primaryTextColor; width: 30; horizontalAlignment: Text.AlignHCenter; text: model.silverCaches }

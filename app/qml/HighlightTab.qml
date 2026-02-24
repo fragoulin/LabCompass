@@ -1,5 +1,5 @@
 import QtQuick 2.8
-import com.labcompass 1.0
+import labcompass
 import QtQuick.Effects
 
 Item {
@@ -25,8 +25,8 @@ Item {
       id: rect
       anchors.top: parent.top
       anchors.bottom: parent.bottom
-      x: root.width / items * currentItem
-      width: root.width / items
+      x: root.width / root.items * root.currentItem
+      width: root.width / root.items
       color: root.enabled ? Global.lightPrimaryColor : Global.primaryColor
       radius: 4
       border.width: 2
@@ -58,6 +58,6 @@ Item {
   MouseArea {
     cursorShape: Qt.PointingHandCursor
     anchors.fill: parent
-    onClicked: (mouse) => itemClicked(Math.floor(mouse.x * items / root.width));
+    onClicked: (mouse) => root.itemClicked(Math.floor(mouse.x * root.items / root.width));
   }
 }

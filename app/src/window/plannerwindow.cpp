@@ -4,7 +4,7 @@
 PlannerWindow::PlannerWindow(QQmlEngine* engine)
     : Window(engine, false)
 {
-    setSource(QUrl("qrc:/labcompass/qml/planner/Planner.qml"));
+    setSource(QUrl("qrc:/qt/qml/labcompass/planner/Planner.qml"));
 
     connect(rootObject(), SIGNAL(drag(int, int)),
         this, SLOT(onDrag(int, int)));

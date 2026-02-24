@@ -1,6 +1,6 @@
 import QtQuick 2.8
 import QtQuick.VectorImage
-import com.labcompass 1.0
+import labcompass
 import '../point.js' as Point
 import '..'
 
@@ -10,34 +10,34 @@ Item {
 
   VectorImage {
     anchors.fill: parent
-    source: presetModel && presetModel.areaCode ? 'qrc:/labcompass/assets/images/room-preset/' + presetModel.areaCode + '.svg' : ''
+    source: root.presetModel && root.presetModel.areaCode ? 'qrc:/qt/qml/labcompass/assets/images/room-preset/' + root.presetModel.areaCode + '.svg' : ''
     width: 16
     height: 16
   }
 
   Repeater {
     id: exitDirectionView
-    model: presetModel ? presetModel.doorExitLocations : []
+    model: root.presetModel ? root.presetModel.doorExitLocations : []
 
     VectorImage {
       x: modelData.tileRect.x * root.width
       y: modelData.tileRect.y * root.height
       width: modelData.tileRect.width * root.width
       height: modelData.tileRect.height * root.height
-      source: 'qrc:/labcompass/assets/images/compass/door-target.svg'
+      source: 'qrc:/qt/qml/labcompass/assets/images/compass/door-target.svg'
     }
   }
 
   Repeater {
     id: contentLocationsView
-    model: presetModel ? presetModel.contentLocations: []
+    model: root.presetModel ? root.presetModel.contentLocations: []
 
     VectorImage {
       x: modelData.tileRect.x * root.width
       y: modelData.tileRect.y * root.height
       width: modelData.tileRect.width * root.width
       height: modelData.tileRect.height * root.height
-      source: 'qrc:/labcompass/assets/images/compass/loot-normal.svg'
+      source: 'qrc:/qt/qml/labcompass/assets/images/compass/loot-normal.svg'
     }
   }
 }

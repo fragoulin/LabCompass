@@ -1,5 +1,5 @@
 import QtQuick 2.8
-import com.labcompass 1.0
+import labcompass
 
 Column {
   id: root
@@ -7,7 +7,7 @@ Column {
 
   ToolbarButton {
     implicitHeight: 40
-    source: 'qrc:/labcompass/assets/images/navigation-light.svg'
+    source: 'qrc:/qt/qml/labcompass/assets/images/navigation-light.svg'
     active: Global && Global.plannerWindowOpen
     onClicked: {
       if (Global) {
@@ -24,7 +24,7 @@ Column {
 
   ToolbarButton {
     implicitHeight: 40
-    source: 'qrc:/labcompass/assets/images/puzzle-light.svg'
+    source: 'qrc:/qt/qml/labcompass/assets/images/puzzle-light.svg'
     active: Global && Global.puzzleWindowOpen
     onClicked: {
       if (Global) {
@@ -38,7 +38,7 @@ Column {
 
   ToolbarButton {
     implicitHeight: 40
-    source: 'qrc:/labcompass/assets/images/settings-light.svg'
+    source: 'qrc:/qt/qml/labcompass/assets/images/settings-light.svg'
     active: Global && Global.optionsWindowOpen
     onClicked: {
       if (Global) {

@@ -1,5 +1,5 @@
 import QtQuick 2.8
-import com.labcompass 1.0
+import labcompass
 import '..'
 
 InstructionItem {
@@ -12,10 +12,10 @@ InstructionItem {
 
   iconSource: {
     return {
-      'Normal': 'qrc:/labcompass/assets/images/instruction/loaded-map-normal.svg',
-      'Cruel': 'qrc:/labcompass/assets/images/instruction/loaded-map-cruel.svg',
-      'Merciless': 'qrc:/labcompass/assets/images/instruction/loaded-map-merciless.svg',
-      'Uber': 'qrc:/labcompass/assets/images/instruction/loaded-map-uber.svg',
+      'Normal': 'qrc:/qt/qml/labcompass/assets/images/instruction/loaded-map-normal.svg',
+      'Cruel': 'qrc:/qt/qml/labcompass/assets/images/instruction/loaded-map-cruel.svg',
+      'Merciless': 'qrc:/qt/qml/labcompass/assets/images/instruction/loaded-map-merciless.svg',
+      'Uber': 'qrc:/qt/qml/labcompass/assets/images/instruction/loaded-map-uber.svg',
       '': ''
     }[difficulty];
   }
@@ -26,6 +26,6 @@ InstructionItem {
   }
   Text {
     color: Global.primaryTextColor
-    text: name
+    text: root.name
   }
 }

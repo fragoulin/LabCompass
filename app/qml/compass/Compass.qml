@@ -1,6 +1,6 @@
 import QtQuick 2.8
 import QtQuick.VectorImage
-import com.labcompass 1.0
+import labcompass
 import '..'
 
 Item {
@@ -18,19 +18,19 @@ Item {
     implicitWidth: 170
     implicitHeight: 170
     anchors.right: parent.right
-    visible: !useMinimapDisplay
+    visible: !root.useMinimapDisplay
 
     VectorImage {
       id: directionHud
-      anchors.fill: parent
-      source: 'qrc:/labcompass/assets/images/compass/direction-hud.svg'
+      anchors.fill: directionDisplay
+      source: 'qrc:/qt/qml/labcompass/assets/images/compass/direction-hud.svg'
       width: 16
       height: 16
     }
 
     Loader {
-      anchors.fill: parent
-      active: !useMinimapDisplay && displayActive
+      anchors.fill: directionDisplay
+      active: !root.useMinimapDisplay && root.displayActive
       sourceComponent: DirectionDisplay {
         instructionModel: Global.model.instructionModel
       }
@@ -42,11 +42,11 @@ Item {
     implicitWidth: 210
     implicitHeight: 170
     anchors.fill: parent
-    visible: useMinimapDisplay
+    visible: root.useMinimapDisplay
 
     VectorImage {
-      anchors.fill: parent
-      source: 'qrc:/labcompass/assets/images/compass/minimap-hud.svg'
+      anchors.fill: minimapDisplay
+      source: 'qrc:/qt/qml/labcompass/assets/images/compass/minimap-hud.svg'
       width: 16
       height: 16
     }
@@ -55,7 +55,7 @@ Item {
       width: 182
       height: 140
       anchors.centerIn: parent
-      active: useMinimapDisplay
+      active: root.useMinimapDisplay
       sourceComponent: MinimapDisplay {
         instructionModel: Global.model.instructionModel
       }
@@ -64,7 +64,7 @@ Item {
 
   CompassToolbar {
     objectName: "compassToolbar"
-    visible: compassToolbarVisible
+    visible: root.compassToolbarVisible
     x: 172
     y: 132
   }
@@ -113,13 +113,13 @@ Item {
     target: logWatcher
     ignoreUnknownSignals: true
     function onLabStarted() {
-      restartTimer()
+      root.restartTimer()
     }
     function onLabFinished() {
-      stopTimer()
+      root.stopTimer()
     }
     function onLabExit() {
-      closeTimer()
+      root.closeTimer()
     }
   }
 }

@@ -1,6 +1,6 @@
 import QtQuick 2.8
 import QtQuick.VectorImage
-import com.labcompass 1.0
+import labcompass
 import '../point.js' as Point
 import '..'
 
@@ -10,36 +10,36 @@ Item {
 
   VectorImage {
     anchors.fill: parent
-    source: 'qrc:/labcompass/assets/images/room-preset/' + instructionModel.preset.areaCode + '.svg'
+    source: 'qrc:/qt/qml/labcompass/assets/images/room-preset/' + root.instructionModel.preset.areaCode + '.svg'
     width: 16
     height: 16
   }
 
   Repeater {
     id: exitDirectionView
-    model: instructionModel.doorExitLocations
+    model: root.instructionModel.doorExitLocations
 
     VectorImage {
       x: modelData.tileRect.x * root.width
       y: modelData.tileRect.y * root.height
       width: modelData.tileRect.width * root.width
       height: modelData.tileRect.height * root.height
-      source: modelData.direction === instructionModel.nextRoomDirection ? 'qrc:/labcompass/assets/images/compass/door-target.svg'
-                                                                         : 'qrc:/labcompass/assets/images/compass/door-normal.svg'
+      source: modelData.direction === instructionModel.nextRoomDirection ? 'qrc:/qt/qml/labcompass/assets/images/compass/door-target.svg'
+                                                                         : 'qrc:/qt/qml/labcompass/assets/images/compass/door-normal.svg'
     }
   }
 
   Repeater {
     id: contentLocationsView
-    model: instructionModel.contentLocations
+    model: root.instructionModel.contentLocations
 
     VectorImage {
       x: modelData.tileRect.x * root.width
       y: modelData.tileRect.y * root.height
       width: modelData.tileRect.width * root.width
       height: modelData.tileRect.height * root.height
-      source: instructionModel.nextRoomConnectionType === 'secret' && !modelData.major ? 'qrc:/labcompass/assets/images/compass/loot-target.svg'
-                                                                                       : 'qrc:/labcompass/assets/images/compass/loot-normal.svg'
+      source: root.instructionModel.nextRoomConnectionType === 'secret' && !modelData.major ? 'qrc:/qt/qml/labcompass/assets/images/compass/loot-target.svg'
+                                                                                       : 'qrc:/qt/qml/labcompass/assets/images/compass/loot-normal.svg'
     }
   }
 
@@ -50,7 +50,7 @@ Item {
 
     RoomContentView {
       anchors.centerIn: parent
-      model: instructionModel.roomLoot
+      model: root.instructionModel.roomLoot
     }
   }
 }

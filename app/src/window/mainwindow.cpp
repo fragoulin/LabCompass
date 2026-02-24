@@ -4,7 +4,7 @@
 MainWindow::MainWindow(QQmlEngine* engine)
     : Window(engine)
 {
-    setSource(QUrl("qrc:/labcompass/qml/MainWindow.qml"));
+    setSource(QUrl("qrc:/qt/qml/labcompass/MainWindow.qml"));
 
     const auto& header = rootObject()->findChild<QObject*>("header");
     connect(header, SIGNAL(drag(int, int)),

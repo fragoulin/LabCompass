@@ -1,5 +1,5 @@
 import QtQuick 2.8
-import com.labcompass 1.0
+import labcompass
 
 Column {
   id: root
@@ -17,50 +17,50 @@ Column {
   }
 
   WarningInstructionItem {
-    visible: inLab && !currentRoomDetermined
+    visible: root.inLab && !root.currentRoomDetermined
     text: qsTr('Unable to determine your location.\n\n- Open Planner window and click on your current room.')
   }
 
   WarningInstructionItem {
-    visible: !modelValid && atPlaza && !inLab
+    visible: !root.modelValid && root.atPlaza && !root.inLab
     text: qsTr('No map loaded.\n\n- Import a map in Planner window before starting lab.')
   }
 
   WarningInstructionItem {
-    visible: modelValid && !Global.loadedMapUpToDate && atPlaza && !inLab
+    visible: root.modelValid && !Global.loadedMapUpToDate && root.atPlaza && !root.inLab
     text: qsTr('Loaded map is outdated.\n\n- Checkout poelab.com for latest maps.')
   }
 
   LoadedMapInstructionItem {
-    visible: modelValid && atPlaza && !inLab
+    visible: root.modelValid && root.atPlaza && !root.inLab
     model: Global.model.labyrinthModel
   }
 
   IzaroInstructionItem {
     id: izaroInstructionItem
-    visible: showInstructions &&
-             instructionModel.atTrialRoom &&
-             instructionModel.shouldKillIzaro &&
-             instructionModel.finishedSections <= instructionModel.currentSection
-    mechanics: instructionModel.izaroMechanics
+    visible: root.showInstructions &&
+             root.instructionModel.atTrialRoom &&
+             root.instructionModel.shouldKillIzaro &&
+             root.instructionModel.finishedSections <= root.instructionModel.currentSection
+    mechanics: root.instructionModel.izaroMechanics
   }
 
   DirectionInstructionItem {
-    visible: showInstructions &&
-             instructionModel.hasNextRoom &&
+    visible: root.showInstructions &&
+             root.instructionModel.hasNextRoom &&
              (connectionType === 'door' || connectionType === 'secret') &&
              (!instructionModel.atTrialRoom || !instructionModel.shouldKillIzaro || instructionModel.finishedSections > instructionModel.currentSection)
-    connectionType: instructionModel.nextRoomConnectionType
-    direction: instructionModel.nextRoomDirection
-    nextRoomName: instructionModel.nextRoomName
+    connectionType: root.instructionModel.nextRoomConnectionType
+    direction: root.instructionModel.nextRoomDirection
+    nextRoomName: root.instructionModel.nextRoomName
     atPlaza: root.atPlaza
-    nextRoomIsPreviousRoom: instructionModel.nextRoomIsPreviousRoom
-    nextRoomIsUnmarkedOppositeDirection: instructionModel. nextRoomIsUnmarkedOppositeDirection
+    nextRoomIsPreviousRoom: root.instructionModel.nextRoomIsPreviousRoom
+    nextRoomIsUnmarkedOppositeDirection: root.instructionModel. nextRoomIsUnmarkedOppositeDirection
   }
 
   LootInstructionItem {
-    visible: showInstructions && instructionModel.roomLoot.length
-    model: instructionModel.roomLoot
+    visible: root.showInstructions && root.instructionModel.roomLoot.length
+    model: root.instructionModel.roomLoot
   }
 
   Item { width: 1; height: 1 }

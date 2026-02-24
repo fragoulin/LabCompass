@@ -1,5 +1,5 @@
 import QtQuick 2.8
-import com.labcompass 1.0
+import labcompass
 import QtQuick.Effects
 import QtQuick.VectorImage
 
@@ -14,15 +14,15 @@ Item {
 
   VectorImage {
     id: icon
-    anchors.fill: parent
-    source: content in Global.contentIconMapping ? 'qrc:/labcompass/assets/images/lab-content/' + Global.contentIconMapping[content] + '.svg' : ''
+    anchors.fill: root
+    source: root.content in Global.contentIconMapping ? 'qrc:/qt/qml/labcompass/assets/images/lab-content/' + Global.contentIconMapping[content] + '.svg' : ''
     width: 16
     height: 16
   }
 
   MultiEffect {
     source: icon
-    anchors.fill: parent
+    anchors.fill: root
     shadowBlur: 2.0
     shadowEnabled: true
     shadowColor: "#80000000"

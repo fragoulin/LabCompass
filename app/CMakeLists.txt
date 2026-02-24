@@ -23,9 +23,20 @@ file(GLOB_RECURSE IMAGES_RESOURCES CONFIGURE_DEPENDS RELATIVE ${CMAKE_CURRENT_SO
 
 add_executable(${TARGET_NAME} WIN32 ${SOURCES})
 
+set_source_files_properties(qml/Global.qml PROPERTIES QT_QML_SINGLETON_TYPE TRUE)
+
+# Set alias for qml files stored in qml directory
+# https://doc.qt.io/qt-6.8/qt-add-qml-module.html#caching-compiled-qml-sources
+foreach(QML_SOURCE ${QML_SOURCES})
+    string(LENGTH ${QML_SOURCE} QML_SOURCE_LENGTH)
+    string(SUBSTRING ${QML_SOURCE} 4 ${QML_SOURCE_LENGTH} QML_SOURCE_WITHOUT_QML_DIR)
+    set_source_files_properties(${QML_SOURCE} PROPERTIES
+        QT_RESOURCE_ALIAS ${QML_SOURCE_WITHOUT_QML_DIR}
+    )
+endforeach()
+
 qt_add_qml_module(${TARGET_NAME}
     URI labcompass
-    RESOURCE_PREFIX /
     SOURCES ${CPP_SOURCES}
     QML_FILES ${QML_SOURCES}
     RESOURCES ${IMAGES_RESOURCES}

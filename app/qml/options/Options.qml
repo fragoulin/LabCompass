@@ -3,10 +3,11 @@ import QtQuick.Controls 2.2
 import QtQuick.Controls.Material 2.1
 import QtQuick.Layouts 1.3
 import QtQuick.VectorImage
-import com.labcompass 1.0
+import labcompass
 import '..'
 
 WindowWithShadow {
+  id: root
   signal openUrl(string url)
   signal browseClientPath
   signal save
@@ -24,7 +25,7 @@ WindowWithShadow {
 
   Column {
     id: column
-    width: contentWidth
+    width: root.contentWidth
     topPadding: 20
     bottomPadding: 20
     spacing: 20
@@ -49,12 +50,12 @@ WindowWithShadow {
           MaterialInk {
             width: 32
             height: 32
-            onClicked: openUrl('https://github.com/fragoulin/LabCompass')
+            onClicked: root.openUrl('https://github.com/fragoulin/LabCompass')
             VectorImage {
               width: 24
               height: 24
               anchors.centerIn: parent
-              source: 'qrc:/labcompass/assets/images/github.svg'
+              source: 'qrc:/qt/qml/labcompass/assets/images/github.svg'
             }
           }
         }
@@ -82,7 +83,7 @@ WindowWithShadow {
     }
 
     Rectangle {
-      width: contentWidth
+      width: root.contentWidth
       height: 2
       color: Qt.lighter(Global.primaryColor)
     }
@@ -96,7 +97,7 @@ WindowWithShadow {
     }
 
     Item {
-      width: contentWidth
+      width: root.contentWidth
       height: 30
       TextHighlightTab {
         id: tab
@@ -132,12 +133,12 @@ WindowWithShadow {
         MaterialInk {
           width: 32
           height: 32
-          onClicked: browseClientPath();
+          onClicked: root.browseClientPath();
           Image {
             anchors.centerIn: parent
             width: 24
             height: 24
-            source: 'qrc:/labcompass/assets/images/browse.svg'
+            source: 'qrc:/qt/qml/labcompass/assets/images/browse.svg'
             sourceSize: Qt.size(96, 96)
           }
         }
@@ -234,7 +235,7 @@ WindowWithShadow {
     onClicked: Global.optionsWindowOpen = false;
     VectorImage {
       anchors.centerIn: parent
-      source: 'qrc:/labcompass/assets/images/close.svg'
+      source: 'qrc:/qt/qml/labcompass/assets/images/close.svg'
       width: 16
       height: 16
     }
@@ -249,7 +250,7 @@ WindowWithShadow {
     width: 80
     height: 30
     onClicked: {
-      save();
+      root.save();
       Global.optionsWindowOpen = false;
     }
     Rectangle {

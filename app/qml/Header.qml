@@ -1,5 +1,4 @@
 import QtQuick 2.8
-import com.labcompass 1.0
 
 Row {
   id: root
@@ -26,8 +25,8 @@ Row {
 
   ToolbarButton {
     id: close
-    source: 'qrc:/labcompass/assets/images/close.svg'
-    onClicked: exit()
+    source: 'qrc:/qt/qml/labcompass/assets/images/close.svg'
+    onClicked: root.exit()
     buttonHeight: 24
   }
 }

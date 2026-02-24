@@ -26,8 +26,8 @@ MouseArea {
   Rectangle {
     id: layer2
     color: root.color
-    x: focusPoint.x - radius
-    y: focusPoint.y - radius
+    x: root.focusPoint.x - radius
+    y: root.focusPoint.y - radius
     width: radius * 2
     height: radius * 2
   }

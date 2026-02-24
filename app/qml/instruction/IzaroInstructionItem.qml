@@ -1,6 +1,6 @@
 import QtQuick 2.8
 import QtQuick.VectorImage
-import com.labcompass 1.0
+import labcompass
 import '..'
 
 InstructionItem {
@@ -13,15 +13,15 @@ InstructionItem {
     color: Global.primaryTextColor
   }
   Row {
-    visible: mechanics
+    visible: root.mechanics
     spacing: 4
     VectorImage {
-      source: 'qrc:/labcompass/assets/images/instruction/mechanics.svg'
+      source: 'qrc:/qt/qml/labcompass/assets/images/instruction/mechanics.svg'
       width: 16
       height: 16
     }
     Text {
-      text: mechanics in Global.nameMapping ? Global.nameMapping[mechanics] : mechanics
+      text: root.mechanics in Global.nameMapping ? Global.nameMapping[mechanics] : root.mechanics
       color: Global.primaryTextColor
     }
   }
@@ -33,8 +33,8 @@ InstructionItem {
     VectorImage {
       anchors.centerIn: parent
       visible: izaroInstructionItemIcon.state === ''
-      source: root.mechanics === 'ChargeDisruptors' || root.mechanics === 'Idols' ? 'qrc:/labcompass/assets/images/instruction/izaro-wait.svg'
-                                                                                  : 'qrc:/labcompass/assets/images/instruction/izaro-kill.svg'
+      source: root.mechanics === 'ChargeDisruptors' || root.mechanics === 'Idols' ? 'qrc:/qt/qml/labcompass/assets/images/instruction/izaro-wait.svg'
+                                                                                  : 'qrc:/qt/qml/labcompass/assets/images/instruction/izaro-kill.svg'
       width: 20
       height: 20
     }
@@ -49,10 +49,10 @@ InstructionItem {
       height: 30
       color: '#FDD835'
       circleWidth: 2
-      value: (countdownEnd - currentTime) / (countdownEnd - countdownStart)
+      value: (izaroInstructionItemIcon.countdownEnd - izaroInstructionItemIcon.currentTime) / (izaroInstructionItemIcon.countdownEnd - izaroInstructionItemIcon.countdownStart)
       Text {
         anchors.centerIn: parent
-        text: Math.ceil((countdownEnd - currentTime) / 1000)
+        text: Math.ceil((izaroInstructionItemIcon.countdownEnd - izaroInstructionItemIcon.currentTime) / 1000)
         color: '#FDD835'
         font.family: 'Open Sans'
         font.pixelSize: 14
@@ -64,8 +64,8 @@ InstructionItem {
       repeat: true
       triggeredOnStart: true
       onTriggered: {
-        currentTime = Date.now();
-        if (currentTime > countdownEnd)
+        izaroInstructionItemIcon.currentTime = Date.now();
+        if (izaroInstructionItemIcon.currentTime > izaroInstructionItemIcon.countdownEnd)
           izaroInstructionItemIcon.state = 'countdownFinished';
       }
     }
@@ -73,7 +73,7 @@ InstructionItem {
     VectorImage {
       anchors.centerIn: parent
       visible: izaroInstructionItemIcon.state === 'countdownFinished'
-      source: 'qrc:/labcompass/assets/images/instruction/izaro-kill.svg'
+      source: 'qrc:/qt/qml/labcompass/assets/images/instruction/izaro-kill.svg'
       width: 20
       height: 20
 

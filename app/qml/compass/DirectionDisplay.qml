@@ -1,5 +1,5 @@
 import QtQuick 2.8
-import com.labcompass 1.0
+import labcompass
 import '..'
 
 Item {
@@ -11,7 +11,7 @@ Item {
 
     Repeater {
       id: exitDirectionView
-      model: instructionModel.doorExitLocations
+      model: root.instructionModel.doorExitLocations
       anchors.centerIn: parent
 
       Rectangle {
@@ -20,7 +20,7 @@ Item {
         width: 16
         height: 16
         radius: 8
-        color: modelData.direction === instructionModel.nextRoomDirection ? Global.activePathColor : '#909090'
+        color: modelData.direction === root.instructionModel.nextRoomDirection ? Global.activePathColor : '#909090'
         border {
           width: 1
           color: 'black'
@@ -30,7 +30,7 @@ Item {
 
     Repeater {
       id: contentLocationsView
-      model: instructionModel.contentLocations
+      model: root.instructionModel.contentLocations
 
       Rectangle {
         x: Global.directionMapping[modelData.direction].dx * 30 - width / 2
@@ -38,7 +38,7 @@ Item {
         width: 8
         height: 8
         rotation: 45
-        color: instructionModel.nextRoomConnectionType === 'secret' && !modelData.major ? Global.activePathColor : '#FFA726'
+        color: root.instructionModel.nextRoomConnectionType === 'secret' && !modelData.major ? Global.activePathColor : '#FFA726'
         border {
           width: 1
           color: 'black'
@@ -48,7 +48,7 @@ Item {
 
     RoomContentView {
       anchors.centerIn: parent
-      model: instructionModel.roomLoot
+      model: root.instructionModel.roomLoot
     }
   }
 }

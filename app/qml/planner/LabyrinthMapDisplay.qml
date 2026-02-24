@@ -1,7 +1,7 @@
 import QtQuick 2.8
 import QtQuick.Effects
 import QtQuick.VectorImage
-import com.labcompass 1.0
+import labcompass
 import '..'
 
 Rectangle {
@@ -23,8 +23,8 @@ Rectangle {
       var ctx = connectionView.getContext('2d');
       ctx.clearRect(0, 0, width, height);
 
-      for (var i = 0; i < connectionModel.size(); i++) {
-        var connection = connectionModel.get(i);
+      for (var i = 0; i < root.connectionModel.size(); i++) {
+        var connection = root.connectionModel.get(i);
 
         ctx.lineWidth = connection.isSecretPassage ? 2 : 4;
         ctx.strokeStyle = connection.isPlanned ? Global.activePathColor : Global.inactivePathColor;
@@ -67,7 +67,7 @@ Rectangle {
           anchors.centerIn: parent
           width: 32
           height: 32
-          source: model.name === 'Aspirant\'s Trial' ? 'qrc:/labcompass/assets/images/lab-content/izaro.svg' : ''
+          source: model.name === 'Aspirant\'s Trial' ? 'qrc:/qt/qml/labcompass/assets/images/lab-content/izaro.svg' : ''
         }
       }
 
@@ -100,7 +100,7 @@ Rectangle {
         VectorImage {
           id: targetMarker
           anchors.centerIn: parent
-          source: 'qrc:/labcompass/assets/images/star-gold.svg'
+          source: 'qrc:/qt/qml/labcompass/assets/images/star-gold.svg'
           visible: false
           width: 16
           height: 16
@@ -136,7 +136,7 @@ Rectangle {
 
   Repeater {
     id: goldenDoorView
-    model: goldenDoorModel
+    model: root.goldenDoorModel
 
     Item {
       x: coordinate.x
@@ -145,7 +145,7 @@ Rectangle {
       VectorImage {
         id: goldenDoorIcon
         anchors.centerIn: parent
-        source: 'qrc:/labcompass/assets/images/lab-content/golden-door.svg'
+        source: 'qrc:/qt/qml/labcompass/assets/images/lab-content/golden-door.svg'
         visible: false
         width: 16
         height: 16
@@ -164,7 +164,7 @@ Rectangle {
 
   Repeater {
     id: currentRoomView
-    model: roomModel
+    model: root.roomModel
     Item {
       x: coordinate.x
       y: coordinate.y
@@ -172,7 +172,7 @@ Rectangle {
         id: mapMarker
         width: 36
         height: 36
-        source: 'qrc:/labcompass/assets/images/map-marker-orange.svg'
+        source: 'qrc:/qt/qml/labcompass/assets/images/map-marker-orange.svg'
         x: - 18
         y: isCurrent ? -44 : -76
         opacity: isCurrent ? 1 : 0

@@ -69,9 +69,8 @@ void Application::initResources()
 {
     QQuickStyle::setStyle("Material");
 
-    qmlRegisterSingletonType(QUrl("qrc:/labcompass/qml/Global.qml"), "com.labcompass", 1, 0, "Global");
-    qmlRegisterType<KeySequenceHelper>("com.labcompass", 1, 0, "KeySequenceHelper");
-    engine.load(QUrl("qrc:/labcompass/qml/GlobalAccessor.qml"));
+    qmlRegisterType<KeySequenceHelper>("labcompass", 1, 0, "KeySequenceHelper");
+    engine.load(QUrl("qrc:/qt/qml/labcompass/GlobalAccessor.qml"));
     global = engine.rootObjects()[0]->property("o").value<QObject*>();
     global->setProperty("model", QVariant::fromValue<QObject*>(&model));
     global->setProperty("version", VERSION);

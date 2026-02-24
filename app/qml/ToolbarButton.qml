@@ -1,5 +1,5 @@
 import QtQuick 2.8
-import com.labcompass 1.0
+import labcompass
 import QtQuick.VectorImage
 
 Rectangle {
@@ -15,12 +15,12 @@ Rectangle {
   color: active ? Global.lightPrimaryColor : Global.backgroundColor
   VectorImage {
     source: root.source
-    anchors.centerIn: parent
+    anchors.centerIn: root
     width: 16
     height: 16
   }
   MaterialInk {
-    anchors.fill: parent
+    anchors.fill: root
     onClicked: root.clicked()
   }
 }
