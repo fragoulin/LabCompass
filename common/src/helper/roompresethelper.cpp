@@ -5,7 +5,11 @@ RoomPresetHelper* RoomPresetHelper::instance = nullptr;
 RoomPresetHelper::RoomPresetHelper()
 {
     QFile roomPresetsFile(":/room-presets.json");
-    roomPresetsFile.open(QIODevice::ReadOnly);
+    if (!roomPresetsFile.open(QIODevice::ReadOnly)) {
+        qFatal() << "Failed to open :/room-presets.json resource";
+        return;
+    }
+
     const auto& roomTypeList = QJsonDocument::fromJson(roomPresetsFile.readAll()).toVariant().toList();
 
     for (const auto& roomType : roomTypeList) {
