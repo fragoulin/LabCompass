@@ -22,7 +22,7 @@ set(CMAKE_AUTORCC TRUE)
 
 find_package(Qt6 REQUIRED LinguistTools QuickWidgets QuickControls2 Test)
 
-qt_standard_project_setup(REQUIRES 6.8 I18N_TRANSLATED_LANGUAGES fr)
+qt_standard_project_setup(REQUIRES 6.10 I18N_TRANSLATED_LANGUAGES fr)
 
 add_subdirectory(common)
 add_subdirectory(app labcompass)
