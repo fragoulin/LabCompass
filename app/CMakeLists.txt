@@ -61,4 +61,5 @@ target_precompile_headers(${TARGET_NAME} PRIVATE src/stdafx.h)
 target_link_libraries(${TARGET_NAME} PRIVATE common qhotkey)
 
 set_target_properties(${TARGET_NAME} PROPERTIES WIN32_EXECUTABLE ON
-                                                MACOSX_BUNDLE ON)
+                                                MACOSX_BUNDLE ON
+                                                QT_QMLCACHEGEN_ARGUMENTS "--only-bytecode")
