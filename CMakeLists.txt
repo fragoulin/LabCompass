@@ -8,13 +8,17 @@ project(
   HOMEPAGE_URL https://github.com/fragoulin/LabCompass
   LANGUAGES CXX)
 
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/archive")
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/library")
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/runtime")
+option(BUILD_SHARED_LIBS "Build using shared libraries" OFF)
+
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_CXX_FLAGS " ${CMAKE_CXX_FLAGS} -Wall -Wextra -Wpedantic -Wunused-result")
+set(CMAKE_CXX_FLAGS
+    " ${CMAKE_CXX_FLAGS} -Wall -Wextra -Wpedantic -Wunused-result")
 
 set(CMAKE_AUTORCC TRUE)
-
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
 find_package(Qt6 REQUIRED LinguistTools QuickWidgets QuickControls2 Test)
 
