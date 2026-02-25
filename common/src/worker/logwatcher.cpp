@@ -1,8 +1,8 @@
 #include "logwatcher.h"
 
 #ifdef Q_OS_WIN
-#include "psapi.h"
 #include "windows.h"
+#include "psapi.h"
 #endif
 
 Q_GLOBAL_STATIC(QStringList, START_LINES, {
