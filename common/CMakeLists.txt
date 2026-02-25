@@ -17,14 +17,5 @@ target_include_directories(
 target_precompile_headers(${TARGET_NAME} PRIVATE src/stdafx.h)
 
 target_link_libraries(
-  ${TARGET_NAME}
-  PUBLIC QtSuperMacros
-         hungarian
-         nlohmann_json_schema_validator
-         Qt6::Core
-         Qt6::Gui
-         Qt6::Widgets
-         Qt6::Network
-         Qt6::Qml
-         Qt6::QuickWidgets
-         Qt6::QuickControls2)
+  ${TARGET_NAME} PUBLIC QtSuperMacros hungarian nlohmann_json_schema_validator
+                        Qt6::QuickWidgets Qt6::QuickControls2)

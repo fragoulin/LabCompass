@@ -15,18 +15,7 @@ set(CMAKE_AUTORCC TRUE)
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
-find_package(
-  Qt6
-  REQUIRED
-  Core
-  LinguistTools
-  Gui
-  Widgets
-  Network
-  Qml
-  QuickWidgets
-  QuickControls2
-  Test)
+find_package(Qt6 REQUIRED LinguistTools QuickWidgets QuickControls2 Test)
 
 qt_standard_project_setup(REQUIRES 6.8 I18N_TRANSLATED_LANGUAGES fr)
 
