@@ -50,12 +50,8 @@ Q_GLOBAL_STATIC(QStringList, LAB_ROOM_SUFFIX, {
     "Walkways", "Path", "Crossing", "Annex", "Halls", "Passage", "Enclosure", "Atrium"
 })
 
-Q_GLOBAL_STATIC(QRegularExpression, LOG_REGEX, (QRegularExpression) {
-    "^\\d+/\\d+/\\d+ \\d+:\\d+:\\d+.*?\\[.*?(\\d+)\\] (.*)$"
-})
-Q_GLOBAL_STATIC(QRegularExpression, ROOM_CHANGE_REGEX, (QRegularExpression) {
-    "^: You have entered (.*?)\\.$"
-})
+Q_GLOBAL_STATIC(QRegularExpression, LOG_REGEX, "^\\d+/\\d+/\\d+ \\d+:\\d+:\\d+.*?\\[.*?(\\d+)\\] (.*)$")
+Q_GLOBAL_STATIC(QRegularExpression, ROOM_CHANGE_REGEX, "^: You have entered (.*?)\\.$")
 
 LogWatcher::LogWatcher(ApplicationModel* model)
 {

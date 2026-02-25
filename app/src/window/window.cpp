@@ -11,9 +11,11 @@ Window::Window(QQmlEngine* engine, bool transparent, bool takeFocus, QWidget* pa
 {
     this->takeFocus = takeFocus;
 
-    setClearColor(Qt::transparent);
-    setAttribute(Qt::WA_NoSystemBackground);
-    setAttribute(Qt::WA_TranslucentBackground);
+    if (transparent) {
+        setClearColor(Qt::transparent);
+        setAttribute(Qt::WA_NoSystemBackground);
+        setAttribute(Qt::WA_TranslucentBackground);
+    }
 #if defined(Q_OS_LINUX)
     setWindowFlags(Qt::WindowStaysOnTopHint | Qt::FramelessWindowHint | Qt::NoDropShadowWindowHint);
 #elif defined(Q_OS_MAC)

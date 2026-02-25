@@ -12,7 +12,7 @@ Q_GLOBAL_STATIC(QStringList, UI_SCALE_FACTORS, {
 })
 
 OptionsWindow::OptionsWindow(QQmlEngine* engine, Settings* settings)
-    : Window(engine, false, true)
+    : Window(engine, true, true)
 {
     this->settings = settings;
 

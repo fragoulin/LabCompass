@@ -129,6 +129,7 @@ bool KeySequenceHelper::isModifierlessAllowed()
 
 bool KeySequenceHelper::isKeySequenceAvailable(const QKeySequence& keySequence) const
 {
+    (void)keySequence;
     return true;
 }
 

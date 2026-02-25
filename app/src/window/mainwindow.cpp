@@ -2,7 +2,7 @@
 #include "util/detectdisplay.h"
 
 MainWindow::MainWindow(QQmlEngine* engine)
-    : Window(engine)
+    : Window(engine, true, true)
 {
     setSource(QUrl("qrc:/qt/qml/labcompass/MainWindow.qml"));
 

@@ -3,7 +3,7 @@
 #include "puzzlewindow.h"
 
 PuzzleWindow::PuzzleWindow(QQmlEngine* engine)
-    : Window(engine, false)
+    : Window(engine, true, true)
 {
     setSource(QUrl("qrc:/qt/qml/labcompass/Puzzle.qml"));
 

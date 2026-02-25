@@ -9,7 +9,7 @@
 #include <QtDebug>
 #include <QtGlobal>
 
-Q_GLOBAL_STATIC(QString, logFilePath)
+Q_GLOBAL_STATIC(QString, logFilePath, "")
 static bool logToFile = false;
 
 void customMessageOutput(QtMsgType type, const QMessageLogContext& context, const QString& msg)
@@ -25,10 +25,14 @@ void customMessageOutput(QtMsgType type, const QMessageLogContext& context, cons
     if (logToFile) {
         QString txt = QString("%1 %2: %3").arg(formattedTime, logLevelName, msg);
         QFile outFile(*logFilePath);
-        outFile.open(QIODevice::WriteOnly | QIODevice::Append);
-        QTextStream ts(&outFile);
-        ts << txt << Qt::endl;
-        outFile.close();
+        if (!outFile.open(QIODevice::WriteOnly | QIODevice::Append)) {
+            fprintf(stderr, "%s %s: %s (%s:%u)\n", formattedTimeMsg.constData(), logLevelMsg.constData(), localMsg.constData(), context.file, context.line);
+            fflush(stderr);
+        } else {
+            QTextStream ts(&outFile);
+            ts << txt << Qt::endl;
+            outFile.close();
+        }
     } else {
         fprintf(stderr, "%s %s: %s (%s:%u)\n", formattedTimeMsg.constData(), logLevelMsg.constData(), localMsg.constData(), context.file, context.line);
         fflush(stderr);
@@ -54,8 +58,10 @@ void setupDebugOutput()
         *logFilePath = dir.absoluteFilePath("log.txt");
         qInfo() << "Log file path:" << *logFilePath;
         QFile outFile(*logFilePath);
-        outFile.open(QIODevice::WriteOnly);
-        outFile.close();
+        if (!outFile.open(QIODevice::WriteOnly)) {
+            qWarning() << "Failed to open log file with write access:" << *logFilePath;
+        } else
+            outFile.close();
     }
 
     qInstallMessageHandler(customMessageOutput);
