@@ -50,6 +50,9 @@ A: Wayland display forbid window positionning programmatically, by design. So La
 
 A: Wayland display forbid window visibility programmatically, by design. There is currently an [issue opened](https://github.com/Skycoder42/QHotkey/issues/14) on QHotkey library repo.
 
+**Q: Which languages are currently supported ?**
+
+A: Currently, LabCompass only works with english language.
 
 Build
 ---
