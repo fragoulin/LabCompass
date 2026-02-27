@@ -28,9 +28,7 @@ file(
   RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
   *.svg)
 
-add_executable(${TARGET_NAME} WIN32 ${SOURCES})
-
-qt_import_qml_plugins(${TARGET_NAME})
+qt_add_executable(${TARGET_NAME} WIN32 ${SOURCES})
 
 set_source_files_properties(qml/Global.qml PROPERTIES QT_QML_SINGLETON_TYPE
                                                       TRUE)
