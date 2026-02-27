@@ -30,6 +30,8 @@ file(
 
 add_executable(${TARGET_NAME} WIN32 ${SOURCES})
 
+qt_import_qml_plugins(${TARGET_NAME})
+
 set_source_files_properties(qml/Global.qml PROPERTIES QT_QML_SINGLETON_TYPE
                                                       TRUE)
 
@@ -61,7 +63,5 @@ target_precompile_headers(${TARGET_NAME} PRIVATE src/stdafx.h)
 target_link_libraries(${TARGET_NAME} PRIVATE common qhotkey)
 
 set_target_properties(
-  ${TARGET_NAME}
-  PROPERTIES WIN32_EXECUTABLE ON
-             MACOSX_BUNDLE ON
-             QT_QMLCACHEGEN_ARGUMENTS "--only-bytecode")
+  ${TARGET_NAME} PROPERTIES MACOSX_BUNDLE ON QT_QMLCACHEGEN_ARGUMENTS
+                                             "--only-bytecode")
