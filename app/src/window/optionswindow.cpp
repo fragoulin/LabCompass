@@ -79,5 +79,5 @@ void OptionsWindow::save()
     }
 
     int uiScaleFactorIndex = rootObject()->property("uiScaleFactorIndex").toInt();
-    settings->setProperty("scaleFactor", UI_SCALE_FACTORS[uiScaleFactorIndex]);
+    settings->setProperty("scaleFactor", (*UI_SCALE_FACTORS)[uiScaleFactorIndex]);
 }
