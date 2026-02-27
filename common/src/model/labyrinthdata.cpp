@@ -105,12 +105,6 @@ void LabyrinthData::normalizeDoorDirections(const RoomId& id)
         const auto& pattern = preset["doorLocations"].toStringList();
         auto normalized = directionNormalizer->normalize(originalConnections, pattern);
         normalizedConnections[id] = normalized;
-
-        qInfo() << "Normalizing room" << id;
-        qInfo() << "Original:" << originalConnections;
-        qInfo() << "Pattern:" << pattern;
-        qInfo() << "Normalized:" << normalized;
-
     } else {
         normalizedConnections[id] = originalConnections;
     }
