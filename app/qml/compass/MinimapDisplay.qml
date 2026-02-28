@@ -1,4 +1,4 @@
-import QtQuick 2.8
+import QtQuick
 import QtQuick.VectorImage
 import labcompass
 import '../point.js' as Point

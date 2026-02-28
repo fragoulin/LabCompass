@@ -1,4 +1,4 @@
-import QtQuick 2.8
+import QtQuick
 import QtQuick.Effects
 import QtQuick.VectorImage
 import labcompass
