@@ -28,7 +28,17 @@ file(
   RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
   *.svg)
 
-qt_add_executable(${TARGET_NAME} WIN32 ${SOURCES})
+if(WIN32)
+  # ! [appicon_windows]
+  configure_file("assets/icons/LabCompass.ico" "LabCompass.ico" COPYONLY)
+  configure_file("assets/rc/labcompass.rc" "labcompass.rc")
+  set(app_icon_resource_windows "${CMAKE_CURRENT_BINARY_DIR}/labcompass.rc")
+  qt_add_executable(${TARGET_NAME} WIN32 ${SOURCES}
+                    ${app_icon_resource_windows})
+  # ! [appicon_windows]
+else()
+  qt_add_executable(${TARGET_NAME} WIN32 ${SOURCES})
+endif()
 
 set_source_files_properties(qml/Global.qml PROPERTIES QT_QML_SINGLETON_TYPE
                                                       TRUE)
@@ -43,6 +53,16 @@ foreach(QML_SOURCE ${QML_SOURCES})
     ${QML_SOURCE} PROPERTIES QT_RESOURCE_ALIAS ${QML_SOURCE_WITHOUT_QML_DIR})
 endforeach()
 
+target_include_directories(${TARGET_NAME} PRIVATE src)
+
+target_precompile_headers(${TARGET_NAME} PRIVATE src/stdafx.h)
+
+target_link_libraries(${TARGET_NAME} PRIVATE common qhotkey)
+
+set_target_properties(
+  ${TARGET_NAME} PROPERTIES MACOSX_BUNDLE ON QT_QMLCACHEGEN_ARGUMENTS
+                                             "--only-bytecode")
+
 qt_add_qml_module(
   ${TARGET_NAME}
   URI
@@ -53,13 +73,3 @@ qt_add_qml_module(
   ${QML_SOURCES}
   RESOURCES
   ${IMAGES_RESOURCES})
-
-target_include_directories(${TARGET_NAME} PRIVATE src)
-
-target_precompile_headers(${TARGET_NAME} PRIVATE src/stdafx.h)
-
-target_link_libraries(${TARGET_NAME} PRIVATE common qhotkey)
-
-set_target_properties(
-  ${TARGET_NAME} PROPERTIES MACOSX_BUNDLE ON QT_QMLCACHEGEN_ARGUMENTS
-                                             "--only-bytecode")
