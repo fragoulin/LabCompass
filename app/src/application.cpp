@@ -59,8 +59,14 @@ void Application::initTranslations()
 
     if (translator.load(locale, filename, "_", directory))
         installTranslator(&translator);
-    else
-        qWarning() << "Failed to load translation file" << filename << "from directory" << directory << "and locale" << locale;
+    else {
+        qWarning() << "Failed to load translation file" << filename << "from directory" << directory << "and locale" << locale << ".Fallback to english language";
+        auto fallbackFilename = filename + "_en";
+        if(translator.load(fallbackFilename, directory))
+            installTranslator(&translator);
+        else
+            qWarning() << "Failed to load fallback english file" << fallbackFilename << "from directory" << directory;
+    }
 }
 
 void Application::initResources()
