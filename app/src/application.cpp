@@ -24,8 +24,8 @@ void Application::init()
 {
     qInfo() << "Initialization started";
 
-    qInfo() << "Init translations";
-    initTranslations();
+//    qInfo() << "Init translations";
+//    initTranslations();
 
     qInfo() << "Init resources";
     initResources();

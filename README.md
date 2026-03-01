@@ -52,7 +52,7 @@ A: Wayland display forbid window visibility programmatically, by design. There i
 
 **Q: Which languages are currently supported ?**
 
-A: Currently, LabCompass only works with english language.
+A: Currently, LabCompass only works with english language. Your Path of Exile client must be configured with english language.
 
 Build
 ---
