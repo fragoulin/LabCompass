@@ -46,7 +46,18 @@ void OptionsWindow::onWindowOpenChanged()
 
 void OptionsWindow::onBrowseClientPath()
 {
-    const auto& file = QFileDialog::getOpenFileName(this, tr("Find Game Client"), "", tr("Path of Exile Client (*.exe)"));
+    const auto& file = QFileDialog::getOpenFileName(
+        this,
+        //: File dialog title to find game client
+        //% "Find Game Client"
+        //@ Options
+        qtTrId("id-dialog-find-game-client"),
+        "",
+        //: File dialog info and extension type
+        //% "Path of Exile Client (*.exe)"
+        //@ Options
+        qtTrId("id-dialog-poe-client")
+    );
     if (!file.isEmpty()) {
         rootObject()->setProperty("poeClientPath", QFileInfo(file).dir().absolutePath());
     }

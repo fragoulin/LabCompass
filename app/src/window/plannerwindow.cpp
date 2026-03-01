@@ -40,9 +40,15 @@ void PlannerWindow::onImportLabNotesFileClicked()
         }
     }
 
-    const auto& fileName = QFileDialog::getOpenFileName(this, tr("Import Lab Notes"),
+    //: File dialog title to import lab notes
+    //% "Import Lab Notes"
+    //@ Planner
+    const auto& fileName = QFileDialog::getOpenFileName(this, qtTrId("id-dialog-import-lab-notes"),
         importDirectory,
-        tr("Lab Maps (*.json *.map)"));
+        //: File dialog info and authorized file extensions
+        //% "Lab Maps (*.json *.map)"
+        //@ Planner
+         qtTrId("id-dialog-import-info"));
     if (!fileName.isEmpty()) {
         importLabNotesFromFile(fileName);
     }

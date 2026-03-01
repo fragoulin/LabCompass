@@ -73,7 +73,10 @@ WindowWithShadow {
           z: -1
           Text {
             anchors.centerIn: parent
-            text: qsTr('Update Available')
+            //: Label indicating that an update for LabCompass is available
+            //% "Update Available"
+            //@ Options
+            text: qsTrId("id-update-available")
             font.preferShaping: false
             color: Global.primaryTextColor
           }
@@ -91,7 +94,10 @@ WindowWithShadow {
     Text {
       x: 40
       color: Global.primaryTextColor
-      text: qsTr('Options')
+      //: Title for options window
+      //% "Options"
+      //@ Options
+      text: qsTrId("id-options")
       font.preferShaping: false
       font.pixelSize: 24
     }
@@ -104,7 +110,24 @@ WindowWithShadow {
         anchors.fill: parent
         anchors.leftMargin: 50
         anchors.rightMargin: 50
-        model: [qsTr('Client'), qsTr('UI'), qsTr('Navigation'), qsTr('Hotkeys')]
+        model: [
+          //: Menu label for client options
+          //% "Client"
+          //@ Options
+          qsTrId("id-menu-client"),
+          //: Menu label for UI options
+          //% "UI"
+          //@ Options
+          qsTrId("id-menu-ui"),
+          //: Menu label for Navigation options
+          //% "Navigation"
+          //@ Options
+          qsTrId("id-meby-navigation"),
+          //: Menu label for Hotkeys options
+          //% "Hotkeys"
+          //@ Options
+          qsTrId("id-menu-hotkeys")
+        ]
       }
     }
 
@@ -122,7 +145,10 @@ WindowWithShadow {
         Text {
           Layout.columnSpan: 2
           color: Global.primaryTextColor
-          text: qsTr('Game Client Path')
+          //: Label for Game Client Path option. Label should be brief because of small space available
+          //% "Game Client Path"
+          //@ Options
+          text: qsTrId("id-game-client-path")
           font.preferShaping: false
         }
         TextField {
@@ -145,7 +171,10 @@ WindowWithShadow {
 
         Text {
           color: Global.primaryTextColor
-          text: qsTr('Multi-client Support (Experimental)')
+          //: Label for Multi-client Support option. Label should be brief because of small space available
+          //% "Multi-client Support (Experimental)"
+          //@ Options
+          text: qsTrId("id-multi-client-support")
           font.preferShaping: false
           font.pixelSize: 20
         }
@@ -161,7 +190,10 @@ WindowWithShadow {
         Text {
           Layout.fillWidth: true
           color: Global.primaryTextColor
-          text: qsTr('Show Minimap When Available')
+          //: Label for Show Minimap When Available option. Label should be brief because of small space available
+          //% "Show Minimap When Available"
+          //@ Options
+          text: qsTrId("id-show-minimap-when-available")
           font.preferShaping: false
           font.pixelSize: 20
         }
@@ -174,7 +206,10 @@ WindowWithShadow {
         Text {
           Layout.fillWidth: true
           color: Global.primaryTextColor
-          text: qsTr('UI Scale Factor <sup>*</sup>')
+          //: Label for Show UI Scale Factor option. Label should be brief because of small space available
+          //% "UI Scale Factor <sup>*</sup>"
+          //@ Options
+          text: qsTrId("id-ui-scale-factor")
           font.preferShaping: false
           font.pixelSize: 20
         }
@@ -189,7 +224,10 @@ WindowWithShadow {
         Text {
           Layout.fillWidth: true
           color: Global.primaryTextColor
-          text: qsTr('Taking Portals Skips Current Section')
+          //: Label related to player taking a portal. This action should skips current section. Label should be brief because of small space available
+          //% "Taking Portals Skips Current Section"
+          //@ Options
+          text: qsTrId("id-taking-portals-skips-current-section")
           font.preferShaping: false
           font.pixelSize: 20
         }
@@ -205,7 +243,10 @@ WindowWithShadow {
         Text {
           Layout.fillWidth: true
           color: Global.primaryTextColor
-          text: qsTr('Hide/Show Compass')
+          //: Label for Hide/Show Compass option. Label should be brief because of small space available
+          //% "Hide/Show Compass"
+          //@ Options
+          text: qsTrId("id-hide-show-compass")
           font.preferShaping: false
           font.pixelSize: 20
         }
@@ -218,7 +259,10 @@ WindowWithShadow {
     Text {
       x: 40
       color: Global.secondaryTextColor
-      text: qsTr('<sup>*</sup> Restart LabCompass to Apply Changes')
+      //: Label for indicating that LabCompass must be restarted to apply changes. Label should be brief because of small space available
+      //% "<sup>*</sup> Restart LabCompass to Apply Changes"
+      //@ Options
+      text: qsTrId("id-restart-labcompass-to-apply-changes")
       font.preferShaping: false
       font.pixelSize: 16
     }
@@ -260,7 +304,10 @@ WindowWithShadow {
       z: -1
       Text {
         anchors.centerIn: parent
-        text: qsTr('OK')
+        //: Label for OK button in options window
+        //% "OK"
+        //@ Options
+        text: qsTrId("id-options-ok")
         color: Global.primaryTextColor
       }
     }

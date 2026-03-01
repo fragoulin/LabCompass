@@ -38,7 +38,10 @@ WindowWithShadow {
           onDrag: (dx, dy) => window.drag(dx, dy)
 
           Text {
-            text: qsTr('Labyrinth Planner')
+            //: Labyrinth Planner window title
+            //% "Labyrinth Planner"
+            //@ Planner
+            text: qsTrId("id-labyrinth-planner")
             anchors.centerIn: parent
             color: Global.primaryTextColor
             font.pixelSize: 32
@@ -51,7 +54,13 @@ WindowWithShadow {
           Text {
             anchors.centerIn: parent
             //: Layout: room title
-            text: labyrinthModel.title ? qsTr('Layout: %1').arg(labyrinthModel.title) : qsTr('No lab notes loaded')
+            //% "Layout: %1"
+            //@ Planner
+            text: labyrinthModel.title ? qsTrId("id-layout-room-title").arg(labyrinthModel.title) :
+                                         //: Label displayed in the planner when no map is loaded
+                                         //% "No lab notes loaded"
+                                         //@ Planner
+                                         qsTrId("id-planner-no-map-loaded")
             color: Global.primaryTextColor
           }
         }
@@ -62,7 +71,10 @@ WindowWithShadow {
           onClicked: openUrl('https://www.poelab.com')
           Text {
             anchors.centerIn: parent
-            text: qsTr('Get Maps')
+            //: Get Maps button label to access poelab website. Label should be brief because of limited space available
+            //% "Get Maps"
+            //@ Planner
+            text: qsTrId("id-get-maps")
             color: Global.primaryTextColor
           }
           NotificationIndicator {
@@ -81,7 +93,10 @@ WindowWithShadow {
             z: -1
             Text {
               anchors.centerIn: parent
-              text: qsTr('Import Maps')
+              //: Import Maps button label to open file dialog. Label should be brief because of limited space available
+              //% "Import Maps"
+              //@ Planner
+              text: qsTrId("id-import-maps")
               color: Global.primaryTextColor
             }
           }
@@ -155,7 +170,10 @@ WindowWithShadow {
           anchors.right: parent.right
 
           Text {
-            text: 'Donate: '
+            //: Donate button label displayed before Paypal and Patreon buttons. Label should be brief because of limited space available
+            //% "Donate: "
+            //@ Planner
+            text: qsTrId("id-planner-donate")
             color: Global.primaryTextColor
             font.pixelSize: 20
           }

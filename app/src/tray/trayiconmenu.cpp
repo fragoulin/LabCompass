@@ -8,7 +8,10 @@ TrayIconMenu::TrayIconMenu()
 
 void TrayIconMenu::addResetAction()
 {
-    resetAction.reset(new QAction(tr("Reset LabCompass")));
+    //: Label for reset action in tray icon
+    //% "Reset LabCompass"
+    //@ TrayIcon
+    resetAction.reset(new QAction(qtTrId("id-trayicon-reset")));
     addAction(resetAction.get());
 
     connect(resetAction.get(), &QAction::triggered, []() {
@@ -20,7 +23,10 @@ void TrayIconMenu::addResetAction()
 
 void TrayIconMenu::addQuitAction()
 {
-    quitAction.reset(new QAction(tr("Quit")));
+    //: Label for quit action in tray icon
+    //% "Quit"
+    //@ TrayIcon
+    quitAction.reset(new QAction(qtTrId("id-trayicon-quit")));
     addAction(quitAction.get());
 
     connect(quitAction.get(), &QAction::triggered,

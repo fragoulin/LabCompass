@@ -12,7 +12,10 @@ InstructionItem {
 
   Text {
     color: Global.primaryTextColor
-    text: qsTr('Loot:')
+    //: Label displayed before the name of a loot
+    //% "Loot:"
+    //@ Instruction
+    text: qsTrId("id-loot")
   }
 
   Repeater {

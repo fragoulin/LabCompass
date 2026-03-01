@@ -13,7 +13,10 @@ Rectangle {
     spacing: 16
     columns: 1
     Text {
-      text: qsTr('Plan Summary')
+      //: Label for plan summary displayed in the planner window. Label should be brief because of limited space
+      //% "Plan Summary"
+      //@ Planner
+      text: qsTrId("id-plan-summary")
       font.pixelSize: 26
       color: Global.primaryTextColor
     }
@@ -22,33 +25,68 @@ Rectangle {
       columnSpacing: 30
       columns: 2
       verticalItemAlignment: Grid.AlignVCenter
-      Text { color: Global.primaryTextColor; text: qsTr('Rooms') }
+      Text {
+        color: Global.primaryTextColor;
+        //: Room label in planner window's caption. Label should be brief because of limited space
+        //% "Rooms"
+        //@ Planner
+        text: qsTrId("id-planner-rooms")
+      }
       Text { color: Global.primaryTextColor; width: 30; horizontalAlignment: Text.AlignHCenter; text: model.rooms }
-      Text { color: Global.primaryTextColor; text: qsTr('Length') }
+      Text {
+        color: Global.primaryTextColor;
+        //: Length label in planner window's caption. This is the number of rooms in the labyrinth. Label should be brief because of limited space
+        //% "Length"
+        //@ Planner
+        text: qsTrId("id-planner-length") }
       Text { color: Global.primaryTextColor; width: 30; horizontalAlignment: Text.AlignHCenter; text: model.length }
       // TODO make a custom component for the 4 Rows and Texts
       Row {
         spacing: 4
         VectorImage { source: 'qrc:/qt/qml/labcompass/assets/images/lab-content/argus.svg'; width: 16; height: 16 }
-        Text { color: Global.primaryTextColor; text: qsTr('Argus') }
+        Text {
+          color: Global.primaryTextColor;
+          //: Argus label in planner window's caption. Label should be brief because of limited space
+          //% "Argus"
+          //@ Planner
+          text: qsTrId("id-planner-argus")
+        }
       }
       Text { color: Global.primaryTextColor; width: 30; horizontalAlignment: Text.AlignHCenter; text: model.argus }
       Row {
         spacing: 4
         VectorImage { source: 'qrc:/qt/qml/labcompass/assets/images/lab-content/gauntlet-puzzle.svg'; width: 16; height: 16 }
-        Text { color: Global.primaryTextColor; text: qsTr('Trove/Lockbox') }
+        Text {
+          color: Global.primaryTextColor;
+          //: Trove/Lockbox label in planner window's caption. Label should be brief because of limited space
+          //% "Trove/Lockbox"
+          //@ Planner
+          text: qsTrId("id-planner-trove-lockbox")
+        }
       }
       Text { color: 'white'; width: 30; horizontalAlignment: Text.AlignHCenter; text: model.troves }
       Row {
         spacing: 4
         VectorImage { source: 'qrc:/qt/qml/labcompass/assets/images/lab-content/darkshrine.svg'; width: 16; height: 16 }
-        Text { color: Global.primaryTextColor; text: qsTr('Darkshrine') }
+        Text {
+          color: Global.primaryTextColor;
+          //: Darkshrine label in planner window's caption. Label should be brief because of limited space
+          //% "Darkshrine"
+          //@ Planner
+          text: qsTrId("id-planner-darkshrine")
+        }
       }
       Text { color: 'white'; width: 30; horizontalAlignment: Text.AlignHCenter; text: model.darkshrines }
       Row {
         spacing: 4
         VectorImage { source: 'qrc:/qt/qml/labcompass/assets/images/lab-content/silver-door.svg'; width: 16; height: 16 }
-        Text { color: Global.primaryTextColor; text: qsTr('Silver Cache') }
+        Text {
+          color: Global.primaryTextColor;
+          //: Silver Cache label in planner window's caption. Label should be brief because of limited space
+          //% "Silver Cache"
+          //@ Planner
+          text: qsTrId("id-silver-cache")
+        }
       }
       Text { color: Global.primaryTextColor; width: 30; horizontalAlignment: Text.AlignHCenter; text: model.silverCaches }
     }

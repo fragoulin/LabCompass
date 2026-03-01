@@ -27,7 +27,10 @@ Item {
     Text {
       font.pixelSize: 20
       color: Global.primaryTextColor
-      text: qsTr('Legend')
+      //: Legend label title displayed in room presets. Label should be brief because of limited space available
+      //% "Legend"
+      //@ RoomPresets
+      text: qsTrId("id-roompresets-legend")
     }
 
     Grid {
@@ -42,16 +45,40 @@ Item {
         VectorImage { width: 26; height: 20; source: 'qrc:/qt/qml/labcompass/assets/images/compass/tile-full.svg' }
         VectorImage { width: 26; height: 20; source: 'qrc:/qt/qml/labcompass/assets/images/compass/tile-cross.svg' }
       }
-      Text { color: Global.primaryTextColor; text: qsTr('Path') }
+      Text {
+        color: Global.primaryTextColor;
+        //: Path label caption displayed in room presets. Label should be brief because of limited space available
+        //% "Path"
+        //@ RoomPresets
+        text: qsTrId("id-roompresets-path")
+      }
 
       VectorImage { width: 26; height: 20; source: 'qrc:/qt/qml/labcompass/assets/images/compass/tile-trap.svg' }
-      Text { color: Global.primaryTextColor; text: qsTr('Traps') }
+      Text {
+        color: Global.primaryTextColor;
+        //: Traps label caption displayed in room presets. Label should be brief because of limited space available
+        //% "Traps"
+        //@ RoomPresets
+        text: qsTrId("id-roompresets-traps")
+      }
 
       VectorImage { width: 26; height: 20; source: 'qrc:/qt/qml/labcompass/assets/images/compass/door-target.svg' }
-      Text { color: Global.primaryTextColor; text: qsTr('Exit') }
+      Text {
+        color: Global.primaryTextColor;
+        //: Exit label caption displayed in room presets. Label should be brief because of limited space available
+        //% "Exit"
+        //@ RoomPresets
+        text: qsTrId("id-roompresets-exit")
+      }
 
       VectorImage { width: 26; height: 20; source: 'qrc:/qt/qml/labcompass/assets/images/compass/loot-normal.svg' }
-      Text { color: Global.primaryTextColor; text: qsTr('Loot') }
+      Text {
+        color: Global.primaryTextColor;
+        //: Loot label caption displayed in room presets. Label should be brief because of limited space available
+        //% "Loot"
+        //@ RoomPresets
+        text: qsTrId("id-roompresets-loot")
+      }
     }
   }
 }

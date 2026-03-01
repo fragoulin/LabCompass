@@ -22,7 +22,10 @@ InstructionItem {
 
   Text {
     color: Global.primaryTextColor
-    text: qsTr('Loaded Map:')
+    //: Label displayed before the name of the loaded map
+    //% "Loaded Map:"
+    //@ Instruction
+    text: qsTrId("id-loaded-map")
   }
   Text {
     color: Global.primaryTextColor

@@ -7,7 +7,9 @@ qt_add_translations(
   RESOURCE_PREFIX
   translations
   LUPDATE_OPTIONS
-  -no-obsolete)
+  -no-obsolete
+  LRELEASE_OPTIONS
+  -idbased)
 
 include(CMake/QHotkey.cmake)
 

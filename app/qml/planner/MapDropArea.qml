@@ -67,7 +67,10 @@ Item {
 
       Text {
         color: Global.primaryTextColor
-        text: qsTr('Drop to Import')
+        //: Label shown when drop area is available in order to use drag and drop to import a map. Label should be brief because of limited space
+        //% "Drop to Import"
+        //@ Planner
+        text: qsTrId("id-rop-to-import")
         font.pixelSize: 16
       }
     }

@@ -9,7 +9,10 @@ InstructionItem {
   property string mechanics
 
   Text {
-    text: qsTr('Defeat Izaro')
+    //: Instruction displayed when the player is ready to face Izaro
+    //% "Defeat Izaro"
+    //@ Instruction
+    text: qsTrId("id-defeat-izaro")
     color: Global.primaryTextColor
   }
   Row {

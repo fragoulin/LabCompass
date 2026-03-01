@@ -30,7 +30,10 @@ WindowWithShadow {
         onDrag: (dx, dy) => window.drag(dx, dy)
 
         Text {
-          text: qsTr('Room Layout Presets')
+          //: Room Layout Presets label displayed in room presets. Label should be brief because of limited space available
+          //% "Room Layout Presets"
+          //@ RoomPresets
+          text: qsTrId("id-roompresets-room-layout")
           anchors.centerIn: parent
           color: Global.primaryTextColor
           font.pixelSize: 32
@@ -182,7 +185,10 @@ WindowWithShadow {
               anchors.centerIn: parent
               font.pixelSize: 24
               color: Global.primaryTextColor
-              text: qsTr('No Presets Available for This Room')
+              //: Label displayed in room presets. Label should be brief because of limited space available
+              //% "No Presets Available for This Room"
+              //@ RoomPresets
+              text: qsTrId("id-roompresets-no-presets-available")
             }
           }
         }
@@ -195,7 +201,10 @@ WindowWithShadow {
               anchors.centerIn: parent
               font.pixelSize: 24
               color: Global.primaryTextColor
-              text: qsTr('Presets Will Be Disabled for This Room')
+              //: Label displayed in room presets. Label should be brief because of limited space available
+              //% "Presets Will Be Disabled for This Room"
+              //@ RoomPresets
+              text: qsTrId("id-roompresets-presets-will-be-disabled")
             }
           }
         }
@@ -225,7 +234,10 @@ WindowWithShadow {
             z: -1
             Text {
               anchors.centerIn: parent
-              text: qsTr('Apply Preset')
+              //: Label for button to apply preset
+              //% "Apply Preset"
+              //@ RoomPresets
+              text: qsTrId("id-roompresets-apply-preset")
               color: Global.primaryTextColor
             }
           }
@@ -236,15 +248,15 @@ WindowWithShadow {
 
   states: [
     State {
-      name: qsTr('NoPresets')
+      name: 'NoPresets'
       when: window.roomPresetModel.presets.length === 0
     },
     State {
-      name: qsTr('NotSelected')
+      name: 'NotSelected'
       when: presetListView.currentIndex === -1
     },
     State {
-      name: qsTr('Disabled')
+      name: 'Disabled'
       when: presetListView.currentIndex === presetListView.count - 1
     }
   ]

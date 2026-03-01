@@ -14,7 +14,10 @@ Item {
     anchors.verticalCenter: parent.verticalCenter
     Text {
       anchors.verticalCenter: parent.verticalCenter
-      text: qsTr('Plan: ')
+      //: Label displayed before tha planned route
+      //% "Plan: "
+      //@ Planner
+      text: qsTrId("id-planner-plan")
       color: Global.primaryTextColor
       font.pixelSize: 20
     }
