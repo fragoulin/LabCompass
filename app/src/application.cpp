@@ -53,7 +53,8 @@ void Application::init()
 
 void Application::initTranslations()
 {
-//    auto locale = QLocale::system();
+    auto locale = QLocale::system();
+    qInfo() << "Default locale" << locale;
     auto filename = QApplication::applicationName();
     auto directory = ":/translations";
 
@@ -61,11 +62,13 @@ void Application::initTranslations()
 //        installTranslator(&translator);
 //    else {
 //        qWarning() << "Failed to load translation file" << filename << "from directory" << directory << "and locale" << locale << ".Fallback to english language";
-        auto fallbackFilename = filename + "_en";
-        if(translator.load(fallbackFilename, directory))
-            installTranslator(&translator);
-        else
-            qWarning() << "Failed to load fallback english file" << fallbackFilename << "from directory" << directory;
+    auto fallbackFilename = filename + "_en";
+    if(translator.load(fallbackFilename, directory)) {
+        qInfo() << "Using english as fallback language";
+        installTranslator(&translator);
+    }
+    else
+        qWarning() << "Failed to load fallback english file" << fallbackFilename << "from directory" << directory;
 //    }
 }
 
