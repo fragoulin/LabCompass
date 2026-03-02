@@ -28,7 +28,7 @@ Q_GLOBAL_STATIC(TypeSr, ROOM_SUFFIX_COST, {
     { "Atrium", 12 },
 })
 
-Q_GLOBAL_STATIC(DirectionNormalizer, directionNormalizer, DirectionNormalizer())
+Q_GLOBAL_STATIC(DirectionNormalizer, directionNormalizer, {})
 
 LabyrinthData::LabyrinthData()
 {
