@@ -62,12 +62,12 @@ Rectangle {
         anchors.fill: parent
         visible: false
         radius: 24
-        color: model.name === 'Aspirant\'s Trial' ? '#101010' : '#E0E0E0'
+        color: model.name === qsTrId("id-labyrinth-aspirants-plaza") ? '#101010' : '#E0E0E0'
         VectorImage {
           anchors.centerIn: parent
           width: 32
           height: 32
-          source: model.name === 'Aspirant\'s Trial' ? 'qrc:/qt/qml/labcompass/assets/images/lab-content/izaro.svg' : ''
+          source: model.name === qsTrId("id-labyrinth-aspirants-plaza") ? 'qrc:/qt/qml/labcompass/assets/images/lab-content/izaro.svg' : ''
         }
       }
 

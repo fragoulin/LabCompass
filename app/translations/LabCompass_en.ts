@@ -560,7 +560,7 @@ You can try to:
         <translation type="unfinished"></translation>
     </message>
     <message id="id-trayicon-labcompass">
-        <location filename="../src/application.cpp" line="103"/>
+        <location filename="../src/application.cpp" line="108"/>
         <source>LabCompass</source>
         <extracomment>Tooltip for tray icon</extracomment>
         <translation type="unfinished"></translation>
@@ -599,6 +599,159 @@ You can try to:
         <location filename="../src/window/plannerwindow.cpp" line="51"/>
         <source>Lab Maps (*.json *.map)</source>
         <extracomment>File dialog info and authorized file extensions</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message id="id-basilica-annex">
+        <location filename="../../common/src/worker/logwatcher.cpp" line="49"/>
+        <source>Basilica Annex</source>
+        <extracomment>Basilica Annex room name. Must match exactly room name displayed in Path of Exile client</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message id="id-basilica-atrium">
+        <location filename="../../common/src/worker/logwatcher.cpp" line="53"/>
+        <source>Basilica Atrium</source>
+        <extracomment>Basilica Atrium room name. Must match exactly room name displayed in Path of Exile client</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message id="id-basilica-halls">
+        <location filename="../../common/src/worker/logwatcher.cpp" line="57"/>
+        <source>Basilica Halls</source>
+        <extracomment>Basilica Halls room name. Must match exactly room name displayed in Path of Exile client</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message id="id-basilica-passage">
+        <location filename="../../common/src/worker/logwatcher.cpp" line="61"/>
+        <source>Basilica Passage</source>
+        <extracomment>Basilica Passage room name. Must match exactly room name displayed in Path of Exile client</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message id="id-domain-crossing">
+        <location filename="../../common/src/worker/logwatcher.cpp" line="65"/>
+        <source>Domain Crossing</source>
+        <extracomment>Domain Crossing room name. Must match exactly room name displayed in Path of Exile client</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message id="id-domain-enclosure">
+        <location filename="../../common/src/worker/logwatcher.cpp" line="69"/>
+        <source>Domain Enclosure</source>
+        <extracomment>Domain Enclosure room name. Must match exactly room name displayed in Path of Exile client</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message id="id-domain-path">
+        <location filename="../../common/src/worker/logwatcher.cpp" line="73"/>
+        <source>Domain Path</source>
+        <extracomment>Domain Path room name. Must match exactly room name displayed in Path of Exile client</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message id="id-domain-walkways">
+        <location filename="../../common/src/worker/logwatcher.cpp" line="77"/>
+        <source>Domain Walkways</source>
+        <extracomment>Domain Walkways room name. Must match exactly room name displayed in Path of Exile client</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message id="id-estate-crossing">
+        <location filename="../../common/src/worker/logwatcher.cpp" line="81"/>
+        <source>Estate Crossing</source>
+        <extracomment>Estate Crossing room name. Must match exactly room name displayed in Path of Exile client</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message id="id-estate-enclosure">
+        <location filename="../../common/src/worker/logwatcher.cpp" line="85"/>
+        <source>Estate Enclosure</source>
+        <extracomment>Estate Enclosure room name. Must match exactly room name displayed in Path of Exile client</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message id="id-estate-path">
+        <location filename="../../common/src/worker/logwatcher.cpp" line="89"/>
+        <source>Estate Path</source>
+        <extracomment>Estate Path room name. Must match exactly room name displayed in Path of Exile client</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message id="id-estate-walkways">
+        <location filename="../../common/src/worker/logwatcher.cpp" line="93"/>
+        <source>Estate Walkways</source>
+        <extracomment>Estate Walkways room name. Must match exactly room name displayed in Path of Exile client</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message id="id-mansion-annex">
+        <location filename="../../common/src/worker/logwatcher.cpp" line="97"/>
+        <source>Mansion Annex</source>
+        <extracomment>Mansion Annex room name. Must match exactly room name displayed in Path of Exile client</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message id="id-mansion-atrium">
+        <location filename="../../common/src/worker/logwatcher.cpp" line="101"/>
+        <source>Mansion Atrium</source>
+        <extracomment>Mansion Atrium room name. Must match exactly room name displayed in Path of Exile client</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message id="id-mansion-halls">
+        <location filename="../../common/src/worker/logwatcher.cpp" line="105"/>
+        <source>Mansion Halls</source>
+        <extracomment>Mansion Halls room name. Must match exactly room name displayed in Path of Exile client</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message id="id-mansion-passage">
+        <location filename="../../common/src/worker/logwatcher.cpp" line="109"/>
+        <source>Mansion Passage</source>
+        <extracomment>Mansion Passage room name. Must match exactly room name displayed in Path of Exile client</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message id="id-sanitorium-annex">
+        <location filename="../../common/src/worker/logwatcher.cpp" line="113"/>
+        <source>Sanitorium Annex</source>
+        <extracomment>Sanitorium Annex room name. Must match exactly room name displayed in Path of Exile client</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message id="id-sanitorium-halls">
+        <location filename="../../common/src/worker/logwatcher.cpp" line="117"/>
+        <source>Sanitorium Halls</source>
+        <extracomment>Sanitorium Halls room name. Must match exactly room name displayed in Path of Exile client</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message id="id-sanitorium-passage">
+        <location filename="../../common/src/worker/logwatcher.cpp" line="121"/>
+        <source>Sanitorium Passage</source>
+        <extracomment>Sanitorium Passage room name. Must match exactly room name displayed in Path of Exile client</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message id="id-sepulchre-annex">
+        <location filename="../../common/src/worker/logwatcher.cpp" line="125"/>
+        <source>Sepulchre Annex</source>
+        <extracomment>Sepulchre Annex room name. Must match exactly room name displayed in Path of Exile client</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message id="id-sepulchre-atrium">
+        <location filename="../../common/src/worker/logwatcher.cpp" line="129"/>
+        <source>Sepulchre Atrium</source>
+        <extracomment>Sepulchre Atrium room name. Must match exactly room name displayed in Path of Exile client</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message id="id-sepulchre-halls">
+        <location filename="../../common/src/worker/logwatcher.cpp" line="133"/>
+        <source>Sepulchre Halls</source>
+        <extracomment>Sepulchre Halls room name. Must match exactly room name displayed in Path of Exile client</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message id="id-sepulchre-passage">
+        <location filename="../../common/src/worker/logwatcher.cpp" line="137"/>
+        <source>Sepulchre Passage</source>
+        <extracomment>Sepulchre Passage room name. Must match exactly room name displayed in Path of Exile client</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message id="id-labyrinth-regex-you-have-entered">
+        <location filename="../../common/src/worker/logwatcher.cpp" line="209"/>
+        <source>^You have entered (.*?)\.$</source>
+        <extracomment>Regular expression used to match room entered by player character in Path of Exile client log file (.*?) Matches and captures the room name.</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message id="id-labyrinth-aspirants-plaza">
+        <location filename="../../common/src/controller/navigationcontroller.cpp" line="59"/>
+        <location filename="../../common/src/worker/logwatcher.cpp" line="222"/>
+        <location filename="../qml/planner/LabyrinthMapDisplay.qml" line="65"/>
+        <location filename="../qml/planner/LabyrinthMapDisplay.qml" line="70"/>
+        <source>Aspirants&apos; Plaza</source>
+        <extracomment>Room name: Aspirants&apos; Plaza. Must match exactly room name displayed in Path of Exile client</extracomment>
         <translation type="unfinished"></translation>
     </message>
 </context>

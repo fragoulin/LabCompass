@@ -13,11 +13,11 @@ RoomPresetHelper::RoomPresetHelper()
     const auto& roomTypeList = QJsonDocument::fromJson(roomPresetsFile.readAll()).toVariant().toList();
 
     for (const auto& roomType : roomTypeList) {
-        const auto& roomName = roomType.toMap()["roomName"].toString();
+        const auto& roomId = roomType.toMap()["roomId"].toString();
         const auto& goldenDoor = roomType.toMap()["goldenDoor"].toBool();
         const auto& variantList = roomType.toMap()["variants"].toList();
 
-        QPair<QString, bool> index { roomName, goldenDoor };
+        QPair<QString, bool> index { roomId, goldenDoor };
         cacheByNameAndGoldenDoor.insert(index, {});
 
         for (const auto& variant : variantList) {

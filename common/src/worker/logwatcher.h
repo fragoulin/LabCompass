@@ -33,6 +33,7 @@ private:
     QString findGameClientPath();
     void setActiveClient(const QString& clientId);
     bool isLogFromValidClient(const QString& clientId) const;
+    bool isValidRoomName(const QString& roomName);
 };
 
 #endif // LOGWATCHER_H

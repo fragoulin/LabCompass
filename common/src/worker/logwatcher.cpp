@@ -42,16 +42,102 @@ Q_GLOBAL_STATIC(QStringList, PORTAL_SPAWN_LINES, {
     ": A portal to Izaro appears."
 })
 
-Q_GLOBAL_STATIC(QStringList, LAB_ROOM_PREFIX, {
-    "Estate", "Domain", "Basilica", "Mansion", "Sepulchre", "Sanitorium"
+Q_GLOBAL_STATIC(QStringList, ROOM_NAMES, {
+    //: Basilica Annex room name. Must match exactly room name displayed in Path of Exile client
+    //% "Basilica Annex"
+    //@ Labyrinth
+    qtTrId("id-basilica-annex"),
+    //: Basilica Atrium room name. Must match exactly room name displayed in Path of Exile client
+    //% "Basilica Atrium"
+    //@ Labyrinth
+    qtTrId("id-basilica-atrium"),
+    //: Basilica Halls room name. Must match exactly room name displayed in Path of Exile client
+    //% "Basilica Halls"
+    //@ Labyrinth
+    qtTrId("id-basilica-halls"),
+    //: Basilica Passage room name. Must match exactly room name displayed in Path of Exile client
+    //% "Basilica Passage"
+    //@ Labyrinth
+    qtTrId("id-basilica-passage"),
+    //: Domain Crossing room name. Must match exactly room name displayed in Path of Exile client
+    //% "Domain Crossing"
+    //@ Labyrinth
+    qtTrId("id-domain-crossing"),
+    //: Domain Enclosure room name. Must match exactly room name displayed in Path of Exile client
+    //% "Domain Enclosure"
+    //@ Labyrinth
+    qtTrId("id-domain-enclosure"),
+    //: Domain Path room name. Must match exactly room name displayed in Path of Exile client
+    //% "Domain Path"
+    //@ Labyrinth
+    qtTrId("id-domain-path"),
+    //: Domain Walkways room name. Must match exactly room name displayed in Path of Exile client
+    //% "Domain Walkways"
+    //@ Labyrinth
+    qtTrId("id-domain-walkways"),
+    //: Estate Crossing room name. Must match exactly room name displayed in Path of Exile client
+    //% "Estate Crossing"
+    //@ Labyrinth
+    qtTrId("id-estate-crossing"),
+    //: Estate Enclosure room name. Must match exactly room name displayed in Path of Exile client
+    //% "Estate Enclosure"
+    //@ Labyrinth
+    qtTrId("id-estate-enclosure"),
+    //: Estate Path room name. Must match exactly room name displayed in Path of Exile client
+    //% "Estate Path"
+    //@ Labyrinth
+    qtTrId("id-estate-path"),
+    //: Estate Walkways room name. Must match exactly room name displayed in Path of Exile client
+    //% "Estate Walkways"
+    //@ Labyrinth
+    qtTrId("id-estate-walkways"),
+    //: Mansion Annex room name. Must match exactly room name displayed in Path of Exile client
+    //% "Mansion Annex"
+    //@ Labyrinth
+    qtTrId("id-mansion-annex"),
+    //: Mansion Atrium room name. Must match exactly room name displayed in Path of Exile client
+    //% "Mansion Atrium"
+    //@ Labyrinth
+    qtTrId("id-mansion-atrium"),
+    //: Mansion Halls room name. Must match exactly room name displayed in Path of Exile client
+    //% "Mansion Halls"
+    //@ Labyrinth
+    qtTrId("id-mansion-halls"),
+    //: Mansion Passage room name. Must match exactly room name displayed in Path of Exile client
+    //% "Mansion Passage"
+    //@ Labyrinth
+    qtTrId("id-mansion-passage"),
+    //: Sanitorium Annex room name. Must match exactly room name displayed in Path of Exile client
+    //% "Sanitorium Annex"
+    //@ Labyrinth
+    qtTrId("id-sanitorium-annex"),
+    //: Sanitorium Halls room name. Must match exactly room name displayed in Path of Exile client
+    //% "Sanitorium Halls"
+    //@ Labyrinth
+    qtTrId("id-sanitorium-halls"),
+    //: Sanitorium Passage room name. Must match exactly room name displayed in Path of Exile client
+    //% "Sanitorium Passage"
+    //@ Labyrinth
+    qtTrId("id-sanitorium-passage"),
+    //: Sepulchre Annex room name. Must match exactly room name displayed in Path of Exile client
+    //% "Sepulchre Annex"
+    //@ Labyrinth
+    qtTrId("id-sepulchre-annex"),
+    //: Sepulchre Atrium room name. Must match exactly room name displayed in Path of Exile client
+    //% "Sepulchre Atrium"
+    //@ Labyrinth
+    qtTrId("id-sepulchre-atrium"),
+    //: Sepulchre Halls room name. Must match exactly room name displayed in Path of Exile client
+    //% "Sepulchre Halls"
+    //@ Labyrinth
+    qtTrId("id-sepulchre-halls"),
+    //: Sepulchre Passage room name. Must match exactly room name displayed in Path of Exile client
+    //% "Sepulchre Passage"
+    //@ Labyrinth
+    qtTrId("id-sepulchre-passage"),
 })
 
-Q_GLOBAL_STATIC(QStringList, LAB_ROOM_SUFFIX, {
-    "Walkways", "Path", "Crossing", "Annex", "Halls", "Passage", "Enclosure", "Atrium"
-})
-
-Q_GLOBAL_STATIC(QRegularExpression, LOG_REGEX, "^\\d+/\\d+/\\d+ \\d+:\\d+:\\d+.*?\\[.*?(\\d+)\\] (.*)$")
-Q_GLOBAL_STATIC(QRegularExpression, ROOM_CHANGE_REGEX, "^: You have entered (.*?)\\.$")
+Q_GLOBAL_STATIC(QRegularExpression, LOG_REGEX, "^\\d+/\\d+/\\d+ \\d+:\\d+:\\d+.*?\\[.*?(\\d+)\\] : (?:<<set:\\w+>>)*(.*)$")
 
 LogWatcher::LogWatcher(ApplicationModel* model)
 {
@@ -112,7 +198,12 @@ void LogWatcher::parseLine(const QString line)
         auto clientId = logMatch.captured(1);
 
         auto logContent = logMatch.captured(2).trimmed();
-        auto roomChangeMatch = ROOM_CHANGE_REGEX->match(logContent);
+        QRegularExpression roomChangeRegex;
+        //: Regular expression used to match room entered by player character in Path of Exile client log file (.*?) Matches and captures the room name.
+        //% "^You have entered (.*?)\\.$"
+        //@ Labyrinth
+        roomChangeRegex.setPattern(qtTrId("id-labyrinth-regex-you-have-entered"));
+        auto roomChangeMatch = roomChangeRegex.match(logContent);
 
         if (START_LINES->contains(logContent)) {
             setActiveClient(clientId);
@@ -120,19 +211,29 @@ void LogWatcher::parseLine(const QString line)
 
         } else if (roomChangeMatch.hasMatch()) {
             auto roomName = roomChangeMatch.captured(1);
-            auto affixes = roomName.split(' ');
+            qInfo() << "    roomName" << roomName;
+            //: Room name: Aspirants' Plaza. Must match exactly room name displayed in Path of Exile client
+            //% "Aspirants' Plaza"
+            //@ Labyrinth
+            auto aspirantsPlaza = qtTrId("id-labyrinth-aspirants-plaza");
+            qInfo() << "    Aspirant plaza translated" << aspirantsPlaza;
 
-            if (roomName == "Aspirants\' Plaza") {
+            if (roomName == aspirantsPlaza) {
+                qInfo() << "    Emit plaza entered";
                 setActiveClient(clientId);
                 emit plazaEntered();
 
-            } else if (roomName == "Aspirant\'s Trial" || (affixes.size() == 2 && LAB_ROOM_PREFIX->contains(affixes[0]) && LAB_ROOM_SUFFIX->contains(affixes[1]))) {
+            } else if (isValidRoomName(roomName)) {
+                qInfo() << "    Room valid";
                 if (isLogFromValidClient(clientId)) {
+                    qInfo() << "    Emit room changed";
                     emit roomChanged(roomName);
                 }
 
             } else {
+                qInfo() << "    Unknown room";
                 if (isLogFromValidClient(clientId)) {
+                    qInfo() << "    Emit lab exit";
                     emit labExit();
                 }
             }
@@ -195,4 +296,9 @@ void LogWatcher::setActiveClient(const QString& clientId)
 bool LogWatcher::isLogFromValidClient(const QString& clientId) const
 {
     return !model->get_settings()->get_multiclientSupport() || clientId == activeClientId;
+}
+
+bool LogWatcher::isValidRoomName(const QString& roomName)
+{
+    return ROOM_NAMES->contains(roomName);
 }
