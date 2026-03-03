@@ -6,40 +6,122 @@
 #endif
 
 Q_GLOBAL_STATIC(QStringList, START_LINES, {
-    "Izaro: Ascend with precision.",
-    "Izaro: The Goddess is watching.",
-    "Izaro: Justice will prevail.",
+    //: Izaro start line "Ascend with precision.". Must match exactly lines displayed in Path of Exile client chat
+    //% "Izaro: Ascend with precision."
+    //@ Labyrinth
+    qtTrId("id-izaro-ascend-with-precision"),
+    //: Izaro start line "The Goddess is watching.". Must match exactly lines displayed in Path of Exile client chat
+    //% "Izaro: The Goddess is watching."
+    //@ Labyrinth
+    qtTrId("id-izaro-the-goddess-is-watching"),
+    //: Izaro start line "Justice will prevail.". Must match exactly lines displayed in Path of Exile client chat
+    //% "Izaro: Justice will prevail."
+    //@ Labyrinth
+    qtTrId("id-izaro-justice-will-prevail"),
 })
 
 Q_GLOBAL_STATIC(QStringList, FINISH_LINES, {
-    "Izaro: I die for the Empire!",
-    "Izaro: Delight in your gilded dungeon, ascendant.",
-    "Izaro: Your destination is more dangerous than the journey, ascendant.",
-    "Izaro: Triumphant at last!",
-    "Izaro: You are free!",
-    "Izaro: The trap of tyranny is inescapable.",
+    //: Izaro finish line "I die for the Empire!". Must match exactly lines displayed in Path of Exile client chat
+    //% "Izaro: I die for the Empire!"
+    //@ Labyrinth
+    qtTrId("id-izaro-I-die-for-the-empire!"),
+    //: Izaro finish line "Delight in your gilded dungeon, ascendant." (male version). Must match exactly lines displayed in Path of Exile client chat
+    //% "Izaro: Delight in your gilded dungeon, ascendant."
+    //@ Labyrinth
+    qtTrId("id-izaro-delight-in-your-gilded-dungeon-male"),
+    //: Izaro finish line "Delight in your gilded dungeon, ascendant." (female version). Must match exactly lines displayed in Path of Exile client chat
+    //% "Izaro: Delight in your gilded dungeon, ascendant."
+    //@ Labyrinth
+    qtTrId("id-izaro-delight-in-your-gilded-dungeon-female"),
+    //: Izaro finish line "Your destination is more dangerous than the journey, ascendant.". (male version). Must match exactly lines displayed in Path of Exile client chat
+    //% "Izaro: Your destination is more dangerous than the journey, ascendant."
+    //@ Labyrinth
+    qtTrId("id-izaro-your-destination-is-more-dangerous-male"),
+    //: Izaro finish line "Your destination is more dangerous than the journey, ascendant.". (female version). Must match exactly lines displayed in Path of Exile client chat
+    //% "Izaro: Your destination is more dangerous than the journey, ascendant."
+    //@ Labyrinth
+    qtTrId("id-izaro-your-destination-is-more-dangerous-female"),
+    //: Izaro finish line "Triumphant at last!". (male version).  Must match exactly lines displayed in Path of Exile client chat
+    //% "Izaro: Triumphant at last!"
+    //@ Labyrinth
+    qtTrId("id-izaro-triumphant-at-last-male"),
+    //: Izaro finish line "Triumphant at last!". (female version). Must match exactly lines displayed in Path of Exile client chat
+    //% "Izaro: Triumphant at last!"
+    //@ Labyrinth
+    qtTrId("id-izaro-triumphant-at-last-female"),
+    //: Izaro finish line "You are free!". Must match exactly lines displayed in Path of Exile client chat
+    //% "Izaro: You are free!"
+    //@ Labyrinth
+    qtTrId("id-izaro-you-are-free"),
+    //: Izaro finish line "The trap of tyranny is inescapable.". Must match exactly lines displayed in Path of Exile client chat
+    //% "Izaro: The trap of tyranny is inescapable."
+    //@ Labyrinth
+    qtTrId("id-izaro-The-trap-of-tyranny-is-inescapable"),
 })
 
 Q_GLOBAL_STATIC(QStringList, IZARO_BATTLE_START_LINES, {
-    "Izaro: Complex machinations converge to a single act of power.",
-    "Izaro: Slowness lends strength to one\'s enemies.",
-    "Izaro: When one defiles the effigy, one defiles the emperor.",
-    "Izaro: The essence of an empire must be shared equally amongst all of its citizens.",
-    "Izaro: It is the sovereign who empowers the sceptre. Not the other way round.",
-    "Izaro: Some things that slumber should never be awoken.",
-    "Izaro: An emperor is only as efficient as those he commands.",
-    "Izaro: The emperor beckons and the world attends.",
+    //: Izaro battle start line "Complex machinations converge to a single act of power.". Must match exactly lines displayed in Path of Exile client chat
+    //% "Izaro: Complex machinations converge to a single act of power."
+    //@ Labyrinth
+    qtTrId("id-izaro-complex-machinations-converge"),
+    //: Izaro battle start line "Slowness lends strength to one's enemies.". Must match exactly lines displayed in Path of Exile client chat
+    //% "Izaro: Slowness lends strength to one's enemies."
+    //@ Labyrinth
+    qtTrId("id-izaro-slowness-lends-strength-to-ones-enemies"),
+    //: Izaro battle start line "When one defiles the effigy, one defiles the emperor.". Must match exactly lines displayed in Path of Exile client chat
+    //% "Izaro: When one defiles the effigy, one defiles the emperor."
+    //@ Labyrinth
+    qtTrId("id-izaro-when-one-defiles-the-effigy-one-defiles-the-emperor"),
+    //: Izaro battle start line "The essence of an empire must be shared equally amongst all of its citizens.". Must match exactly lines displayed in Path of Exile client chat
+    //% "Izaro: The essence of an empire must be shared equally amongst all of its citizens."
+    //@ Labyrinth
+    qtTrId("id-izaro-the-essence-of-an-empire"),
+    //: Izaro battle start line "It is the sovereign who empowers the sceptre. Not the other way round.". Must match exactly lines displayed in Path of Exile client chat
+    //% "Izaro: It is the sovereign who empowers the sceptre. Not the other way round."
+    //@ Labyrinth
+    qtTrId("id-izaro-it-is-the-sovereign-who-empowers-the-sceptre"),
+    //: Izaro battle start line "Some things that slumber should never be awoken.". Must match exactly lines displayed in Path of Exile client chat
+    //% "Izaro: Some things that slumber should never be awoken."
+    //@ Labyrinth
+    qtTrId("id-izaro-some-things-that-slumber-should-never-be-awoken"),
+    //: Izaro battle start line "An emperor is only as efficient as those he commands.". Must match exactly lines displayed in Path of Exile client chat
+    //% "Izaro: An emperor is only as efficient as those he commands."
+    //@ Labyrinth
+    qtTrId("id-izaro-an-emperor-is-only-as-efficient-as-those-he-commands"),
+    //: Izaro battle start line "The emperor beckons and the world attends.". Must match exactly lines displayed in Path of Exile client chat
+    //% "Izaro: The emperor beckons and the world attends."
+    //@ Labyrinth
+    qtTrId("id-izaro-The-emperor-beckons-and-the-world-attends"),
 })
 
 Q_GLOBAL_STATIC(QStringList, SECTION_FINISH_LINES, {
-    "Izaro: By the Goddess! What ambition!",
-    "Izaro: Such resilience!",
-    "Izaro: You are inexhaustible!",
-    "Izaro: You were born for this!",
+    //: Izaro battle finish line "By the Goddess! What ambition!". Must match exactly lines displayed in Path of Exile client chat
+    //% "Izaro: By the Goddess! What ambition!"
+    //@ Labyrinth
+    qtTrId("id-izaro-by-the-goddess-what-ambition"),
+    //: Izaro battle finish line "Such resilience!". Must match exactly lines displayed in Path of Exile client chat
+    //% "Izaro: Such resilience!"
+    //@ Labyrinth
+    qtTrId("id-izaro-such-resilience"),
+    //: Izaro battle finish line "You are inexhaustible!". Must match exactly lines displayed in Path of Exile client chat
+    //% "Izaro: You are inexhaustible!"
+    //@ Labyrinth
+    qtTrId("id-izaro-you-are-inexhaustible"),
+    //: Izaro battle finish line "You were born for this!". (male version). Must match exactly lines displayed in Path of Exile client chat
+    //% "Izaro: You were born for this!"
+    //@ Labyrinth
+    qtTrId("id-izaro-you-were-born-for-this-male"),
+    //: Izaro battle finish line "You were born for this!". (female version). Must match exactly lines displayed in Path of Exile client chat
+    //% "Izaro: You were born for this!"
+    //@ Labyrinth
+    qtTrId("id-izaro-you-were-born-for-this-female"),
 })
 
 Q_GLOBAL_STATIC(QStringList, PORTAL_SPAWN_LINES, {
-    ": A portal to Izaro appears."
+    //: Portal spawn. Must match exactly lines displayed in Path of Exile client chat
+    //% "A portal to Izaro appears."
+    //@ Labyrinth
+    qtTrId("id-labyrinth-a-portal-to-izaro-appears"),
 })
 
 Q_GLOBAL_STATIC(QStringList, ROOM_NAMES, {
@@ -137,7 +219,7 @@ Q_GLOBAL_STATIC(QStringList, ROOM_NAMES, {
     qtTrId("id-sepulchre-passage"),
 })
 
-Q_GLOBAL_STATIC(QRegularExpression, LOG_REGEX, "^\\d+/\\d+/\\d+ \\d+:\\d+:\\d+.*?\\[.*?(\\d+)\\] : (?:<<set:\\w+>>)*(.*)$")
+Q_GLOBAL_STATIC(QRegularExpression, LOG_REGEX, R"(^\d+/\d+/\d+ \d+:\d+:\d+.*?\[.*?(\d+)\] : (?:<<set:\w+>>)*(.*)$)")
 
 LogWatcher::LogWatcher(ApplicationModel* model)
 {
@@ -211,29 +293,22 @@ void LogWatcher::parseLine(const QString line)
 
         } else if (roomChangeMatch.hasMatch()) {
             auto roomName = roomChangeMatch.captured(1);
-            qInfo() << "    roomName" << roomName;
             //: Room name: Aspirants' Plaza. Must match exactly room name displayed in Path of Exile client
             //% "Aspirants' Plaza"
             //@ Labyrinth
             auto aspirantsPlaza = qtTrId("id-labyrinth-aspirants-plaza");
-            qInfo() << "    Aspirant plaza translated" << aspirantsPlaza;
 
             if (roomName == aspirantsPlaza) {
-                qInfo() << "    Emit plaza entered";
                 setActiveClient(clientId);
                 emit plazaEntered();
 
             } else if (isValidRoomName(roomName)) {
-                qInfo() << "    Room valid";
                 if (isLogFromValidClient(clientId)) {
-                    qInfo() << "    Emit room changed";
                     emit roomChanged(roomName);
                 }
 
             } else {
-                qInfo() << "    Unknown room";
                 if (isLogFromValidClient(clientId)) {
-                    qInfo() << "    Emit lab exit";
                     emit labExit();
                 }
             }

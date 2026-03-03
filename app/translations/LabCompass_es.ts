@@ -3,146 +3,302 @@
 <TS version="2.1" language="es_ES" sourcelanguage="en_US">
 <context>
     <name></name>
+    <message id="id-izaro-ascend-with-precision">
+        <location filename="../../common/src/worker/logwatcher.cpp" line="12"/>
+        <source>Izaro: Ascend with precision.</source>
+        <extracomment>Izaro start line &quot;Ascend with precision.&quot;. Must match exactly lines displayed in Path of Exile client chat</extracomment>
+        <translation>Izaro: Asciende con precisión.</translation>
+    </message>
+    <message id="id-izaro-the-goddess-is-watching">
+        <location filename="../../common/src/worker/logwatcher.cpp" line="16"/>
+        <source>Izaro: The Goddess is watching.</source>
+        <extracomment>Izaro start line &quot;The Goddess is watching.&quot;. Must match exactly lines displayed in Path of Exile client chat</extracomment>
+        <translation>Izaro: La Diosa está observando.</translation>
+    </message>
+    <message id="id-izaro-justice-will-prevail">
+        <location filename="../../common/src/worker/logwatcher.cpp" line="20"/>
+        <source>Izaro: Justice will prevail.</source>
+        <extracomment>Izaro start line &quot;Justice will prevail.&quot;. Must match exactly lines displayed in Path of Exile client chat</extracomment>
+        <translation>Izaro: La justicia prevalecerá.</translation>
+    </message>
+    <message id="id-izaro-I-die-for-the-empire!">
+        <location filename="../../common/src/worker/logwatcher.cpp" line="27"/>
+        <source>Izaro: I die for the Empire!</source>
+        <extracomment>Izaro finish line &quot;I die for the Empire!&quot;. Must match exactly lines displayed in Path of Exile client chat</extracomment>
+        <translation>Izaro: ¡Muero por el Imperio!</translation>
+    </message>
+    <message id="id-izaro-you-are-free">
+        <location filename="../../common/src/worker/logwatcher.cpp" line="55"/>
+        <source>Izaro: You are free!</source>
+        <extracomment>Izaro finish line &quot;You are free!&quot;. Must match exactly lines displayed in Path of Exile client chat</extracomment>
+        <translation>Izaro: ¡Eres libre!</translation>
+    </message>
+    <message id="id-izaro-The-trap-of-tyranny-is-inescapable">
+        <location filename="../../common/src/worker/logwatcher.cpp" line="59"/>
+        <source>Izaro: The trap of tyranny is inescapable.</source>
+        <extracomment>Izaro finish line &quot;The trap of tyranny is inescapable.&quot;. Must match exactly lines displayed in Path of Exile client chat</extracomment>
+        <translation>Izaro: La trampa de la tiranía es inevitable.</translation>
+    </message>
+    <message id="id-izaro-complex-machinations-converge">
+        <location filename="../../common/src/worker/logwatcher.cpp" line="66"/>
+        <source>Izaro: Complex machinations converge to a single act of power.</source>
+        <extracomment>Izaro battle start line &quot;Complex machinations converge to a single act of power.&quot;. Must match exactly lines displayed in Path of Exile client chat</extracomment>
+        <translation>Izaro: Maquinaciones complejas convergen en un único acto de poder.</translation>
+    </message>
+    <message id="id-izaro-slowness-lends-strength-to-ones-enemies">
+        <location filename="../../common/src/worker/logwatcher.cpp" line="70"/>
+        <source>Izaro: Slowness lends strength to one&apos;s enemies.</source>
+        <extracomment>Izaro battle start line &quot;Slowness lends strength to one&apos;s enemies.&quot;. Must match exactly lines displayed in Path of Exile client chat</extracomment>
+        <translation>Izaro: La lentitud le otorga fuerza a tus enemigos.</translation>
+    </message>
+    <message id="id-izaro-when-one-defiles-the-effigy-one-defiles-the-emperor">
+        <location filename="../../common/src/worker/logwatcher.cpp" line="74"/>
+        <source>Izaro: When one defiles the effigy, one defiles the emperor.</source>
+        <extracomment>Izaro battle start line &quot;When one defiles the effigy, one defiles the emperor.&quot;. Must match exactly lines displayed in Path of Exile client chat</extracomment>
+        <translation>Izaro: Cuando uno mancilla la efigie, uno mancilla al emperador.</translation>
+    </message>
+    <message id="id-izaro-the-essence-of-an-empire">
+        <location filename="../../common/src/worker/logwatcher.cpp" line="78"/>
+        <source>Izaro: The essence of an empire must be shared equally amongst all of its citizens.</source>
+        <extracomment>Izaro battle start line &quot;The essence of an empire must be shared equally amongst all of its citizens.&quot;. Must match exactly lines displayed in Path of Exile client chat</extracomment>
+        <translation>Izaro: La esencia de un imperio debe compartirse de forma equitativa entre todos sus ciudadanos.</translation>
+    </message>
+    <message id="id-izaro-it-is-the-sovereign-who-empowers-the-sceptre">
+        <location filename="../../common/src/worker/logwatcher.cpp" line="82"/>
+        <source>Izaro: It is the sovereign who empowers the sceptre. Not the other way round.</source>
+        <extracomment>Izaro battle start line &quot;It is the sovereign who empowers the sceptre. Not the other way round.&quot;. Must match exactly lines displayed in Path of Exile client chat</extracomment>
+        <translation>Izaro: Es el soberano el que da poder al cetro. No al revés.</translation>
+    </message>
+    <message id="id-izaro-some-things-that-slumber-should-never-be-awoken">
+        <location filename="../../common/src/worker/logwatcher.cpp" line="86"/>
+        <source>Izaro: Some things that slumber should never be awoken.</source>
+        <extracomment>Izaro battle start line &quot;Some things that slumber should never be awoken.&quot;. Must match exactly lines displayed in Path of Exile client chat</extracomment>
+        <translation>Izaro: Algunas cosas que duermen nunca deberían ser despertadas.</translation>
+    </message>
+    <message id="id-izaro-an-emperor-is-only-as-efficient-as-those-he-commands">
+        <location filename="../../common/src/worker/logwatcher.cpp" line="90"/>
+        <source>Izaro: An emperor is only as efficient as those he commands.</source>
+        <extracomment>Izaro battle start line &quot;An emperor is only as efficient as those he commands.&quot;. Must match exactly lines displayed in Path of Exile client chat</extracomment>
+        <translation>Izaro: Un emperador es solo tan eficiente como aquellos a los que comanda.</translation>
+    </message>
+    <message id="id-izaro-The-emperor-beckons-and-the-world-attends">
+        <location filename="../../common/src/worker/logwatcher.cpp" line="94"/>
+        <source>Izaro: The emperor beckons and the world attends.</source>
+        <extracomment>Izaro battle start line &quot;The emperor beckons and the world attends.&quot;. Must match exactly lines displayed in Path of Exile client chat</extracomment>
+        <translation>Izaro: El Emperador invita y el mundo asiste.</translation>
+    </message>
+    <message id="id-izaro-by-the-goddess-what-ambition">
+        <location filename="../../common/src/worker/logwatcher.cpp" line="101"/>
+        <source>Izaro: By the Goddess! What ambition!</source>
+        <extracomment>Izaro battle finish line &quot;By the Goddess! What ambition!&quot;. Must match exactly lines displayed in Path of Exile client chat</extracomment>
+        <translation>Izaro: ¡Por la Diosa! ¡Qué ambición!</translation>
+    </message>
+    <message id="id-izaro-such-resilience">
+        <location filename="../../common/src/worker/logwatcher.cpp" line="105"/>
+        <source>Izaro: Such resilience!</source>
+        <extracomment>Izaro battle finish line &quot;Such resilience!&quot;. Must match exactly lines displayed in Path of Exile client chat</extracomment>
+        <translation>Izaro: ¡Cuánta resistencia!</translation>
+    </message>
+    <message id="id-izaro-you-are-inexhaustible">
+        <location filename="../../common/src/worker/logwatcher.cpp" line="109"/>
+        <source>Izaro: You are inexhaustible!</source>
+        <extracomment>Izaro battle finish line &quot;You are inexhaustible!&quot;. Must match exactly lines displayed in Path of Exile client chat</extracomment>
+        <translation>Izaro: ¡Eres inagotable!</translation>
+    </message>
+    <message id="id-izaro-delight-in-your-gilded-dungeon-male">
+        <location filename="../../common/src/worker/logwatcher.cpp" line="31"/>
+        <source>Izaro: Delight in your gilded dungeon, ascendant.</source>
+        <extracomment>Izaro finish line &quot;Delight in your gilded dungeon, ascendant.&quot; (male version). Must match exactly lines displayed in Path of Exile client chat</extracomment>
+        <translation>Izaro: Regocíjate en tu mazmorra dorada, ascendiente.</translation>
+    </message>
+    <message id="id-izaro-delight-in-your-gilded-dungeon-female">
+        <location filename="../../common/src/worker/logwatcher.cpp" line="35"/>
+        <source>Izaro: Delight in your gilded dungeon, ascendant.</source>
+        <extracomment>Izaro finish line &quot;Delight in your gilded dungeon, ascendant.&quot; (female version). Must match exactly lines displayed in Path of Exile client chat</extracomment>
+        <translation>Izaro: Regocíjate en tu mazmorra dorada, ascendiente.</translation>
+    </message>
+    <message id="id-izaro-your-destination-is-more-dangerous-male">
+        <location filename="../../common/src/worker/logwatcher.cpp" line="39"/>
+        <source>Izaro: Your destination is more dangerous than the journey, ascendant.</source>
+        <extracomment>Izaro finish line &quot;Your destination is more dangerous than the journey, ascendant.&quot;. (male version). Must match exactly lines displayed in Path of Exile client chat</extracomment>
+        <translation>Izaro: Tu destino es más peligroso que tu viaje, ascendiente.</translation>
+    </message>
+    <message id="id-izaro-your-destination-is-more-dangerous-female">
+        <location filename="../../common/src/worker/logwatcher.cpp" line="43"/>
+        <source>Izaro: Your destination is more dangerous than the journey, ascendant.</source>
+        <extracomment>Izaro finish line &quot;Your destination is more dangerous than the journey, ascendant.&quot;. (female version). Must match exactly lines displayed in Path of Exile client chat</extracomment>
+        <translation>Izaro: Tu destino es más peligroso que tu viaje, ascendiente.</translation>
+    </message>
+    <message id="id-izaro-triumphant-at-last-male">
+        <location filename="../../common/src/worker/logwatcher.cpp" line="47"/>
+        <source>Izaro: Triumphant at last!</source>
+        <extracomment>Izaro finish line &quot;Triumphant at last!&quot;. (male version). Must match exactly lines displayed in Path of Exile client chat</extracomment>
+        <translation>Izaro: ¡Triunfante al fin!</translation>
+    </message>
+    <message id="id-izaro-triumphant-at-last-female">
+        <location filename="../../common/src/worker/logwatcher.cpp" line="51"/>
+        <source>Izaro: Triumphant at last!</source>
+        <extracomment>Izaro finish line &quot;Triumphant at last!&quot;. (female version). Must match exactly lines displayed in Path of Exile client chat</extracomment>
+        <translation>Izaro: ¡Triunfante al fin!</translation>
+    </message>
+    <message id="id-izaro-you-were-born-for-this-male">
+        <location filename="../../common/src/worker/logwatcher.cpp" line="113"/>
+        <source>Izaro: You were born for this!</source>
+        <extracomment>Izaro battle finish line &quot;You were born for this!&quot;. (male version). Must match exactly lines displayed in Path of Exile client chat</extracomment>
+        <translation>Izaro: ¡Naciste para esto!</translation>
+    </message>
+    <message id="id-izaro-you-were-born-for-this-female">
+        <location filename="../../common/src/worker/logwatcher.cpp" line="117"/>
+        <source>Izaro: You were born for this!</source>
+        <extracomment>Izaro battle finish line &quot;You were born for this!&quot;. (female version). Must match exactly lines displayed in Path of Exile client chat</extracomment>
+        <translation>Izaro: ¡Naciste para esto!</translation>
+    </message>
+    <message id="id-labyrinth-a-portal-to-izaro-appears">
+        <location filename="../../common/src/worker/logwatcher.cpp" line="124"/>
+        <source>A portal to Izaro appears.</source>
+        <extracomment>Portal spawn. Must match exactly lines displayed in Path of Exile client chat</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
     <message id="id-basilica-annex">
-        <location filename="../../common/src/worker/logwatcher.cpp" line="49"/>
+        <location filename="../../common/src/worker/logwatcher.cpp" line="131"/>
         <source>Basilica Annex</source>
         <extracomment>Basilica Annex room name. Must match exactly room name displayed in Path of Exile client</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Anexo de la basílica</translation>
     </message>
     <message id="id-basilica-atrium">
-        <location filename="../../common/src/worker/logwatcher.cpp" line="53"/>
+        <location filename="../../common/src/worker/logwatcher.cpp" line="135"/>
         <source>Basilica Atrium</source>
         <extracomment>Basilica Atrium room name. Must match exactly room name displayed in Path of Exile client</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Atrio de la basílica</translation>
     </message>
     <message id="id-basilica-halls">
-        <location filename="../../common/src/worker/logwatcher.cpp" line="57"/>
+        <location filename="../../common/src/worker/logwatcher.cpp" line="139"/>
         <source>Basilica Halls</source>
         <extracomment>Basilica Halls room name. Must match exactly room name displayed in Path of Exile client</extracomment>
         <translation>Pasillos de la basílica</translation>
     </message>
     <message id="id-basilica-passage">
-        <location filename="../../common/src/worker/logwatcher.cpp" line="61"/>
+        <location filename="../../common/src/worker/logwatcher.cpp" line="143"/>
         <source>Basilica Passage</source>
         <extracomment>Basilica Passage room name. Must match exactly room name displayed in Path of Exile client</extracomment>
         <translation>Pasaje de la basílica</translation>
     </message>
     <message id="id-domain-crossing">
-        <location filename="../../common/src/worker/logwatcher.cpp" line="65"/>
+        <location filename="../../common/src/worker/logwatcher.cpp" line="147"/>
         <source>Domain Crossing</source>
         <extracomment>Domain Crossing room name. Must match exactly room name displayed in Path of Exile client</extracomment>
         <translation>Cruce del dominio</translation>
     </message>
     <message id="id-domain-enclosure">
-        <location filename="../../common/src/worker/logwatcher.cpp" line="69"/>
+        <location filename="../../common/src/worker/logwatcher.cpp" line="151"/>
         <source>Domain Enclosure</source>
         <extracomment>Domain Enclosure room name. Must match exactly room name displayed in Path of Exile client</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Cercado del dominio</translation>
     </message>
     <message id="id-domain-path">
-        <location filename="../../common/src/worker/logwatcher.cpp" line="73"/>
+        <location filename="../../common/src/worker/logwatcher.cpp" line="155"/>
         <source>Domain Path</source>
         <extracomment>Domain Path room name. Must match exactly room name displayed in Path of Exile client</extracomment>
         <translation>Camino del dominio</translation>
     </message>
     <message id="id-domain-walkways">
-        <location filename="../../common/src/worker/logwatcher.cpp" line="77"/>
+        <location filename="../../common/src/worker/logwatcher.cpp" line="159"/>
         <source>Domain Walkways</source>
         <extracomment>Domain Walkways room name. Must match exactly room name displayed in Path of Exile client</extracomment>
         <translation>Pasarelas del dominio</translation>
     </message>
     <message id="id-estate-crossing">
-        <location filename="../../common/src/worker/logwatcher.cpp" line="81"/>
+        <location filename="../../common/src/worker/logwatcher.cpp" line="163"/>
         <source>Estate Crossing</source>
         <extracomment>Estate Crossing room name. Must match exactly room name displayed in Path of Exile client</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Cruce de la hacienda</translation>
     </message>
     <message id="id-estate-enclosure">
-        <location filename="../../common/src/worker/logwatcher.cpp" line="85"/>
+        <location filename="../../common/src/worker/logwatcher.cpp" line="167"/>
         <source>Estate Enclosure</source>
         <extracomment>Estate Enclosure room name. Must match exactly room name displayed in Path of Exile client</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Cercado de la hacienda</translation>
     </message>
     <message id="id-estate-path">
-        <location filename="../../common/src/worker/logwatcher.cpp" line="89"/>
+        <location filename="../../common/src/worker/logwatcher.cpp" line="171"/>
         <source>Estate Path</source>
         <extracomment>Estate Path room name. Must match exactly room name displayed in Path of Exile client</extracomment>
         <translation>Camino de la hacienda</translation>
     </message>
     <message id="id-estate-walkways">
-        <location filename="../../common/src/worker/logwatcher.cpp" line="93"/>
+        <location filename="../../common/src/worker/logwatcher.cpp" line="175"/>
         <source>Estate Walkways</source>
         <extracomment>Estate Walkways room name. Must match exactly room name displayed in Path of Exile client</extracomment>
         <translation>Pasarelas de la hacienda</translation>
     </message>
     <message id="id-mansion-annex">
-        <location filename="../../common/src/worker/logwatcher.cpp" line="97"/>
+        <location filename="../../common/src/worker/logwatcher.cpp" line="179"/>
         <source>Mansion Annex</source>
         <extracomment>Mansion Annex room name. Must match exactly room name displayed in Path of Exile client</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Anexo de la mansión</translation>
     </message>
     <message id="id-mansion-atrium">
-        <location filename="../../common/src/worker/logwatcher.cpp" line="101"/>
+        <location filename="../../common/src/worker/logwatcher.cpp" line="183"/>
         <source>Mansion Atrium</source>
         <extracomment>Mansion Atrium room name. Must match exactly room name displayed in Path of Exile client</extracomment>
         <translation>Atrio de la mansión</translation>
     </message>
     <message id="id-mansion-halls">
-        <location filename="../../common/src/worker/logwatcher.cpp" line="105"/>
+        <location filename="../../common/src/worker/logwatcher.cpp" line="187"/>
         <source>Mansion Halls</source>
         <extracomment>Mansion Halls room name. Must match exactly room name displayed in Path of Exile client</extracomment>
         <translation>Pasillos de la mansión</translation>
     </message>
     <message id="id-mansion-passage">
-        <location filename="../../common/src/worker/logwatcher.cpp" line="109"/>
+        <location filename="../../common/src/worker/logwatcher.cpp" line="191"/>
         <source>Mansion Passage</source>
         <extracomment>Mansion Passage room name. Must match exactly room name displayed in Path of Exile client</extracomment>
         <translation>Pasaje de la mansión</translation>
     </message>
     <message id="id-sanitorium-annex">
-        <location filename="../../common/src/worker/logwatcher.cpp" line="113"/>
+        <location filename="../../common/src/worker/logwatcher.cpp" line="195"/>
         <source>Sanitorium Annex</source>
         <extracomment>Sanitorium Annex room name. Must match exactly room name displayed in Path of Exile client</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Anexo del sanatorio</translation>
     </message>
     <message id="id-sanitorium-halls">
-        <location filename="../../common/src/worker/logwatcher.cpp" line="117"/>
+        <location filename="../../common/src/worker/logwatcher.cpp" line="199"/>
         <source>Sanitorium Halls</source>
         <extracomment>Sanitorium Halls room name. Must match exactly room name displayed in Path of Exile client</extracomment>
         <translation>Pasillos del sanatorio</translation>
     </message>
     <message id="id-sanitorium-passage">
-        <location filename="../../common/src/worker/logwatcher.cpp" line="121"/>
+        <location filename="../../common/src/worker/logwatcher.cpp" line="203"/>
         <source>Sanitorium Passage</source>
         <extracomment>Sanitorium Passage room name. Must match exactly room name displayed in Path of Exile client</extracomment>
         <translation>Pasaje del sanatorio</translation>
     </message>
     <message id="id-sepulchre-annex">
-        <location filename="../../common/src/worker/logwatcher.cpp" line="125"/>
+        <location filename="../../common/src/worker/logwatcher.cpp" line="207"/>
         <source>Sepulchre Annex</source>
         <extracomment>Sepulchre Annex room name. Must match exactly room name displayed in Path of Exile client</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Anexo del sepulcro</translation>
     </message>
     <message id="id-sepulchre-atrium">
-        <location filename="../../common/src/worker/logwatcher.cpp" line="129"/>
+        <location filename="../../common/src/worker/logwatcher.cpp" line="211"/>
         <source>Sepulchre Atrium</source>
         <extracomment>Sepulchre Atrium room name. Must match exactly room name displayed in Path of Exile client</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Atrio del sepulcro</translation>
     </message>
     <message id="id-sepulchre-halls">
-        <location filename="../../common/src/worker/logwatcher.cpp" line="133"/>
+        <location filename="../../common/src/worker/logwatcher.cpp" line="215"/>
         <source>Sepulchre Halls</source>
         <extracomment>Sepulchre Halls room name. Must match exactly room name displayed in Path of Exile client</extracomment>
         <translation>Pasillos del sepulcro</translation>
     </message>
     <message id="id-sepulchre-passage">
-        <location filename="../../common/src/worker/logwatcher.cpp" line="137"/>
+        <location filename="../../common/src/worker/logwatcher.cpp" line="219"/>
         <source>Sepulchre Passage</source>
         <extracomment>Sepulchre Passage room name. Must match exactly room name displayed in Path of Exile client</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Pasaje del sepulcro</translation>
     </message>
     <message id="id-labyrinth-regex-you-have-entered">
-        <location filename="../../common/src/worker/logwatcher.cpp" line="209"/>
+        <location filename="../../common/src/worker/logwatcher.cpp" line="287"/>
         <source>^You have entered (.*?)\.$</source>
         <oldsource>^: You have entered (.*?)\.$</oldsource>
         <extracomment>Regular expression used to match room entered by player character in Path of Exile client log file (.*?) Matches and captures the room name.</extracomment>
@@ -150,7 +306,7 @@
     </message>
     <message id="id-labyrinth-aspirants-plaza">
         <location filename="../../common/src/controller/navigationcontroller.cpp" line="59"/>
-        <location filename="../../common/src/worker/logwatcher.cpp" line="222"/>
+        <location filename="../../common/src/worker/logwatcher.cpp" line="299"/>
         <location filename="../qml/planner/LabyrinthMapDisplay.qml" line="65"/>
         <location filename="../qml/planner/LabyrinthMapDisplay.qml" line="70"/>
         <source>Aspirants&apos; Plaza</source>
