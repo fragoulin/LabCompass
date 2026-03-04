@@ -22,6 +22,7 @@ class Settings : public QObject {
     QML_WRITABLE_VAR_PROPERTY(bool, showMinimap)
 
     QML_WRITABLE_VAR_PROPERTY(QString, toggleHideUiHotkey)
+    QML_WRITABLE_VAR_PROPERTY(QString, languageCode)
 
     std::unique_ptr<QSettings> settings;
 

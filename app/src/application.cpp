@@ -4,6 +4,7 @@
 #include "keysequence/keysequencehelper.h"
 #include "tray/trayiconmenu.h"
 #include "version.h"
+#include <QStringBuilder>
 
 Application::Application(int& argc, char** argv)
     : QApplication(argc, argv)
@@ -53,22 +54,31 @@ void Application::init()
 
 void Application::initTranslations()
 {
-    auto locale = QLocale::system();
-    qInfo() << "Default locale" << locale;
-    auto filename = QApplication::applicationName();
-    auto directory = ":/translations";
-
-    if (translator.load(locale, filename, "_", directory))
-        installTranslator(&translator);
-    else {
-        qWarning() << "Failed to load translation file" << filename << "from directory" << directory << "and locale" << locale << ".Fallback to english language";
-    auto fallbackFilename = filename + "_en";
-    if(translator.load(fallbackFilename, directory)) {
-        qInfo() << "Using english as fallback language";
-        installTranslator(&translator);
+    QString languageCode;
+    const QString languageCodeFromSettings = model.get_settings()->get_languageCode();
+    if (languageCodeFromSettings.isEmpty()) {
+        QLocale locale = QLocale::system();
+        languageCode = QLocale::languageToCode(locale.language());
+        model.get_settings()->set_languageCode(languageCode);
     }
     else
-        qWarning() << "Failed to load fallback english file" << fallbackFilename << "from directory" << directory;
+        languageCode = languageCodeFromSettings;
+
+    const QString baseFilename = QApplication::applicationName();
+    QString filename = baseFilename % "_" % languageCode;
+    const QString directory = ":/translations";
+
+    if (!translator.load(filename, directory) || !installTranslator(&translator)) {
+        qWarning() << "Cannot find translation" << filename << "from directory" << directory << "and language code" << languageCode << ". Fallback to english language";
+        languageCode = "en";
+        filename = baseFilename % "_" % languageCode;
+        if(translator.load(filename, directory)) {
+            qInfo() << "Using english as fallback language";
+            model.get_settings()->set_languageCode(languageCode);
+            installTranslator(&translator);
+        }
+        else
+            qWarning() << "Failed to load english fallback file" << filename << "from directory" << directory;
     }
 }
 

@@ -18,6 +18,8 @@ QVariantMap defaultSettings {
     { "showMinimap", true },
 
     { "toggleHideUiHotkey", "" },
+
+    { "languageCode", "" },
 };
 
 Settings::Settings(QObject* parent)
