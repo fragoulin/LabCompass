@@ -20,6 +20,7 @@ WindowWithShadow {
   property alias multiclientSupport: multiclientSupportInput.checked
   property alias showMinimap: showMinimapInput.checked
   property alias uiScaleFactorIndex: uiScaleFactorInput.currentIndex
+  property alias languageIndex: languageInput.currentIndex
 
   property alias toggleHideUiHotkey: toggleHideUiHotkeyEdit.keySequence
 
@@ -82,6 +83,13 @@ WindowWithShadow {
           }
         }
         NotificationIndicator {}
+      }
+
+      ComboBox {
+        id: languageInput
+        objectName: 'languageInput'
+        width: 130
+        implicitContentWidthPolicy: ComboBox.ContentItemImplicitWidth
       }
     }
 

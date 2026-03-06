@@ -62,12 +62,12 @@ Rectangle {
         anchors.fill: parent
         visible: false
         radius: 24
-        color: model.name === qsTrId("id-labyrinth-aspirants-plaza") ? '#101010' : '#E0E0E0'
+        color: model.translatedName === qsTrId("id-aspirant's-trial") ? '#101010' : '#E0E0E0'
         VectorImage {
           anchors.centerIn: parent
           width: 32
           height: 32
-          source: model.name === qsTrId("id-labyrinth-aspirants-plaza") ? 'qrc:/qt/qml/labcompass/assets/images/lab-content/izaro.svg' : ''
+          source: model.translatedName === qsTrId("id-aspirant's-trial") ? 'qrc:/qt/qml/labcompass/assets/images/lab-content/izaro.svg' : ''
         }
       }
 
@@ -220,7 +220,7 @@ Rectangle {
       }
 
       RoomLabel {
-        roomName: name
+        roomName: translatedName
         roomContents: contents
         opacity: roomHoverArea.shouldDisplayTooltip ? 1 : 0
 

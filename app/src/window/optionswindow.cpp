@@ -11,6 +11,30 @@ Q_GLOBAL_STATIC(QStringList, UI_SCALE_FACTORS, {
     "2.5"
 })
 
+Q_GLOBAL_STATIC(QStringList, LANGUAGES_CODES, {
+    "en",
+    "fr",
+    "pt",
+    "ru",
+    "th",
+    "es",
+    "de",
+    "ko",
+    "ja"
+})
+
+Q_GLOBAL_STATIC(QStringList, LANGUAGES, {
+    "English",
+    "Français",
+    "Português",
+    "Русский",
+    "ไทย",
+    "Español",
+    "Deutsch",
+    "한국어",
+    "日本語"
+})
+
 OptionsWindow::OptionsWindow(QQmlEngine* engine, Settings* settings)
     : Window(engine, true, true)
 {
@@ -22,6 +46,11 @@ OptionsWindow::OptionsWindow(QQmlEngine* engine, Settings* settings)
     std::transform(UI_SCALE_FACTORS->constBegin(), UI_SCALE_FACTORS->constEnd(), std::back_inserter(uiScaleFactorModel),
         [](const QString& s) { return s + 'x'; });
     rootObject()->findChild<QObject*>("uiScaleFactorInput")->setProperty("model", uiScaleFactorModel);
+
+    QStringList languageModel;
+    std::transform(LANGUAGES->constBegin(), LANGUAGES->constEnd(), std::back_inserter(languageModel),
+                   [](const QString& s) { return s; });
+    rootObject()->findChild<QObject*>("languageInput")->setProperty("model", languageModel);
 
     connect(global(), SIGNAL(optionsWindowOpenChanged()),
         this, SLOT(onWindowOpenChanged()));
@@ -81,6 +110,13 @@ void OptionsWindow::load()
         uiScaleFactorIndex = UI_SCALE_FACTORS->indexOf("1");
     }
     rootObject()->setProperty("uiScaleFactorIndex", uiScaleFactorIndex);
+
+    auto languageCode = settings->get_languageCode();
+    int languageIndex = LANGUAGES_CODES->indexOf(languageCode);
+    if (languageIndex == -1) {
+        languageIndex = LANGUAGES_CODES->indexOf("en");
+    }
+    rootObject()->setProperty("languageIndex", languageIndex);
 }
 
 void OptionsWindow::save()
@@ -91,4 +127,9 @@ void OptionsWindow::save()
 
     int uiScaleFactorIndex = rootObject()->property("uiScaleFactorIndex").toInt();
     settings->setProperty("scaleFactor", (*UI_SCALE_FACTORS)[uiScaleFactorIndex]);
+
+    int languageIndex = rootObject()->property("languageIndex").toInt();
+    settings->setProperty("languageCode", (*LANGUAGES_CODES)[languageIndex]);
+
+    emit(settingsUpdated(*settings));
 }

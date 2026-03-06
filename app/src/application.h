@@ -45,6 +45,7 @@ public:
 
 private slots:
     void onAboutToQuit();
+    void onSettingsUpdated(Settings &settings);
 
 private:
     void init();
@@ -58,6 +59,7 @@ private:
     void initHotkeys();
 
     void restorePreviouslyLoadedMap();
+    void updateLanguage(QString languageCode);
 };
 
 #endif // APPLICATION_H

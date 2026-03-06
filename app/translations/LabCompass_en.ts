@@ -560,7 +560,7 @@ You can try to:
         <translation type="unfinished"></translation>
     </message>
     <message id="id-trayicon-labcompass">
-        <location filename="../src/application.cpp" line="108"/>
+        <location filename="../src/application.cpp" line="118"/>
         <source>LabCompass</source>
         <extracomment>Tooltip for tray icon</extracomment>
         <translation type="unfinished"></translation>
@@ -908,6 +908,13 @@ You can try to:
         <location filename="../qml/planner/LabyrinthMapDisplay.qml" line="70"/>
         <source>Aspirants&apos; Plaza</source>
         <extracomment>Room name: Aspirants&apos; Plaza. Must match exactly room name displayed in Path of Exile client</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message id="id-aspirant&apos;s-trial">
+        <location filename="../../common/src/model/labyrinthdata.cpp" line="147"/>
+        <location filename="../../common/src/model/labyrinthdata.cpp" line="190"/>
+        <source>Aspirant&apos;s Trial</source>
+        <extracomment>Label &quot;Aspirant&apos;s Trial&quot;</extracomment>
         <translation type="unfinished"></translation>
     </message>
 </context>

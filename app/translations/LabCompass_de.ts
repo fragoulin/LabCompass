@@ -685,7 +685,7 @@ Sie können Folgendes versuchen:
         <location filename="../qml/options/Options.qml" line="129"/>
         <source>Hotkeys</source>
         <extracomment>Menu label for Hotkeys options</extracomment>
-        <translation>Tastenkombinationen</translation>
+        <translation>Tastenkomb</translation>
     </message>
     <message id="id-game-client-path">
         <location filename="../qml/options/Options.qml" line="151"/>
@@ -811,7 +811,7 @@ Sie können Folgendes versuchen:
         <location filename="../qml/planner/Planner.qml" line="77"/>
         <source>Get Maps</source>
         <extracomment>Get Maps button label to access poelab website. Label should be brief because of limited space available</extracomment>
-        <translation>Karten abrufen</translation>
+        <translation>Karten</translation>
     </message>
     <message id="id-import-maps">
         <location filename="../qml/planner/Planner.qml" line="99"/>
@@ -880,7 +880,7 @@ Sie können Folgendes versuchen:
         <translation>Voreinstellung anwenden</translation>
     </message>
     <message id="id-trayicon-labcompass">
-        <location filename="../src/application.cpp" line="108"/>
+        <location filename="../src/application.cpp" line="118"/>
         <source>LabCompass</source>
         <extracomment>Tooltip for tray icon</extracomment>
         <translation>LabCompass</translation>
@@ -920,6 +920,13 @@ Sie können Folgendes versuchen:
         <source>Lab Maps (*.json *.map)</source>
         <extracomment>File dialog info and authorized file extensions</extracomment>
         <translation>Karten (*.json *.map)</translation>
+    </message>
+    <message id="id-aspirant&apos;s-trial">
+        <location filename="../../common/src/model/labyrinthdata.cpp" line="147"/>
+        <location filename="../../common/src/model/labyrinthdata.cpp" line="190"/>
+        <source>Aspirant&apos;s Trial</source>
+        <extracomment>Label &quot;Aspirant&apos;s Trial&quot;</extracomment>
+        <translation>Prüfung des Anwärters</translation>
     </message>
 </context>
 <context>

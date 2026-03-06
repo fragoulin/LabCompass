@@ -572,7 +572,7 @@ La commande suivante permet de chercher POE dans votre répertoire HOME sous lin
         <translation>Appliquer les Préréglages</translation>
     </message>
     <message id="id-trayicon-labcompass">
-        <location filename="../src/application.cpp" line="108"/>
+        <location filename="../src/application.cpp" line="118"/>
         <source>LabCompass</source>
         <extracomment>Tooltip for tray icon</extracomment>
         <translation>LabCompass</translation>
@@ -922,6 +922,13 @@ La commande suivante permet de chercher POE dans votre répertoire HOME sous lin
         <source>Aspirants&apos; Plaza</source>
         <extracomment>Room name: Aspirants&apos; Plaza. Must match exactly room name displayed in Path of Exile client</extracomment>
         <translation>Place des Prétendants</translation>
+    </message>
+    <message id="id-aspirant&apos;s-trial">
+        <location filename="../../common/src/model/labyrinthdata.cpp" line="147"/>
+        <location filename="../../common/src/model/labyrinthdata.cpp" line="190"/>
+        <source>Aspirant&apos;s Trial</source>
+        <extracomment>Label &quot;Aspirant&apos;s Trial&quot;</extracomment>
+        <translation>L&apos;Ordalie du Prétendant</translation>
     </message>
 </context>
 <context>

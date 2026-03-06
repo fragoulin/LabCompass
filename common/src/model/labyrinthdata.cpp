@@ -9,23 +9,23 @@ using nlohmann::json_schema::json_validator;
 typedef QHash<QString, qreal> TypeSr;
 
 Q_GLOBAL_STATIC(TypeSr, ROOM_PREFIX_COST, {
-    { "Sepulchre", 3 },
-    { "Estate", 5 },
-    { "Basilica", 7 },
-    { "Sanitorium", 8 },
-    { "Mansion", 9 },
-    { "Domain", 10 },
+    { "sepulchre", 3 },
+    { "estate", 5 },
+    { "basilica", 7 },
+    { "sanitorium", 8 },
+    { "mansion", 9 },
+    { "domain", 10 },
 })
 
 Q_GLOBAL_STATIC(TypeSr, ROOM_SUFFIX_COST, {
-    { "Path", 6 },
-    { "Passage", 6 },
-    { "Walkways", 8 },
-    { "Halls", 8 },
-    { "Annex", 10 },
-    { "Enclosure", 10 },
-    { "Crossing", 12 },
-    { "Atrium", 12 },
+    { "path", 6 },
+    { "passage", 6 },
+    { "walkways", 8 },
+    { "halls", 8 },
+    { "annex", 10 },
+    { "enclosure", 10 },
+    { "crossing", 12 },
+    { "atrium", 12 },
 })
 
 Q_GLOBAL_STATIC(DirectionNormalizer, directionNormalizer, {})
@@ -141,7 +141,12 @@ bool LabyrinthData::roomIsFirstRoomInSection(const RoomId& id) const
 bool LabyrinthData::roomIsTrial(const RoomId& id) const
 {
     const Room& room = rooms[roomIdIndex.value(id)];
-    return room.name == "Aspirant's Trial";
+//    return room.name == "Aspirant's Trial";
+    //: Label "Aspirant's Trial"
+    //% "Aspirant's Trial"
+    //@ Planner
+    QString aspirantsTrialName = qtTrId("id-aspirant's-trial");
+    return room.translatedName == aspirantsTrialName;
 }
 
 bool LabyrinthData::roomIsDeadEnd(const RoomId& id) const
@@ -183,7 +188,8 @@ bool LabyrinthData::loadRooms(const QJsonArray& array)
 {
     if (array.isEmpty())
         return false;
-    rooms.append(Room({ "Aspirant\'s Plaza", "labyrinth_airlock", "plaza", { -100, 128 }, {}, -1, false }));
+
+    rooms.append(Room({ "Aspirant\'s Plaza", qtTrId("id-labyrinth-aspirants-plaza"), "labyrinth_airlock", "plaza", { -100, 128 }, {}, -1, false }));
 
     for (int i = 0; i < array.size(); i++) {
         if (!array[i].isObject())
@@ -193,12 +199,14 @@ bool LabyrinthData::loadRooms(const QJsonArray& array)
         Room room;
         room.id = roomJson["id"].toString();
         room.areaCode = roomJson["areacode"].toString();
+        room.name = roomJson["name"].toString();
 
-        // capitalize room name
-        QStringList roomNameWords = roomJson["name"].toString().split(' ');
-        std::transform(roomNameWords.begin(), roomNameWords.end(), roomNameWords.begin(),
-            [](QString x) { x = x.toLower(); if (x.size()) x[0] = x[0].toUpper(); return x; });
-        room.name = roomNameWords.join(' ');
+        // translate room name
+        QString roomName = roomJson["name"].toString();
+        QString roomNameId = "id-" % roomName.replace(' ', '-');
+        QByteArray ba = roomNameId.toLocal8Bit();
+        const char *roomNameIdChar = ba.data();
+        room.translatedName = qtTrId(roomNameIdChar);
 
         room.coordinate = QPoint(roomJson["x"].toString().toInt(), roomJson["y"].toString().toInt());
 

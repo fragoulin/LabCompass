@@ -685,7 +685,7 @@ Puede intentar:
         <location filename="../qml/options/Options.qml" line="129"/>
         <source>Hotkeys</source>
         <extracomment>Menu label for Hotkeys options</extracomment>
-        <translation>Teclas de acceso rápido</translation>
+        <translation>Teclas</translation>
     </message>
     <message id="id-game-client-path">
         <location filename="../qml/options/Options.qml" line="151"/>
@@ -793,7 +793,7 @@ Puede intentar:
         <location filename="../qml/planner/Planner.qml" line="44"/>
         <source>Labyrinth Planner</source>
         <extracomment>Labyrinth Planner window title</extracomment>
-        <translation>Planificador de laberintos</translation>
+        <translation>Planificación</translation>
     </message>
     <message id="id-layout-room-title">
         <location filename="../qml/planner/Planner.qml" line="59"/>
@@ -817,7 +817,7 @@ Puede intentar:
         <location filename="../qml/planner/Planner.qml" line="99"/>
         <source>Import Maps</source>
         <extracomment>Import Maps button label to open file dialog. Label should be brief because of limited space available</extracomment>
-        <translation>Importar mapas</translation>
+        <translation>Importar</translation>
     </message>
     <message id="id-planner-donate">
         <location filename="../qml/planner/Planner.qml" line="176"/>
@@ -880,7 +880,7 @@ Puede intentar:
         <translation>Aplicar</translation>
     </message>
     <message id="id-trayicon-labcompass">
-        <location filename="../src/application.cpp" line="108"/>
+        <location filename="../src/application.cpp" line="118"/>
         <source>LabCompass</source>
         <extracomment>Tooltip for tray icon</extracomment>
         <translation>LabCompass</translation>
@@ -920,6 +920,13 @@ Puede intentar:
         <source>Lab Maps (*.json *.map)</source>
         <extracomment>File dialog info and authorized file extensions</extracomment>
         <translation>Mapas de laberinto (*.json *.map)</translation>
+    </message>
+    <message id="id-aspirant&apos;s-trial">
+        <location filename="../../common/src/model/labyrinthdata.cpp" line="147"/>
+        <location filename="../../common/src/model/labyrinthdata.cpp" line="190"/>
+        <source>Aspirant&apos;s Trial</source>
+        <extracomment>Label &quot;Aspirant&apos;s Trial&quot;</extracomment>
+        <translation>Prueba del aspirante</translation>
     </message>
 </context>
 <context>

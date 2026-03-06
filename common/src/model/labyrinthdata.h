@@ -6,6 +6,7 @@
 struct LabyrinthData {
     struct Room {
         QString name;
+        QString translatedName;
         QString areaCode;
         RoomId id;
         QPoint coordinate;

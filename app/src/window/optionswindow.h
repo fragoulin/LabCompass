@@ -14,7 +14,11 @@ class OptionsWindow : public Window {
         "multiclientSupport",
         "showMinimap",
         "toggleHideUiHotkey",
+        "languageCode",
     };
+
+signals:
+    void settingsUpdated(Settings &settings);
 
 public:
     OptionsWindow(QQmlEngine* engine, Settings* settings);

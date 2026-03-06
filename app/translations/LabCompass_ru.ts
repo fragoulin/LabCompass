@@ -685,7 +685,7 @@ You can try to:
         <location filename="../qml/options/Options.qml" line="129"/>
         <source>Hotkeys</source>
         <extracomment>Menu label for Hotkeys options</extracomment>
-        <translation>Горячие клавиши</translation>
+        <translation>Клавиатурные</translation>
     </message>
     <message id="id-game-client-path">
         <location filename="../qml/options/Options.qml" line="151"/>
@@ -745,7 +745,7 @@ You can try to:
         <location filename="../qml/planner/PlanSummaryDisplay.qml" line="19"/>
         <source>Plan Summary</source>
         <extracomment>Label for plan summary displayed in the planner window. Label should be brief because of limited space</extracomment>
-        <translation>Краткое описание плана</translation>
+        <translation>сводка</translation>
     </message>
     <message id="id-planner-rooms">
         <location filename="../qml/planner/PlanSummaryDisplay.qml" line="33"/>
@@ -793,7 +793,7 @@ You can try to:
         <location filename="../qml/planner/Planner.qml" line="44"/>
         <source>Labyrinth Planner</source>
         <extracomment>Labyrinth Planner window title</extracomment>
-        <translation>Планировщик лабиринтов</translation>
+        <translation>Планирование</translation>
     </message>
     <message id="id-layout-room-title">
         <location filename="../qml/planner/Planner.qml" line="59"/>
@@ -880,7 +880,7 @@ You can try to:
         <translation>Применить</translation>
     </message>
     <message id="id-trayicon-labcompass">
-        <location filename="../src/application.cpp" line="108"/>
+        <location filename="../src/application.cpp" line="118"/>
         <source>LabCompass</source>
         <extracomment>Tooltip for tray icon</extracomment>
         <translation>LabCompass</translation>
@@ -920,6 +920,13 @@ You can try to:
         <source>Lab Maps (*.json *.map)</source>
         <extracomment>File dialog info and authorized file extensions</extracomment>
         <translation>Карты лабиринтов (*.json *.map)</translation>
+    </message>
+    <message id="id-aspirant&apos;s-trial">
+        <location filename="../../common/src/model/labyrinthdata.cpp" line="147"/>
+        <location filename="../../common/src/model/labyrinthdata.cpp" line="190"/>
+        <source>Aspirant&apos;s Trial</source>
+        <extracomment>Label &quot;Aspirant&apos;s Trial&quot;</extracomment>
+        <translation>Испытание претендента</translation>
     </message>
 </context>
 <context>

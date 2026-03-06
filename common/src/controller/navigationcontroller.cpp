@@ -57,12 +57,18 @@ void NavigationController::onRoomChanged(const QString& name)
         data.previousRoom = data.currentRoom;
 
     auto aspirantsPlaza = qtTrId("id-labyrinth-aspirants-plaza");
+    qInfo() << "currentRoomDetermined" << data.currentRoomDetermined;
+    qInfo() << "data.plannedRoute.size()" << data.plannedRoute.size();
+    qInfo() << "model->labyrinthData.getRoomFromId(data.plannedRoute[1]).translatedName" << model->labyrinthData.getRoomFromId(data.plannedRoute[1]).translatedName;
+    qInfo() << "name" << name;
     // the user follows the planned route
-    if (data.currentRoomDetermined && data.plannedRoute.size() >= 2 && model->labyrinthData.getRoomFromId(data.plannedRoute[1]).name == name) {
+    if (data.currentRoomDetermined && data.plannedRoute.size() >= 2 && model->labyrinthData.getRoomFromId(data.plannedRoute[1]).translatedName == name) {
+        qInfo() << 1;
         data.possibleCurrentRooms = { data.plannedRoute[1] };
 
         // the user takes a portal to the next trial room
     } else if (data.currentRoomDetermined && data.contentState.portalLocations.contains(data.currentRoom) && name == aspirantsPlaza) {
+        qInfo() << 2;
         int currentSection = data.lab->getRoomFromId(data.currentRoom).section;
         data.possibleCurrentRooms = { data.lab->sections[currentSection].trialRoom };
 
@@ -73,6 +79,7 @@ void NavigationController::onRoomChanged(const QString& name)
         }
 
     } else {
+        qInfo() << 3;
         QSet<QString> connectedRooms;
         foreach (const auto& current, data.possibleCurrentRooms) {
             foreach (const auto& room, model->labyrinthData.rooms)
@@ -82,10 +89,11 @@ void NavigationController::onRoomChanged(const QString& name)
 
         data.possibleCurrentRooms = QSet<QString>();
         for (auto i = connectedRooms.constBegin(); i != connectedRooms.constEnd(); i++)
-            if (model->labyrinthData.getRoomFromId(*i).name == name)
+            if (model->labyrinthData.getRoomFromId(*i).translatedName == name)
                 data.possibleCurrentRooms.insert(*i);
     }
 
+    qInfo() << "possible rooms size" << data.possibleCurrentRooms.size();
     if (data.possibleCurrentRooms.size() == 1) {
         data.currentRoom = *data.possibleCurrentRooms.constBegin();
         data.currentRoomDetermined = true;

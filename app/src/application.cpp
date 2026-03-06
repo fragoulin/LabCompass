@@ -21,6 +21,17 @@ void Application::onAboutToQuit()
     model.get_settings()->save();
 }
 
+void Application::onSettingsUpdated(Settings &settings)
+{
+    const auto languageCode = settings.get_languageCode();
+    if (!translator.isEmpty())
+        removeTranslator(&translator);
+
+    updateLanguage(languageCode);
+
+    engine.retranslate();
+}
+
 void Application::init()
 {
     qInfo() << "Initialization started";
@@ -64,22 +75,7 @@ void Application::initTranslations()
     else
         languageCode = languageCodeFromSettings;
 
-    const QString baseFilename = QApplication::applicationName();
-    QString filename = baseFilename % "_" % languageCode;
-    const QString directory = ":/translations";
-
-    if (!translator.load(filename, directory) || !installTranslator(&translator)) {
-        qWarning() << "Cannot find translation" << filename << "from directory" << directory << "and language code" << languageCode << ". Fallback to english language";
-        languageCode = "en";
-        filename = baseFilename % "_" % languageCode;
-        if(translator.load(filename, directory)) {
-            qInfo() << "Using english as fallback language";
-            model.get_settings()->set_languageCode(languageCode);
-            installTranslator(&translator);
-        }
-        else
-            qWarning() << "Failed to load english fallback file" << filename << "from directory" << directory;
-    }
+    updateLanguage(languageCode);
 }
 
 void Application::initResources()
@@ -144,6 +140,8 @@ void Application::initWindows()
     puzzleWindow.reset(new PuzzleWindow(&engine));
 
     optionsWindow.reset(new OptionsWindow(&engine, model.get_settings()));
+    connect(optionsWindow.get(), &OptionsWindow::settingsUpdated,
+            this, &Application::onSettingsUpdated);
 
     roomPresetsWindow.reset(new RoomPresetsWindow(&engine));
 }
@@ -207,5 +205,25 @@ void Application::restorePreviouslyLoadedMap()
         const auto& appData = QDir(QStandardPaths::writableLocation(QStandardPaths::AppDataLocation));
         const auto& lastLoadedMap = appData.absoluteFilePath("lastLoaded.map");
         labyrinthController->importFile(lastLoadedMap);
+    }
+}
+
+void Application::updateLanguage(QString languageCode)
+{
+    const QString baseFilename = QApplication::applicationName();
+    QString filename = baseFilename % "_" % languageCode;
+    const QString directory = ":/i18n";
+
+    if (!translator.load(filename, directory) || !installTranslator(&translator)) {
+        qWarning() << "Cannot find translation" << filename << "from directory" << directory << "and language code" << languageCode << ". Fallback to english language";
+        languageCode = "en";
+        filename = baseFilename % "_" % languageCode;
+        if(translator.load(filename, directory)) {
+            qInfo() << "Using english as fallback language";
+            model.get_settings()->set_languageCode(languageCode);
+            installTranslator(&translator);
+        }
+        else
+            qWarning() << "Failed to load english fallback file" << filename << "from directory" << directory;
     }
 }

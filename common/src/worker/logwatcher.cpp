@@ -219,7 +219,7 @@ Q_GLOBAL_STATIC(QStringList, ROOM_NAMES, {
     qtTrId("id-sepulchre-passage"),
 })
 
-Q_GLOBAL_STATIC(QRegularExpression, LOG_REGEX, R"(^\d+/\d+/\d+ \d+:\d+:\d+.*?\[.*?(\d+)\] : (?:<<set:\w+>>)*(.*)$)")
+Q_GLOBAL_STATIC(QRegularExpression, LOG_REGEX, R"(^\d+\/\d+\/\d+ \d+:\d+:\d+ \d+ \w+ \[INFO Client (\d+)\](?: :)? (?:<<set:\w+>>)*(.*)$)")
 
 LogWatcher::LogWatcher(ApplicationModel* model)
 {

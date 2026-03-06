@@ -19,7 +19,7 @@ QVariantMap defaultSettings {
 
     { "toggleHideUiHotkey", "" },
 
-    { "languageCode", "" },
+    { "languageCode", "en" },
 };
 
 Settings::Settings(QObject* parent)

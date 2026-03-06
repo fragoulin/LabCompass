@@ -817,7 +817,7 @@ You can try to:
         <location filename="../qml/planner/Planner.qml" line="99"/>
         <source>Import Maps</source>
         <extracomment>Import Maps button label to open file dialog. Label should be brief because of limited space available</extracomment>
-        <translation>マップのインポート</translation>
+        <translation>マップ</translation>
     </message>
     <message id="id-planner-donate">
         <location filename="../qml/planner/Planner.qml" line="176"/>
@@ -880,7 +880,7 @@ You can try to:
         <translation>プリセットを適用</translation>
     </message>
     <message id="id-trayicon-labcompass">
-        <location filename="../src/application.cpp" line="108"/>
+        <location filename="../src/application.cpp" line="118"/>
         <source>LabCompass</source>
         <extracomment>Tooltip for tray icon</extracomment>
         <translation>LabCompass</translation>
@@ -920,6 +920,13 @@ You can try to:
         <source>Lab Maps (*.json *.map)</source>
         <extracomment>File dialog info and authorized file extensions</extracomment>
         <translation>ラボマップ (*.json *.map)</translation>
+    </message>
+    <message id="id-aspirant&apos;s-trial">
+        <location filename="../../common/src/model/labyrinthdata.cpp" line="147"/>
+        <location filename="../../common/src/model/labyrinthdata.cpp" line="190"/>
+        <source>Aspirant&apos;s Trial</source>
+        <extracomment>Label &quot;Aspirant&apos;s Trial&quot;</extracomment>
+        <translation>志す者への試練</translation>
     </message>
 </context>
 <context>

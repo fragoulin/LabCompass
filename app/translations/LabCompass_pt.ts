@@ -880,7 +880,7 @@ Você pode tentar:
         <translation>Aplicar</translation>
     </message>
     <message id="id-trayicon-labcompass">
-        <location filename="../src/application.cpp" line="108"/>
+        <location filename="../src/application.cpp" line="118"/>
         <source>LabCompass</source>
         <extracomment>Tooltip for tray icon</extracomment>
         <translation>LabCompass</translation>
@@ -920,6 +920,13 @@ Você pode tentar:
         <source>Lab Maps (*.json *.map)</source>
         <extracomment>File dialog info and authorized file extensions</extracomment>
         <translation>Mapas de labirinto (*.json *.map)</translation>
+    </message>
+    <message id="id-aspirant&apos;s-trial">
+        <location filename="../../common/src/model/labyrinthdata.cpp" line="147"/>
+        <location filename="../../common/src/model/labyrinthdata.cpp" line="190"/>
+        <source>Aspirant&apos;s Trial</source>
+        <extracomment>Label &quot;Aspirant&apos;s Trial&quot;</extracomment>
+        <translation>Provação do Aspirante</translation>
     </message>
 </context>
 <context>

@@ -7,6 +7,7 @@
 struct RoomModelData {
     QString id;
     QString name;
+    QString translatedName;
     QPoint coordinate;
     QStringList contents;
     bool isTarget;
@@ -18,6 +19,7 @@ class RoomModel : public QAbstractListModel {
     enum Roles {
         IdRole = Qt::UserRole + 1,
         NameRole,
+        TranslatedNameRole,
         CoordinateRole,
         ContentsRole,
         IsTargetRole,
