@@ -560,7 +560,7 @@ You can try to:
         <translation type="unfinished"></translation>
     </message>
     <message id="id-trayicon-labcompass">
-        <location filename="../src/application.cpp" line="103"/>
+        <location filename="../src/application.cpp" line="108"/>
         <source>LabCompass</source>
         <extracomment>Tooltip for tray icon</extracomment>
         <translation type="unfinished"></translation>
@@ -599,6 +599,12 @@ You can try to:
         <location filename="../src/window/plannerwindow.cpp" line="51"/>
         <source>Lab Maps (*.json *.map)</source>
         <extracomment>File dialog info and authorized file extensions</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message id="id_application_exit">
+        <location filename="../src/window/mainwindow.cpp" line="12"/>
+        <source>E&amp;xit</source>
+        <extracomment>Exit application label on contextual menu</extracomment>
         <translation type="unfinished"></translation>
     </message>
 </context>

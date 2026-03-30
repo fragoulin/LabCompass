@@ -5,26 +5,23 @@ import "instruction"
 
 Item {
   id: root
-  width: 260
-  implicitWidth: Math.max(header.implicitWidth, compass.implicitWidth + toolbar.implicitWidth, instructionList.implicitWidth)
-  implicitHeight: header.implicitHeight + compass.implicitHeight + instructionList.implicitHeight
+
+  width: 170
+  height: 170
 
   Column {
     anchors.right: parent.right
     spacing: 4
-    Header {
-      id: header
-      objectName: "header"
-      anchors.right: parent.right
-    }
 
     Row {
       anchors.right: parent.right
       Compass {
         id: compass
+        objectName: "compass"
       }
       Toolbar {
         id: toolbar
+        objectName: "toolbar"
       }
     }
 

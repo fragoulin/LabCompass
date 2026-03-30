@@ -12,8 +12,16 @@ signals:
 public:
     MainWindow(QQmlEngine* engine);
 
+protected:
+    void mouseMoveEvent(QMouseEvent *event) override;
+    void mousePressEvent(QMouseEvent *event) override;
+
+private:
+    QPoint dragPosition;
+    QQuickItem* compass;
+    QQuickItem* toolbar;
+
 private slots:
-    void onDrag(int dx, int dy);
     void onCompassVisibleChanged();
 };
 

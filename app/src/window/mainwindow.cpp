@@ -6,11 +6,14 @@ MainWindow::MainWindow(QQmlEngine* engine)
 {
     setSource(QUrl("qrc:/qt/qml/labcompass/MainWindow.qml"));
 
-    const auto& header = rootObject()->findChild<QObject*>("header");
-    connect(header, SIGNAL(drag(int,int)),
-        this, SLOT(onDrag(int,int)));
-    connect(header, SIGNAL(exit()),
-        QCoreApplication::instance(), SLOT(quit()));
+    //: Exit application label on contextual menu
+    //% "E&xit"
+    //@ Application
+    QAction *quitAction = new QAction(qtTrId("id_application_exit"), this);
+    connect(quitAction, &QAction::triggered, qApp, &QCoreApplication::quit);
+    addAction(quitAction);
+
+    setContextMenuPolicy(Qt::ActionsContextMenu);
 
     // Qhotkey not compatible with wayland https://github.com/Skycoder42/QHotkey/issues/14
     if (!isWaylandDisplay()) {
@@ -25,8 +28,20 @@ void MainWindow::onCompassVisibleChanged()
     setVisible(visible);
 }
 
-void MainWindow::onDrag(int dx, int dy)
+void MainWindow::mousePressEvent(QMouseEvent *event)
 {
-    move(x() + dx, y() + dy);
-    emit moved(x(), y());
+    // TODO check if event position is inside compass (to exclude toolbar for drag&drop)
+    if (event->button() == Qt::LeftButton) {
+        dragPosition = event->globalPosition().toPoint() - frameGeometry().topLeft();
+        event->accept();
+    }
+}
+
+void MainWindow::mouseMoveEvent(QMouseEvent *event)
+{
+    if (event->buttons() & Qt::LeftButton) {
+        move(event->globalPosition().toPoint() - dragPosition);
+        emit moved(x(), y());
+        event->accept();
+    }
 }

@@ -572,7 +572,7 @@ La commande suivante permet de chercher POE dans votre répertoire HOME sous lin
         <translation>Appliquer les Préréglages</translation>
     </message>
     <message id="id-trayicon-labcompass">
-        <location filename="../src/application.cpp" line="103"/>
+        <location filename="../src/application.cpp" line="108"/>
         <source>LabCompass</source>
         <extracomment>Tooltip for tray icon</extracomment>
         <translation>LabCompass</translation>
@@ -612,6 +612,12 @@ La commande suivante permet de chercher POE dans votre répertoire HOME sous lin
         <source>Lab Maps (*.json *.map)</source>
         <extracomment>File dialog info and authorized file extensions</extracomment>
         <translation>Plans de Labyrinthe (*.json *.map)</translation>
+    </message>
+    <message id="id_application_exit">
+        <location filename="../src/window/mainwindow.cpp" line="12"/>
+        <source>E&amp;xit</source>
+        <extracomment>Exit application label on contextual menu</extracomment>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
