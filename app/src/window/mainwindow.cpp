@@ -6,6 +6,8 @@ MainWindow::MainWindow(QQmlEngine* engine)
 {
     setSource(QUrl("qrc:/qt/qml/labcompass/MainWindow.qml"));
 
+    compass = rootObject()->findChild<QQuickItem*>("compass");
+
     //: Exit application label on contextual menu
     //% "E&xit"
     //@ Application
@@ -44,4 +46,17 @@ void MainWindow::mouseMoveEvent(QMouseEvent *event)
         emit moved(x(), y());
         event->accept();
     }
+}
+
+void MainWindow::resizeEvent(QResizeEvent * /* event */)
+{
+    qInfo() << "geometry" << this->geometry();
+    qInfo() << "x" << compass->x();
+    qInfo() << "y" << compass->y();
+    qInfo() << "width" << compass->width();
+    qInfo() << "height" << compass->height();
+    int adjustedSize = 118; // TODO
+    qInfo() << "adjusted size" << adjustedSize;
+    QRegion compassRegion(compass->x(), compass->y(), adjustedSize, adjustedSize, QRegion::Ellipse);
+//    setMask(compassRegion);
 }
