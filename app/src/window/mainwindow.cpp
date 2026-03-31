@@ -58,5 +58,5 @@ void MainWindow::resizeEvent(QResizeEvent * /* event */)
     int adjustedSize = 118; // TODO
     qInfo() << "adjusted size" << adjustedSize;
     QRegion compassRegion(compass->x(), compass->y(), adjustedSize, adjustedSize, QRegion::Ellipse);
-//    setMask(compassRegion);
+    setMask(compassRegion);
 }
