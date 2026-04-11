@@ -1,5 +1,4 @@
 import QtQuick
-import QtQuick.VectorImage
 import labcompass
 import '..'
 
@@ -42,8 +41,8 @@ Item {
 
       Row {
         spacing: 2
-        VectorImage { width: 26; height: 20; source: 'qrc:/qt/qml/labcompass/assets/images/compass/tile-full.svg' }
-        VectorImage { width: 26; height: 20; source: 'qrc:/qt/qml/labcompass/assets/images/compass/tile-cross.svg' }
+        SvgImage { width: 26; height: 20; source: 'qrc:/qt/qml/labcompass/assets/images/compass/tile-full.svg' }
+        SvgImage { width: 26; height: 20; source: 'qrc:/qt/qml/labcompass/assets/images/compass/tile-cross.svg' }
       }
       Text {
         color: Global.primaryTextColor;
@@ -53,7 +52,7 @@ Item {
         text: qsTrId("id-roompresets-path")
       }
 
-      VectorImage { width: 26; height: 20; source: 'qrc:/qt/qml/labcompass/assets/images/compass/tile-trap.svg' }
+      SvgImage { width: 26; height: 20; source: 'qrc:/qt/qml/labcompass/assets/images/compass/tile-trap.svg' }
       Text {
         color: Global.primaryTextColor;
         //: Traps label caption displayed in room presets. Label should be brief because of limited space available
@@ -62,7 +61,7 @@ Item {
         text: qsTrId("id-roompresets-traps")
       }
 
-      VectorImage { width: 26; height: 20; source: 'qrc:/qt/qml/labcompass/assets/images/compass/door-target.svg' }
+      SvgImage { width: 26; height: 20; source: 'qrc:/qt/qml/labcompass/assets/images/compass/door-target.svg' }
       Text {
         color: Global.primaryTextColor;
         //: Exit label caption displayed in room presets. Label should be brief because of limited space available
@@ -71,7 +70,7 @@ Item {
         text: qsTrId("id-roompresets-exit")
       }
 
-      VectorImage { width: 26; height: 20; source: 'qrc:/qt/qml/labcompass/assets/images/compass/loot-normal.svg' }
+      SvgImage { width: 26; height: 20; source: 'qrc:/qt/qml/labcompass/assets/images/compass/loot-normal.svg' }
       Text {
         color: Global.primaryTextColor;
         //: Loot label caption displayed in room presets. Label should be brief because of limited space available

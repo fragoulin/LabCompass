@@ -22,7 +22,7 @@ Item {
     SvgImage {
       id: directionHud
       anchors.fill: directionDisplay
-      source: 'qrc:/images/compass/direction-hud.svg'
+      source: 'qrc:/qt/qml/labcompass/assets/images/compass/direction-hud.svg'
       sourceSize.width: 170
       sourceSize.height: 170
     }

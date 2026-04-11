@@ -17,10 +17,8 @@ InstructionItem {
   Row {
     visible: root.mechanics
     spacing: 4
-    VectorImage {
+    SvgImage {
       source: 'qrc:/qt/qml/labcompass/assets/images/instruction/mechanics.svg'
-      width: 16
-      height: 16
     }
     Text {
       text: root.mechanics in Global.nameMapping ? Global.nameMapping[mechanics] : root.mechanics

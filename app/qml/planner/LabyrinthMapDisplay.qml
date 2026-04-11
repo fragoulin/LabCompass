@@ -139,7 +139,7 @@ Rectangle {
       x: coordinate.x
       y: coordinate.y
 
-      VectorImage {
+      SvgImage {
         id: goldenDoorIcon
         anchors.centerIn: parent
         source: 'qrc:/qt/qml/labcompass/assets/images/lab-content/golden-door.svg'

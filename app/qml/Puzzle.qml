@@ -7,7 +7,6 @@ WindowWithShadow {
   property int guideModel: 0
 
   Item {
-    id: root
     width: 300
     height: 200
 
