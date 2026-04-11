@@ -7,14 +7,12 @@ Rectangle {
   property bool active
   signal clicked()
 
-  implicitWidth: image.implicitWidth
-  implicitHeight: image.implicitHeight
+  implicitWidth: 24
+  implicitHeight: 24
   color: active ? Global.lightPrimaryColor : Global.backgroundColor
   SvgImage {
     source: root.source
     anchors.centerIn: root
-    sourceSize.width: 24
-    sourceSize.height: 24
   }
   MaterialInk {
     anchors.fill: root
