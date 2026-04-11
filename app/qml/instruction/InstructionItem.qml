@@ -1,5 +1,4 @@
 import QtQuick
-import QtQuick.VectorImage
 import '..'
 
 Item {
@@ -20,7 +19,7 @@ Item {
     implicitHeight: Math.max(40, column.height + 12)
     opacity: 0.75
   }
-  VectorImage {
+  SvgImage {
     id: icon
     source: root.iconSource
     anchors.verticalCenter: background.verticalCenter

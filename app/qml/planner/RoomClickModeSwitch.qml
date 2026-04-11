@@ -1,5 +1,4 @@
 import QtQuick
-import QtQuick.VectorImage
 import '..'
 
 HighlightTab {
@@ -14,21 +13,17 @@ HighlightTab {
     Item {
       width: 24
       height: 24
-      VectorImage {
+      SvgImage {
         anchors.centerIn: parent
         source: 'qrc:/qt/qml/labcompass/assets/images/star-gold.svg'
-        width: 16
-        height: 16
       }
     }
     Item {
       width: 24
       height: 24
-      VectorImage {
+      SvgImage {
         anchors.centerIn: parent
         source: 'qrc:/qt/qml/labcompass/assets/images/map-marker-orange.svg'
-        width: 16
-        height: 16
       }
     }
   }
@@ -37,21 +32,17 @@ HighlightTab {
     Item {
       width: 24
       height: 24
-      VectorImage {
+      SvgImage {
         anchors.centerIn: parent
         source: 'qrc:/qt/qml/labcompass/assets/images/star-light.svg'
-        width: 16
-        height: 16
       }
     }
     Item {
       width: 24
       height: 24
-      VectorImage {
+      SvgImage {
         anchors.centerIn: parent
         source: 'qrc:/qt/qml/labcompass/assets/images/map-marker-light.svg'
-        width: 16
-        height: 16
       }
     }
   }

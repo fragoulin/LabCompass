@@ -1,5 +1,4 @@
 import QtQuick
-import QtQuick.VectorImage
 import labcompass
 import '..'
 
@@ -48,11 +47,9 @@ WindowWithShadow {
         anchors.rightMargin: 20
         anchors.top: parent.top
         onClicked: Global.roomPresetsWindowOpen = false;
-        VectorImage {
+        SvgImage {
           anchors.centerIn: parent
           source: 'qrc:/qt/qml/labcompass/assets/images/close.svg'
-          width: 16
-          height: 16
         }
       }
     }
@@ -102,7 +99,7 @@ WindowWithShadow {
                 text: modelData.areaCode
               }
             }
-            VectorImage {
+            SvgImage {
               anchors.top: parent.top
               anchors.right: parent.right
               width: 32
