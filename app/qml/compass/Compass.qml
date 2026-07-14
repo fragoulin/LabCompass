@@ -5,8 +5,8 @@ import '..'
 Item {
   id: root
 
-  implicitWidth: useMinimapDisplay ? minimapDisplay.implicitWidth : directionDisplay.implicitWidth + 40
-  implicitHeight: useMinimapDisplay ? minimapDisplay.implicitHeight : directionDisplay.implicitHeight
+//  width: 210
+//  height: 170
 
   property bool displayActive: Global.model.inLab && Global.model.currentRoomDetermined
   property bool useMinimapDisplay: Global.model.settings.showMinimap && displayActive && Object.keys(Global.model.instructionModel.preset).length
@@ -14,17 +14,16 @@ Item {
 
   Item {
     id: directionDisplay
-    implicitWidth: directionHud.implicitWidth
-    implicitHeight: directionHud.implicitHeight
+    width: 170
+    height: 170
     anchors.right: parent.right
     visible: !useMinimapDisplay
 
     SvgImage {
       id: directionHud
+      objectName: "directionHud"
       anchors.fill: directionDisplay
       source: 'qrc:/qt/qml/labcompass/assets/images/compass/direction-hud.svg'
-      sourceSize.width: 170
-      sourceSize.height: 170
     }
 
     Loader {
@@ -38,8 +37,6 @@ Item {
 
   Item {
     id: minimapDisplay
-    implicitWidth: minimapHud.implicitWidth
-    implicitHeight: minimapHud.implicitHeight
     anchors.fill: parent
     visible: useMinimapDisplay
 
@@ -47,8 +44,6 @@ Item {
       id: minimapHud
       anchors.fill: minimapDisplay
       source: 'qrc:/qt/qml/labcompass/assets/images/compass/minimap-hud.svg'
-      sourceSize.width: 210
-      sourceSize.height: 170
     }
 
     Loader {

@@ -13,14 +13,17 @@ public:
     MainWindow(QQmlEngine* engine);
 
 protected:
-    void mouseMoveEvent(QMouseEvent *event) override;
-    void mousePressEvent(QMouseEvent *event) override;
+//    void mouseMoveEvent(QMouseEvent *event) override;
+//    void mousePressEvent(QMouseEvent *event) override;
+//    void mouseReleaseEvent(QMouseEvent *event) override;
     void resizeEvent(QResizeEvent *event) override;
 
 private:
     QPoint dragPosition;
     QQuickItem* compass;
     QQuickItem* toolbar;
+    QQuickItem* directionHud;
+    QRegion compassRegion;
 
 private slots:
     void onCompassVisibleChanged();

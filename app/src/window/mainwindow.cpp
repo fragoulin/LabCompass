@@ -7,6 +7,12 @@ MainWindow::MainWindow(QQmlEngine* engine)
     setSource(QUrl("qrc:/qt/qml/labcompass/MainWindow.qml"));
 
     compass = rootObject()->findChild<QQuickItem*>("compass");
+    toolbar = rootObject()->findChild<QQuickItem*>("toolbar");
+    directionHud = rootObject()->findChild<QQuickItem*>("directionHud");
+    const int adjustedSize = 118; // TODO hardcoded value
+    const int compassRegionX = 2; // TODO hardcoded value
+    const int compassRegionY = (directionHud->height() - adjustedSize ) / 2;
+    compassRegion = QRegion(compassRegionX, compassRegionY, adjustedSize, adjustedSize, QRegion::Ellipse);
 
     //: Exit application label on contextual menu
     //% "E&xit"
@@ -29,34 +35,39 @@ void MainWindow::onCompassVisibleChanged()
     bool visible = global()->property("compassVisible").toBool();
     setVisible(visible);
 }
-
+/*
 void MainWindow::mousePressEvent(QMouseEvent *event)
 {
-    // TODO check if event position is inside compass (to exclude toolbar for drag&drop)
-    if (event->button() == Qt::LeftButton) {
+    // Check if event position is inside compass region in order to exclude toolbar for drag&drop
+    if (!compassRegion.contains(event->pos())) {
+        dragPosition = QPoint();
+//        event->ignore();
+    } else if (event->button() == Qt::LeftButton) {
         dragPosition = event->globalPosition().toPoint() - frameGeometry().topLeft();
-        event->accept();
+//        event->accept();
     }
 }
 
 void MainWindow::mouseMoveEvent(QMouseEvent *event)
 {
-    if (event->buttons() & Qt::LeftButton) {
+    if (!dragPosition.isNull() && (event->buttons() & Qt::LeftButton)) {
         move(event->globalPosition().toPoint() - dragPosition);
         emit moved(x(), y());
-        event->accept();
+//        event->accept();
+//    } else {
+//        event->ignore();
     }
 }
 
-void MainWindow::resizeEvent(QResizeEvent * /* event */)
+void MainWindow::mouseReleaseEvent(QMouseEvent *event )
 {
-    qInfo() << "geometry" << this->geometry();
-    qInfo() << "x" << compass->x();
-    qInfo() << "y" << compass->y();
-    qInfo() << "width" << compass->width();
-    qInfo() << "height" << compass->height();
-    int adjustedSize = 118; // TODO
-    qInfo() << "adjusted size" << adjustedSize;
-    QRegion compassRegion(compass->x(), compass->y(), adjustedSize, adjustedSize, QRegion::Ellipse);
-    setMask(compassRegion);
+}
+*/
+void MainWindow::resizeEvent(QResizeEvent * /* event */ )
+{
+    const int toolbarRegionX = directionHud->width() - toolbar->width();
+    const int toolbarRegionY = toolbar->y();
+    QRegion toolbarRegion(toolbarRegionX, toolbarRegionY, toolbar->width(), toolbar->height());
+    QRegion mask = compassRegion.united(toolbarRegion);
+//    setMask(mask);
 }

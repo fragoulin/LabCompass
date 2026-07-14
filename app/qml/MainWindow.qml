@@ -30,4 +30,8 @@ Item {
       anchors.right: parent.right
     }
   }
+
+  DragHandler {
+    target: root
+  }
 }
