@@ -2,20 +2,39 @@ import QtQuick
 import labcompass
 import "compass"
 import "instruction"
+import QWindowKit
 
-Item {
-  id: root
-  width: 260
-  implicitWidth: Math.max(header.implicitWidth, compass.implicitWidth + toolbar.implicitWidth, instructionList.implicitWidth)
-  implicitHeight: header.implicitHeight + compass.implicitHeight + instructionList.implicitHeight
+Window {
+  id: window
+  minimumWidth: Math.max(header.implicitWidth, compass.implicitWidth + toolbar.implicitWidth, instructionList.implicitWidth)
+  minimumHeight: header.implicitHeight + compass.implicitHeight + instructionList.implicitHeight
+  maximumWidth: minimumWidth
+  maximumHeight: minimumHeight
+  color: "transparent"
+  visible: false
+  flags: Qt.WindowStaysOnTopHint | Qt.FramelessWindowHint
+
+  Component.onCompleted: {
+    windowAgent.setup(window)
+    window.visible = true
+  }
+
+  WindowAgent {
+    id: windowAgent
+  }
 
   Column {
     anchors.right: parent.right
     spacing: 4
     Header {
       id: header
-      objectName: "header"
       anchors.right: parent.right
+      Component.onCompleted: {
+        windowAgent.setTitleBar(header.titleBar)
+        windowAgent.setHitTestVisible(header.closeButton);
+        windowAgent.setSystemButton(WindowAgent.Close, header.closeButton);
+      }
+      onExit: window.close()
     }
 
     Row {
@@ -31,6 +50,13 @@ Item {
     InstructionList {
       id: instructionList
       anchors.right: parent.right
+    }
+  }
+
+  Connections {
+    target: Global
+    function onCompassVisibleChanged() {
+      window.visible = Global.compassVisible;
     }
   }
 }

@@ -4,11 +4,15 @@ Row {
   id: root
   spacing: 4
 
-  signal drag(int dx, int dy)
+  readonly property alias titleBar: titleBar
+  readonly property alias closeButton: closeButton
+
   signal exit()
 
   Rectangle {
-    width: text.implicitWidth + close.width
+    id: titleBar
+    objectName: "titleBar"
+    width: text.implicitWidth + closeButton.width
     height: 24
     color: Global.lightPrimaryColor
     Text {
@@ -17,14 +21,11 @@ Row {
       color: Global.primaryTextColor
       anchors.centerIn: parent
     }
-    DragMoveArea {
-      anchors.fill: parent
-      onDrag: (dx, dy) => root.drag(dx, dy)
-    }
   }
 
   ToolbarButton {
-    id: close
+    id: closeButton
+    objectName: "closeButton"
     source: 'qrc:/qt/qml/labcompass/assets/images/close.svg'
     onClicked: root.exit()
     buttonHeight: 24
