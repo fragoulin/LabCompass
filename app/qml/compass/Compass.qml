@@ -5,8 +5,8 @@ import '..'
 Item {
   id: root
 
-  width: 210
-  height: 170
+  implicitWidth: useMinimapDisplay ? minimapDisplay.implicitWidth : directionDisplay.implicitWidth + 40
+  implicitHeight: useMinimapDisplay ? minimapDisplay.implicitHeight : directionDisplay.implicitHeight
 
   property bool displayActive: Global.model.inLab && Global.model.currentRoomDetermined
   property bool useMinimapDisplay: Global.model.settings.showMinimap && displayActive && Object.keys(Global.model.instructionModel.preset).length
@@ -14,8 +14,8 @@ Item {
 
   Item {
     id: directionDisplay
-    width: 170
-    height: 170
+    implicitWidth: 170
+    implicitHeight: 170
     anchors.right: parent.right
     visible: !useMinimapDisplay
 
@@ -37,6 +37,8 @@ Item {
 
   Item {
     id: minimapDisplay
+    implicitWidth: 210
+    implicitHeight: 170
     anchors.fill: parent
     visible: useMinimapDisplay
 

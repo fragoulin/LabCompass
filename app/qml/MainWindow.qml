@@ -42,11 +42,9 @@ Window {
       anchors.right: parent.right
       Compass {
         id: compass
-        objectName: "compass"
       }
       Toolbar {
         id: toolbar
-        objectName: "toolbar"
       }
     }
 

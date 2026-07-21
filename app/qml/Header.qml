@@ -28,5 +28,6 @@ Row {
     objectName: "closeButton"
     source: 'qrc:/qt/qml/labcompass/assets/images/close.svg'
     onClicked: root.exit()
+    buttonHeight: 24
   }
 }

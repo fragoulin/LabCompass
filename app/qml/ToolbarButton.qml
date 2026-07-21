@@ -5,10 +5,12 @@ Rectangle {
   id: root
   property string source
   property bool active
+  property double buttonHeight: 40
   signal clicked()
 
-  implicitWidth: 24
-  implicitHeight: 24
+  width: 24
+  height: root.buttonHeight
+
   color: active ? Global.lightPrimaryColor : Global.backgroundColor
   SvgImage {
     source: root.source

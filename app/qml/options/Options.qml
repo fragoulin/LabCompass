@@ -6,6 +6,7 @@ import labcompass
 import '..'
 
 WindowWithShadow {
+  id: root
   signal openUrl(string url)
   signal browseClientPath
   signal save
