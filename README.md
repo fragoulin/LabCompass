@@ -40,9 +40,9 @@ A: [It's legal.](https://i.imgur.com/Es321K1.png)
 
 A: They are provided by [poelab.com](https://www.poelab.com). The download links are right below the corresponding images. Make sure you grab the latest version every day!
 
-**Q: LabCompass window cannot be moved on Wayland display**
+**Q: LabCompass window is always on the center of the screen with Wayland display**
 
-A: Wayland display forbid window positionning programmatically, by design. So LabCompass window, which use a custom display, cannot be moved. To fix this problem, you can use the following command to force LabCompass to use X11 display:
+A: Wayland display forbid window positionning programmatically, by design. To fix this problem, you can use the following command to force LabCompass to use XCB client for X11 protocol:
 
     QT_QPA_PLATFORM=xcb labcompass
 
