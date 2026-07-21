@@ -5,7 +5,6 @@
 #include "controller/navigationcontroller.h"
 #include "hotkey/hotkeybinding.h"
 #include "model/applicationmodel.h"
-#include "window/mainwindow.h"
 #include "window/optionswindow.h"
 #include "window/plannerwindow.h"
 #include "window/puzzlewindow.h"
@@ -20,12 +19,12 @@ class Application : public QApplication {
     ApplicationModel model;
     QQmlApplicationEngine engine;
     QObject* global;
+    QWindow* window;
     QTranslator translator;
 
     std::unique_ptr<QSystemTrayIcon> trayIcon;
     std::unique_ptr<QMenu> trayIconMenu;
 
-    std::unique_ptr<MainWindow> mainWindow;
     std::unique_ptr<PlannerWindow> plannerWindow;
     std::unique_ptr<PuzzleWindow> puzzleWindow;
     std::unique_ptr<OptionsWindow> optionsWindow;
@@ -48,6 +47,7 @@ private slots:
 
 private:
     void init();
+    void initWindowKit();
     void initTranslations();
     void initResources();
     void initSystemTrayIcon();

@@ -1,8 +1,8 @@
 import QtQuick
-import QtQuick.Controls 2.2
-import QtQuick.Controls.Material 2.1
-import QtQuick.Layouts 1.3
-import labcompass 1.0
+import QtQuick.Controls
+import QtQuick.Controls.Material
+import QtQuick.Layouts
+import labcompass
 
 Button {
   id: root

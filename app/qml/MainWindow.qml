@@ -2,16 +2,41 @@ import QtQuick
 import labcompass
 import "compass"
 import "instruction"
+import QWindowKit
 
-Item {
-  id: root
+Window {
+  id: window
+  minimumWidth: Math.max(header.implicitWidth, compass.implicitWidth + toolbar.implicitWidth, instructionList.implicitWidth)
+  minimumHeight: header.implicitHeight + compass.implicitHeight + instructionList.implicitHeight
+  maximumWidth: minimumWidth
+  maximumHeight: minimumHeight
+  color: "transparent"
+  visible: false
+  flags: Qt.WindowStaysOnTopHint | Qt.FramelessWindowHint
 
-  width: 170
-  height: 170
+  Component.onCompleted: {
+    windowAgent.setup(window)
+    window.visible = true
+  }
+
+  WindowAgent {
+    id: windowAgent
+  }
 
   Column {
     anchors.right: parent.right
     spacing: 4
+
+    Header {
+      id: header
+      anchors.right: parent.right
+      Component.onCompleted: {
+        windowAgent.setTitleBar(header.titleBar)
+        windowAgent.setHitTestVisible(header.closeButton);
+        windowAgent.setSystemButton(WindowAgent.Close, header.closeButton);
+      }
+      onExit: window.close()
+    }
 
     Row {
       anchors.right: parent.right
@@ -31,7 +56,10 @@ Item {
     }
   }
 
-  DragHandler {
-    target: root
+  Connections {
+    target: Global
+    function onCompassVisibleChanged() {
+      window.visible = Global.compassVisible;
+    }
   }
 }

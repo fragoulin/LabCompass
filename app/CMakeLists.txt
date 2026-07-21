@@ -12,6 +12,7 @@ qt_add_translations(
   -idbased)
 
 include(CMake/QHotkey.cmake)
+include(CMake/Qwindowkit.cmake)
 
 file(
   GLOB_RECURSE SOURCES CONFIGURE_DEPENDS
@@ -60,6 +61,13 @@ target_include_directories(${TARGET_NAME} PRIVATE src)
 target_precompile_headers(${TARGET_NAME} PRIVATE src/stdafx.h)
 
 target_link_libraries(${TARGET_NAME} PRIVATE common qhotkey)
+
+target_link_libraries(${TARGET_NAME} PRIVATE
+  Qt6::Core
+  Qt6::Gui
+  Qt6::Quick
+  Qt6::Qml
+  QWindowKit::Quick)
 
 set_target_properties(
   ${TARGET_NAME} PROPERTIES MACOSX_BUNDLE ON QT_QMLCACHEGEN_ARGUMENTS

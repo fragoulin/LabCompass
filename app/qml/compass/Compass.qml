@@ -5,8 +5,8 @@ import '..'
 Item {
   id: root
 
-//  width: 210
-//  height: 170
+  width: 210
+  height: 170
 
   property bool displayActive: Global.model.inLab && Global.model.currentRoomDetermined
   property bool useMinimapDisplay: Global.model.settings.showMinimap && displayActive && Object.keys(Global.model.instructionModel.preset).length
