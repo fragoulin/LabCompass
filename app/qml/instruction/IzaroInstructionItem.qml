@@ -102,10 +102,10 @@ InstructionItem {
       },
       State { name: 'countdownFinished' }
     ]
+  }
 
-    function onIzaroBattleStarted() {
-      if (root.mechanics === 'ChargeDisruptors' || root.mechanics === 'Idols')
-        state = 'countdownRunning';
-    }
+  function onIzaroBattleStarted() {
+    if (root.mechanics === 'ChargeDisruptors' || root.mechanics === 'Idols')
+      state = 'countdownRunning';
   }
 }
