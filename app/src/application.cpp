@@ -131,11 +131,6 @@ void Application::initWindows()
 {
     connect(&engine, &QQmlApplicationEngine::objectCreated, this, [this](QObject *object) {
         window = (QWindow*) object;
-        auto mainWindowPosition = model.get_settings()->get_mainWindowPosition();
-        auto screenGeometry = window->screen()->geometry();
-        if (!screenGeometry.contains(mainWindowPosition))
-            mainWindowPosition = screenGeometry.center();
-        window->setPosition(mainWindowPosition);
     });
     engine.load(QUrl(QStringLiteral("qrc:/qt/qml/labcompass/MainWindow.qml")));
 

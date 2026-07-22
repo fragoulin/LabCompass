@@ -16,6 +16,7 @@ Window {
 
   Component.onCompleted: {
     windowAgent.setup(window)
+    setWindowPosition()
     window.visible = true
   }
 
@@ -51,6 +52,16 @@ Window {
     InstructionList {
       id: instructionList
       anchors.right: parent.right
+    }
+  }
+
+  function setWindowPosition() {
+    const mainWindowPosition = Global.model.settings.mainWindowPosition
+    if (mainWindowPosition.x < window.screen.width & mainWindowPosition.y < window.screen.height) {
+      window.x = mainWindowPosition.x
+      window.y = mainWindowPosition.y
+    } else {
+      windowAgent.centralize()
     }
   }
 
