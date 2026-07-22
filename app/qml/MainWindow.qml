@@ -6,6 +6,7 @@ import QWindowKit
 
 Window {
   id: window
+  objectName: "MainWindow"
   minimumWidth: Math.max(header.implicitWidth, compass.implicitWidth + toolbar.implicitWidth, instructionList.implicitWidth)
   minimumHeight: header.implicitHeight + compass.implicitHeight + instructionList.implicitHeight
   maximumWidth: minimumWidth
