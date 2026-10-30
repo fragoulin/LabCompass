@@ -9,19 +9,7 @@ Item {
 
   default property alias content: contents.children
   property Item root: contents
-  // TODO use RectangularGlow from QT 6.10
-/*
-  RectangularGlow {
-    x: 10
-    y: 13
-    width: contents.width
-    height: contents.height
-    glowRadius: 3
-    spread: 0.0
-    color: Qt.rgba(0, 0, 0, 0.8)
-    cornerRadius: glowRadius
-  }
-*/
+
   Item {
     id: contents
     x: 10
@@ -33,6 +21,11 @@ Item {
       anchors.fill: parent
       color: Global.backgroundColor
       radius: 8
+    }
+
+    RectangularShadow {
+      anchors.fill: contents
+      color: Qt.darker(contents.color, 1.6)
     }
   }
 }
