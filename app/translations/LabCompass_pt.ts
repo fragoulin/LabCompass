@@ -735,7 +735,7 @@ Você pode tentar:
         <extracomment>Label for OK button in options window</extracomment>
         <translation>OK</translation>
     </message>
-    <message id="id-rop-to-import">
+    <message id="id-drop-to-import">
         <location filename="../qml/planner/MapDropArea.qml" line="73"/>
         <source>Drop to Import</source>
         <extracomment>Label shown when drop area is available in order to use drag and drop to import a map. Label should be brief because of limited space</extracomment>

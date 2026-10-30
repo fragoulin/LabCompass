@@ -1,5 +1,4 @@
 import QtQuick
-import QtQuick.VectorImage
 import labcompass
 import '..'
 
@@ -18,10 +17,8 @@ InstructionItem {
   Row {
     visible: root.mechanics
     spacing: 4
-    VectorImage {
+    SvgImage {
       source: 'qrc:/qt/qml/labcompass/assets/images/instruction/mechanics.svg'
-      width: 16
-      height: 16
     }
     Text {
       text: root.mechanics in Global.nameMapping ? Global.nameMapping[mechanics] : root.mechanics
@@ -33,13 +30,13 @@ InstructionItem {
     id: izaroInstructionItemIcon
     objectName: 'izaroInstructionItemIcon'
 
-    VectorImage {
+    SvgImage {
       anchors.centerIn: parent
       visible: izaroInstructionItemIcon.state === ''
       source: root.mechanics === 'ChargeDisruptors' || root.mechanics === 'Idols' ? 'qrc:/qt/qml/labcompass/assets/images/instruction/izaro-wait.svg'
                                                                                   : 'qrc:/qt/qml/labcompass/assets/images/instruction/izaro-kill.svg'
-      width: 20
-      height: 20
+      sourceSize.width: 20
+      sourceSize.height: 20
     }
 
     property real countdownStart: 0
@@ -73,12 +70,12 @@ InstructionItem {
       }
     }
 
-    VectorImage {
+    SvgImage {
       anchors.centerIn: parent
       visible: izaroInstructionItemIcon.state === 'countdownFinished'
       source: 'qrc:/qt/qml/labcompass/assets/images/instruction/izaro-kill.svg'
-      width: 20
-      height: 20
+      sourceSize.width: 20
+      sourceSize.height: 20
 
       SequentialAnimation on opacity {
         loops: Animation.Infinite
@@ -105,10 +102,10 @@ InstructionItem {
       },
       State { name: 'countdownFinished' }
     ]
+  }
 
-    function onIzaroBattleStarted() {
-      if (root.mechanics === 'ChargeDisruptors' || root.mechanics === 'Idols')
-        state = 'countdownRunning';
-    }
+  function onIzaroBattleStarted() {
+    if (root.mechanics === 'ChargeDisruptors' || root.mechanics === 'Idols')
+      state = 'countdownRunning';
   }
 }

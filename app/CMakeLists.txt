@@ -6,10 +6,10 @@ qt_add_translations(
   translations
   LUPDATE_OPTIONS
   -no-obsolete
-  LRELEASE_OPTIONS
-  -idbased)
+  LRELEASE_OPTIONS)
 
 include(CMake/QHotkey.cmake)
+include(CMake/Qwindowkit.cmake)
 
 file(
   GLOB_RECURSE SOURCES CONFIGURE_DEPENDS
@@ -44,7 +44,7 @@ set_source_files_properties(qml/Global.qml PROPERTIES QT_QML_SINGLETON_TYPE
                                                       TRUE)
 
 # Set alias for qml files stored in qml directory
-# https://doc.qt.io/qt-6.8/qt-add-qml-module.html#caching-compiled-qml-sources
+# https://doc.qt.io/qt-6/qt-add-qml-module.html#caching-compiled-qml-sources
 foreach(QML_SOURCE ${QML_SOURCES})
   string(LENGTH ${QML_SOURCE} QML_SOURCE_LENGTH)
   string(SUBSTRING ${QML_SOURCE} 4 ${QML_SOURCE_LENGTH}
@@ -58,6 +58,13 @@ target_include_directories(${TARGET_NAME} PRIVATE src)
 target_precompile_headers(${TARGET_NAME} PRIVATE src/stdafx.h)
 
 target_link_libraries(${TARGET_NAME} PRIVATE common qhotkey)
+
+target_link_libraries(${TARGET_NAME} PRIVATE
+  Qt6::Core
+  Qt6::Gui
+  Qt6::Quick
+  Qt6::Qml
+  QWindowKit::Quick)
 
 set_target_properties(
   ${TARGET_NAME} PROPERTIES MACOSX_BUNDLE ON QT_QMLCACHEGEN_ARGUMENTS

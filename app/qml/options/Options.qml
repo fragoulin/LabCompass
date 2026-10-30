@@ -2,7 +2,6 @@ import QtQuick
 import QtQuick.Controls
 import QtQuick.Controls.Material
 import QtQuick.Layouts
-import QtQuick.VectorImage
 import labcompass
 import '..'
 
@@ -52,7 +51,7 @@ WindowWithShadow {
             width: 32
             height: 32
             onClicked: root.openUrl('https://github.com/fragoulin/LabCompass')
-            VectorImage {
+            SvgImage {
               width: 24
               height: 24
               anchors.centerIn: parent
@@ -285,11 +284,9 @@ WindowWithShadow {
     anchors.top: column.top
     anchors.topMargin: 10
     onClicked: Global.optionsWindowOpen = false;
-    VectorImage {
+    SvgImage {
       anchors.centerIn: parent
       source: 'qrc:/qt/qml/labcompass/assets/images/close.svg'
-      width: 16
-      height: 16
     }
   }
 

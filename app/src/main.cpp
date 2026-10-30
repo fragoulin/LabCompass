@@ -20,6 +20,9 @@ int main(int argc, char** argv)
     qputenv("QT_QUICK_CONTROLS_MATERIAL_THEME", "Dark");
     qputenv("QT_QUICK_CONTROLS_MATERIAL_ACCENT", "#2196F3");
 
+    QGuiApplication::setHighDpiScaleFactorRoundingPolicy(
+        Qt::HighDpiScaleFactorRoundingPolicy::PassThrough);
+
     Application app(argc, argv);
     int r = app.exec();
     qInfo() << "Exiting with code:" << r;

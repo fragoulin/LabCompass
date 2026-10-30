@@ -42,7 +42,7 @@ A: They are provided by [poelab.com](https://www.poelab.com). The download links
 
 **Q: Why LabCompass window cannot be moved on Wayland display ?**
 
-A: Wayland display forbid window positionning programmatically, by design. So LabCompass window, which use a custom display, cannot be moved. To fix this problem, you can use the following command to force LabCompass to use X11 display:
+A: Wayland display forbid window positionning programmatically, by design. To fix this problem, you can use the following command to force LabCompass to use XCB client for X11 protocol:
 
     QT_QPA_PLATFORM=xcb labcompass
 
@@ -60,6 +60,6 @@ Build
 After installing the latest version of Qt, run the following command to build:
 
     cmake . -B build
-    cmake --build build --config release
+    cmake --build build --config release --target labcompass
 
 Labcompass binary is located in build/runtime directory.

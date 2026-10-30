@@ -1,5 +1,4 @@
 import QtQuick
-import QtQuick.VectorImage
 import labcompass
 import '..'
 
@@ -26,10 +25,10 @@ InstructionItem {
       spacing: 4
       verticalItemAlignment: Grid.AlignVCenter
 
-      VectorImage {
+      SvgImage {
         source: modelData in Global.contentIconMapping ? 'qrc:/qt/qml/labcompass/assets/images/lab-content/' + Global.contentIconMapping[modelData] + '.svg' : ''
-        width: 16
-        height: 16
+        sourceSize.width: 16
+        sourceSize.height: 16
       }
 
       Text {

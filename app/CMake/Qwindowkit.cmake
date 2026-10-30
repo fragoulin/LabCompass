@@ -1,0 +1,14 @@
+include(FetchContent)
+
+set(TARGET_WINDOW_KIT WindowKit)
+set(QWINDOWKIT_BUILD_WIDGETS OFF CACHE INTERNAL BOOL "")
+set(QWINDOWKIT_BUILD_QUICK ON CACHE INTERNAL BOOL "")
+set(QWINDOWKIT_BUILD_STATIC ON CACHE INTERNAL BOOL "")
+
+FetchContent_Declare(
+  ${TARGET_WINDOW_KIT}
+  GIT_REPOSITORY https://github.com/fragoulin/qwindowkit
+  GIT_TAG main
+#  GIT_TAG 34e857a13134c7f8908d4960dd52614549680ece
+)
+FetchContent_MakeAvailable(${TARGET_WINDOW_KIT})

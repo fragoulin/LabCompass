@@ -5,6 +5,7 @@
 #include "tray/trayiconmenu.h"
 #include "version.h"
 #include <QStringBuilder>
+#include <QWKQuick/qwkquickglobal.h>
 
 Application::Application(int& argc, char** argv)
     : QApplication(argc, argv)
@@ -18,6 +19,7 @@ Application::Application(int& argc, char** argv)
 
 void Application::onAboutToQuit()
 {
+    model.get_settings()->set_mainWindowPosition(QPoint(window->x(), window->y()));
     model.get_settings()->save();
 }
 
@@ -35,6 +37,9 @@ void Application::onSettingsUpdated(Settings &settings)
 void Application::init()
 {
     qInfo() << "Initialization started";
+
+    qInfo() << "Init Window Kit";
+    initWindowKit();
 
     qInfo() << "Init translations";
     initTranslations();
@@ -61,6 +66,13 @@ void Application::init()
     initHotkeys();
 
     qInfo() << "Initialization finished";
+}
+
+void Application::initWindowKit()
+{
+    qputenv("QT_QUICK_CONTROLS_STYLE", "Basic");
+    QQuickWindow::setDefaultAlphaBuffer(true);
+    QWK::registerTypes(&engine);
 }
 
 void Application::initTranslations()
@@ -123,17 +135,11 @@ void Application::initHelpers()
 
 void Application::initWindows()
 {
-    mainWindow.reset(new MainWindow(&engine));
-    connect(mainWindow.get(), &MainWindow::moved, this,
-        [this](int x, int y) { model.get_settings()->set_mainWindowPosition(QPoint(x, y)); });
-
-    auto mainWindowPosition = model.get_settings()->get_mainWindowPosition();
-    auto screenGeometry = mainWindow->quickWindow()->screen()->geometry();
-    if (!screenGeometry.contains(mainWindowPosition))
-        mainWindowPosition = screenGeometry.center();
-    mainWindow->move(mainWindowPosition);
-
-    mainWindow->show();
+    connect(&engine, &QQmlApplicationEngine::objectCreated, this, [this](QObject *object) {
+        if (object->objectName() == "MainWindow" && object->isWindowType())
+            window = (QWindow*) object;
+    });
+    engine.load(QUrl(QStringLiteral("qrc:/qt/qml/labcompass/MainWindow.qml")));
 
     plannerWindow.reset(new PlannerWindow(&engine));
 

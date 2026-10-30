@@ -1,5 +1,4 @@
 import QtQuick
-import QtQuick.VectorImage
 import labcompass
 import '../point.js' as Point
 import '..'
@@ -8,18 +7,16 @@ Item {
   id: root
   property var instructionModel
 
-  VectorImage {
+  SvgImage {
     anchors.fill: parent
     source: 'qrc:/qt/qml/labcompass/assets/images/room-preset/' + root.instructionModel.preset.areaCode + '.svg'
-    width: 16
-    height: 16
   }
 
   Repeater {
     id: exitDirectionView
     model: root.instructionModel.doorExitLocations
 
-    VectorImage {
+    SvgImage {
       x: modelData.tileRect.x * root.width
       y: modelData.tileRect.y * root.height
       width: modelData.tileRect.width * root.width
@@ -33,7 +30,7 @@ Item {
     id: contentLocationsView
     model: root.instructionModel.contentLocations
 
-    VectorImage {
+    SvgImage {
       x: modelData.tileRect.x * root.width
       y: modelData.tileRect.y * root.height
       width: modelData.tileRect.width * root.width

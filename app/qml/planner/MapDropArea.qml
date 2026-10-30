@@ -1,5 +1,4 @@
 import QtQuick
-import QtQuick.VectorImage
 import '..'
 
 Item {
@@ -41,7 +40,7 @@ Item {
 
     Behavior on width { StandardAnimation { duration: 200 } }
 
-    VectorImage {
+    SvgImage {
       anchors.centerIn: parent
       width: 200
       height: 200
@@ -53,7 +52,7 @@ Item {
       columns: 1
       horizontalItemAlignment: Grid.AlignHCenter
 
-      VectorImage {
+      SvgImage {
         width: 64
         height: 64
         source: 'qrc:/qt/qml/labcompass/assets/images/planner/map.svg'
@@ -70,7 +69,7 @@ Item {
         //: Label shown when drop area is available in order to use drag and drop to import a map. Label should be brief because of limited space
         //% "Drop to Import"
         //@ Planner
-        text: qsTrId("id-rop-to-import")
+        text: qsTrId("id-drop-to-import")
         font.pixelSize: 16
       }
     }

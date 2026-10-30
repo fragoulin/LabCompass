@@ -22,12 +22,7 @@ set(CMAKE_AUTORCC TRUE)
 
 find_package(Qt6 REQUIRED LinguistTools QuickWidgets QuickControls2 Test)
 
-qt_standard_project_setup(REQUIRES 6.8 I18N_TRANSLATED_LANGUAGES en pt ru th de fr es ko ja)
-
-add_subdirectory(common)
-add_subdirectory(app labcompass)
-add_subdirectory(logsimulator)
-add_subdirectory(tests)
+qt_standard_project_setup(REQUIRES 6.12 I18N_TRANSLATED_LANGUAGES en fr ru th de fr es ko ja)
 
 # Require out-of-source builds
 file(TO_CMAKE_PATH "${PROJECT_BINARY_DIR}/CMakeLists.txt" LOC_PATH)
@@ -50,3 +45,8 @@ if(NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
   set_property(CACHE CMAKE_BUILD_TYPE PROPERTY STRINGS "Debug" "Release"
                                                "MinSizeRel" "RelWithDebInfo")
 endif()
+
+add_subdirectory(common)
+add_subdirectory(app labcompass)
+add_subdirectory(logsimulator)
+add_subdirectory(tests)
