@@ -63,8 +63,11 @@ target_link_libraries(${TARGET_NAME} PRIVATE common qhotkey)
 
 target_link_libraries(${TARGET_NAME} PRIVATE
   Qt6::Core
+  Qt6::CorePrivate
   Qt6::Gui
+  Qt6::GuiPrivate
   Qt6::Quick
+  Qt6::QuickPrivate
   Qt6::Qml
   QWindowKit::Quick)
 
