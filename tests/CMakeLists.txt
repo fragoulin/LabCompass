@@ -6,11 +6,9 @@ file(GLOB_RECURSE SOURCES CONFIGURE_DEPENDS *.cpp *.h)
 
 add_executable(${TARGET_NAME} WIN32 ${SOURCES})
 
-target_compile_options(${TARGET_NAME} PRIVATE -Wall -Wextra -Wpedantic -Wunused-result)
-
 target_include_directories(${TARGET_NAME} PRIVATE src)
 
-target_link_libraries(${TARGET_NAME} PRIVATE common Qt6::QuickControls2
+target_link_libraries(${TARGET_NAME} PRIVATE common QtSuperMacros Qt6::QuickWidgets Qt6::QuickControls2
                                              Qt6::Widgets Qt6::Test)
 
 add_custom_command(

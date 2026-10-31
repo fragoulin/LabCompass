@@ -11,10 +11,10 @@ Q_GLOBAL_STATIC(QStringList, UI_SCALE_FACTORS, {
     "2.5"
 })
 
-OptionsWindow::OptionsWindow(QQmlEngine* engine, Settings* settings)
+OptionsWindow::OptionsWindow(QQmlEngine* engine, Settings* optionSettings)
     : Window(engine, true, true)
 {
-    this->settings = settings;
+    this->settings = optionSettings;
 
     setSource(QUrl("qrc:/qt/qml/labcompass/options/Options.qml"));
 
@@ -76,9 +76,9 @@ void OptionsWindow::load()
         rootObject()->setProperty(s, settings->property(s));
     }
 
-    int uiScaleFactorIndex = UI_SCALE_FACTORS->indexOf(settings->get_scaleFactor());
+    int uiScaleFactorIndex = static_cast<int>(UI_SCALE_FACTORS->indexOf(settings->get_scaleFactor()));
     if (uiScaleFactorIndex == -1) {
-        uiScaleFactorIndex = UI_SCALE_FACTORS->indexOf("1");
+        uiScaleFactorIndex = static_cast<int>(UI_SCALE_FACTORS->indexOf("1"));
     }
     rootObject()->setProperty("uiScaleFactorIndex", uiScaleFactorIndex);
 }

@@ -248,9 +248,9 @@ bool LabyrinthData::loadConnectionMatrix(const QJsonArray& array)
         auto roomJson = array[i].toObject();
         auto roomId = roomJson["id"].toString();
         auto exitsJson = roomJson["exits"].toObject();
-        for (auto i = exitsJson.constBegin(); i != exitsJson.constEnd(); i++) {
-            auto toId = i.value().toString();
-            auto direction = i.key();
+        for (auto j = exitsJson.constBegin(); j != exitsJson.constEnd(); j++) {
+            auto toId = j.value().toString();
+            auto direction = j.key();
             if (direction != "C")
                 connections[roomId][toId].append(direction);
         }
@@ -264,9 +264,9 @@ bool LabyrinthData::loadConnectionMatrix(const QJsonArray& array)
         auto roomJson = array[i].toObject();
         auto roomId = roomJson["id"].toString();
         auto exitsJson = roomJson["exits"].toObject();
-        for (auto i = exitsJson.constBegin(); i != exitsJson.constEnd(); i++) {
-            auto toId = i.value().toString();
-            auto direction = i.key();
+        for (auto j = exitsJson.constBegin(); j != exitsJson.constEnd(); j++) {
+            auto toId = j.value().toString();
+            auto direction = j.key();
             if (direction != "C" && !hasConnection(toId, roomId) && !(roomIsTrial(roomId) && rooms[roomIdIndex.value(toId)].isFirstRoomInSection))
                 connections[toId][roomId].append("");
         }
@@ -277,9 +277,9 @@ bool LabyrinthData::loadConnectionMatrix(const QJsonArray& array)
         auto roomJson = array[i].toObject();
         auto roomId = roomJson["id"].toString();
         auto exitsJson = roomJson["exits"].toObject();
-        for (auto i = exitsJson.constBegin(); i != exitsJson.constEnd(); i++) {
-            auto toId = i.value().toString();
-            auto direction = i.key();
+        for (auto j = exitsJson.constBegin(); j != exitsJson.constEnd(); j++) {
+            auto toId = j.value().toString();
+            auto direction = j.key();
             if (direction == "C")
                 connections[roomId][toId].append("C");
         }

@@ -1,11 +1,11 @@
 #include "hotkeybinding.h"
 
-HotkeyBinding::HotkeyBinding(QObject* global, QObject* settings, QByteArray propertyName, QByteArray propertyChangeSignal)
+HotkeyBinding::HotkeyBinding(QObject* globalObject, QObject* hotKeySettings, QByteArray hotKeypropertyName, QByteArray propertyChangeSignal)
     : QHotkey()
 {
-    this->global = global;
-    this->settings = settings;
-    this->propertyName = propertyName;
+    this->global = globalObject;
+    this->settings = hotKeySettings;
+    this->propertyName = hotKeypropertyName;
     rebindHotkey();
 
     connect(settings, propertyChangeSignal,

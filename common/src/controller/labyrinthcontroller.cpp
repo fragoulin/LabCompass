@@ -1,8 +1,8 @@
 #include "labyrinthcontroller.h"
 
-LabyrinthController::LabyrinthController(ApplicationModel* model)
+LabyrinthController::LabyrinthController(ApplicationModel* labyrinthModel)
 {
-    this->model = model;
+    this->model = labyrinthModel;
 }
 
 void LabyrinthController::importFile(const QString& file)

@@ -53,9 +53,9 @@ Q_GLOBAL_STATIC(QStringList, LAB_ROOM_SUFFIX, {
 Q_GLOBAL_STATIC(QRegularExpression, LOG_REGEX, "^\\d+/\\d+/\\d+ \\d+:\\d+:\\d+.*?\\[.*?(\\d+)\\] (.*)$")
 Q_GLOBAL_STATIC(QRegularExpression, ROOM_CHANGE_REGEX, "^: You have entered (.*?)\\.$")
 
-LogWatcher::LogWatcher(ApplicationModel* model)
+LogWatcher::LogWatcher(ApplicationModel* applicationModel)
 {
-    this->model = model;
+    this->model = applicationModel;
     clientPath = model->get_settings()->get_poeClientPath();
     file.reset(new QFile(QDir(clientPath).filePath("logs/Client.txt")));
 

@@ -44,7 +44,7 @@ public:
 public:
     ApplicationModel(QObject* parent = nullptr);
     bool loadFromFile(const QString& file);
-    void updatePlanData(const PlanData& planData);
+    void updatePlanData(const PlanData& newPlanData);
     void updateNavigationData(const NavigationData& navigationData);
     void updateModelOnLoadFile();
     void updateModelOnNavigation();

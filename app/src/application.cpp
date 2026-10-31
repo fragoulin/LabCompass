@@ -131,7 +131,7 @@ void Application::initWindows()
 {
     connect(&engine, &QQmlApplicationEngine::objectCreated, this, [this](QObject *object) {
         if (object->objectName() == "MainWindow" && object->isWindowType())
-            window = (QWindow*) object;
+            window = static_cast<QWindow*>(object);
     });
     engine.load(QUrl(QStringLiteral("qrc:/qt/qml/labcompass/MainWindow.qml")));
 

@@ -10,7 +10,7 @@ class DateChecker : public QObject {
     QTimer timer;
 
 public:
-    DateChecker(ApplicationModel* model, QObject* parent = nullptr);
+    DateChecker(ApplicationModel* applicationModel, QObject* parent = nullptr);
 
 private slots:
     void work();

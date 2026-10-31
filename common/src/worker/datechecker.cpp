@@ -1,9 +1,9 @@
 #include "datechecker.h"
 
-DateChecker::DateChecker(ApplicationModel* model, QObject* parent)
+DateChecker::DateChecker(ApplicationModel* applicationModel, QObject* parent)
     : QObject(parent)
 {
-    this->model = model;
+    this->model = applicationModel;
 
     timer.setInterval(1000);
     timer.setSingleShot(false);

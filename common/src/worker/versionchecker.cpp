@@ -1,10 +1,10 @@
 #include "versionchecker.h"
 #include "version.h"
 
-VersionChecker::VersionChecker(ApplicationModel* model, QObject* parent)
+VersionChecker::VersionChecker(ApplicationModel* applicationModel, QObject* parent)
     : QObject(parent)
 {
-    this->model = model;
+    this->model = applicationModel;
 
     nam.get(QNetworkRequest(QUrl("https://api.github.com/")));
 

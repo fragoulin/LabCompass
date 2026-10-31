@@ -18,6 +18,8 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 set(CMAKE_AUTORCC TRUE)
 
+include(CompilerWarnings.cmake)
+
 # Ignore warnings related to private modules warning
 set(QT_NO_PRIVATE_MODULE_WARNING ON)
 

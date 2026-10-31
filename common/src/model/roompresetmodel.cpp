@@ -37,13 +37,13 @@ void RoomPresetModel::loadFromData(const NavigationData& data)
                 presetsModel.append(item);
 
                 if (item["areaCode"].toString() == room.areaCode) {
-                    current = presetList.size() - 1 - i;
+                    current = static_cast<int>(presetList.size()) - 1 - static_cast<int>(i);
                 }
             }
 
             presetsModel.append(QVariantMap { { "areaCode", "disabled" }, { "doorExitLocations", QVariantList {} }, { "contentLocations", QVariantList {} } });
             if (room.areaCode == "disabled") {
-                current = presetsModel.size() - 1;
+                current = static_cast<int>(presetsModel.size()) - 1;
             }
         }
 

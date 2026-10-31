@@ -10,7 +10,7 @@ protected:
     bool takeFocus;
 
 public:
-    Window(QQmlEngine* engine, bool transparent = false, bool takeFocus = false, QWidget* parent = nullptr);
+    Window(QQmlEngine* engine, bool transparent = false, bool takeWindowFocus = false, QWidget* parent = nullptr);
     void setParentWindow(Window* parent, const QPoint& offset);
 
 protected:

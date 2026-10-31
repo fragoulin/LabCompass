@@ -9,7 +9,7 @@ class LabyrinthController : public QObject {
     ApplicationModel* model;
 
 public:
-    LabyrinthController(ApplicationModel* model);
+    LabyrinthController(ApplicationModel* labyrinthModel);
 
 public slots:
     void importFile(const QString& file);

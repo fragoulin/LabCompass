@@ -24,7 +24,7 @@ void GoldenDoorModel::loadFromData(const LabyrinthData& data)
 int GoldenDoorModel::rowCount(const QModelIndex& parent) const
 {
     Q_UNUSED(parent)
-    return d.size();
+    return static_cast<int>(d.size());
 }
 
 QVariant GoldenDoorModel::data(const QModelIndex& index, int role) const

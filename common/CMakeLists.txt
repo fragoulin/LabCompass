@@ -10,8 +10,6 @@ add_library(${TARGET_NAME} ${SOURCES})
 
 configure_file("src/version.h.in" "include/version.h")
 
-target_compile_options(${TARGET_NAME} PRIVATE -Wall -Wextra -Wpedantic -Wunused-result)
-
 target_include_directories(
   ${TARGET_NAME} PUBLIC src "${PROJECT_BINARY_DIR}/${TARGET_NAME}/include"
                         "${SOURCE_DIR_HUNGARIAN}")
@@ -19,5 +17,7 @@ target_include_directories(
 target_precompile_headers(${TARGET_NAME} PRIVATE src/stdafx.h)
 
 target_link_libraries(
-  ${TARGET_NAME} PUBLIC QtSuperMacros hungarian nlohmann_json_schema_validator
+  ${TARGET_NAME} PRIVATE QtSuperMacros hungarian nlohmann_json_schema_validator
                         Qt6::QuickWidgets Qt6::QuickControls2)
+
+set_project_warnings(${TARGET_NAME})

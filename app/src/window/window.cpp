@@ -6,10 +6,10 @@
 #include <windows.h>
 #endif
 
-Window::Window(QQmlEngine* engine, bool transparent, bool takeFocus, QWidget* parent)
+Window::Window(QQmlEngine* engine, bool transparent, bool takeWindowFocus, QWidget* parent)
     : QQuickWidget(engine, parent)
 {
-    this->takeFocus = takeFocus;
+    this->takeFocus = takeWindowFocus;
 
     if (transparent) {
         setClearColor(Qt::transparent);

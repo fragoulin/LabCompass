@@ -17,7 +17,7 @@ class OptionsWindow : public Window {
     };
 
 public:
-    OptionsWindow(QQmlEngine* engine, Settings* settings);
+    OptionsWindow(QQmlEngine* engine, Settings* optionSettings);
 
 private slots:
     void onWindowOpenChanged();
