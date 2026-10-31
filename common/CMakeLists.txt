@@ -10,6 +10,8 @@ add_library(${TARGET_NAME} ${SOURCES})
 
 configure_file("src/version.h.in" "include/version.h")
 
+target_compile_options(${TARGET_NAME} PRIVATE -Wall -Wextra -Wpedantic -Wunused-result)
+
 target_include_directories(
   ${TARGET_NAME} PUBLIC src "${PROJECT_BINARY_DIR}/${TARGET_NAME}/include"
                         "${SOURCE_DIR_HUNGARIAN}")

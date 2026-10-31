@@ -55,6 +55,8 @@ foreach(QML_SOURCE ${QML_SOURCES})
     ${QML_SOURCE} PROPERTIES QT_RESOURCE_ALIAS ${QML_SOURCE_WITHOUT_QML_DIR})
 endforeach()
 
+target_compile_options(${TARGET_NAME} PRIVATE -Wall -Wextra -Wpedantic -Wunused-result)
+
 target_include_directories(${TARGET_NAME} PRIVATE src)
 
 target_precompile_headers(${TARGET_NAME} PRIVATE src/stdafx.h)
