@@ -23,7 +23,16 @@ include(CompilerWarnings.cmake)
 # Ignore warnings related to private modules warning
 set(QT_NO_PRIVATE_MODULE_WARNING ON)
 
-find_package(Qt6 REQUIRED LinguistTools QuickWidgets QuickControls2 Test CorePrivate GuiPrivate QuickPrivate)
+find_package(
+  Qt6
+  REQUIRED
+  LinguistTools
+  QuickWidgets
+  QuickControls2
+  Test
+  CorePrivate
+  GuiPrivate
+  QuickPrivate)
 
 qt_standard_project_setup(REQUIRES 6.12 I18N_TRANSLATED_LANGUAGES en fr)
 

@@ -18,6 +18,6 @@ target_precompile_headers(${TARGET_NAME} PRIVATE src/stdafx.h)
 
 target_link_libraries(
   ${TARGET_NAME} PRIVATE QtSuperMacros hungarian nlohmann_json_schema_validator
-                        Qt6::QuickWidgets Qt6::QuickControls2)
+                         Qt6::QuickWidgets Qt6::QuickControls2)
 
 set_project_warnings(${TARGET_NAME})
