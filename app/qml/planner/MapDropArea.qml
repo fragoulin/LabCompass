@@ -13,7 +13,7 @@ Item {
     anchors.fill: parent
     keys: ['text/uri-list']
 
-    onDropped: {
+    onDropped: (drop) => {
       if (drop.hasUrls) {
         root.dropUrl(drop.urls[0]);
         drop.acceptProposedAction();
