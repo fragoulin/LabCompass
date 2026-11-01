@@ -90,6 +90,11 @@ void Application::initResources()
 
     qmlRegisterType<KeySequenceHelper>("labcompass", 1, 0, "KeySequenceHelper");
     engine.load(QUrl("qrc:/qt/qml/labcompass/GlobalAccessor.qml"));
+    if (engine.rootObjects().isEmpty()) {
+        qCritical() << "Failed to initialize global resources";
+        quit();
+    }
+
     auto rootObjects = engine.rootObjects();
     global = rootObjects[0]->property("o").value<QObject*>();
     global->setProperty("model", QVariant::fromValue<QObject*>(&model));
@@ -134,8 +139,22 @@ void Application::initWindows()
             window = static_cast<QWindow*>(object);
     });
     engine.load(QUrl(QStringLiteral("qrc:/qt/qml/labcompass/MainWindow.qml")));
+    if (engine.rootObjects().isEmpty()) {
+        qCritical() << "Failed to load main window";
+        quit();
+    }
+    disconnect(&engine, &QQmlApplicationEngine::objectCreated, this, nullptr);
 
-    plannerWindow.reset(new PlannerWindow(&engine));
+    connect(&engine, &QQmlApplicationEngine::objectCreated, this, [this](QObject *object) {
+        if (object->objectName() == "PlannerWindow" && object->isWindowType())
+            plannerWindow = static_cast<QWindow*>(object);
+    });
+    engine.load(QUrl(QStringLiteral("qrc:/qt/qml/labcompass/planner/Planner.qml")));
+    if (engine.rootObjects().isEmpty()) {
+        qCritical() << "Failed to load planner window";
+        quit();
+    }
+    disconnect(&engine, &QQmlApplicationEngine::objectCreated, this, nullptr);
 
     puzzleWindow.reset(new PuzzleWindow(&engine));
 
@@ -157,12 +176,15 @@ void Application::initWorkers()
 void Application::initControllers()
 {
     labyrinthController.reset(new LabyrinthController(&model));
-    connect(plannerWindow.get(), &PlannerWindow::importFile,
-        labyrinthController.get(), &LabyrinthController::importFile);
+    connect(plannerWindow, SIGNAL(importFile(QString)),
+            labyrinthController.get(), SLOT(importFile(QString)));
+/*
     connect(roomPresetsWindow.get(), &RoomPresetsWindow::setRoomPreset,
         labyrinthController.get(), &LabyrinthController::onRoomPresetSet);
+*/
 
     navigationController.reset(new NavigationController(&model));
+/*
     connect(logWatcher.get(), &LogWatcher::plazaEntered,
         navigationController.get(), &NavigationController::onPlazaEntered);
     connect(logWatcher.get(), &LogWatcher::labStarted,
@@ -174,12 +196,11 @@ void Application::initControllers()
     connect(logWatcher.get(), &LogWatcher::roomChanged,
         navigationController.get(), &NavigationController::onRoomChanged);
     connect(logWatcher.get(), &LogWatcher::portalSpawned,
-        navigationController.get(), &NavigationController::onPortalSpawned);
-
-    connect(plannerWindow.get(), &PlannerWindow::setRoomIsTarget,
-        navigationController.get(), &NavigationController::onRoomIsTargetSet);
-    connect(plannerWindow.get(), &PlannerWindow::setCurrentRoom,
-        navigationController.get(), &NavigationController::onRoomIdSet);
+        navigationController.get(), &NavigationController::onPortalSpawned);*/
+    connect(plannerWindow, SIGNAL(setRoomIsTarget(QString,bool)),
+            navigationController.get(), SLOT(onRoomIsTargetSet(QString,bool)));
+    connect(plannerWindow, SIGNAL(setCurrentRoom(QString)),
+            navigationController.get(), SLOT(onRoomIdSet(QString)));
 }
 
 void Application::initHotkeys()

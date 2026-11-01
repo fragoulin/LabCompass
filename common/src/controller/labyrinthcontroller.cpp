@@ -7,9 +7,12 @@ LabyrinthController::LabyrinthController(ApplicationModel* labyrinthModel)
 
 void LabyrinthController::importFile(const QString& file)
 {
-    qInfo() << "Import:" << file;
+    // file parameter can be prefixed with "file://" if source if FileDialog, but not when loaded from settings
+    auto fileToImport = file;
+    fileToImport.replace("file://", "");
+    qInfo() << "Import:" << fileToImport;
 
-    if (model->loadFromFile(file)) {
+    if (model->loadFromFile(fileToImport)) {
         // update last loaded map date
         model->get_settings()->set_lastLoadedMapDate(model->labyrinthData.date);
 
@@ -17,9 +20,9 @@ void LabyrinthController::importFile(const QString& file)
         const auto& appData = QDir(QStandardPaths::writableLocation(QStandardPaths::AppDataLocation));
         const auto& lastLoadedMap = appData.absoluteFilePath("lastLoaded.map");
         appData.mkpath(".");
-        if (QFileInfo(file) != QFileInfo(lastLoadedMap)) {
+        if (QFileInfo(fileToImport) != QFileInfo(lastLoadedMap)) {
             QFile::remove(lastLoadedMap);
-            QFile::copy(file, lastLoadedMap);
+            QFile::copy(fileToImport, lastLoadedMap);
         }
     }
 }

@@ -6,7 +6,6 @@
 #include "hotkey/hotkeybinding.h"
 #include "model/applicationmodel.h"
 #include "window/optionswindow.h"
-#include "window/plannerwindow.h"
 #include "window/puzzlewindow.h"
 #include "window/roompresetswindow.h"
 #include "worker/datechecker.h"
@@ -20,12 +19,12 @@ class Application : public QApplication {
     QQmlApplicationEngine engine;
     QObject* global;
     QWindow* window;
+    QWindow* plannerWindow;
     QTranslator translator;
 
     std::unique_ptr<QSystemTrayIcon> trayIcon;
     std::unique_ptr<QMenu> trayIconMenu;
 
-    std::unique_ptr<PlannerWindow> plannerWindow;
     std::unique_ptr<PuzzleWindow> puzzleWindow;
     std::unique_ptr<OptionsWindow> optionsWindow;
     std::unique_ptr<RoomPresetsWindow> roomPresetsWindow;
@@ -47,6 +46,7 @@ private slots:
 
 private:
     void init();
+    void initSettings();
     void initWindowKit();
     void initTranslations();
     void initResources();
