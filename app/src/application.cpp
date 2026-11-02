@@ -178,7 +178,16 @@ void Application::initWindows()
     }
     disconnect(&engine, &QQmlApplicationEngine::objectCreated, this, nullptr);
 
-    optionsWindow.reset(new OptionsWindow(&engine, model.get_settings()));
+    connect(&engine, &QQmlApplicationEngine::objectCreated, this, [this](QObject *object) {
+        if (object->objectName() == "OptionsWindow" && object->isWindowType())
+            optionsWindow = static_cast<QWindow*>(object);
+    });
+    engine.load(QUrl(QStringLiteral("qrc:/qt/qml/labcompass/options/Options.qml")));
+    if (engine.rootObjects().isEmpty()) {
+        qCritical() << "Failed to load options window";
+        quit();
+    }
+    disconnect(&engine, &QQmlApplicationEngine::objectCreated, this, nullptr);
 }
 
 void Application::initWorkers()

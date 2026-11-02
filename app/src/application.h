@@ -5,7 +5,6 @@
 #include "controller/navigationcontroller.h"
 #include "hotkey/hotkeybinding.h"
 #include "model/applicationmodel.h"
-#include "window/optionswindow.h"
 #include "worker/datechecker.h"
 #include "worker/logwatcher.h"
 #include "worker/versionchecker.h"
@@ -20,12 +19,11 @@ class Application : public QApplication {
     QWindow* plannerWindow;
     QWindow* roomPresetsWindow;
     QWindow* puzzleWindow;
+    QWindow* optionsWindow;
     QTranslator translator;
 
     std::unique_ptr<QSystemTrayIcon> trayIcon;
     std::unique_ptr<QMenu> trayIconMenu;
-
-    std::unique_ptr<OptionsWindow> optionsWindow;
 
     std::unique_ptr<LogWatcher> logWatcher;
     std::unique_ptr<VersionChecker> versionChecker;
