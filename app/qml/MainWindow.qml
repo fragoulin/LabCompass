@@ -35,7 +35,7 @@ Window {
       Component.onCompleted: {
         windowAgent.setTitleBar(header.titleBar)
       }
-      onExit: window.close()
+      onExit: Qt.quit()
     }
 
     Row {
