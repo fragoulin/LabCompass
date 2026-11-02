@@ -375,7 +375,7 @@ Window {
       width: 80
       height: 30
       onClicked: {
-        root.saveSettings()();
+        root.saveSettings();
         Global.optionsWindowOpen = false;
       }
       Rectangle {
