@@ -4,8 +4,6 @@ import QtQuick.Effects
 
 Item {
   id: root
-  width: contents.width + 20
-  height: contents.height + 20
 
   default property alias content: contents.children
   property Item root: contents

@@ -156,11 +156,20 @@ void Application::initWindows()
     }
     disconnect(&engine, &QQmlApplicationEngine::objectCreated, this, nullptr);
 
+    connect(&engine, &QQmlApplicationEngine::objectCreated, this, [this](QObject *object) {
+        if (object->objectName() == "RoomPresetsWindow" && object->isWindowType())
+            roomPresetsWindow = static_cast<QWindow*>(object);
+    });
+    engine.load(QUrl(QStringLiteral("qrc:/qt/qml/labcompass/roompresets/RoomPresets.qml")));
+    if (engine.rootObjects().isEmpty()) {
+        qCritical() << "Failed to load room presets window";
+        quit();
+    }
+    disconnect(&engine, &QQmlApplicationEngine::objectCreated, this, nullptr);
+
     puzzleWindow.reset(new PuzzleWindow(&engine));
 
     optionsWindow.reset(new OptionsWindow(&engine, model.get_settings()));
-
-    roomPresetsWindow.reset(new RoomPresetsWindow(&engine));
 }
 
 void Application::initWorkers()
@@ -178,13 +187,10 @@ void Application::initControllers()
     labyrinthController.reset(new LabyrinthController(&model));
     connect(plannerWindow, SIGNAL(importFile(QString)),
             labyrinthController.get(), SLOT(importFile(QString)));
-/*
-    connect(roomPresetsWindow.get(), &RoomPresetsWindow::setRoomPreset,
-        labyrinthController.get(), &LabyrinthController::onRoomPresetSet);
-*/
+    connect(roomPresetsWindow, SIGNAL(applyPresetButtonClicked(QString,QString)),
+            labyrinthController.get(), SLOT(onRoomPresetSet(QString,QString)));
 
     navigationController.reset(new NavigationController(&model));
-/*
     connect(logWatcher.get(), &LogWatcher::plazaEntered,
         navigationController.get(), &NavigationController::onPlazaEntered);
     connect(logWatcher.get(), &LogWatcher::labStarted,
@@ -196,7 +202,7 @@ void Application::initControllers()
     connect(logWatcher.get(), &LogWatcher::roomChanged,
         navigationController.get(), &NavigationController::onRoomChanged);
     connect(logWatcher.get(), &LogWatcher::portalSpawned,
-        navigationController.get(), &NavigationController::onPortalSpawned);*/
+        navigationController.get(), &NavigationController::onPortalSpawned);
     connect(plannerWindow, SIGNAL(setRoomIsTarget(QString,bool)),
             navigationController.get(), SLOT(onRoomIsTargetSet(QString,bool)));
     connect(plannerWindow, SIGNAL(setCurrentRoom(QString)),

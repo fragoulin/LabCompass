@@ -7,7 +7,6 @@
 #include "model/applicationmodel.h"
 #include "window/optionswindow.h"
 #include "window/puzzlewindow.h"
-#include "window/roompresetswindow.h"
 #include "worker/datechecker.h"
 #include "worker/logwatcher.h"
 #include "worker/versionchecker.h"
@@ -20,6 +19,7 @@ class Application : public QApplication {
     QObject* global;
     QWindow* window;
     QWindow* plannerWindow;
+    QWindow* roomPresetsWindow;
     QTranslator translator;
 
     std::unique_ptr<QSystemTrayIcon> trayIcon;
@@ -27,7 +27,6 @@ class Application : public QApplication {
 
     std::unique_ptr<PuzzleWindow> puzzleWindow;
     std::unique_ptr<OptionsWindow> optionsWindow;
-    std::unique_ptr<RoomPresetsWindow> roomPresetsWindow;
 
     std::unique_ptr<LogWatcher> logWatcher;
     std::unique_ptr<VersionChecker> versionChecker;
