@@ -294,7 +294,7 @@ Window {
   Connections {
     target: Global.model.roomPresetModel
 
-    function onPresetsChanged(presets) {
+    function onPresetsChanged() {
       window.resetIndex()
     }
   }
