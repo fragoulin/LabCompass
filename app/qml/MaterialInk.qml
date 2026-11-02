@@ -66,7 +66,7 @@ MouseArea {
 
 
 
-  function showRipple(center) {
+  function showRipple(center: point) {
     if (!center)
       center = Qt.point(root.width / 2, root.height / 2);
     root.focusPoint = center;
