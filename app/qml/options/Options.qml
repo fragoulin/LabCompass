@@ -84,7 +84,7 @@ Window {
           width: 150
           height: 30
           visible: Global.model.newVersionAvailable
-          onClicked: openUrl('https://github.com/fragoulin/LabCompass/releases/tag/' + Global.model.settings.latestVersion)
+          onClicked: Qt.openUrlExternally('https://github.com/fragoulin/LabCompass/releases/tag/' + Global.model.settings.latestVersion)
           Rectangle {
             anchors.fill: parent
             color: Global.accentColor
@@ -176,8 +176,8 @@ Window {
             font.family: 'Open Sans'
           }
           MaterialInk {
-            width: 32
-            height: 32
+            implicitWidth: 32
+            implicitHeight: 32
             onClicked: fileDialog.open();
             Image {
               anchors.centerIn: parent
@@ -199,8 +199,8 @@ Window {
           }
           CheckBox {
             id: multiclientSupportInput
-            width: 24
-            height: 24
+            implicitWidth: 24
+            implicitHeight: 24
           }
         }
 
@@ -218,8 +218,8 @@ Window {
           }
           CheckBox {
             id: showMinimapInput
-            width: 24
-            height: 24
+            implicitWidth: 24
+            implicitHeight: 24
           }
 
           Text {
@@ -316,8 +316,8 @@ Window {
           }
           CheckBox {
             id: portalSkipsSectionInput
-            width: 24
-            height: 24
+            implicitWidth: 24
+            implicitHeight: 24
           }
         }
 
