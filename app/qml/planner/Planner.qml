@@ -1,8 +1,5 @@
 import QtCore
 import QtQuick
-import QtQuick.Controls
-import QtQuick.Controls.Material
-import QtQuick.Effects
 import labcompass
 import '..'
 import QWindowKit
@@ -78,11 +75,11 @@ Window {
               //: Layout: room title
               //% "Layout: %1"
               //@ Planner
-              text: labyrinthModel.title ? qsTrId("id-layout-room-title").arg(labyrinthModel.title) :
-                                           //: Label displayed in the planner when no map is loaded
-                                           //% "No lab notes loaded"
-                                           //@ Planner
-                                           qsTrId("id-planner-no-map-loaded")
+              text: window.labyrinthModel.title ? qsTrId("id-layout-room-title").arg(window.labyrinthModel.title) :
+                                                  //: Label displayed in the planner when no map is loaded
+                                                  //% "No lab notes loaded"
+                                                  //@ Planner
+                                                  qsTrId("id-planner-no-map-loaded")
               color: Global.primaryTextColor
             }
           }
@@ -223,7 +220,7 @@ Window {
 
     MapDropArea {
       anchors.fill: parent
-      onDropUrl: (url) => importFile(url)
+      onDropUrl: (url) => window.importFile(url)
     }
   }
 
@@ -238,6 +235,6 @@ Window {
       //% "Lab Maps (*.json *.map)"
       //@ Planner
       nameFilters: qsTrId("id-dialog-import-info")
-      onAccepted: importFile(selectedFile)
+      onAccepted: window.importFile(selectedFile)
   }
 }
