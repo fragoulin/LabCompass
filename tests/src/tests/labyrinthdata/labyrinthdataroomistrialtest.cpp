@@ -29,6 +29,9 @@ void LabyrinthDataRoomIsTrialTest::test_data()
                                           << Set { "4", "7", "12" };
     QTest::newRow("2018-01-10 Uber") << "2018-01-10_uber.json"
                                      << Set { "5", "10", "15" };
+    QTest::newRow("2026-03-14 Cruel") << "2026-03-14_cruel.json"
+                                      << Set { "3", "7", "12" };
+
 }
 
 void LabyrinthDataRoomIsTrialTest::test()
