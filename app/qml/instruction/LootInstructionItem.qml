@@ -21,19 +21,21 @@ InstructionItem {
     id: lootView
 
     Grid {
+      id: grid
       columns: 2
       spacing: 4
       verticalItemAlignment: Grid.AlignVCenter
+      required property var modelData
 
       SvgImage {
-        source: modelData in Global.contentIconMapping ? 'qrc:/qt/qml/labcompass/assets/images/lab-content/' + Global.contentIconMapping[modelData] + '.svg' : ''
+        source: grid.modelData in Global.contentIconMapping ? 'qrc:/qt/qml/labcompass/assets/images/lab-content/' + Global.contentIconMapping[grid.modelData] + '.svg' : ''
         sourceSize.width: 16
         sourceSize.height: 16
       }
 
       Text {
         color: Global.primaryTextColor
-        text: modelData in Global.nameMapping ? Global.nameMapping[modelData] : modelData
+        text: grid.modelData in Global.nameMapping ? Global.nameMapping[grid.modelData] : grid.modelData
       }
     }
   }
