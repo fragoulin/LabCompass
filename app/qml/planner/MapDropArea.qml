@@ -22,7 +22,7 @@ Item {
   }
 
   Rectangle {
-    opacity: downloadInProgress || dropArea.containsDrag ? 1 : 0
+    opacity: root.downloadInProgress || dropArea.containsDrag ? 1 : 0
     anchors.fill: parent
     color: Qt.rgba(0, 0, 0, 0.5)
 

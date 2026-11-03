@@ -3,6 +3,7 @@ import labcompass
 import '..'
 
 Rectangle {
+  id: root
   property string roomName
   property var roomContents: []
 
@@ -19,21 +20,22 @@ Rectangle {
     horizontalItemAlignment: Grid.AlignHCenter
     Text {
       color: Global.primaryTextColor
-      text: roomName
+      text: root.roomName
     }
     Grid {
       spacing: 2
       columns: 1
       horizontalItemAlignment: Grid.AlignHCenter
       Repeater {
-        model: roomContents
+        model: root.roomContents
         Row {
           spacing: 2
+          required property var modelData
           SvgImage {
-            source: modelData in Global.contentIconMapping ? 'qrc:/qt/qml/labcompass/assets/images/lab-content/' + Global.contentIconMapping[modelData] + '.svg' : ''
+            source: parent.modelData in Global.contentIconMapping ? 'qrc:/qt/qml/labcompass/assets/images/lab-content/' + Global.contentIconMapping[parent.modelData] + '.svg' : ''
           }
           Text {
-            text: modelData in Global.nameMapping ? Global.nameMapping[modelData] : modelData
+            text: parent.modelData in Global.nameMapping ? Global.nameMapping[parent.modelData] : parent.modelData
             color: Global.primaryTextColor
             font.pixelSize: 14
           }
@@ -47,6 +49,6 @@ Rectangle {
     width: grid.width - 20
     height: 1
     color: Qt.lighter(Global.primaryColor)
-    visible: roomContents.length
+    visible: root.roomContents.length
   }
 }
