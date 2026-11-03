@@ -41,11 +41,11 @@ void Application::init()
     qInfo() << "Init helpers";
     initHelpers();
 
-    qInfo() << "Init workers";
-    initWorkers();
-
     qInfo() << "Init windows";
     initWindows();
+
+    qInfo() << "Init workers";
+    initWorkers();
 
     qInfo() << "Init controllers";
     initControllers();
@@ -196,7 +196,19 @@ void Application::initWorkers()
 {
     logWatcher.reset(new LogWatcher(&model));
 
-    engine.rootContext()->setContextProperty("logWatcher", logWatcher.get());
+    auto compass = window->findChild<QQuickItem*>("compass");
+    connect(logWatcher.get(), SIGNAL(labStarted()),
+            compass, SLOT(restartTimer()));
+    connect(logWatcher.get(), SIGNAL(labFinished()),
+            compass, SLOT(stopTimer()));
+    connect(logWatcher.get(), SIGNAL(labExit()),
+            compass, SLOT(closeTimer()));
+
+    auto izaroInstructionItemIcon = window->findChild<QQuickItem*>("izaroInstructionItemIcon");
+    connect(logWatcher.get(), SIGNAL(roomChanged(QString)),
+            izaroInstructionItemIcon, SLOT(onRoomChanged()));
+    connect(logWatcher.get(), SIGNAL(izaroBattleStarted()),
+            izaroInstructionItemIcon, SLOT(onIzaroBattleStarted()));
 
     versionChecker.reset(new VersionChecker(&model));
     dateChecker.reset(new DateChecker(&model));
