@@ -11,8 +11,8 @@ Column {
     active: Global && Global.plannerWindowOpen
     onClicked: {
       if (Global) {
-        var open = Global.plannerWindowOpen;
-        closeAllWindows();
+        const open = Global.plannerWindowOpen;
+        root.closeAllWindows();
         if (!open)
           Global.plannerWindowOpen = true;
       }
@@ -28,8 +28,8 @@ Column {
     active: Global && Global.puzzleWindowOpen
     onClicked: {
       if (Global) {
-        var open = Global.puzzleWindowOpen;
-        closeAllWindows();
+        const open = Global.puzzleWindowOpen;
+        root.closeAllWindows();
         if (!open)
           Global.puzzleWindowOpen = true;
       }
@@ -42,8 +42,8 @@ Column {
     active: Global && Global.optionsWindowOpen
     onClicked: {
       if (Global) {
-        var open = Global.optionsWindowOpen;
-        closeAllWindows();
+        const open = Global.optionsWindowOpen;
+        root.closeAllWindows();
         if (!open)
           Global.optionsWindowOpen = true;
       }
