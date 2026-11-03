@@ -24,6 +24,8 @@ void LabyrinthController::importFile(const QString& file)
             QFile::remove(lastLoadedMap);
             QFile::copy(fileToImport, lastLoadedMap);
         }
+    } else {
+        emit importFileFailed();
     }
 }
 

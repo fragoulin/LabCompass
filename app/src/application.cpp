@@ -124,6 +124,8 @@ void Application::initSystemTrayIcon()
         //@ TrayIcon
         trayIcon->setToolTip(qtTrId("id-trayicon-labcompass"));
         trayIcon->show();
+    } else {
+        qInfo() << "   System tray not available";
     }
 }
 
@@ -208,6 +210,9 @@ void Application::initControllers()
     connect(roomPresetsWindow, SIGNAL(applyPresetButtonClicked(QString,QString)),
             labyrinthController.get(), SLOT(onRoomPresetSet(QString,QString)));
 
+    connect(labyrinthController.get(), SIGNAL(importFileFailed()),
+            this, SLOT(onImportFileFailed()));
+
     navigationController.reset(new NavigationController(&model));
     connect(logWatcher.get(), &LogWatcher::plazaEntered,
         navigationController.get(), &NavigationController::onPlazaEntered);
@@ -249,4 +254,14 @@ void Application::restorePreviouslyLoadedMap()
         const auto& lastLoadedMap = appData.absoluteFilePath("lastLoaded.map");
         labyrinthController->importFile(lastLoadedMap);
     }
+}
+
+void Application::onImportFileFailed()
+{
+    QMessageBox msgBox(nullptr);
+    msgBox.setText("Failed to import file.");
+    msgBox.setIcon(QMessageBox::Warning);
+    msgBox.setInformativeText("JSON file cannot be imported. Please check logs.");
+    msgBox.setStandardButtons(QMessageBox::Ok);
+    msgBox.exec();
 }

@@ -61,7 +61,7 @@ bool LabyrinthData::loadFromJson(const QJsonObject& jsonLab)
         QString strJson(doc.toJson(QJsonDocument::Compact));
         validator.validate(json::parse(strJson.toStdString()));
     } catch (const std::exception &e) {
-        qCritical() << "Error occurred during json validation: " << e.what();
+        qWarning() << "Error occurred during json validation: " << e.what();
         return false;
     }
 
@@ -78,6 +78,9 @@ bool LabyrinthData::loadFromJson(const QJsonObject& jsonLab)
         traps.append(jsonLab["trap2"].toString());
 
     if (!(loadRooms(jsonLab["rooms"].toArray())))
+        return false;
+
+    if (!checkExits())
         return false;
 
     predictRoomAreaCodes();
@@ -181,13 +184,17 @@ qreal LabyrinthData::roomCost(const RoomId& id) const
 
 bool LabyrinthData::loadRooms(const QJsonArray& array)
 {
-    if (array.isEmpty())
+    if (array.isEmpty()) {
+        qWarning() << "JSON file is empty";
         return false;
-    rooms.append(Room({ "Aspirant\'s Plaza", "labyrinth_airlock", "plaza", { -100, 128 }, {}, -1, false }));
+    }
+    rooms.append(Room({ "Aspirant\'s Plaza", "labyrinth_airlock", "plaza", { -100, 128 }, {}, {}, -1, false }));
 
     for (int i = 0; i < array.size(); i++) {
-        if (!array[i].isObject())
+        if (!array[i].isObject()) {
+            qWarning() << "Invalid room" << array[i];
             return false;
+        }
         const auto& roomJson = array[i].toObject();
 
         Room room;
@@ -203,6 +210,8 @@ bool LabyrinthData::loadRooms(const QJsonArray& array)
         room.coordinate = QPoint(roomJson["x"].toString().toInt(), roomJson["y"].toString().toInt());
 
         room.contents = roomJson["contents"].toVariant().toStringList();
+
+        room.exitsNumber = static_cast<int>(roomJson["exits"].toVariant().toMap().size());
 
         rooms.append(room);
     }
@@ -237,11 +246,15 @@ bool LabyrinthData::loadConnectionMatrix(const QJsonArray& array)
     }
 
     for (int i = 0; i < array.size(); i++) {
-        if (!array[i].isObject())
+        if (!array[i].isObject()) {
+            qWarning() << "Invalid room type" << array[i];
             return false;
+        }
         auto roomJson = array[i].toObject();
-        if (!(roomJson.contains("exits") && roomJson["exits"].isObject()))
+        if (!(roomJson.contains("exits") && roomJson["exits"].isObject())) {
+            qWarning() << "Room is missing exits" << array[i];
             return false;
+        }
     }
 
     for (int i = 0; i < array.size(); i++) {
@@ -309,8 +322,10 @@ bool LabyrinthData::loadSections()
             trialRooms.append(i);
     }
 
-    if (!(firstRooms.size() == 3 && trialRooms.size() == 3))
+    if (!(firstRooms.size() == 3 && trialRooms.size() == 3)) {
+        qWarning() << "Invalid number of trial rooms";
         return false;
+    }
 
     for (int i = 0; i < 3; i++) {
         sections[i].firstRoom = rooms[firstRooms[i]].id;
@@ -333,5 +348,18 @@ bool LabyrinthData::loadGoldenDoors()
             for (int j = i + 1; j < rooms.size(); j++) // golden doors can't lead to rooms before it
                 if (!roomIsDeadEnd(rooms[j].id) && hasDoorConnection(rooms[i].id, rooms[j].id) && !rooms[j].contents.contains("golden-key") && rooms[j].coordinate.x() > rooms[i].coordinate.x())
                     goldenDoors.append(std::pair<RoomId, RoomId>(rooms[i].id, rooms[j].id));
+    return true;
+}
+
+bool LabyrinthData::checkExits()
+{
+    for (int i = 0; i < rooms.size() - 1; i++) {
+        Room room = rooms[i];
+        if ("plaza" != room.id && 0 == room.exitsNumber) {
+            qWarning() << "Room" << room.id << room.name << "has no exits";
+            return false;
+        }
+    }
+
     return true;
 }

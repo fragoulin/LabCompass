@@ -8,6 +8,9 @@ class LabyrinthController : public QObject {
 
     ApplicationModel* model;
 
+signals:
+    void importFileFailed();
+
 public:
     LabyrinthController(ApplicationModel* labyrinthModel);
 

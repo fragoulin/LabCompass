@@ -39,6 +39,7 @@ public:
 
 private slots:
     void onAboutToQuit();
+    void onImportFileFailed();
 
 private:
     void init();
