@@ -262,21 +262,25 @@ void Application::restorePreviouslyLoadedMap()
 
 void Application::updateLanguage(QString languageCode)
 {
-    const QString baseFilename = QApplication::applicationName();
-    QString filename = baseFilename % "_" % languageCode;
+    if (!translator.isEmpty() && !removeTranslator(&translator))
+        qInfo() << "Failed to remove translator" << translator.language();
+
+    const QString applicationName = QApplication::applicationName();
     const QString directory = ":/i18n";
 
-    if (!translator.load(filename, directory) || !installTranslator(&translator)) {
-        qWarning() << "Cannot find translation" << filename << "from directory" << directory << "and language code" << languageCode << ". Fallback to english language";
-        languageCode = "en";
-        filename = baseFilename % "_" % languageCode;
-        if(translator.load(filename, directory)) {
-            qInfo() << "Using english as fallback language";
+    QLocale locale (languageCode);
+
+    if (!translator.load(locale, applicationName, "_", directory)) {
+        qWarning() << "Cannot load translation" << applicationName << "from directory" << directory << "and locale" << locale << ". Fallback to default locale";
+        if(translator.load(QLocale(), applicationName, "_", directory)) {
+            qInfo() << "    Using english as fallback language";
             model.get_settings()->set_languageCode(languageCode);
             installTranslator(&translator);
         }
         else
-            qWarning() << "Failed to load english fallback file" << filename << "from directory" << directory;
+            qWarning() << "Failed to load default language" << applicationName << "from directory" << directory << "and locale" << QLocale();
+    } else if (!installTranslator(&translator)) {
+        qWarning() << "Failed to install translator" << translator.language();
     }
 }
 
@@ -305,8 +309,6 @@ void Application::onAboutToQuit()
 void Application::onSettingsUpdated()
 {
     const auto languageCode = model.get_settings()->get_languageCode();
-    if (!translator.isEmpty())
-        removeTranslator(&translator);
 
     updateLanguage(languageCode);
 
