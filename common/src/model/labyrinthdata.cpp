@@ -359,10 +359,10 @@ bool LabyrinthData::loadGoldenDoors()
     return true;
 }
 
-bool LabyrinthData::roomIsBottleneck(const RoomId& id) const
+bool LabyrinthData::roomIsAnnexOrEnclosure(const RoomId& id) const
 {
     const Room& room = rooms[roomIdIndex.value(id)];
-    return room.name.endsWith("Annex") || room.name.endsWith("Enclosure");
+    return room.name.endsWith("annex") || room.name.endsWith("enclosure");
 }
 
 bool LabyrinthData::checkExits()
@@ -371,9 +371,9 @@ bool LabyrinthData::checkExits()
         Room room = rooms[i];
         if ("plaza" != room.id
             && !roomIsTrial(room.id)
-            && !roomIsBottleneck(room.id)
+            && !roomIsAnnexOrEnclosure(room.id)
             && 0 == room.exitsNumber) {
-            qWarning() << "Room" << room.id << room.name << "has no exits";
+            qWarning() << "Room" << room.id << room.translatedName << "has no exits";
             return false;
         }
     }

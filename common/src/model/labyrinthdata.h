@@ -62,7 +62,7 @@ private:
     bool loadConnectionMatrix(const QJsonArray& array);
     bool loadSections();
     bool loadGoldenDoors();
-    bool roomIsBottleneck(const RoomId& id) const;
+    bool roomIsAnnexOrEnclosure(const RoomId& id) const;
     bool checkExits();
 };
 
