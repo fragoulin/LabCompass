@@ -193,7 +193,7 @@ bool LabyrinthData::loadRooms(const QJsonArray& array)
         return false;
     }
 
-    rooms.append(Room({ "Aspirant\'s Plaza", qtTrId("id-labyrinth-aspirants-plaza"), "labyrinth_airlock", "plaza", { -100, 128 }, {}, {}, -1, false }));
+    rooms.append(Room({ "Aspirant\'s Plaza", "id-labyrinth-aspirants-plaza", qtTrId("id-labyrinth-aspirants-plaza"), "labyrinth_airlock", "plaza", { -100, 128 }, {}, {}, -1, false }));
 
     for (int i = 0; i < array.size(); i++) {
         if (!array[i].isObject()) {
@@ -212,6 +212,7 @@ bool LabyrinthData::loadRooms(const QJsonArray& array)
         QString roomNameId = "id-" % roomName.replace(' ', '-').replace("'", "");
         QByteArray ba = roomNameId.toLocal8Bit();
         const char *roomNameIdChar = ba.data();
+        room.nameId = roomNameIdChar;
         room.translatedName = qtTrId(roomNameIdChar);
 
         room.coordinate = QPoint(roomJson["x"].toString().toInt(), roomJson["y"].toString().toInt());
@@ -237,7 +238,7 @@ void LabyrinthData::predictRoomAreaCodes()
 
     for (auto& room : rooms)
         if (room.areaCode.isEmpty()) {
-            const auto& presetList = helper->getPresetListByName(room.name, room.contents.contains("golden-door"));
+            const auto& presetList = helper->getPresetListByName(room.nameId, room.contents.contains("golden-door"));
             if (presetList.size() == 1)
                 room.areaCode = presetList[0].first;
         }
