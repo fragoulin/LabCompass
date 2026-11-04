@@ -17,23 +17,6 @@ Application::Application(int& argc, char** argv)
     restorePreviouslyLoadedMap();
 }
 
-void Application::onAboutToQuit()
-{
-    model.get_settings()->set_mainWindowPosition(QPoint(window->x(), window->y()));
-    model.get_settings()->save();
-}
-
-void Application::onSettingsUpdated()
-{
-    const auto languageCode = model.get_settings()->get_languageCode();
-    if (!translator.isEmpty())
-        removeTranslator(&translator);
-
-    updateLanguage(languageCode);
-
-    engine.retranslate();
-}
-
 void Application::init()
 {
     qInfo() << "Initialization started";
@@ -300,9 +283,32 @@ void Application::updateLanguage(QString languageCode)
 void Application::onImportFileFailed()
 {
     QMessageBox msgBox(nullptr);
-    msgBox.setText("Failed to import file.");
+    //: Title for import file error
+    //% "Failed to import file."
+    //@ Error
+    msgBox.setText(qtTrId("id-failed-to-import-file-title"));
     msgBox.setIcon(QMessageBox::Warning);
-    msgBox.setInformativeText("JSON file cannot be imported. Please check logs.");
+    //: Text for import file error
+    //% "JSON file cannot be imported. Please check logs."
+    //@ Error
+    msgBox.setInformativeText(qtTrId("id-failed-to-import-file-text"));
     msgBox.setStandardButtons(QMessageBox::Ok);
     msgBox.exec();
+}
+
+void Application::onAboutToQuit()
+{
+    model.get_settings()->set_mainWindowPosition(QPoint(window->x(), window->y()));
+    model.get_settings()->save();
+}
+
+void Application::onSettingsUpdated()
+{
+    const auto languageCode = model.get_settings()->get_languageCode();
+    if (!translator.isEmpty())
+        removeTranslator(&translator);
+
+    updateLanguage(languageCode);
+
+    engine.retranslate();
 }

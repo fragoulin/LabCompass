@@ -356,7 +356,7 @@
     </message>
     <message id="id-labyrinth-aspirants-plaza">
         <location filename="../../common/src/controller/navigationcontroller.cpp" line="59"/>
-        <location filename="../../common/src/model/labyrinthdata.cpp" line="192"/>
+        <location filename="../../common/src/model/labyrinthdata.cpp" line="197"/>
         <location filename="../../common/src/worker/logwatcher.cpp" line="299"/>
         <source>Aspirants&apos; Plaza</source>
         <extracomment>Room name: Aspirants&apos; Plaza. Must match exactly room name displayed in Path of Exile client</extracomment>
@@ -685,56 +685,8 @@
         <label>Instruction</label>
         <translation>マークのない出口</translation>
     </message>
-    <message id="id-warning-unable-to-locate-poe-installation">
-        <location filename="../qml/instruction/InstructionList.qml" line="19"/>
-        <source>Unable to locate PoE installation.
-
-You can try to:
-- run PoE client
-- set the path in Options window.</source>
-        <extracomment>Warning displayed when the POE installation cannot be located, with an invitaion to open file dialog. The warning message must be brief because of limited space in the UI</extracomment>
-        <label>Warning</label>
-        <translation>Unable to locate PoE installation.
-
-You can try to:
-- run PoE client
-- set the path in Options window.</translation>
-    </message>
-    <message id="id-warning-unable-to-determine-location-in-lab">
-        <location filename="../qml/instruction/InstructionList.qml" line="27"/>
-        <source>Unable to determine your location.
-
-- Open Planner window and click on your current room.</source>
-        <extracomment>Warning displayed when the player location in labyrinth cannot be determined, with an invitation to open planner and choose a location. The warning message must be brief because of limited space in the UI</extracomment>
-        <label>Warning</label>
-        <translation>現在地を特定できません。
-
-- プランナーウィンドウを開き、現在の部屋をクリックしてください。</translation>
-    </message>
-    <message id="id-warning-no-map-loaded">
-        <location filename="../qml/instruction/InstructionList.qml" line="35"/>
-        <source>No map loaded.
-
-- Import a map in Planner window before starting lab.</source>
-        <extracomment>Warning displayed when no map is loaded, with an invitation to import a map in the planner window. The warning message must be brief because of limited space in the UI</extracomment>
-        <label>Warning</label>
-        <translation>マップが読み込まれていません。
-
-- ラボを開始する前に、Planner ウィンドウにマップをインポートしてください。</translation>
-    </message>
-    <message id="id-warning-outdated-map">
-        <location filename="../qml/instruction/InstructionList.qml" line="43"/>
-        <source>Loaded map is outdated.
-
-- Checkout poelab.com for latest maps.</source>
-        <extracomment>Warning displayed when the map loaded in the planner is outdated, with an invitation to download the latest map. The warning message must be brief because of limited space in the UI</extracomment>
-        <label>Warning</label>
-        <translation>読み込まれた地図は古くなっています。
-
-- 最新の地図についてはpoelab.comをご覧ください。</translation>
-    </message>
     <message id="id-defeat-izaro">
-        <location filename="../qml/instruction/IzaroInstructionItem.qml" line="14"/>
+        <location filename="../qml/instruction/IzaroInstructionItem.qml" line="16"/>
         <source>Defeat Izaro</source>
         <extracomment>Instruction displayed when the player is ready to face Izaro</extracomment>
         <label>Instruction</label>
@@ -754,103 +706,221 @@ You can try to:
         <label>Instruction</label>
         <translation>戦利品:</translation>
     </message>
+    <message id="id-warning-unable-to-locate-poe-installation">
+        <location filename="../qml/instruction/InstructionList.qml" line="20"/>
+        <source>Unable to locate PoE installation.
+
+You can try to:
+- run PoE client
+- set the path in Options window.</source>
+        <extracomment>Warning displayed when the POE installation cannot be located, with an invitaion to open file dialog. The warning message must be brief because of limited space in the UI</extracomment>
+        <label>Warning</label>
+        <translation>Unable to locate PoE installation.
+
+You can try to:
+- run PoE client
+- set the path in Options window.</translation>
+    </message>
+    <message id="id-warning-unable-to-determine-location-in-lab">
+        <location filename="../qml/instruction/InstructionList.qml" line="28"/>
+        <source>Unable to determine your location.
+
+- Open Planner window and click on your current room.</source>
+        <extracomment>Warning displayed when the player location in labyrinth cannot be determined, with an invitation to open planner and choose a location. The warning message must be brief because of limited space in the UI</extracomment>
+        <label>Warning</label>
+        <translation>現在地を特定できません。
+
+- プランナーウィンドウを開き、現在の部屋をクリックしてください。</translation>
+    </message>
+    <message id="id-warning-no-map-loaded">
+        <location filename="../qml/instruction/InstructionList.qml" line="36"/>
+        <source>No map loaded.
+
+- Import a map in Planner window before starting lab.</source>
+        <extracomment>Warning displayed when no map is loaded, with an invitation to import a map in the planner window. The warning message must be brief because of limited space in the UI</extracomment>
+        <label>Warning</label>
+        <translation>マップが読み込まれていません。
+
+- ラボを開始する前に、Planner ウィンドウにマップをインポートしてください。</translation>
+    </message>
+    <message id="id-warning-outdated-map">
+        <location filename="../qml/instruction/InstructionList.qml" line="44"/>
+        <source>Loaded map is outdated.
+
+- Checkout poelab.com for latest maps.</source>
+        <extracomment>Warning displayed when the map loaded in the planner is outdated, with an invitation to download the latest map. The warning message must be brief because of limited space in the UI</extracomment>
+        <label>Warning</label>
+        <translation>読み込まれた地図は古くなっています。
+
+- 最新の地図についてはpoelab.comをご覧ください。</translation>
+    </message>
     <message id="id-update-available">
-        <location filename="../qml/options/Options.qml" line="79"/>
+        <location filename="../qml/options/Options.qml" line="101"/>
         <source>Update Available</source>
         <extracomment>Label indicating that an update for LabCompass is available</extracomment>
         <label>Options</label>
         <translation>アップデートが利用可能です</translation>
     </message>
     <message id="id-options">
-        <location filename="../qml/options/Options.qml" line="107"/>
+        <location filename="../qml/options/Options.qml" line="172"/>
         <source>Options</source>
         <extracomment>Title for options window</extracomment>
         <label>Options</label>
         <translation>オプション</translation>
     </message>
     <message id="id-menu-client">
-        <location filename="../qml/options/Options.qml" line="124"/>
+        <location filename="../qml/options/Options.qml" line="189"/>
         <source>Client</source>
         <extracomment>Menu label for client options</extracomment>
         <label>Options</label>
         <translation>クライアント</translation>
     </message>
     <message id="id-menu-ui">
-        <location filename="../qml/options/Options.qml" line="128"/>
+        <location filename="../qml/options/Options.qml" line="193"/>
         <source>UI</source>
         <extracomment>Menu label for UI options</extracomment>
         <label>Options</label>
         <translation>UI</translation>
     </message>
     <message id="id-meby-navigation">
-        <location filename="../qml/options/Options.qml" line="132"/>
+        <location filename="../qml/options/Options.qml" line="197"/>
         <source>Navigation</source>
         <extracomment>Menu label for Navigation options</extracomment>
         <label>Options</label>
         <translation>ナビゲーション</translation>
     </message>
     <message id="id-menu-hotkeys">
-        <location filename="../qml/options/Options.qml" line="136"/>
+        <location filename="../qml/options/Options.qml" line="201"/>
         <source>Hotkeys</source>
         <extracomment>Menu label for Hotkeys options</extracomment>
         <label>Options</label>
         <translation>ホットキー</translation>
     </message>
     <message id="id-game-client-path">
-        <location filename="../qml/options/Options.qml" line="158"/>
+        <location filename="../qml/options/Options.qml" line="223"/>
         <source>Game Client Path</source>
         <extracomment>Label for Game Client Path option. Label should be brief because of small space available</extracomment>
         <label>Options</label>
         <translation>ゲームクライアントの場所</translation>
     </message>
     <message id="id-multi-client-support">
-        <location filename="../qml/options/Options.qml" line="184"/>
+        <location filename="../qml/options/Options.qml" line="249"/>
         <source>Multi-client Support (Experimental)</source>
         <extracomment>Label for Multi-client Support option. Label should be brief because of small space available</extracomment>
         <label>Options</label>
         <translation>マルチクライアントサポート（実験的）</translation>
     </message>
     <message id="id-show-minimap-when-available">
-        <location filename="../qml/options/Options.qml" line="203"/>
+        <location filename="../qml/options/Options.qml" line="268"/>
         <source>Show Minimap When Available</source>
         <extracomment>Label for Show Minimap When Available option. Label should be brief because of small space available</extracomment>
         <label>Options</label>
         <translation>利用可能な場合はミニマップを表示</translation>
     </message>
     <message id="id-ui-scale-factor">
-        <location filename="../qml/options/Options.qml" line="219"/>
+        <location filename="../qml/options/Options.qml" line="284"/>
         <source>UI Scale Factor &lt;sup&gt;*&lt;/sup&gt;</source>
         <extracomment>Label for Show UI Scale Factor option. Label should be brief because of small space available</extracomment>
         <label>Options</label>
         <translation>UIスケール係数&lt;sup&gt;*&lt;/sup&gt;</translation>
     </message>
+    <message id="id-ui-scale-factor-0.5">
+        <location filename="../qml/options/Options.qml" line="296"/>
+        <source>0.5x</source>
+        <extracomment>Label for UI Scale Factor 0.5</extracomment>
+        <label>Options</label>
+        <translation></translation>
+    </message>
+    <message id="id-ui-scale-factor-0.75">
+        <location filename="../qml/options/Options.qml" line="303"/>
+        <source>0.75x</source>
+        <extracomment>Label for UI Scale Factor 0.75</extracomment>
+        <label>Options</label>
+        <translation></translation>
+    </message>
+    <message id="id-ui-scale-factor-1">
+        <location filename="../qml/options/Options.qml" line="310"/>
+        <source>1x</source>
+        <extracomment>Label for UI Scale Factor 1</extracomment>
+        <label>Options</label>
+        <translation></translation>
+    </message>
+    <message id="id-ui-scale-factor-1.25">
+        <location filename="../qml/options/Options.qml" line="317"/>
+        <source>1.25x</source>
+        <extracomment>Label for UI Scale Factor 1.25</extracomment>
+        <label>Options</label>
+        <translation></translation>
+    </message>
+    <message id="id-ui-scale-factor-1.5">
+        <location filename="../qml/options/Options.qml" line="324"/>
+        <source>1.5x</source>
+        <extracomment>Label for UI Scale Factor 1.5</extracomment>
+        <label>Options</label>
+        <translation></translation>
+    </message>
+    <message id="id-ui-scale-factor-1.75">
+        <location filename="../qml/options/Options.qml" line="331"/>
+        <source>1.75x</source>
+        <extracomment>Label for UI Scale Factor 1.75</extracomment>
+        <label>Options</label>
+        <translation></translation>
+    </message>
+    <message id="id-ui-scale-factor-2">
+        <location filename="../qml/options/Options.qml" line="338"/>
+        <source>2x</source>
+        <extracomment>Label for UI Scale Factor 2</extracomment>
+        <label>Options</label>
+        <translation></translation>
+    </message>
+    <message id="id-ui-scale-factor-2.5">
+        <location filename="../qml/options/Options.qml" line="345"/>
+        <source>2.5x</source>
+        <extracomment>Label for UI Scale Factor 2.5</extracomment>
+        <label>Options</label>
+        <translation></translation>
+    </message>
     <message id="id-taking-portals-skips-current-section">
-        <location filename="../qml/options/Options.qml" line="237"/>
+        <location filename="../qml/options/Options.qml" line="366"/>
         <source>Taking Portals Skips Current Section</source>
         <extracomment>Label related to player taking a portal. This action should skips current section. Label should be brief because of small space available</extracomment>
         <label>Options</label>
         <translation>ポータルを使って部屋をスキップする</translation>
     </message>
     <message id="id-hide-show-compass">
-        <location filename="../qml/options/Options.qml" line="256"/>
+        <location filename="../qml/options/Options.qml" line="385"/>
         <source>Hide/Show Compass</source>
         <extracomment>Label for Hide/Show Compass option. Label should be brief because of small space available</extracomment>
         <label>Options</label>
         <translation>コンパスの表示/非表示</translation>
     </message>
     <message id="id-restart-labcompass-to-apply-changes">
-        <location filename="../qml/options/Options.qml" line="272"/>
+        <location filename="../qml/options/Options.qml" line="401"/>
         <source>&lt;sup&gt;*&lt;/sup&gt; Restart LabCompass to Apply Changes</source>
         <extracomment>Label for indicating that LabCompass must be restarted to apply changes. Label should be brief because of small space available</extracomment>
         <label>Options</label>
         <translation>再起動が必要です</translation>
     </message>
     <message id="id-options-ok">
-        <location filename="../qml/options/Options.qml" line="315"/>
+        <location filename="../qml/options/Options.qml" line="444"/>
         <source>OK</source>
         <extracomment>Label for OK button in options window</extracomment>
         <label>Options</label>
         <translation>了解</translation>
+    </message>
+    <message id="id-dialog-find-game-client">
+        <location filename="../qml/options/Options.qml" line="456"/>
+        <source>Find Game Client</source>
+        <extracomment>File dialog title to find game client</extracomment>
+        <label>Options</label>
+        <translation>ゲームクライアントを探す</translation>
+    </message>
+    <message id="id-dialog-poe-client">
+        <location filename="../qml/options/Options.qml" line="460"/>
+        <source>Path of Exile Client (*.exe)</source>
+        <extracomment>File dialog info and extension type</extracomment>
+        <label>Options</label>
+        <translation>Path of Exile クライアント (*.exe)</translation>
     </message>
     <message id="id-drop-to-import">
         <location filename="../qml/planner/MapDropArea.qml" line="72"/>
@@ -913,49 +983,72 @@ You can try to:
         <source>Plan: </source>
         <extracomment>Label displayed before tha planned route</extracomment>
         <label>Planner</label>
-        <translation>プラン：</translation>
+        <translation>プラン： </translation>
     </message>
     <message id="id-labyrinth-planner">
-        <location filename="../qml/planner/Planner.qml" line="43"/>
+        <location filename="../qml/planner/Planner.qml" line="63"/>
         <source>Labyrinth Planner</source>
         <extracomment>Labyrinth Planner window title</extracomment>
         <label>Planner</label>
         <translation>ラビリンスプランナー</translation>
     </message>
     <message id="id-layout-room-title">
-        <location filename="../qml/planner/Planner.qml" line="58"/>
+        <location filename="../qml/planner/Planner.qml" line="78"/>
         <source>Layout: %1</source>
         <extracomment>Layout: room title</extracomment>
         <label>Planner</label>
         <translation>レイアウト:%1</translation>
     </message>
     <message id="id-planner-no-map-loaded">
-        <location filename="../qml/planner/Planner.qml" line="62"/>
+        <location filename="../qml/planner/Planner.qml" line="82"/>
         <source>No lab notes loaded</source>
         <extracomment>Label displayed in the planner when no map is loaded</extracomment>
         <label>Planner</label>
         <translation>ラボノートが読み込まれていません</translation>
     </message>
     <message id="id-get-maps">
-        <location filename="../qml/planner/Planner.qml" line="76"/>
+        <location filename="../qml/planner/Planner.qml" line="96"/>
         <source>Get Maps</source>
         <extracomment>Get Maps button label to access poelab website. Label should be brief because of limited space available</extracomment>
         <label>Planner</label>
         <translation>マップを入手</translation>
     </message>
     <message id="id-import-maps">
-        <location filename="../qml/planner/Planner.qml" line="98"/>
+        <location filename="../qml/planner/Planner.qml" line="118"/>
         <source>Import Maps</source>
         <extracomment>Import Maps button label to open file dialog. Label should be brief because of limited space available</extracomment>
         <label>Planner</label>
         <translation>マップ</translation>
     </message>
     <message id="id-planner-donate">
-        <location filename="../qml/planner/Planner.qml" line="173"/>
+        <location filename="../qml/planner/Planner.qml" line="194"/>
         <source>Donate: </source>
         <extracomment>Donate button label displayed before Paypal and Patreon buttons. Label should be brief because of limited space available</extracomment>
         <label>Planner</label>
         <translation>寄付する: </translation>
+    </message>
+    <message id="id-dialog-import-lab-notes">
+        <location filename="../qml/planner/Planner.qml" line="233"/>
+        <source>Import Lab Notes</source>
+        <extracomment>File dialog title to import lab notes</extracomment>
+        <label>Planner</label>
+        <translation>ラボノートのインポート</translation>
+    </message>
+    <message id="id-dialog-import-info">
+        <location filename="../qml/planner/Planner.qml" line="237"/>
+        <source>Lab Maps (*.json *.map)</source>
+        <extracomment>File dialog info and authorized file extensions</extracomment>
+        <label>Planner</label>
+        <translation>ラボマップ (*.json *.map)</translation>
+    </message>
+    <message id="id-aspirant&apos;s-trial">
+        <location filename="../../common/src/model/labyrinthdata.cpp" line="151"/>
+        <location filename="../qml/planner/LabyrinthMapDisplay.qml" line="64"/>
+        <location filename="../qml/planner/LabyrinthMapDisplay.qml" line="69"/>
+        <source>Aspirant&apos;s Trial</source>
+        <extracomment>Label &quot;Aspirant&apos;s Trial&quot;</extracomment>
+        <label>Planner</label>
+        <translation>志す者への試練</translation>
     </message>
     <message id="id-roompresets-legend">
         <location filename="../qml/roompresets/MinimapLegend.qml" line="32"/>
@@ -993,35 +1086,35 @@ You can try to:
         <translation>戦利品</translation>
     </message>
     <message id="id-roompresets-room-layout">
-        <location filename="../qml/roompresets/RoomPresets.qml" line="35"/>
+        <location filename="../qml/roompresets/RoomPresets.qml" line="55"/>
         <source>Room Layout Presets</source>
         <extracomment>Room Layout Presets label displayed in room presets. Label should be brief because of limited space available</extracomment>
         <label>RoomPresets</label>
         <translation>部屋のレイアウトプリセット</translation>
     </message>
     <message id="id-roompresets-no-presets-available">
-        <location filename="../qml/roompresets/RoomPresets.qml" line="188"/>
+        <location filename="../qml/roompresets/RoomPresets.qml" line="208"/>
         <source>No Presets Available for This Room</source>
         <extracomment>Label displayed in room presets. Label should be brief because of limited space available</extracomment>
         <label>RoomPresets</label>
         <translation>プリセットは利用できません</translation>
     </message>
     <message id="id-roompresets-presets-will-be-disabled">
-        <location filename="../qml/roompresets/RoomPresets.qml" line="204"/>
+        <location filename="../qml/roompresets/RoomPresets.qml" line="224"/>
         <source>Presets Will Be Disabled for This Room</source>
         <extracomment>Label displayed in room presets. Label should be brief because of limited space available</extracomment>
         <label>RoomPresets</label>
         <translation>この部屋ではプリセットが無効になります</translation>
     </message>
     <message id="id-roompresets-apply-preset">
-        <location filename="../qml/roompresets/RoomPresets.qml" line="237"/>
+        <location filename="../qml/roompresets/RoomPresets.qml" line="257"/>
         <source>Apply Preset</source>
         <extracomment>Label for button to apply preset</extracomment>
         <label>RoomPresets</label>
         <translation>プリセットを適用</translation>
     </message>
     <message id="id-trayicon-labcompass">
-        <location filename="../src/application.cpp" line="126"/>
+        <location filename="../src/application.cpp" line="131"/>
         <source>LabCompass</source>
         <extracomment>Tooltip for tray icon</extracomment>
         <label>TrayIcon</label>
@@ -1041,53 +1134,30 @@ You can try to:
         <label>TrayIcon</label>
         <translation>を終了する</translation>
     </message>
-    <message id="id-dialog-find-game-client">
-        <location filename="../src/window/optionswindow.cpp" line="83"/>
-        <source>Find Game Client</source>
-        <extracomment>File dialog title to find game client</extracomment>
-        <label>Options</label>
-        <translation>ゲームクライアントを探す</translation>
+    <message id="id-failed-to-import-file-title">
+        <location filename="../src/application.cpp" line="306"/>
+        <source>Failed to import file.</source>
+        <extracomment>Title for import file error</extracomment>
+        <label>Error</label>
+        <translation>ファイルのインポートに失敗しました。</translation>
     </message>
-    <message id="id-dialog-poe-client">
-        <location filename="../src/window/optionswindow.cpp" line="88"/>
-        <source>Path of Exile Client (*.exe)</source>
-        <extracomment>File dialog info and extension type</extracomment>
-        <label>Options</label>
-        <translation>Path of Exile クライアント (*.exe)</translation>
-    </message>
-    <message id="id-dialog-import-lab-notes">
-        <location filename="../src/window/plannerwindow.cpp" line="46"/>
-        <source>Import Lab Notes</source>
-        <extracomment>File dialog title to import lab notes</extracomment>
-        <label>Planner</label>
-        <translation>ラボノートのインポート</translation>
-    </message>
-    <message id="id-dialog-import-info">
-        <location filename="../src/window/plannerwindow.cpp" line="51"/>
-        <source>Lab Maps (*.json *.map)</source>
-        <extracomment>File dialog info and authorized file extensions</extracomment>
-        <label>Planner</label>
-        <translation>ラボマップ (*.json *.map)</translation>
-    </message>
-    <message id="id-aspirant&apos;s-trial">
-        <location filename="../../common/src/model/labyrinthdata.cpp" line="148"/>
-        <location filename="../qml/planner/LabyrinthMapDisplay.qml" line="64"/>
-        <location filename="../qml/planner/LabyrinthMapDisplay.qml" line="69"/>
-        <source>Aspirant&apos;s Trial</source>
-        <extracomment>Label &quot;Aspirant&apos;s Trial&quot;</extracomment>
-        <label>Planner</label>
-        <translation>志す者への試練</translation>
+    <message id="id-failed-to-import-file-text">
+        <location filename="../src/application.cpp" line="311"/>
+        <source>JSON file cannot be imported. Please check logs.</source>
+        <extracomment>Text for import file error</extracomment>
+        <label>Error</label>
+        <translation>JSONファイルをインポートできません。ログを確認してください。</translation>
     </message>
 </context>
 <context>
     <name>QHotkey</name>
     <message>
-        <location filename="../../build/Desktop_Update_translations_Debug/_deps/qhotkey-src/QHotkey/qhotkey.cpp" line="294"/>
+        <location filename="../../build/Desktop_Update_translations/_deps/qhotkey-src/QHotkey/qhotkey.cpp" line="294"/>
         <source>Failed to register %1. Error: %2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../build/Desktop_Update_translations_Debug/_deps/qhotkey-src/QHotkey/qhotkey.cpp" line="314"/>
+        <location filename="../../build/Desktop_Update_translations/_deps/qhotkey-src/QHotkey/qhotkey.cpp" line="314"/>
         <source>Failed to unregister %1. Error: %2</source>
         <translation type="unfinished"></translation>
     </message>

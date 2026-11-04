@@ -113,11 +113,7 @@ Window {
             text: 'English'
           }
           ListElement {
-            code: 'fr';
-            text: 'Français'
-          }
-          ListElement {
-            code: 'pt';
+            code: 'br';
             text: 'Português'
           }
           ListElement {
@@ -129,20 +125,24 @@ Window {
             text: 'ไทย'
           }
           ListElement {
-            code: 'es';
-            text: 'Español'
-          }
-          ListElement {
             code: 'de';
             text: 'Deutsch'
           }
           ListElement {
-            code: 'ko';
-            text: '한국어'
+            code: 'fr';
+            text: 'Français'
+          }
+          ListElement {
+            code: 'es';
+            text: 'Español'
           }
           ListElement {
             code: 'ja';
             text: '日本語'
+          }
+          ListElement {
+            code: 'ko';
+            text: '한국어'
           }
         }
 
