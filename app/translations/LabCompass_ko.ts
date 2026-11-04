@@ -403,7 +403,7 @@
         <source>Darkshrine</source>
         <extracomment>Darkshrine label in the labyrinth planner</extracomment>
         <label>Labyrinth</label>
-        <translation>정체불명의 검은 성소</translation>
+        <translation>검은 성소</translation>
     </message>
     <message id="id-argus">
         <location filename="../qml/Global.qml" line="70"/>

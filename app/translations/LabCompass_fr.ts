@@ -43,7 +43,7 @@
         <source>Darkshrine</source>
         <extracomment>Darkshrine label in the labyrinth planner</extracomment>
         <label>Labyrinth</label>
-        <translation>Autel Noir Mysterieux</translation>
+        <translation>Autel noir</translation>
     </message>
     <message id="id-argus">
         <location filename="../qml/Global.qml" line="70"/>
@@ -968,7 +968,7 @@ La commande suivante permet de chercher POE dans votre répertoire HOME sous lin
         <source>Darkshrine</source>
         <extracomment>Darkshrine label in planner window&apos;s caption. Label should be brief because of limited space</extracomment>
         <label>Planner</label>
-        <translation>Autel Noir Mysterieux</translation>
+        <translation>Autel Noir</translation>
     </message>
     <message id="id-silver-cache">
         <location filename="../qml/planner/PlanSummaryDisplay.qml" line="87"/>

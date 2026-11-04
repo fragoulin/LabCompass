@@ -403,7 +403,7 @@
         <source>Darkshrine</source>
         <extracomment>Darkshrine label in the labyrinth planner</extracomment>
         <label>Labyrinth</label>
-        <translation>แท่นบูชาความมืดลี้ลับ</translation>
+        <translation>แท่นบูชา​ความมืด</translation>
     </message>
     <message id="id-argus">
         <location filename="../qml/Global.qml" line="70"/>

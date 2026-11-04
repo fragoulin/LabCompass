@@ -403,7 +403,7 @@
         <source>Darkshrine</source>
         <extracomment>Darkshrine label in the labyrinth planner</extracomment>
         <label>Labyrinth</label>
-        <translation>Altar sombrio misterioso</translation>
+        <translation>Altar Sombrio</translation>
     </message>
     <message id="id-argus">
         <location filename="../qml/Global.qml" line="70"/>
