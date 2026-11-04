@@ -17,7 +17,7 @@ Button {
     id: helper
     multiKeyShortcutsAllowed: false
     modifierlessAllowed: true
-    onCaptureFinished: focus = false;
+    onCaptureFinished: root.focus = false
   }
 
   checkable: true

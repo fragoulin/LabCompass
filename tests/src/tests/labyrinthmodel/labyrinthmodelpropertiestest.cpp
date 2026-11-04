@@ -37,6 +37,9 @@ void LabyrinthModelPropertiesTest::test_data()
     QTest::newRow("2018-01-10 Uber") << "2018-01-10_uber.json"
                                      << "2018-01-10 Uber"
                                      << "Uber" << QDate(2018, 1, 10);
+    QTest::newRow("2026-03-14 Cruel") << "2026-03-14_cruel.json"
+                                      << "2026-03-14 Cruel"
+                                      << "Cruel" << QDate(2026, 3, 14);
 }
 
 void LabyrinthModelPropertiesTest::test()

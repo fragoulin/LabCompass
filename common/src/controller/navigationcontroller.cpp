@@ -1,8 +1,8 @@
 #include "navigationcontroller.h"
 
-NavigationController::NavigationController(ApplicationModel* model)
+NavigationController::NavigationController(ApplicationModel* applicationModel)
 {
-    this->model = model;
+    this->model = applicationModel;
 }
 
 void NavigationController::onPlazaEntered()

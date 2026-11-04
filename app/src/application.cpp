@@ -23,9 +23,9 @@ void Application::onAboutToQuit()
     model.get_settings()->save();
 }
 
-void Application::onSettingsUpdated(Settings &settings)
+void Application::onSettingsUpdated()
 {
-    const auto languageCode = settings.get_languageCode();
+    const auto languageCode = model.get_settings()->get_languageCode();
     if (!translator.isEmpty())
         removeTranslator(&translator);
 
@@ -53,11 +53,11 @@ void Application::init()
     qInfo() << "Init helpers";
     initHelpers();
 
-    qInfo() << "Init workers";
-    initWorkers();
-
     qInfo() << "Init windows";
     initWindows();
+
+    qInfo() << "Init workers";
+    initWorkers();
 
     qInfo() << "Init controllers";
     initControllers();
@@ -96,6 +96,11 @@ void Application::initResources()
 
     qmlRegisterType<KeySequenceHelper>("labcompass", 1, 0, "KeySequenceHelper");
     engine.load(QUrl("qrc:/qt/qml/labcompass/GlobalAccessor.qml"));
+    if (engine.rootObjects().isEmpty()) {
+        qCritical() << "Failed to initialize global resources";
+        quit();
+    }
+
     auto rootObjects = engine.rootObjects();
     global = rootObjects[0]->property("o").value<QObject*>();
     global->setProperty("model", QVariant::fromValue<QObject*>(&model));
@@ -125,6 +130,8 @@ void Application::initSystemTrayIcon()
         //@ TrayIcon
         trayIcon->setToolTip(qtTrId("id-trayicon-labcompass"));
         trayIcon->show();
+    } else {
+        qInfo() << "   System tray not available";
     }
 }
 
@@ -137,26 +144,80 @@ void Application::initWindows()
 {
     connect(&engine, &QQmlApplicationEngine::objectCreated, this, [this](QObject *object) {
         if (object->objectName() == "MainWindow" && object->isWindowType())
-            window = (QWindow*) object;
+            window = static_cast<QWindow*>(object);
     });
     engine.load(QUrl(QStringLiteral("qrc:/qt/qml/labcompass/MainWindow.qml")));
+    if (engine.rootObjects().isEmpty()) {
+        qCritical() << "Failed to load main window";
+        quit();
+    }
+    disconnect(&engine, &QQmlApplicationEngine::objectCreated, this, nullptr);
 
-    plannerWindow.reset(new PlannerWindow(&engine));
+    connect(&engine, &QQmlApplicationEngine::objectCreated, this, [this](QObject *object) {
+        if (object->objectName() == "PlannerWindow" && object->isWindowType())
+            plannerWindow = static_cast<QWindow*>(object);
+    });
+    engine.load(QUrl(QStringLiteral("qrc:/qt/qml/labcompass/planner/Planner.qml")));
+    if (engine.rootObjects().isEmpty()) {
+        qCritical() << "Failed to load planner window";
+        quit();
+    }
+    disconnect(&engine, &QQmlApplicationEngine::objectCreated, this, nullptr);
 
-    puzzleWindow.reset(new PuzzleWindow(&engine));
+    connect(&engine, &QQmlApplicationEngine::objectCreated, this, [this](QObject *object) {
+        if (object->objectName() == "RoomPresetsWindow" && object->isWindowType())
+            roomPresetsWindow = static_cast<QWindow*>(object);
+    });
+    engine.load(QUrl(QStringLiteral("qrc:/qt/qml/labcompass/roompresets/RoomPresets.qml")));
+    if (engine.rootObjects().isEmpty()) {
+        qCritical() << "Failed to load room presets window";
+        quit();
+    }
+    disconnect(&engine, &QQmlApplicationEngine::objectCreated, this, nullptr);
 
-    optionsWindow.reset(new OptionsWindow(&engine, model.get_settings()));
-    connect(optionsWindow.get(), &OptionsWindow::settingsUpdated,
-            this, &Application::onSettingsUpdated);
+    connect(&engine, &QQmlApplicationEngine::objectCreated, this, [this](QObject *object) {
+        if (object->objectName() == "PuzzleWindow" && object->isWindowType())
+            puzzleWindow = static_cast<QWindow*>(object);
+    });
+    engine.load(QUrl(QStringLiteral("qrc:/qt/qml/labcompass/Puzzle.qml")));
+    if (engine.rootObjects().isEmpty()) {
+        qCritical() << "Failed to load puzzle window";
+        quit();
+    }
+    disconnect(&engine, &QQmlApplicationEngine::objectCreated, this, nullptr);
 
-    roomPresetsWindow.reset(new RoomPresetsWindow(&engine));
+    connect(&engine, &QQmlApplicationEngine::objectCreated, this, [this](QObject *object) {
+        if (object->objectName() == "OptionsWindow" && object->isWindowType())
+            optionsWindow = static_cast<QWindow*>(object);
+    });
+    engine.load(QUrl(QStringLiteral("qrc:/qt/qml/labcompass/options/Options.qml")));
+    if (engine.rootObjects().isEmpty()) {
+        qCritical() << "Failed to load options window";
+        quit();
+    }
+    disconnect(&engine, &QQmlApplicationEngine::objectCreated, this, nullptr);
+
+    connect(optionsWindow, SIGNAL(settingsUpdated()),
+            this, SLOT(onSettingsUpdated()));
 }
 
 void Application::initWorkers()
 {
     logWatcher.reset(new LogWatcher(&model));
 
-    engine.rootContext()->setContextProperty("logWatcher", logWatcher.get());
+    auto compass = window->findChild<QQuickItem*>("compass");
+    connect(logWatcher.get(), SIGNAL(labStarted()),
+            compass, SLOT(restartTimer()));
+    connect(logWatcher.get(), SIGNAL(labFinished()),
+            compass, SLOT(stopTimer()));
+    connect(logWatcher.get(), SIGNAL(labExit()),
+            compass, SLOT(closeTimer()));
+
+    auto izaroInstructionItemIcon = window->findChild<QQuickItem*>("izaroInstructionItemIcon");
+    connect(logWatcher.get(), SIGNAL(roomChanged(QString)),
+            izaroInstructionItemIcon, SLOT(onRoomChanged()));
+    connect(logWatcher.get(), SIGNAL(izaroBattleStarted()),
+            izaroInstructionItemIcon, SLOT(onIzaroBattleStarted()));
 
     versionChecker.reset(new VersionChecker(&model));
     dateChecker.reset(new DateChecker(&model));
@@ -165,10 +226,13 @@ void Application::initWorkers()
 void Application::initControllers()
 {
     labyrinthController.reset(new LabyrinthController(&model));
-    connect(plannerWindow.get(), &PlannerWindow::importFile,
-        labyrinthController.get(), &LabyrinthController::importFile);
-    connect(roomPresetsWindow.get(), &RoomPresetsWindow::setRoomPreset,
-        labyrinthController.get(), &LabyrinthController::onRoomPresetSet);
+    connect(plannerWindow, SIGNAL(importFile(QString)),
+            labyrinthController.get(), SLOT(importFile(QString)));
+    connect(roomPresetsWindow, SIGNAL(applyPresetButtonClicked(QString,QString)),
+            labyrinthController.get(), SLOT(onRoomPresetSet(QString,QString)));
+
+    connect(labyrinthController.get(), SIGNAL(importFileFailed()),
+            this, SLOT(onImportFileFailed()));
 
     navigationController.reset(new NavigationController(&model));
     connect(logWatcher.get(), &LogWatcher::plazaEntered,
@@ -183,11 +247,10 @@ void Application::initControllers()
         navigationController.get(), &NavigationController::onRoomChanged);
     connect(logWatcher.get(), &LogWatcher::portalSpawned,
         navigationController.get(), &NavigationController::onPortalSpawned);
-
-    connect(plannerWindow.get(), &PlannerWindow::setRoomIsTarget,
-        navigationController.get(), &NavigationController::onRoomIsTargetSet);
-    connect(plannerWindow.get(), &PlannerWindow::setCurrentRoom,
-        navigationController.get(), &NavigationController::onRoomIdSet);
+    connect(plannerWindow, SIGNAL(setRoomIsTarget(QString,bool)),
+            navigationController.get(), SLOT(onRoomIsTargetSet(QString,bool)));
+    connect(plannerWindow, SIGNAL(setCurrentRoom(QString)),
+            navigationController.get(), SLOT(onRoomIdSet(QString)));
 }
 
 void Application::initHotkeys()
@@ -232,4 +295,14 @@ void Application::updateLanguage(QString languageCode)
         else
             qWarning() << "Failed to load english fallback file" << filename << "from directory" << directory;
     }
+}
+
+void Application::onImportFileFailed()
+{
+    QMessageBox msgBox(nullptr);
+    msgBox.setText("Failed to import file.");
+    msgBox.setIcon(QMessageBox::Warning);
+    msgBox.setInformativeText("JSON file cannot be imported. Please check logs.");
+    msgBox.setStandardButtons(QMessageBox::Ok);
+    msgBox.exec();
 }

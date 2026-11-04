@@ -34,10 +34,8 @@ Window {
       anchors.right: parent.right
       Component.onCompleted: {
         windowAgent.setTitleBar(header.titleBar)
-        windowAgent.setHitTestVisible(header.closeButton);
-        windowAgent.setSystemButton(WindowAgent.Close, header.closeButton);
       }
-      onExit: window.close()
+      onExit: Qt.quit()
     }
 
     Row {
@@ -63,13 +61,6 @@ Window {
       window.y = mainWindowPosition.y
     } else {
       windowAgent.centralize()
-    }
-  }
-
-  Connections {
-    target: Global
-    function onCompassVisibleChanged() {
-      window.visible = Global.compassVisible;
     }
   }
 }

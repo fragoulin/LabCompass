@@ -1,3 +1,5 @@
+pragma ComponentBehavior: Bound
+
 import QtQuick
 import labcompass
 import '..'
@@ -21,7 +23,7 @@ InstructionItem {
       source: 'qrc:/qt/qml/labcompass/assets/images/instruction/mechanics.svg'
     }
     Text {
-      text: root.mechanics in Global.nameMapping ? Global.nameMapping[mechanics] : root.mechanics
+      text: root.mechanics in Global.nameMapping ? Global.nameMapping[root.mechanics] : root.mechanics
       color: Global.primaryTextColor
     }
   }
@@ -102,10 +104,14 @@ InstructionItem {
       },
       State { name: 'countdownFinished' }
     ]
-  }
 
-  function onIzaroBattleStarted() {
-    if (root.mechanics === 'ChargeDisruptors' || root.mechanics === 'Idols')
-      state = 'countdownRunning';
+    function onRoomChanged() {
+      izaroInstructionItemIcon.state = ''
+    }
+
+    function onIzaroBattleStarted() {
+      if (root.mechanics === 'ChargeDisruptors' || root.mechanics === 'Idols')
+        izaroInstructionItemIcon.state = 'countdownRunning';
+    }
   }
 }

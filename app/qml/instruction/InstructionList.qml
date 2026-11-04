@@ -3,6 +3,7 @@ import labcompass
 
 Column {
   id: root
+  objectName: "instructionList"
 
   property bool modelValid: Global.model.isValid
   property bool atPlaza: Global.model.atPlaza
@@ -61,7 +62,7 @@ Column {
     visible: root.showInstructions &&
              root.instructionModel.hasNextRoom &&
              (connectionType === 'door' || connectionType === 'secret') &&
-             (!instructionModel.atTrialRoom || !instructionModel.shouldKillIzaro || instructionModel.finishedSections > instructionModel.currentSection)
+             (!root.instructionModel.atTrialRoom || !root.instructionModel.shouldKillIzaro || root.instructionModel.finishedSections > root.instructionModel.currentSection)
     connectionType: root.instructionModel.nextRoomConnectionType
     direction: root.instructionModel.nextRoomDirection
     nextRoomName: root.instructionModel.nextRoomName
@@ -76,19 +77,4 @@ Column {
   }
 
   Item { width: 1; height: 1 }
-
-  Connections {
-    target: logWatcher
-    ignoreUnknownSignals: true
-    function onRoomChanged() {
-      if (typeof izaroInstructionItemIcon !== "undefined") {
-        izaroInstructionItemIcon.state = ''
-      }
-    }
-    function onIzaroBattleStarted() {
-      if (typeof izaroInstructionItem !== "undefined") {
-        izaroInstructionItem.onIzaroBattleStarted()
-      }
-    }
-  }
 }

@@ -12,7 +12,7 @@ class VersionChecker : public QObject {
     QTimer timer;
 
 public:
-    VersionChecker(ApplicationModel* model, QObject* parent = nullptr);
+    VersionChecker(ApplicationModel* applicationoModel, QObject* parent = nullptr);
 
 private slots:
     void work();

@@ -55,7 +55,7 @@ void ConnectionModel::updateFromData(const NavigationData& data)
 int ConnectionModel::rowCount(const QModelIndex& parent) const
 {
     Q_UNUSED(parent)
-    return d.size();
+    return static_cast<int>(d.size());
 }
 
 QVariant ConnectionModel::data(const QModelIndex& index, int role) const

@@ -11,6 +11,7 @@ struct LabyrinthData {
         RoomId id;
         QPoint coordinate;
         QStringList contents;
+        int exitsNumber;
         int section;
         bool isFirstRoomInSection { false };
     };
@@ -61,6 +62,8 @@ private:
     bool loadConnectionMatrix(const QJsonArray& array);
     bool loadSections();
     bool loadGoldenDoors();
+    bool roomIsBottleneck(const RoomId& id) const;
+    bool checkExits();
 };
 
 #endif // LABYRINTHDATA_H

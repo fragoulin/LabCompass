@@ -385,98 +385,154 @@ You can try to:
         <translation type="unfinished"></translation>
     </message>
     <message id="id-update-available">
-        <location filename="../qml/options/Options.qml" line="79"/>
+        <location filename="../qml/options/Options.qml" line="97"/>
         <source>Update Available</source>
         <extracomment>Label indicating that an update for LabCompass is available</extracomment>
         <label>Options</label>
         <translation type="unfinished"></translation>
     </message>
     <message id="id-options">
-        <location filename="../qml/options/Options.qml" line="107"/>
+        <location filename="../qml/options/Options.qml" line="118"/>
         <source>Options</source>
         <extracomment>Title for options window</extracomment>
         <label>Options</label>
         <translation type="unfinished"></translation>
     </message>
     <message id="id-menu-client">
-        <location filename="../qml/options/Options.qml" line="124"/>
+        <location filename="../qml/options/Options.qml" line="135"/>
         <source>Client</source>
         <extracomment>Menu label for client options</extracomment>
         <label>Options</label>
         <translation type="unfinished"></translation>
     </message>
     <message id="id-menu-ui">
-        <location filename="../qml/options/Options.qml" line="128"/>
+        <location filename="../qml/options/Options.qml" line="139"/>
         <source>UI</source>
         <extracomment>Menu label for UI options</extracomment>
         <label>Options</label>
         <translation type="unfinished"></translation>
     </message>
     <message id="id-meby-navigation">
-        <location filename="../qml/options/Options.qml" line="132"/>
+        <location filename="../qml/options/Options.qml" line="143"/>
         <source>Navigation</source>
         <extracomment>Menu label for Navigation options</extracomment>
         <label>Options</label>
         <translation type="unfinished"></translation>
     </message>
     <message id="id-menu-hotkeys">
-        <location filename="../qml/options/Options.qml" line="136"/>
+        <location filename="../qml/options/Options.qml" line="147"/>
         <source>Hotkeys</source>
         <extracomment>Menu label for Hotkeys options</extracomment>
         <label>Options</label>
         <translation type="unfinished"></translation>
     </message>
     <message id="id-game-client-path">
-        <location filename="../qml/options/Options.qml" line="158"/>
+        <location filename="../qml/options/Options.qml" line="169"/>
         <source>Game Client Path</source>
         <extracomment>Label for Game Client Path option. Label should be brief because of small space available</extracomment>
         <label>Options</label>
         <translation type="unfinished"></translation>
     </message>
     <message id="id-multi-client-support">
-        <location filename="../qml/options/Options.qml" line="184"/>
+        <location filename="../qml/options/Options.qml" line="195"/>
         <source>Multi-client Support (Experimental)</source>
         <extracomment>Label for Multi-client Support option. Label should be brief because of small space available</extracomment>
         <label>Options</label>
         <translation type="unfinished"></translation>
     </message>
     <message id="id-show-minimap-when-available">
-        <location filename="../qml/options/Options.qml" line="203"/>
+        <location filename="../qml/options/Options.qml" line="214"/>
         <source>Show Minimap When Available</source>
         <extracomment>Label for Show Minimap When Available option. Label should be brief because of small space available</extracomment>
         <label>Options</label>
         <translation type="unfinished"></translation>
     </message>
     <message id="id-ui-scale-factor">
-        <location filename="../qml/options/Options.qml" line="219"/>
+        <location filename="../qml/options/Options.qml" line="230"/>
         <source>UI Scale Factor &lt;sup&gt;*&lt;/sup&gt;</source>
         <extracomment>Label for Show UI Scale Factor option. Label should be brief because of small space available</extracomment>
         <label>Options</label>
         <translation type="unfinished"></translation>
     </message>
+    <message id="id-ui-scale-factor-0.5">
+        <location filename="../qml/options/Options.qml" line="242"/>
+        <source>0.5x</source>
+        <extracomment>Label for UI Scale Factor 0.5</extracomment>
+        <label>Options</label>
+        <translation type="unfinished"></translation>
+    </message>
+    <message id="id-ui-scale-factor-0.75">
+        <location filename="../qml/options/Options.qml" line="249"/>
+        <source>0.75x</source>
+        <extracomment>Label for UI Scale Factor 0.75</extracomment>
+        <label>Options</label>
+        <translation type="unfinished"></translation>
+    </message>
+    <message id="id-ui-scale-factor-1">
+        <location filename="../qml/options/Options.qml" line="256"/>
+        <source>1x</source>
+        <extracomment>Label for UI Scale Factor 1</extracomment>
+        <label>Options</label>
+        <translation type="unfinished"></translation>
+    </message>
+    <message id="id-ui-scale-factor-1.25">
+        <location filename="../qml/options/Options.qml" line="263"/>
+        <source>1.25x</source>
+        <extracomment>Label for UI Scale Factor 1.25</extracomment>
+        <label>Options</label>
+        <translation type="unfinished"></translation>
+    </message>
+    <message id="id-ui-scale-factor-1.5">
+        <location filename="../qml/options/Options.qml" line="270"/>
+        <source>1.5x</source>
+        <extracomment>Label for UI Scale Factor 1.5</extracomment>
+        <label>Options</label>
+        <translation type="unfinished"></translation>
+    </message>
+    <message id="id-ui-scale-factor-1.75">
+        <location filename="../qml/options/Options.qml" line="277"/>
+        <source>1.75x</source>
+        <extracomment>Label for UI Scale Factor 1.75</extracomment>
+        <label>Options</label>
+        <translation type="unfinished"></translation>
+    </message>
+    <message id="id-ui-scale-factor-2">
+        <location filename="../qml/options/Options.qml" line="284"/>
+        <source>2x</source>
+        <extracomment>Label for UI Scale Factor 2</extracomment>
+        <label>Options</label>
+        <translation type="unfinished"></translation>
+    </message>
+    <message id="id-ui-scale-factor-2.5">
+        <location filename="../qml/options/Options.qml" line="291"/>
+        <source>2.5x</source>
+        <extracomment>Label for UI Scale Factor 2.5</extracomment>
+        <label>Options</label>
+        <translation type="unfinished"></translation>
+    </message>
     <message id="id-taking-portals-skips-current-section">
-        <location filename="../qml/options/Options.qml" line="237"/>
+        <location filename="../qml/options/Options.qml" line="312"/>
         <source>Taking Portals Skips Current Section</source>
         <extracomment>Label related to player taking a portal. This action should skips current section. Label should be brief because of small space available</extracomment>
         <label>Options</label>
         <translation type="unfinished"></translation>
     </message>
     <message id="id-hide-show-compass">
-        <location filename="../qml/options/Options.qml" line="256"/>
+        <location filename="../qml/options/Options.qml" line="331"/>
         <source>Hide/Show Compass</source>
         <extracomment>Label for Hide/Show Compass option. Label should be brief because of small space available</extracomment>
         <label>Options</label>
         <translation type="unfinished"></translation>
     </message>
     <message id="id-restart-labcompass-to-apply-changes">
-        <location filename="../qml/options/Options.qml" line="272"/>
+        <location filename="../qml/options/Options.qml" line="347"/>
         <source>&lt;sup&gt;*&lt;/sup&gt; Restart LabCompass to Apply Changes</source>
         <extracomment>Label for indicating that LabCompass must be restarted to apply changes. Label should be brief because of small space available</extracomment>
         <label>Options</label>
         <translation type="unfinished"></translation>
     </message>
     <message id="id-options-ok">
-        <location filename="../qml/options/Options.qml" line="315"/>
+        <location filename="../qml/options/Options.qml" line="390"/>
         <source>OK</source>
         <extracomment>Label for OK button in options window</extracomment>
         <label>Options</label>
@@ -546,42 +602,42 @@ You can try to:
         <translation type="unfinished"></translation>
     </message>
     <message id="id-labyrinth-planner">
-        <location filename="../qml/planner/Planner.qml" line="43"/>
+        <location filename="../qml/planner/Planner.qml" line="66"/>
         <source>Labyrinth Planner</source>
         <extracomment>Labyrinth Planner window title</extracomment>
         <label>Planner</label>
         <translation type="unfinished"></translation>
     </message>
     <message id="id-layout-room-title">
-        <location filename="../qml/planner/Planner.qml" line="58"/>
+        <location filename="../qml/planner/Planner.qml" line="81"/>
         <source>Layout: %1</source>
         <extracomment>Layout: room title</extracomment>
         <label>Planner</label>
         <translation type="unfinished"></translation>
     </message>
     <message id="id-planner-no-map-loaded">
-        <location filename="../qml/planner/Planner.qml" line="62"/>
+        <location filename="../qml/planner/Planner.qml" line="85"/>
         <source>No lab notes loaded</source>
         <extracomment>Label displayed in the planner when no map is loaded</extracomment>
         <label>Planner</label>
         <translation type="unfinished"></translation>
     </message>
     <message id="id-get-maps">
-        <location filename="../qml/planner/Planner.qml" line="76"/>
+        <location filename="../qml/planner/Planner.qml" line="99"/>
         <source>Get Maps</source>
         <extracomment>Get Maps button label to access poelab website. Label should be brief because of limited space available</extracomment>
         <label>Planner</label>
         <translation type="unfinished"></translation>
     </message>
     <message id="id-import-maps">
-        <location filename="../qml/planner/Planner.qml" line="98"/>
+        <location filename="../qml/planner/Planner.qml" line="121"/>
         <source>Import Maps</source>
         <extracomment>Import Maps button label to open file dialog. Label should be brief because of limited space available</extracomment>
         <label>Planner</label>
         <translation type="unfinished"></translation>
     </message>
     <message id="id-planner-donate">
-        <location filename="../qml/planner/Planner.qml" line="173"/>
+        <location filename="../qml/planner/Planner.qml" line="197"/>
         <source>Donate: </source>
         <extracomment>Donate button label displayed before Paypal and Patreon buttons. Label should be brief because of limited space available</extracomment>
         <label>Planner</label>
@@ -623,35 +679,35 @@ You can try to:
         <translation type="unfinished"></translation>
     </message>
     <message id="id-roompresets-room-layout">
-        <location filename="../qml/roompresets/RoomPresets.qml" line="35"/>
+        <location filename="../qml/roompresets/RoomPresets.qml" line="55"/>
         <source>Room Layout Presets</source>
         <extracomment>Room Layout Presets label displayed in room presets. Label should be brief because of limited space available</extracomment>
         <label>RoomPresets</label>
         <translation type="unfinished"></translation>
     </message>
     <message id="id-roompresets-no-presets-available">
-        <location filename="../qml/roompresets/RoomPresets.qml" line="188"/>
+        <location filename="../qml/roompresets/RoomPresets.qml" line="208"/>
         <source>No Presets Available for This Room</source>
         <extracomment>Label displayed in room presets. Label should be brief because of limited space available</extracomment>
         <label>RoomPresets</label>
         <translation type="unfinished"></translation>
     </message>
     <message id="id-roompresets-presets-will-be-disabled">
-        <location filename="../qml/roompresets/RoomPresets.qml" line="204"/>
+        <location filename="../qml/roompresets/RoomPresets.qml" line="224"/>
         <source>Presets Will Be Disabled for This Room</source>
         <extracomment>Label displayed in room presets. Label should be brief because of limited space available</extracomment>
         <label>RoomPresets</label>
         <translation type="unfinished"></translation>
     </message>
     <message id="id-roompresets-apply-preset">
-        <location filename="../qml/roompresets/RoomPresets.qml" line="237"/>
+        <location filename="../qml/roompresets/RoomPresets.qml" line="257"/>
         <source>Apply Preset</source>
         <extracomment>Label for button to apply preset</extracomment>
         <label>RoomPresets</label>
         <translation type="unfinished"></translation>
     </message>
     <message id="id-trayicon-labcompass">
-        <location filename="../src/application.cpp" line="126"/>
+        <location filename="../src/application.cpp" line="125"/>
         <source>LabCompass</source>
         <extracomment>Tooltip for tray icon</extracomment>
         <label>TrayIcon</label>
@@ -686,14 +742,14 @@ You can try to:
         <translation type="unfinished"></translation>
     </message>
     <message id="id-dialog-import-lab-notes">
-        <location filename="../src/window/plannerwindow.cpp" line="46"/>
+        <location filename="../qml/planner/Planner.qml" line="236"/>
         <source>Import Lab Notes</source>
         <extracomment>File dialog title to import lab notes</extracomment>
         <label>Planner</label>
         <translation type="unfinished"></translation>
     </message>
     <message id="id-dialog-import-info">
-        <location filename="../src/window/plannerwindow.cpp" line="51"/>
+        <location filename="../qml/planner/Planner.qml" line="240"/>
         <source>Lab Maps (*.json *.map)</source>
         <extracomment>File dialog info and authorized file extensions</extracomment>
         <label>Planner</label>

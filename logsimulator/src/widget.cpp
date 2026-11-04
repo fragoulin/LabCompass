@@ -1,11 +1,11 @@
 #include "ui_widget.h"
 #include "widget.h"
 
-Widget::Widget(Settings* settings, QWidget* parent)
+Widget::Widget(Settings* widgetSettings, QWidget* parent)
     : QWidget(parent)
     , ui(new Ui::Widget)
 {
-    this->settings = settings;
+    this->settings = widgetSettings;
     ui->setupUi(this);
     ui->roomTable->setColumnCount(3);
     ui->roomTable->setHorizontalHeaderLabels({ "ID", "Name", "Area Code" });
@@ -14,7 +14,7 @@ Widget::Widget(Settings* settings, QWidget* parent)
     ui->roomTable->verticalHeader()->setVisible(false);
     ui->roomTable->setSelectionMode(QAbstractItemView::SingleSelection);
 
-    ui->clientPathEdit->setText(settings->get_poeClientPath());
+    ui->clientPathEdit->setText(this->settings->get_poeClientPath());
 
     connect(ui->mapBrowseButton, &QPushButton::clicked, this,
         [this]() {
@@ -87,7 +87,7 @@ void Widget::loadMapFile(const QString& fileName)
     ui->mapNameLabel->setText(json["date"].toString() + ' ' + json["difficulty"].toString());
 
     ui->roomTable->clearContents();
-    ui->roomTable->setRowCount(rooms.size());
+    ui->roomTable->setRowCount(static_cast<int>(rooms.size()));
 
     for (int i = 0; i < rooms.size(); i++) {
         QJsonObject room = rooms[i].toObject();
@@ -96,8 +96,8 @@ void Widget::loadMapFile(const QString& fileName)
         auto areaCode = room["areacode"].toString();
 
         auto parts = name.split(' ');
-        for (int i = 0; i < parts.size(); i++)
-            parts[i].replace(0, 1, parts[i][0].toUpper());
+        for (int j = 0; j < parts.size(); j++)
+            parts[j].replace(0, 1, parts[j][0].toUpper());
         name = parts.join(" ");
 
         auto idItem = new QTableWidgetItem(id);

@@ -221,9 +221,9 @@ Q_GLOBAL_STATIC(QStringList, ROOM_NAMES, {
 
 Q_GLOBAL_STATIC(QRegularExpression, LOG_REGEX, R"(^\d+\/\d+\/\d+ \d+:\d+:\d+ \d+ \w+ \[INFO Client (\d+)\](?: :)? (?:<<set:\w+>>)*(.*)$)")
 
-LogWatcher::LogWatcher(ApplicationModel* model)
+LogWatcher::LogWatcher(ApplicationModel* applicationModel)
 {
-    this->model = model;
+    this->model = applicationModel;
     clientPath = model->get_settings()->get_poeClientPath();
     file.reset(new QFile(QDir(clientPath).filePath("logs/Client.txt")));
 

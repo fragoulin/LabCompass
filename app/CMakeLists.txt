@@ -53,18 +53,26 @@ foreach(QML_SOURCE ${QML_SOURCES})
     ${QML_SOURCE} PROPERTIES QT_RESOURCE_ALIAS ${QML_SOURCE_WITHOUT_QML_DIR})
 endforeach()
 
+set_project_warnings(${TARGET_NAME})
+
 target_include_directories(${TARGET_NAME} PRIVATE src)
 
 target_precompile_headers(${TARGET_NAME} PRIVATE src/stdafx.h)
 
-target_link_libraries(${TARGET_NAME} PRIVATE common qhotkey)
+target_link_libraries(${TARGET_NAME} PRIVATE common qhotkey QtSuperMacros
+                                             QWindowKit::Quick)
 
-target_link_libraries(${TARGET_NAME} PRIVATE
-  Qt6::Core
-  Qt6::Gui
-  Qt6::Quick
-  Qt6::Qml
-  QWindowKit::Quick)
+target_link_libraries(
+  ${TARGET_NAME}
+  PRIVATE Qt6::Core
+          Qt6::CorePrivate
+          Qt6::Gui
+          Qt6::GuiPrivate
+          Qt6::Quick
+          Qt6::QuickPrivate
+          Qt6::QuickControls2
+          Qt6::QuickWidgets
+          Qt6::Qml)
 
 set_target_properties(
   ${TARGET_NAME} PROPERTIES MACOSX_BUNDLE ON QT_QMLCACHEGEN_ARGUMENTS

@@ -1,3 +1,5 @@
+pragma ComponentBehavior: Bound
+
 import QtQuick
 import labcompass
 import '..'
@@ -15,6 +17,7 @@ Item {
       anchors.centerIn: parent
 
       Rectangle {
+        required property var modelData
         x: Global.directionMapping[modelData.direction].dx * 48 - width / 2
         y: Global.directionMapping[modelData.direction].dy * 48 - height / 2
         width: 16
@@ -33,6 +36,7 @@ Item {
       model: root.instructionModel.contentLocations
 
       Rectangle {
+        required property var modelData
         x: Global.directionMapping[modelData.direction].dx * 30 - width / 2
         y: Global.directionMapping[modelData.direction].dy * 30 - height / 2
         width: 8

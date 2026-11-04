@@ -4,6 +4,7 @@ import '..'
 
 Item {
   id: root
+  objectName: "compass"
 
   implicitWidth: useMinimapDisplay ? minimapDisplay.implicitWidth : directionDisplay.implicitWidth + 40
   implicitHeight: useMinimapDisplay ? minimapDisplay.implicitHeight : directionDisplay.implicitHeight
@@ -17,7 +18,7 @@ Item {
     implicitWidth: 170
     implicitHeight: 170
     anchors.right: parent.right
-    visible: !useMinimapDisplay
+    visible: !root.useMinimapDisplay
 
     SvgImage {
       id: directionHud
@@ -40,7 +41,7 @@ Item {
     implicitWidth: 210
     implicitHeight: 170
     anchors.fill: parent
-    visible: useMinimapDisplay
+    visible: root.useMinimapDisplay
 
     SvgImage {
       id: minimapHud
@@ -104,19 +105,5 @@ Item {
   function closeTimer() {
     stopTimer();
     timerView.visible = false;
-  }
-
-  Connections {
-    target: logWatcher
-    ignoreUnknownSignals: true
-    function onLabStarted() {
-      root.restartTimer()
-    }
-    function onLabFinished() {
-      root.stopTimer()
-    }
-    function onLabExit() {
-      root.closeTimer()
-    }
   }
 }

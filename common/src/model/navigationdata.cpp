@@ -1,9 +1,9 @@
 #include "navigationdata.h"
 #include <queue>
 
-void NavigationData::loadFromData(const LabyrinthData* lab, const PlanData& plan)
+void NavigationData::loadFromData(const LabyrinthData* labData, const PlanData& plan)
 {
-    this->lab = lab;
+    this->lab = labData;
 
     currentRoomDetermined = true;
     currentRoom = "plaza";
@@ -48,10 +48,10 @@ void NavigationData::updatePlannedRouteAndInstructions()
     plannedRoute = newPlannedRoute;
 }
 
-QList<RoomId> NavigationData::plannedRouteInsideSection(int section, const RoomId& begin, const RoomId& end, const QList<RoomId>& targetRooms, ContentState* tempGolden)
+QList<RoomId> NavigationData::plannedRouteInsideSection(int section, const RoomId& begin, const RoomId& end, const QList<RoomId>& targetRoomsList, ContentState* tempGolden)
 {
     QList<RoomId> sectionTargetRooms;
-    std::copy_if(targetRooms.constBegin(), targetRooms.constEnd(), std::back_inserter(sectionTargetRooms),
+    std::copy_if(targetRoomsList.constBegin(), targetRoomsList.constEnd(), std::back_inserter(sectionTargetRooms),
         [this, section](const RoomId& room) { return lab->sections[section].roomIds.contains(room); });
 
     if (tempGolden->goldenKeyLocations.contains(begin)) {

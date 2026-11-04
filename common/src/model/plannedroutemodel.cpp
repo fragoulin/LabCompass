@@ -23,7 +23,7 @@ void PlannedRouteModel::loadFromData(const NavigationData& data)
 int PlannedRouteModel::rowCount(const QModelIndex& parent) const
 {
     Q_UNUSED(parent)
-    return d.size();
+    return static_cast<int>(d.size());
 }
 
 QVariant PlannedRouteModel::data(const QModelIndex& index, int role) const

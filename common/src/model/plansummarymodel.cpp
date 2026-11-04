@@ -56,8 +56,8 @@ void PlanSummaryModel::loadFromData(const NavigationData& data)
         }
     }
 
-    update_rooms(rooms.size() - 3); // exclude 3 trial rooms
-    update_length(data.plannedRoute.size() - 1); // exclude plaza
+    update_rooms(static_cast<int>(rooms.size()) - 3); // exclude 3 trial rooms
+    update_length(static_cast<int>(data.plannedRoute.size()) - 1); // exclude plaza
     update_argus(argus);
     update_troves(troves);
     update_darkshrines(darkshrines);

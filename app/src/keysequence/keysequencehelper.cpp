@@ -2,7 +2,7 @@
 
 uint qHash(const QKeySequence& seq)
 {
-    return qHash(seq.toString());
+    return static_cast<uint>(qHash(seq.toString()));
 }
 
 class KeySequenceHelperPrivate {
@@ -78,8 +78,8 @@ public:
     QList<QAction*> stealActions;
 };
 
-KeySequenceHelperPrivate::KeySequenceHelperPrivate(KeySequenceHelper* q)
-    : q(q)
+KeySequenceHelperPrivate::KeySequenceHelperPrivate(KeySequenceHelper* helper)
+    : q(helper)
     , allowModifierless(false)
     , nKey(0)
     , modifierKeys(0)
@@ -215,7 +215,7 @@ void KeySequenceHelperPrivate::updateShortcutDisplay()
             if (!s.isEmpty()) {
                 s.append(", ");
             }
-            s += QKeySequence(modifierKeys).toString(QKeySequence::NativeText);
+            s += QKeySequence(static_cast<int>(modifierKeys)).toString(QKeySequence::NativeText);
         } else if (nKey == 0) {
             s = "Press Keys";
         }
@@ -248,12 +248,12 @@ void KeySequenceHelper::keyPressed(int key, int modifiers)
     // were pressed to start editing - catch and them and imitate their effect
     if (!d->isRecording && ((key == Qt::Key_Return || key == Qt::Key_Space))) {
         d->startRecording();
-        d->modifierKeys = modifiers;
+        d->modifierKeys = static_cast<unsigned int>(modifiers);
         d->updateShortcutDisplay();
         return;
     }
 
-    d->modifierKeys = modifiers;
+    d->modifierKeys = static_cast<unsigned int>(modifiers);
 
     switch (key) {
     case Qt::Key_AltGr: // or else we get unicode salad
@@ -283,9 +283,9 @@ void KeySequenceHelper::keyPressed(int key, int modifiers)
         // We now have a valid key press.
         if (key) {
             if ((key == Qt::Key_Backtab) && (d->modifierKeys & Qt::SHIFT)) {
-                key = Qt::Key_Tab | d->modifierKeys;
+                key = static_cast<int>(Qt::Key_Tab | d->modifierKeys);
             } else {
-                key |= (d->modifierKeys);
+                key |= static_cast<int>(d->modifierKeys);
             }
 
             if (d->nKey == 0) {
@@ -319,8 +319,8 @@ void KeySequenceHelper::keyReleased(int key, int modifiers)
     }
 
     // if a modifier that belongs to the shortcut was released...
-    if ((modifiers & d->modifierKeys) < d->modifierKeys) {
-        d->modifierKeys = modifiers;
+    if ((static_cast<unsigned int>(modifiers) & d->modifierKeys) < d->modifierKeys) {
+        d->modifierKeys = static_cast<unsigned int>(modifiers);
         d->controlModifierlessTimout();
         d->updateShortcutDisplay();
     }

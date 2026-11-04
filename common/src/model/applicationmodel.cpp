@@ -38,20 +38,20 @@ bool ApplicationModel::loadFromFile(const QString& file)
     return false;
 }
 
-void ApplicationModel::updatePlanData(const PlanData& planData)
+void ApplicationModel::updatePlanData(const PlanData& newPlanData)
 {
-    this->planData = planData;
-    NavigationData navigationData;
-    navigationData.loadFromData(&labyrinthData, planData);
-    navigationData.updatePlannedRouteAndInstructions();
+    this->planData = newPlanData;
+    NavigationData data;
+    data.loadFromData(&labyrinthData, planData);
+    data.updatePlannedRouteAndInstructions();
 
-    get_planSummaryModel()->loadFromData(navigationData);
-    updateNavigationData(navigationData);
+    get_planSummaryModel()->loadFromData(data);
+    updateNavigationData(data);
 }
 
-void ApplicationModel::updateNavigationData(const NavigationData& navigationData)
+void ApplicationModel::updateNavigationData(const NavigationData& newNavigationData)
 {
-    this->navigationData = navigationData;
+    this->navigationData = newNavigationData;
     update_currentRoomDetermined(navigationData.currentRoomDetermined);
     updateModelOnNavigation();
 }

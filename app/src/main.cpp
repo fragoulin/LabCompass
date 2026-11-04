@@ -12,7 +12,7 @@ int main(int argc, char** argv)
     qInfo() << "Operating System:" << QSysInfo::prettyProductName();
     qInfo() << "LabCompass:" << VERSION;
 
-    QSettings settings("FutureCode", "LabCompass");
+    QSettings settings;
     const auto& scaleFactor = settings.value("scaleFactor", "1").toByteArray();
     qputenv("QT_SCALE_FACTOR", scaleFactor);
     qInfo() << "Using scale factor:" << scaleFactor;

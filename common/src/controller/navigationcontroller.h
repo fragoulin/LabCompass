@@ -9,7 +9,7 @@ class NavigationController : public QObject {
     ApplicationModel* model;
 
 public:
-    NavigationController(ApplicationModel* model);
+    NavigationController(ApplicationModel* applicationModel);
 
 public slots:
     void onPlazaEntered();

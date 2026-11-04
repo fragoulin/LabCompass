@@ -43,21 +43,21 @@ InstructionItem {
     //% "%1 Exit"
     //@ Instruction
     qsTrId("id-direction-exit").arg(
-    Global.directionMapping[root.direction].name) : connectionType == 'secret' ? //: Instruction related to the presence of a secret passage the player can use
-                                                                                 //% "Secret Passage"
-                                                                                 //@ Instruction
-                                                                                 qsTrId('id-secret-passage') : nextRoomIsUnmarkedOppositeDirection ? //: Instruction indicating the player to use the opposite exit
-                                                                                                                                                     //% "Opposite Exit"
-                                                                                                                                                     //@ Instruction
-                                                                                                                                                     qsTrId("id-opposite-exit") : //: Instruction indicating the player that the exit is unmarked (unknown)
-                                                                                                                                                     //% "Unmarked Exit"
-                                                                                                                                                     //@ Instruction
-                                                                                                                                                     qsTrId("id-unmarked-exit")
+    Global.directionMapping[root.direction].name) : root.connectionType == 'secret' ? //: Instruction related to the presence of a secret passage the player can use
+                                                                                      //% "Secret Passage"
+                                                                                      //@ Instruction
+                                                                                      qsTrId('id-secret-passage') : root.nextRoomIsUnmarkedOppositeDirection ? //: Instruction indicating the player to use the opposite exit
+                                                                                                                                                               //% "Opposite Exit"
+                                                                                                                                                               //@ Instruction
+                                                                                                                                                               qsTrId("id-opposite-exit") : //: Instruction indicating the player that the exit is unmarked (unknown)
+                                                                                                                                                               //% "Unmarked Exit"
+                                                                                                                                                               //@ Instruction
+                                                                                                                                                               qsTrId("id-unmarked-exit")
   }
 
   Text {
     visible: !root.atPlaza
     color: Global.primaryTextColor
-    text: root.nextRoomIsPreviousRoom ? '' : labelToDirection
+    text: root.nextRoomIsPreviousRoom ? '' : root.labelToDirection
   }
 }

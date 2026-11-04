@@ -11,7 +11,7 @@ class HotkeyBinding : public QHotkey {
     QString propertyName;
 
 public:
-    HotkeyBinding(QObject* global, QObject* settings, QByteArray propertyName, QByteArray propertyChangeSignal);
+    HotkeyBinding(QObject* globalObject, QObject* hotKeySettings, QByteArray hotKeypropertyName, QByteArray propertyChangeSignal);
 
 private slots:
     void rebindHotkey();

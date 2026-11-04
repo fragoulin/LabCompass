@@ -5,7 +5,6 @@ Row {
   spacing: 4
 
   readonly property alias titleBar: titleBar
-  readonly property alias closeButton: closeButton
 
   signal exit()
 
@@ -25,7 +24,6 @@ Row {
 
   ToolbarButton {
     id: closeButton
-    objectName: "closeButton"
     source: 'qrc:/qt/qml/labcompass/assets/images/close.svg'
     onClicked: root.exit()
     buttonHeight: 24

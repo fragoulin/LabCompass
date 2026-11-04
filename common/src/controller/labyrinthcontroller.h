@@ -8,8 +8,11 @@ class LabyrinthController : public QObject {
 
     ApplicationModel* model;
 
+signals:
+    void importFileFailed();
+
 public:
-    LabyrinthController(ApplicationModel* model);
+    LabyrinthController(ApplicationModel* labyrinthModel);
 
 public slots:
     void importFile(const QString& file);

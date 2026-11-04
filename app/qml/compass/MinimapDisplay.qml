@@ -1,6 +1,7 @@
+pragma ComponentBehavior: Bound
+
 import QtQuick
 import labcompass
-import '../point.js' as Point
 import '..'
 
 Item {
@@ -17,11 +18,12 @@ Item {
     model: root.instructionModel.doorExitLocations
 
     SvgImage {
+      required property var modelData
       x: modelData.tileRect.x * root.width
       y: modelData.tileRect.y * root.height
       width: modelData.tileRect.width * root.width
       height: modelData.tileRect.height * root.height
-      source: modelData.direction === instructionModel.nextRoomDirection ? 'qrc:/qt/qml/labcompass/assets/images/compass/door-target.svg'
+      source: modelData.direction === root.instructionModel.nextRoomDirection ? 'qrc:/qt/qml/labcompass/assets/images/compass/door-target.svg'
                                                                          : 'qrc:/qt/qml/labcompass/assets/images/compass/door-normal.svg'
     }
   }
@@ -31,6 +33,7 @@ Item {
     model: root.instructionModel.contentLocations
 
     SvgImage {
+      required property var modelData
       x: modelData.tileRect.x * root.width
       y: modelData.tileRect.y * root.height
       width: modelData.tileRect.width * root.width

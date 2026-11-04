@@ -13,7 +13,7 @@ Item {
     anchors.fill: parent
     keys: ['text/uri-list']
 
-    onDropped: {
+    onDropped: (drop) => {
       if (drop.hasUrls) {
         root.dropUrl(drop.urls[0]);
         drop.acceptProposedAction();
@@ -22,7 +22,7 @@ Item {
   }
 
   Rectangle {
-    opacity: downloadInProgress || dropArea.containsDrag ? 1 : 0
+    opacity: root.downloadInProgress || dropArea.containsDrag ? 1 : 0
     anchors.fill: parent
     color: Qt.rgba(0, 0, 0, 0.5)
 

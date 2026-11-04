@@ -22,8 +22,8 @@ Rectangle {
       var ctx = connectionView.getContext('2d');
       ctx.clearRect(0, 0, width, height);
 
-      for (var i = 0; i < root.connectionModel.size(); i++) {
-        var connection = root.connectionModel.get(i);
+      for (let i = 0; i < root.connectionModel.size(); i++) {
+        const connection = root.connectionModel.get(i);
 
         ctx.lineWidth = connection.isSecretPassage ? 2 : 4;
         ctx.strokeStyle = connection.isPlanned ? Global.activePathColor : Global.inactivePathColor;
@@ -41,8 +41,8 @@ Rectangle {
     model: root.roomModel
 
     Item {
-      x: coordinate.x - 24
-      y: coordinate.y - 24
+      x: model.coordinate.x - 24
+      y: model.coordinate.y - 24
       width: 48
       height: 48
 
@@ -50,9 +50,9 @@ Rectangle {
         anchors.fill: parent
         onClicked: {
           if (roomClickModeSwitch.currentItem == 0)
-            setRoomIsTarget(model.id, !isTarget);
+            root.setRoomIsTarget(model.id, !model.isTarget);
           else if (roomClickModeSwitch.currentItem == 1)
-            setCurrentRoom(model.id);
+            root.setCurrentRoom(model.id);
         }
       }
 
@@ -91,8 +91,8 @@ Rectangle {
           top: parent.top
           topMargin: 8
         }
-        opacity: isTarget ? 1 : 0
-        scale: isTarget ? 1 : 4
+        opacity: model.isTarget ? 1 : 0
+        scale: model.isTarget ? 1 : 4
         Behavior on opacity { StandardAnimation {} }
         Behavior on scale { StandardAnimation {} }
 
@@ -123,7 +123,7 @@ Rectangle {
 
         Text {
           anchors.centerIn: parent
-          text: index
+          text: model.index
           color: 'white'
           font.pixelSize: 13
         }
@@ -136,8 +136,8 @@ Rectangle {
     model: root.goldenDoorModel
 
     Item {
-      x: coordinate.x
-      y: coordinate.y
+      x: model.coordinate.x
+      y: model.coordinate.y
 
       SvgImage {
         id: goldenDoorIcon
@@ -161,16 +161,16 @@ Rectangle {
     id: currentRoomView
     model: root.roomModel
     Item {
-      x: coordinate.x
-      y: coordinate.y
+      x: model.coordinate.x
+      y: model.coordinate.y
       SvgImage {
         id: mapMarker
         width: 36
         height: 36
         source: 'qrc:/qt/qml/labcompass/assets/images/map-marker-orange.svg'
         x: - 18
-        y: isCurrent ? -44 : -76
-        opacity: isCurrent ? 1 : 0
+        y: model.isCurrent ? -44 : -76
+        opacity: model.isCurrent ? 1 : 0
         Behavior on y { StandardAnimation {} }
         Behavior on opacity { StandardAnimation {} }
       }
@@ -181,7 +181,7 @@ Rectangle {
     id: roomClickModeSwitch
 
     property int selectedIndex: 0
-    onItemClicked: selectedIndex = index
+    onItemClicked: (index) => selectedIndex = index
     currentItem: !Global.model.inLab ? 0 :
                  !Global.model.currentRoomDetermined ? 1 :
                  selectedIndex
@@ -203,8 +203,8 @@ Rectangle {
     model: root.roomModel
 
     Item {
-      x: coordinate.x - 24
-      y: coordinate.y - 24
+      x: model.coordinate.x - 24
+      y: model.coordinate.y - 24
       width: 48
       height: 48
 
@@ -215,8 +215,8 @@ Rectangle {
       }
 
       RoomLabel {
-        roomName: translatedName
-        roomContents: contents
+        roomName: model.translatedName
+        roomContents: model.contents
         opacity: roomHoverArea.shouldDisplayTooltip ? 1 : 0
 
         Behavior on opacity {
@@ -231,7 +231,7 @@ Rectangle {
   }
 
   Connections {
-    target: connectionModel
+    target: root.connectionModel
     function onModelReset() {
       connectionView.requestPaint()
     }

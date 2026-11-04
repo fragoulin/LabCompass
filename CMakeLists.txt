@@ -13,14 +13,26 @@ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/library")
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/runtime")
 option(BUILD_SHARED_LIBS "Build using shared libraries" OFF)
 
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_CXX_FLAGS
-    " ${CMAKE_CXX_FLAGS} -Wall -Wextra -Wpedantic -Wunused-result")
 
 set(CMAKE_AUTORCC TRUE)
 
-find_package(Qt6 REQUIRED LinguistTools QuickWidgets QuickControls2 Test)
+include(CompilerWarnings.cmake)
+
+# Ignore warnings related to private modules
+set(QT_NO_PRIVATE_MODULE_WARNING ON)
+
+find_package(
+  Qt6
+  REQUIRED
+  LinguistTools
+  QuickWidgets
+  QuickControls2
+  Test
+  CorePrivate
+  GuiPrivate
+  QuickPrivate)
 
 qt_standard_project_setup(REQUIRES 6.12 I18N_TRANSLATED_LANGUAGES en fr ru th de fr es ko ja)
 

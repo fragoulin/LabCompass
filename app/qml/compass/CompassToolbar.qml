@@ -11,7 +11,7 @@ ToolbarButton {
   active: Global && Global.roomPresetsWindowOpen
   onClicked: {
     if (Global) {
-      var open = Global.roomPresetsWindowOpen;
+      const open = Global.roomPresetsWindowOpen;
       closeAllWindows();
       if (!open)
         Global.roomPresetsWindowOpen = true;

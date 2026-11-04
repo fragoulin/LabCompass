@@ -48,7 +48,7 @@ void RoomModel::updateFromData(const NavigationData& data)
 int RoomModel::rowCount(const QModelIndex& parent) const
 {
     Q_UNUSED(parent)
-    return d.size();
+    return static_cast<int>(d.size());
 }
 
 QVariant RoomModel::data(const QModelIndex& index, int role) const

@@ -31,14 +31,14 @@ Rectangle {
         //@ Planner
         text: qsTrId("id-planner-rooms")
       }
-      Text { color: Global.primaryTextColor; width: 30; horizontalAlignment: Text.AlignHCenter; text: model.rooms }
+      Text { color: Global.primaryTextColor; width: 30; horizontalAlignment: Text.AlignHCenter; text: root.model.rooms }
       Text {
         color: Global.primaryTextColor;
         //: Length label in planner window's caption. This is the number of rooms in the labyrinth. Label should be brief because of limited space
         //% "Length"
         //@ Planner
         text: qsTrId("id-planner-length") }
-      Text { color: Global.primaryTextColor; width: 30; horizontalAlignment: Text.AlignHCenter; text: model.length }
+      Text { color: Global.primaryTextColor; width: 30; horizontalAlignment: Text.AlignHCenter; text: root.model.length }
       // TODO make a custom component for the 4 Rows and Texts
       Row {
         spacing: 4
@@ -51,7 +51,7 @@ Rectangle {
           text: qsTrId("id-planner-argus")
         }
       }
-      Text { color: Global.primaryTextColor; width: 30; horizontalAlignment: Text.AlignHCenter; text: model.argus }
+      Text { color: Global.primaryTextColor; width: 30; horizontalAlignment: Text.AlignHCenter; text: root.model.argus }
       Row {
         spacing: 4
         SvgImage { source: 'qrc:/qt/qml/labcompass/assets/images/lab-content/gauntlet-puzzle.svg' }
@@ -63,7 +63,7 @@ Rectangle {
           text: qsTrId("id-planner-trove-lockbox")
         }
       }
-      Text { color: 'white'; width: 30; horizontalAlignment: Text.AlignHCenter; text: model.troves }
+      Text { color: 'white'; width: 30; horizontalAlignment: Text.AlignHCenter; text: root.model.troves }
       Row {
         spacing: 4
         SvgImage { source: 'qrc:/qt/qml/labcompass/assets/images/lab-content/darkshrine.svg' }
@@ -75,7 +75,7 @@ Rectangle {
           text: qsTrId("id-planner-darkshrine")
         }
       }
-      Text { color: 'white'; width: 30; horizontalAlignment: Text.AlignHCenter; text: model.darkshrines }
+      Text { color: 'white'; width: 30; horizontalAlignment: Text.AlignHCenter; text: root.model.darkshrines }
       Row {
         spacing: 4
         SvgImage { source: 'qrc:/qt/qml/labcompass/assets/images/lab-content/silver-door.svg' }
@@ -87,7 +87,7 @@ Rectangle {
           text: qsTrId("id-silver-cache")
         }
       }
-      Text { color: Global.primaryTextColor; width: 30; horizontalAlignment: Text.AlignHCenter; text: model.silverCaches }
+      Text { color: Global.primaryTextColor; width: 30; horizontalAlignment: Text.AlignHCenter; text: root.model.silverCaches }
     }
   }
 }

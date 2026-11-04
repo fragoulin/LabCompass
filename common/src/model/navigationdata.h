@@ -26,11 +26,11 @@ struct NavigationData {
     QList<RoomId> plannedRoute;
 
 public:
-    void loadFromData(const LabyrinthData* lab, const PlanData& plan);
+    void loadFromData(const LabyrinthData* labData, const PlanData& plan);
     void updatePlannedRouteAndInstructions();
 
 private:
-    QList<RoomId> plannedRouteInsideSection(int section, const RoomId& begin, const RoomId& end, const QList<RoomId>& targetRooms, ContentState* tempGolden);
+    QList<RoomId> plannedRouteInsideSection(int section, const RoomId& begin, const RoomId& end, const QList<RoomId>& targetRoomsList, ContentState* tempGolden);
     static bool listContainsAll(const QStringList& l1, const QStringList& l2);
 };
 

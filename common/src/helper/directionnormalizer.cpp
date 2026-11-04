@@ -19,15 +19,15 @@ RoomConnections DirectionNormalizer::normalize(const RoomConnections& original, 
 
     // normalize regular directions
     if (regularCount) {
-        vector<vector<double>> costMatrix(regularCount, vector<double>(patternSize, 0));
-        for (auto i = 0; i < regularCount; i++)
-            for (auto j = 0; j < patternSize; j++)
+        vector<vector<double>> costMatrix(static_cast<unsigned int>(regularCount), vector<double>(static_cast<unsigned int>(patternSize), 0));
+        for (unsigned i = 0; i < regularCount; i++)
+            for (unsigned j = 0; j < patternSize; j++)
                 costMatrix[i][j] = costBetweenDirections(breakdown.regularDirectionRooms[i].first, pattern[j]);
 
         vector<int> assignment;
         hungarian.Solve(costMatrix, assignment);
         for (int i = 0; i < regularCount; i++)
-            breakdown.regularDirectionRooms[i].first = pattern[assignment[i]];
+            breakdown.regularDirectionRooms[i].first = pattern[assignment[static_cast<unsigned int>(i)]];
     }
 
     // predict the last unknown direction
@@ -97,8 +97,8 @@ RoomConnections DirectionNormalizer::reconstructConnections(const DirectionNorma
 
 qreal DirectionNormalizer::costBetweenDirections(const DirectionCode& d1, const DirectionCode& d2)
 {
-    int i1 = REGULAR_DIRECTION_LIST->indexOf(d1);
-    int i2 = REGULAR_DIRECTION_LIST->indexOf(d2);
+    int i1 = static_cast<int>(REGULAR_DIRECTION_LIST->indexOf(d1));
+    int i2 = static_cast<int>(REGULAR_DIRECTION_LIST->indexOf(d2));
 
     auto diff = abs(i1 - i2) <= 4 ? abs(i1 - i2) : 8 - abs(i1 - i2);
     return diff * diff;
