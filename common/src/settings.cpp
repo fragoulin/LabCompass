@@ -25,7 +25,7 @@ QVariantMap defaultSettings {
 Settings::Settings(QObject* parent)
     : QObject(parent)
 {
-    settings.reset(new QSettings("FutureCode", "LabCompass"));
+    settings.reset(new QSettings());
 
     m_multiclientSupport = false;
     m_portalSkipsSection = true;
