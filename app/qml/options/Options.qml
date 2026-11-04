@@ -113,7 +113,7 @@ Window {
             text: 'English'
           }
           ListElement {
-            code: 'br';
+            code: 'pt';
             text: 'Português'
           }
           ListElement {
