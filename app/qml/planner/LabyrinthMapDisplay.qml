@@ -215,7 +215,7 @@ Rectangle {
       }
 
       RoomLabel {
-        roomName: model.translatedName
+        roomName: qsTrId("id-" + model.name.replace(' ', '-'))
         roomContents: model.contents
         opacity: roomHoverArea.shouldDisplayTooltip ? 1 : 0
 
