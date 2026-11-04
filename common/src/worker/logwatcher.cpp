@@ -358,6 +358,18 @@ QString LogWatcher::findGameClientPath()
 
     CloseHandle(handle);
     return path;
+#elifdef Q_OS_LINUX
+    const QString pathSteam = QDir::homePath() + "/.steam/steam/steamapps/common/Path of Exile";
+    const QString heroicPath1 = QDir::homePath() + "/Games/Path of Exile";
+    const QString heroicPath2 = QDir::homePath() + "/Games/PathOfExile";
+    if (QDir(pathSteam).exists()) {
+        return pathSteam;
+    } else if(QDir(heroicPath1).exists()) {
+        return heroicPath1;
+    } else if(QDir(heroicPath2).exists()) {
+        return heroicPath2;
+    }
+    return QString();
 #else
     return QString();
 #endif
