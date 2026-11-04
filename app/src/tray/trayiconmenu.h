@@ -11,6 +11,7 @@ public:
 private:
     void addResetAction();
     void addQuitAction();
+    void changeEvent(QEvent *event);
 };
 
 #endif // TRAYICONMENU_H

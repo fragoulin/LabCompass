@@ -15,7 +15,7 @@ void TrayIconMenu::addResetAction()
     addAction(resetAction.get());
 
     connect(resetAction.get(), &QAction::triggered, []() {
-        QSettings("FutureCode", "LabCompass").clear();
+        QSettings().clear();
         qApp->quit();
         QProcess::startDetached(qApp->arguments()[0], qApp->arguments());
     });
@@ -31,4 +31,15 @@ void TrayIconMenu::addQuitAction()
 
     connect(quitAction.get(), &QAction::triggered,
         []() { QCoreApplication::quit(); });
+}
+
+// Force menu label update after a language update
+// https://doc.qt.io/qt-6/i18n-source-translation.html#qt-widgets-override-changeevent
+void TrayIconMenu::changeEvent(QEvent *event)
+{
+    if (event->type() == QEvent::LanguageChange) {
+        addResetAction();
+        addQuitAction();
+    } else
+        QWidget::changeEvent(event);
 }
