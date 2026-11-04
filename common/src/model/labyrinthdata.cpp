@@ -147,7 +147,7 @@ bool LabyrinthData::roomIsTrial(const RoomId& id) const
     //: Label "Aspirant's Trial"
     //% "Aspirant's Trial"
     //@ Planner
-    QString aspirantsTrialName = qtTrId("id-aspirant's-trial");
+    QString aspirantsTrialName = qtTrId("id-aspirants-trial");
     return room.translatedName == aspirantsTrialName;
 }
 
@@ -209,7 +209,7 @@ bool LabyrinthData::loadRooms(const QJsonArray& array)
 
         // translate room name
         QString roomName = roomJson["name"].toString();
-        QString roomNameId = "id-" % roomName.replace(' ', '-');
+        QString roomNameId = "id-" % roomName.replace(' ', '-').replace("'", "");
         QByteArray ba = roomNameId.toLocal8Bit();
         const char *roomNameIdChar = ba.data();
         room.translatedName = qtTrId(roomNameIdChar);

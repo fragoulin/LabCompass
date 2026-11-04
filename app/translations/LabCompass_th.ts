@@ -355,8 +355,7 @@
         <translation>^คุณเข้าสู่ (.*?)$</translation>
     </message>
     <message id="id-labyrinth-aspirants-plaza">
-        <location filename="../../common/src/controller/navigationcontroller.cpp" line="59"/>
-        <location filename="../../common/src/model/labyrinthdata.cpp" line="197"/>
+        <location filename="../../common/src/model/labyrinthdata.cpp" line="196"/>
         <location filename="../../common/src/worker/logwatcher.cpp" line="299"/>
         <source>Aspirants&apos; Plaza</source>
         <extracomment>Room name: Aspirants&apos; Plaza. Must match exactly room name displayed in Path of Exile client</extracomment>
@@ -1041,8 +1040,9 @@ You can try to:
         <label>Planner</label>
         <translation>แผนที่เขาวงกต (*.json *.map)</translation>
     </message>
-    <message id="id-aspirant&apos;s-trial">
-        <location filename="../../common/src/model/labyrinthdata.cpp" line="151"/>
+    <message id="id-aspirants-trial">
+        <location filename="../../common/src/controller/navigationcontroller.cpp" line="59"/>
+        <location filename="../../common/src/model/labyrinthdata.cpp" line="150"/>
         <location filename="../qml/planner/LabyrinthMapDisplay.qml" line="64"/>
         <location filename="../qml/planner/LabyrinthMapDisplay.qml" line="69"/>
         <source>Aspirant&apos;s Trial</source>
@@ -1114,7 +1114,7 @@ You can try to:
         <translation>ใช้ค่าที่ตั้งไว้ล่วงหน้า</translation>
     </message>
     <message id="id-trayicon-labcompass">
-        <location filename="../src/application.cpp" line="131"/>
+        <location filename="../src/application.cpp" line="114"/>
         <source>LabCompass</source>
         <extracomment>Tooltip for tray icon</extracomment>
         <label>TrayIcon</label>
@@ -1135,14 +1135,14 @@ You can try to:
         <translation>ออกจาก</translation>
     </message>
     <message id="id-failed-to-import-file-title">
-        <location filename="../src/application.cpp" line="306"/>
+        <location filename="../src/application.cpp" line="293"/>
         <source>Failed to import file.</source>
         <extracomment>Title for import file error</extracomment>
         <label>Error</label>
         <translation>ไม่สามารถนำเข้าไฟล์ได้.</translation>
     </message>
     <message id="id-failed-to-import-file-text">
-        <location filename="../src/application.cpp" line="311"/>
+        <location filename="../src/application.cpp" line="298"/>
         <source>JSON file cannot be imported. Please check logs.</source>
         <extracomment>Text for import file error</extracomment>
         <label>Error</label>

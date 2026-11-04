@@ -333,6 +333,8 @@ void LogWatcher::parseLine(const QString line)
             if (isLogFromValidClient(clientId)) {
                 emit portalSpawned();
             }
+        } else {
+            qWarning () << "Unknown log" << logContent;
         }
     }
 }
@@ -387,5 +389,7 @@ bool LogWatcher::isLogFromValidClient(const QString& clientId) const
 
 bool LogWatcher::isValidRoomName(const QString& roomName)
 {
-    return ROOM_NAMES->contains(roomName);
+    auto aspirantsTrial = qtTrId("id-aspirants-trial");
+
+    return roomName == aspirantsTrial || ROOM_NAMES->contains(roomName);
 }

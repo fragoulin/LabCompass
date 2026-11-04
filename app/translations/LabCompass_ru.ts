@@ -1041,7 +1041,7 @@ You can try to:
         <label>Planner</label>
         <translation>Карты лабиринтов (*.json *.map)</translation>
     </message>
-    <message id="id-aspirant&apos;s-trial">
+    <message id="id-aspirants-trial">
         <location filename="../../common/src/model/labyrinthdata.cpp" line="151"/>
         <location filename="../qml/planner/LabyrinthMapDisplay.qml" line="64"/>
         <location filename="../qml/planner/LabyrinthMapDisplay.qml" line="69"/>

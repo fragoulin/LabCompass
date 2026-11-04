@@ -61,12 +61,12 @@ Rectangle {
         anchors.fill: parent
         visible: false
         radius: 24
-        color: model.translatedName === qsTrId("id-aspirant's-trial") ? '#101010' : '#E0E0E0'
+        color: model.translatedName === qsTrId("id-aspirants-trial") ? '#101010' : '#E0E0E0'
         SvgImage {
           anchors.centerIn: parent
           width: 32
           height: 32
-          source: model.translatedName === qsTrId("id-aspirant's-trial") ? 'qrc:/qt/qml/labcompass/assets/images/lab-content/izaro.svg' : ''
+          source: model.translatedName === qsTrId("id-aspirants-trial") ? 'qrc:/qt/qml/labcompass/assets/images/lab-content/izaro.svg' : ''
         }
       }
 
@@ -215,7 +215,7 @@ Rectangle {
       }
 
       RoomLabel {
-        roomName: qsTrId("id-" + model.name.replace(' ', '-'))
+        roomName: qsTrId("id-" + model.name.replace(' ', '-').replace("'", ''))
         roomContents: model.contents
         opacity: roomHoverArea.shouldDisplayTooltip ? 1 : 0
 
