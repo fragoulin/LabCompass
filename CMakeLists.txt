@@ -20,7 +20,7 @@ set(CMAKE_AUTORCC TRUE)
 
 include(CompilerWarnings.cmake)
 
-# Ignore warnings related to private modules warning
+# Ignore warnings related to private modules
 set(QT_NO_PRIVATE_MODULE_WARNING ON)
 
 find_package(
