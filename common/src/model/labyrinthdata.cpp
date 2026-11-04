@@ -144,7 +144,6 @@ bool LabyrinthData::roomIsFirstRoomInSection(const RoomId& id) const
 bool LabyrinthData::roomIsTrial(const RoomId& id) const
 {
     const Room& room = rooms[roomIdIndex.value(id)];
-//    return room.name == "Aspirant's Trial";
     //: Label "Aspirant's Trial"
     //% "Aspirant's Trial"
     //@ Planner
