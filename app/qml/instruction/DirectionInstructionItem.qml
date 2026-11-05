@@ -16,7 +16,7 @@ InstructionItem {
   //@ Instruction
   readonly property string labelToDirection: root.nextRoomName ? qsTrId(
                                                                    "id-to-next-room").arg(
-                                                                   root.nextRoomName) : ""
+                                                                   qsTrId(root.nextRoomName)) : ""
 
   iconSource: connectionType == 'secret' ? 'qrc:/qt/qml/labcompass/assets/images/instruction/secret-passage.svg' : root.direction
   in Global.directionMapping ? 'qrc:/qt/qml/labcompass/assets/images/instruction/direction_'
