@@ -57,7 +57,7 @@ void NavigationController::onRoomChanged(const QString& name)
         data.previousRoom = data.currentRoom;
 
     // the user follows the planned route
-    if (data.currentRoomDetermined && data.plannedRoute.size() >= 2 && model->labyrinthData.getRoomFromId(data.plannedRoute[1]).name == name) {
+    if (data.currentRoomDetermined && data.plannedRoute.size() >= 2 && qtTrId(model->labyrinthData.getRoomFromId(data.plannedRoute[1]).nameId.toUtf8().constData()) == name) {
         data.possibleCurrentRooms = { data.plannedRoute[1] };
 
         // the user takes a portal to the next trial room
