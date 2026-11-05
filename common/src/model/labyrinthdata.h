@@ -21,6 +21,7 @@ struct LabyrinthData {
         RoomId trialRoom;
     };
 
+    // Normal, Cruel, Merciless or Uber
     QString difficulty;
     QDate date;
 

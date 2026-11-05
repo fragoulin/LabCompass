@@ -371,7 +371,7 @@ You can try to:
         <translation type="unfinished"></translation>
     </message>
     <message id="id-loaded-map">
-        <location filename="../qml/instruction/LoadedMapInstructionItem.qml" line="28"/>
+        <location filename="../qml/instruction/LoadedMapInstructionItem.qml" line="25"/>
         <source>Loaded Map:</source>
         <extracomment>Label displayed before the name of the loaded map</extracomment>
         <label>Instruction</label>
@@ -601,43 +601,72 @@ You can try to:
         <label>Planner</label>
         <translation type="unfinished"></translation>
     </message>
+    <message id="id-labyrinth-difficulty-normal">
+        <location filename="../qml/planner/Planner.qml" line="28"/>
+        <source>Normal</source>
+        <extracomment>Labyrinth difficulty: normal</extracomment>
+        <label>Labyrinth</label>
+        <translation type="unfinished"></translation>
+    </message>
+    <message id="id-labyrinth-difficulty-cruel">
+        <location filename="../qml/planner/Planner.qml" line="33"/>
+        <source>Cruel</source>
+        <extracomment>Labyrinth difficulty: cruel</extracomment>
+        <label>Labyrinth</label>
+        <translation type="unfinished"></translation>
+    </message>
+    <message id="id-labyrinth-difficulty-merciless">
+        <location filename="../qml/planner/Planner.qml" line="38"/>
+        <source>Merciless</source>
+        <extracomment>Labyrinth difficulty: merciless</extracomment>
+        <label>Labyrinth</label>
+        <translation type="unfinished"></translation>
+    </message>
+    <message id="id-labyrinth-difficulty-uber">
+        <location filename="../qml/planner/Planner.qml" line="43"/>
+        <source>Eternal</source>
+        <extracomment>Labyrinth difficulty: eternal</extracomment>
+        <label>Labyrinth</label>
+        <translation type="unfinished"></translation>
+    </message>
     <message id="id-labyrinth-planner">
-        <location filename="../qml/planner/Planner.qml" line="63"/>
+        <location filename="../qml/planner/Planner.qml" line="83"/>
         <source>Labyrinth Planner</source>
         <extracomment>Labyrinth Planner window title</extracomment>
         <label>Planner</label>
         <translation type="unfinished"></translation>
     </message>
     <message id="id-layout-room-title">
-        <location filename="../qml/planner/Planner.qml" line="78"/>
-        <source>Layout: %1</source>
-        <extracomment>Layout: room title</extracomment>
+        <location filename="../qml/planner/Planner.qml" line="100"/>
+        <source>Layout: %1 %2</source>
+        <oldsource>Layout: %1</oldsource>
+        <extracomment>Layout: room title. First parameter is date (formatted using current locale) Second parameter is difficulty (Normal, Cruel, Merciless or Uber)</extracomment>
         <label>Planner</label>
         <translation type="unfinished"></translation>
     </message>
     <message id="id-planner-no-map-loaded">
-        <location filename="../qml/planner/Planner.qml" line="82"/>
+        <location filename="../qml/planner/Planner.qml" line="106"/>
         <source>No lab notes loaded</source>
         <extracomment>Label displayed in the planner when no map is loaded</extracomment>
         <label>Planner</label>
         <translation type="unfinished"></translation>
     </message>
     <message id="id-get-maps">
-        <location filename="../qml/planner/Planner.qml" line="96"/>
+        <location filename="../qml/planner/Planner.qml" line="120"/>
         <source>Get Maps</source>
         <extracomment>Get Maps button label to access poelab website. Label should be brief because of limited space available</extracomment>
         <label>Planner</label>
         <translation type="unfinished"></translation>
     </message>
     <message id="id-import-maps">
-        <location filename="../qml/planner/Planner.qml" line="118"/>
+        <location filename="../qml/planner/Planner.qml" line="142"/>
         <source>Import Maps</source>
         <extracomment>Import Maps button label to open file dialog. Label should be brief because of limited space available</extracomment>
         <label>Planner</label>
         <translation type="unfinished"></translation>
     </message>
     <message id="id-planner-donate">
-        <location filename="../qml/planner/Planner.qml" line="194"/>
+        <location filename="../qml/planner/Planner.qml" line="218"/>
         <source>Donate: </source>
         <extracomment>Donate button label displayed before Paypal and Patreon buttons. Label should be brief because of limited space available</extracomment>
         <label>Planner</label>
@@ -714,14 +743,14 @@ You can try to:
         <translation type="unfinished"></translation>
     </message>
     <message id="id-failed-to-import-file-title">
-        <location filename="../src/application.cpp" line="293"/>
+        <location filename="../src/application.cpp" line="297"/>
         <source>Failed to import file.</source>
         <extracomment>Title for import file error</extracomment>
         <label>Error</label>
         <translation type="unfinished"></translation>
     </message>
     <message id="id-failed-to-import-file-text">
-        <location filename="../src/application.cpp" line="298"/>
+        <location filename="../src/application.cpp" line="302"/>
         <source>JSON file cannot be imported. Please check logs.</source>
         <extracomment>Text for import file error</extracomment>
         <label>Error</label>
@@ -756,14 +785,14 @@ You can try to:
         <translation type="unfinished"></translation>
     </message>
     <message id="id-dialog-import-lab-notes">
-        <location filename="../qml/planner/Planner.qml" line="233"/>
+        <location filename="../qml/planner/Planner.qml" line="257"/>
         <source>Import Lab Notes</source>
         <extracomment>File dialog title to import lab notes</extracomment>
         <label>Planner</label>
         <translation type="unfinished"></translation>
     </message>
     <message id="id-dialog-import-info">
-        <location filename="../qml/planner/Planner.qml" line="237"/>
+        <location filename="../qml/planner/Planner.qml" line="261"/>
         <source>Lab Maps (*.json *.map)</source>
         <extracomment>File dialog info and authorized file extensions</extracomment>
         <label>Planner</label>
@@ -1120,7 +1149,6 @@ You can try to:
         <translation type="unfinished"></translation>
     </message>
     <message id="id-labyrinth-aspirants-plaza">
-        <location filename="../../common/src/model/labyrinthdata.cpp" line="196"/>
         <location filename="../../common/src/worker/logwatcher.cpp" line="299"/>
         <source>Aspirants&apos; Plaza</source>
         <extracomment>Room name: Aspirants&apos; Plaza. Must match exactly room name displayed in Path of Exile client</extracomment>
@@ -1128,13 +1156,17 @@ You can try to:
         <translation type="unfinished"></translation>
     </message>
     <message id="id-aspirants-trial">
-        <location filename="../../common/src/controller/navigationcontroller.cpp" line="59"/>
-        <location filename="../../common/src/model/labyrinthdata.cpp" line="150"/>
-        <location filename="../qml/planner/LabyrinthMapDisplay.qml" line="64"/>
-        <location filename="../qml/planner/LabyrinthMapDisplay.qml" line="69"/>
+        <location filename="../../common/src/worker/logwatcher.cpp" line="395"/>
         <source>Aspirant&apos;s Trial</source>
         <extracomment>Label &quot;Aspirant&apos;s Trial&quot;</extracomment>
         <label>Planner</label>
+        <translation type="unfinished"></translation>
+    </message>
+    <message id="id-loaded-map-text">
+        <location filename="../qml/instruction/LoadedMapInstructionItem.qml" line="35"/>
+        <source>%1 %2</source>
+        <extracomment>Text displayed under compass when player teleports to labyrinth plaza. First parameter is date (formatted using current locale) Second parameter is difficulty (Normal, Cruel, Merciless or Uber)</extracomment>
+        <label>Instruction</label>
         <translation type="unfinished"></translation>
     </message>
 </context>

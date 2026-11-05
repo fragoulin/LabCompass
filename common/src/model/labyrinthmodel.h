@@ -6,8 +6,6 @@
 class LabyrinthModel : public QObject {
     Q_OBJECT
 
-    QML_READONLY_VAR_PROPERTY(QString, title)
-
     QML_READONLY_VAR_PROPERTY(QString, difficulty)
     QML_READONLY_VAR_PROPERTY(QDate, date)
 

@@ -210,10 +210,7 @@ bool LabyrinthData::loadRooms(const QJsonArray& array)
 
         // compute room name Id (for translations)
         QString roomName = roomJson["name"].toString();
-        QString roomNameId = "id-" % roomName.replace(' ', '-').replace("'", "");
-        QByteArray ba = roomNameId.toLocal8Bit();
-        const char *roomNameIdChar = ba.data();
-        room.nameId = roomNameIdChar;
+        room.nameId = "id-" % roomName.replace(' ', '-').replace("'", "");
 
         room.coordinate = QPoint(roomJson["x"].toString().toInt(), roomJson["y"].toString().toInt());
 

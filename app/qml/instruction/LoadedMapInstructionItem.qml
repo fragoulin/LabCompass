@@ -7,9 +7,6 @@ InstructionItem {
 
   property var model
 
-  property string name: model ? model.title : ''
-  property string difficulty: model ? model.difficulty : ''
-
   iconSource: {
     return {
       'Normal': 'qrc:/qt/qml/labcompass/assets/images/instruction/loaded-map-normal.svg',
@@ -17,7 +14,7 @@ InstructionItem {
       'Merciless': 'qrc:/qt/qml/labcompass/assets/images/instruction/loaded-map-merciless.svg',
       'Uber': 'qrc:/qt/qml/labcompass/assets/images/instruction/loaded-map-uber.svg',
       '': ''
-    }[difficulty];
+    }[root.model && root.model.difficulty ? root.model.difficulty : ''];
   }
 
   Text {
@@ -29,6 +26,15 @@ InstructionItem {
   }
   Text {
     color: Global.primaryTextColor
-    text: root.name
+    //: Text displayed under compass when player teleports to labyrinth plaza.
+    //: First parameter is date (formatted using current locale)
+    //: Second parameter is difficulty (Normal, Cruel, Merciless or Uber)
+    //% "%1 %2"
+    //@ Instruction
+    text: (root.model && root.model.date && root.model.difficulty)
+          ? qsTrId("id-loaded-map-text")
+            .arg(root.model.date.toLocaleDateString(Qt.locale(), Locale.ShortFormat))
+            .arg(qsTrId("id-labyrinth-difficulty-" + root.model.difficulty.toLowerCase()))
+          : ''
   }
 }

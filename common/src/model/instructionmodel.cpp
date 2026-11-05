@@ -64,7 +64,7 @@ void InstructionModel::loadFromData(const NavigationData& data)
 
         update_nextRoomIsUnmarkedOppositeDirection(!get_nextRoomIsPreviousRoom() && data.lab->roomIsTrial(data.currentRoom) && data.lab->getRoomFromId(data.currentRoom).section == data.lab->getRoomFromId(nextRoomId).section);
 
-        update_nextRoomName(data.lab->getRoomFromId(nextRoomId).name);
+        update_nextRoomName(data.lab->getRoomFromId(nextRoomId).nameId);
 
         if (connections.isEmpty())
             update_nextRoomConnectionType("none"); // should not happen
