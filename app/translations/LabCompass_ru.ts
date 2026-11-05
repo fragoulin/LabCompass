@@ -499,7 +499,7 @@
         <source>Portals</source>
         <extracomment>Portals during Izaro fight</extracomment>
         <label>Labyrinth</label>
-        <translation>Portals</translation>
+        <translation>Порталы</translation>
     </message>
     <message id="id-no-trap">
         <location filename="../qml/Global.qml" line="126"/>
