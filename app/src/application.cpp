@@ -263,7 +263,7 @@ void Application::restorePreviouslyLoadedMap()
 void Application::updateLanguage(QString languageCode)
 {
     if (!translator.isEmpty() && !removeTranslator(&translator))
-        qInfo() << "Failed to remove translator" << translator.language();
+        qWarning() << "Failed to remove translator" << translator.language();
 
     const QString applicationName = QApplication::applicationName();
     const QString directory = ":/i18n";
@@ -271,17 +271,21 @@ void Application::updateLanguage(QString languageCode)
     QLocale locale (languageCode);
 
     if (!translator.load(locale, applicationName, "_", directory)) {
-        qWarning() << "Cannot load translation" << applicationName << "from directory" << directory << "and locale" << locale << ". Fallback to default locale";
-        if(translator.load(QLocale(), applicationName, "_", directory)) {
+        qWarning() << "Cannot load translation" << applicationName << "from directory" << directory << "and locale" << locale << ". Fallback to english locale";
+        if(translator.load(QLocale("en"), applicationName, "_", directory)) {
             qInfo() << "    Using english as fallback language";
             model.get_settings()->set_languageCode(languageCode);
             installTranslator(&translator);
+            QLocale::setDefault(QLocale("en"));
         }
         else
             qWarning() << "Failed to load default language" << applicationName << "from directory" << directory << "and locale" << QLocale();
     } else if (!installTranslator(&translator)) {
         qWarning() << "Failed to install translator" << translator.language();
+    } else {
+        QLocale::setDefault(locale);
     }
+    qInfo() << "    Default locale set to" << QLocale();
 }
 
 void Application::onImportFileFailed()
