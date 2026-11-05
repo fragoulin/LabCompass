@@ -1,6 +1,6 @@
 [
   {
-    "roomId": "id-basilica-annex",
+    "roomName": "Basilica Annex",
     "goldenDoor": false,
     "variants": [
       {
@@ -16,7 +16,7 @@
     ]
   },
   {
-    "roomId": "id-basilica-atrium",
+    "roomName": "Basilica Atrium",
     "goldenDoor": false,
     "variants": [
       {
@@ -39,7 +39,7 @@
     ]
   },
   {
-    "roomId": "id-basilica-atrium",
+    "roomName": "Basilica Atrium",
     "goldenDoor": true,
     "variants": [
       {
@@ -61,7 +61,7 @@
     ]
   },
   {
-    "roomId": "id-basilica-halls",
+    "roomName": "Basilica Halls",
     "goldenDoor": false,
     "variants": [
       {
@@ -115,7 +115,7 @@
     ]
   },
   {
-    "roomId": "id-basilica-halls",
+    "roomName": "Basilica Halls",
     "goldenDoor": true,
     "variants": [
       {
@@ -136,7 +136,7 @@
     ]
   },
   {
-    "roomId": "id-basilica-passage",
+    "roomName": "Basilica Passage",
     "goldenDoor": false,
     "variants": [
       {
@@ -167,7 +167,7 @@
     ]
   },
   {
-    "roomId": "id-domain-crossing",
+    "roomName": "Domain Crossing",
     "goldenDoor": false,
     "variants": [
       {
@@ -190,7 +190,7 @@
     ]
   },
   {
-    "roomId": "id-domain-crossing",
+    "roomName": "Domain Crossing",
     "goldenDoor": true,
     "variants": [
       {
@@ -212,7 +212,7 @@
     ]
   },
   {
-    "roomId": "id-domain-enclosure",
+    "roomName": "Domain Enclosure",
     "goldenDoor": false,
     "variants": [
       {
@@ -228,7 +228,7 @@
     ]
   },
   {
-    "roomId": "id-domain-path",
+    "roomName": "Domain Path",
     "goldenDoor": false,
     "variants": [
       {
@@ -254,7 +254,7 @@
     ]
   },
   {
-    "roomId": "id-domain-walkways",
+    "roomName": "Domain Walkways",
     "goldenDoor": false,
     "variants": [
       {
@@ -308,7 +308,7 @@
     ]
   },
   {
-    "roomId": "id-domain-walkways",
+    "roomName": "Domain Walkways",
     "goldenDoor": true,
     "variants": [
       {
@@ -324,7 +324,7 @@
     ]
   },
   {
-    "roomId": "id-estate-crossing",
+    "roomName": "Estate Crossing",
     "goldenDoor": false,
     "variants": [
       {
@@ -347,7 +347,7 @@
     ]
   },
   {
-    "roomId": "id-estate-crossing",
+    "roomName": "Estate Crossing",
     "goldenDoor": true,
     "variants": [
       {
@@ -369,7 +369,7 @@
     ]
   },
   {
-    "roomId": "id-estate-enclosure",
+    "roomName": "Estate Enclosure",
     "goldenDoor": false,
     "variants": [
       {
@@ -385,7 +385,7 @@
     ]
   },
   {
-    "roomId": "id-estate-path",
+    "roomName": "Estate Path",
     "goldenDoor": false,
     "variants": [
       {
@@ -416,7 +416,7 @@
     ]
   },
   {
-    "roomId": "id-estate-walkways",
+    "roomName": "Estate Walkways",
     "goldenDoor": false,
     "variants": [
       {
@@ -470,7 +470,7 @@
     ]
   },
   {
-    "roomId": "id-estate-walkways",
+    "roomName": "Estate Walkways",
     "goldenDoor": true,
     "variants": [
       {
@@ -491,7 +491,7 @@
     ]
   },
   {
-    "roomId": "id-mansion-annex",
+    "roomName": "Mansion Annex",
     "goldenDoor": false,
     "variants": [
       {
@@ -507,7 +507,7 @@
     ]
   },
   {
-    "roomId": "id-mansion-atrium",
+    "roomName": "Mansion Atrium",
     "goldenDoor": false,
     "variants": [
       {
@@ -530,7 +530,7 @@
     ]
   },
   {
-    "roomId": "id-mansion-atrium",
+    "roomName": "Mansion Atrium",
     "goldenDoor": true,
     "variants": [
       {
@@ -552,7 +552,7 @@
     ]
   },
   {
-    "roomId": "id-mansion-halls",
+    "roomName": "Mansion Halls",
     "goldenDoor": false,
     "variants": [
       {
@@ -606,7 +606,7 @@
     ]
   },
   {
-    "roomId": "id-mansion-halls",
+    "roomName": "Mansion Halls",
     "goldenDoor": true,
     "variants": [
       {
@@ -627,7 +627,7 @@
     ]
   },
   {
-    "roomId": "id-mansion-passage",
+    "roomName": "Mansion Passage",
     "goldenDoor": false,
     "variants": [
       {
@@ -658,7 +658,7 @@
     ]
   },
   {
-    "roomId": "id-sanitorium-annex",
+    "roomName": "Sanitorium Annex",
     "goldenDoor": false,
     "variants": [
       {
@@ -674,7 +674,7 @@
     ]
   },
   {
-    "roomId": "id-sanitorium-annex",
+    "roomName": "Sanitorium Atrium",
     "goldenDoor": false,
     "variants": [
       {
@@ -697,7 +697,7 @@
     ]
   },
   {
-    "roomId": "id-sanitorium-halls",
+    "roomName": "Sanitorium Halls",
     "goldenDoor": false,
     "variants": [
       {
@@ -751,7 +751,7 @@
     ]
   },
   {
-    "roomId": "id-sanitorium-halls",
+    "roomName": "Sanitorium Halls",
     "goldenDoor": true,
     "variants": [
       {
@@ -772,7 +772,7 @@
     ]
   },
   {
-    "roomId": "id-sanitorium-passage",
+    "roomName": "Sanitorium Passage",
     "goldenDoor": false,
     "variants": [
       {
@@ -798,7 +798,7 @@
     ]
   },
   {
-    "roomId": "id-sepulchre-annex",
+    "roomName": "Sepulchre Annex",
     "goldenDoor": false,
     "variants": [
       {
@@ -814,7 +814,7 @@
     ]
   },
   {
-    "roomId": "id-sepulchre-atrium",
+    "roomName": "Sepulchre Atrium",
     "goldenDoor": false,
     "variants": [
       {
@@ -837,7 +837,7 @@
     ]
   },
   {
-    "roomId": "id-sepulchre-atrium",
+    "roomName": "Sepulchre Atrium",
     "goldenDoor": true,
     "variants": [
       {
@@ -859,7 +859,7 @@
     ]
   },
   {
-    "roomId": "id-sepulchre-halls",
+    "roomName": "Sepulchre Halls",
     "goldenDoor": false,
     "variants": [
       {
@@ -913,7 +913,7 @@
     ]
   },
   {
-    "roomId": "id-sepulchre-halls",
+    "roomName": "Sepulchre Halls",
     "goldenDoor": true,
     "variants": [
       {
@@ -934,7 +934,7 @@
     ]
   },
   {
-    "roomId": "id-sepulchre-passage",
+    "roomName": "Sepulchre Passage",
     "goldenDoor": false,
     "variants": [
       {

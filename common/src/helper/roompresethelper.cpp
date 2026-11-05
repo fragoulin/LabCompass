@@ -6,18 +6,17 @@ RoomPresetHelper::RoomPresetHelper()
 {
     QFile roomPresetsFile(":/room-presets.json");
     if (!roomPresetsFile.open(QIODevice::ReadOnly)) {
-        qFatal() << "Failed to open :/room-presets.json resource";
-        return;
+        qCritical() << "Failed to open :/room-presets.json resource";
     }
 
     const auto& roomTypeList = QJsonDocument::fromJson(roomPresetsFile.readAll()).toVariant().toList();
 
     for (const auto& roomType : roomTypeList) {
-        const auto& roomId = roomType.toMap()["roomId"].toString();
+        const auto& roomName = roomType.toMap()["roomName"].toString();
         const auto& goldenDoor = roomType.toMap()["goldenDoor"].toBool();
         const auto& variantList = roomType.toMap()["variants"].toList();
 
-        QPair<QString, bool> index { roomId, goldenDoor };
+        QPair<QString, bool> index { roomName, goldenDoor };
         cacheByNameAndGoldenDoor.insert(index, {});
 
         for (const auto& variant : variantList) {

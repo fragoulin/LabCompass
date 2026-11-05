@@ -56,14 +56,12 @@ void NavigationController::onRoomChanged(const QString& name)
     if (data.currentRoomDetermined)
         data.previousRoom = data.currentRoom;
 
-    auto aspirantsTrial = qtTrId("id-aspirants-trial");
-
     // the user follows the planned route
-    if (data.currentRoomDetermined && data.plannedRoute.size() >= 2 && model->labyrinthData.getRoomFromId(data.plannedRoute[1]).translatedName == name) {
+    if (data.currentRoomDetermined && data.plannedRoute.size() >= 2 && model->labyrinthData.getRoomFromId(data.plannedRoute[1]).name == name) {
         data.possibleCurrentRooms = { data.plannedRoute[1] };
 
         // the user takes a portal to the next trial room
-    } else if (data.currentRoomDetermined && data.contentState.portalLocations.contains(data.currentRoom) && name == aspirantsTrial) {
+    } else if (data.currentRoomDetermined && data.contentState.portalLocations.contains(data.currentRoom) && name == "Aspirant's Trial") {
         int currentSection = data.lab->getRoomFromId(data.currentRoom).section;
         data.possibleCurrentRooms = { data.lab->sections[currentSection].trialRoom };
 
@@ -83,7 +81,7 @@ void NavigationController::onRoomChanged(const QString& name)
 
         data.possibleCurrentRooms = QSet<QString>();
         for (auto i = connectedRooms.constBegin(); i != connectedRooms.constEnd(); i++)
-            if (model->labyrinthData.getRoomFromId(*i).translatedName == name)
+            if (model->labyrinthData.getRoomFromId(*i).name == name)
                 data.possibleCurrentRooms.insert(*i);
     }
 

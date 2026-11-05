@@ -5,9 +5,8 @@
 
 struct LabyrinthData {
     struct Room {
-        QString name;
-        QString nameId;
-        QString translatedName;
+        QString name; // English name, each word capitalized
+        QString nameId; // Name Id, used for translations
         QString areaCode;
         RoomId id;
         QPoint coordinate;

@@ -21,7 +21,7 @@ void RoomPresetModel::loadFromData(const NavigationData& data)
         update_roomName(room.name);
 
         auto helper = RoomPresetHelper::instance;
-        const auto& presetList = helper->getPresetListByName(room.nameId, room.contents.contains("golden-door"));
+        const auto& presetList = helper->getPresetListByName(room.name, room.contents.contains("golden-door"));
 
         QVariantList presetsModel;
         int current = -1;

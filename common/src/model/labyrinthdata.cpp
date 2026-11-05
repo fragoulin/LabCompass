@@ -144,11 +144,7 @@ bool LabyrinthData::roomIsFirstRoomInSection(const RoomId& id) const
 bool LabyrinthData::roomIsTrial(const RoomId& id) const
 {
     const Room& room = rooms[roomIdIndex.value(id)];
-    //: Label "Aspirant's Trial"
-    //% "Aspirant's Trial"
-    //@ Planner
-    QString aspirantsTrialName = qtTrId("id-aspirants-trial");
-    return room.translatedName == aspirantsTrialName;
+    return room.nameId == "id-aspirants-trial";
 }
 
 bool LabyrinthData::roomIsDeadEnd(const RoomId& id) const
@@ -193,7 +189,7 @@ bool LabyrinthData::loadRooms(const QJsonArray& array)
         return false;
     }
 
-    rooms.append(Room({ "Aspirant\'s Plaza", "id-labyrinth-aspirants-plaza", qtTrId("id-labyrinth-aspirants-plaza"), "labyrinth_airlock", "plaza", { -100, 128 }, {}, {}, -1, false }));
+    rooms.append(Room({ "Aspirant\'s Plaza", "id-labyrinth-aspirants-plaza", "labyrinth_airlock", "plaza", { -100, 128 }, {}, {}, -1, false }));
 
     for (int i = 0; i < array.size(); i++) {
         if (!array[i].isObject()) {
@@ -205,15 +201,19 @@ bool LabyrinthData::loadRooms(const QJsonArray& array)
         Room room;
         room.id = roomJson["id"].toString();
         room.areaCode = roomJson["areacode"].toString();
-        room.name = roomJson["name"].toString();
 
-        // translate room name
+        // capitalize room name
+        QStringList roomNameWords = roomJson["name"].toString().split(' ');
+        std::transform(roomNameWords.begin(), roomNameWords.end(), roomNameWords.begin(),
+                       [](QString x) { x = x.toLower(); if (x.size()) x[0] = x[0].toUpper(); return x; });
+        room.name = roomNameWords.join(' ');
+
+        // compute room name Id (for translations)
         QString roomName = roomJson["name"].toString();
         QString roomNameId = "id-" % roomName.replace(' ', '-').replace("'", "");
         QByteArray ba = roomNameId.toLocal8Bit();
         const char *roomNameIdChar = ba.data();
         room.nameId = roomNameIdChar;
-        room.translatedName = qtTrId(roomNameIdChar);
 
         room.coordinate = QPoint(roomJson["x"].toString().toInt(), roomJson["y"].toString().toInt());
 
@@ -238,7 +238,7 @@ void LabyrinthData::predictRoomAreaCodes()
 
     for (auto& room : rooms)
         if (room.areaCode.isEmpty()) {
-            const auto& presetList = helper->getPresetListByName(room.nameId, room.contents.contains("golden-door"));
+            const auto& presetList = helper->getPresetListByName(room.name, room.contents.contains("golden-door"));
             if (presetList.size() == 1)
                 room.areaCode = presetList[0].first;
         }
@@ -362,7 +362,7 @@ bool LabyrinthData::loadGoldenDoors()
 bool LabyrinthData::roomIsAnnexOrEnclosure(const RoomId& id) const
 {
     const Room& room = rooms[roomIdIndex.value(id)];
-    return room.name.endsWith("annex") || room.name.endsWith("enclosure");
+    return room.name.endsWith("Annex") || room.name.endsWith("Enclosure");
 }
 
 bool LabyrinthData::checkExits()
@@ -373,7 +373,7 @@ bool LabyrinthData::checkExits()
             && !roomIsTrial(room.id)
             && !roomIsAnnexOrEnclosure(room.id)
             && 0 == room.exitsNumber) {
-            qWarning() << "Room" << room.id << room.translatedName << "has no exits";
+            qWarning() << "Room" << room.id << room.name << "has no exits";
             return false;
         }
     }

@@ -13,7 +13,7 @@ void RoomModel::loadFromData(const LabyrinthData& lab, const NavigationData& nav
         RoomModelData modelData;
         modelData.id = room.id;
         modelData.name = room.name;
-        modelData.translatedName = room.translatedName;
+        modelData.nameId = room.nameId;
         modelData.coordinate = room.coordinate;
         modelData.contents = room.contents;
 
@@ -63,8 +63,8 @@ QVariant RoomModel::data(const QModelIndex& index, int role) const
         return data.id;
     case NameRole:
         return data.name;
-    case TranslatedNameRole:
-        return data.translatedName;
+    case NameIdRole:
+        return data.nameId;
     case CoordinateRole:
         return data.coordinate;
     case ContentsRole:
@@ -83,7 +83,7 @@ QHash<int, QByteArray> RoomModel::roleNames() const
     QHash<int, QByteArray> roles;
     roles[IdRole] = "id";
     roles[NameRole] = "name";
-    roles[TranslatedNameRole] = "translatedName";
+    roles[NameIdRole] = "nameId";
     roles[CoordinateRole] = "coordinate";
     roles[ContentsRole] = "contents";
     roles[IsTargetRole] = "isTarget";
