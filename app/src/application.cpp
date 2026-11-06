@@ -285,7 +285,7 @@ void Application::updateLanguage(QString languageCode)
     } else {
         QLocale::setDefault(locale);
     }
-    qInfo() << "    Default locale set to" << QLocale();
+    qInfo() << "Default locale set to" << QLocale();
 }
 
 void Application::onImportFileFailed()
