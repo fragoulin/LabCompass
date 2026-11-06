@@ -204,21 +204,21 @@
         <source>Basilica Halls</source>
         <extracomment>Basilica Halls room name. Must match exactly room name displayed in Path of Exile client</extracomment>
         <label>Labyrinth</label>
-        <translation>교회당 복도에</translation>
+        <translation>교회당 복도</translation>
     </message>
     <message id="id-basilica-passage">
         <location filename="../../common/src/worker/logwatcher.cpp" line="143"/>
         <source>Basilica Passage</source>
         <extracomment>Basilica Passage room name. Must match exactly room name displayed in Path of Exile client</extracomment>
         <label>Labyrinth</label>
-        <translation>교회당 통로에</translation>
+        <translation>교회당 통로</translation>
     </message>
     <message id="id-domain-crossing">
         <location filename="../../common/src/worker/logwatcher.cpp" line="147"/>
         <source>Domain Crossing</source>
         <extracomment>Domain Crossing room name. Must match exactly room name displayed in Path of Exile client</extracomment>
         <label>Labyrinth</label>
-        <translation>영토 교차로에</translation>
+        <translation>영토 교차로</translation>
     </message>
     <message id="id-domain-enclosure">
         <location filename="../../common/src/worker/logwatcher.cpp" line="151"/>
@@ -232,14 +232,14 @@
         <source>Domain Path</source>
         <extracomment>Domain Path room name. Must match exactly room name displayed in Path of Exile client</extracomment>
         <label>Labyrinth</label>
-        <translation>영토 보도에</translation>
+        <translation>영토 보도</translation>
     </message>
     <message id="id-domain-walkways">
         <location filename="../../common/src/worker/logwatcher.cpp" line="159"/>
         <source>Domain Walkways</source>
         <extracomment>Domain Walkways room name. Must match exactly room name displayed in Path of Exile client</extracomment>
         <label>Labyrinth</label>
-        <translation>영토 통로에</translation>
+        <translation>영토 통로</translation>
     </message>
     <message id="id-estate-crossing">
         <location filename="../../common/src/worker/logwatcher.cpp" line="163"/>
@@ -260,14 +260,14 @@
         <source>Estate Path</source>
         <extracomment>Estate Path room name. Must match exactly room name displayed in Path of Exile client</extracomment>
         <label>Labyrinth</label>
-        <translation>사유지 보도에</translation>
+        <translation>사유지 보도</translation>
     </message>
     <message id="id-estate-walkways">
         <location filename="../../common/src/worker/logwatcher.cpp" line="175"/>
         <source>Estate Walkways</source>
         <extracomment>Estate Walkways room name. Must match exactly room name displayed in Path of Exile client</extracomment>
         <label>Labyrinth</label>
-        <translation>사유지 통로에</translation>
+        <translation>사유지 통로</translation>
     </message>
     <message id="id-mansion-annex">
         <location filename="../../common/src/worker/logwatcher.cpp" line="179"/>
@@ -281,21 +281,21 @@
         <source>Mansion Atrium</source>
         <extracomment>Mansion Atrium room name. Must match exactly room name displayed in Path of Exile client</extracomment>
         <label>Labyrinth</label>
-        <translation>대저택 안마당에</translation>
+        <translation>대저택 안마당</translation>
     </message>
     <message id="id-mansion-halls">
         <location filename="../../common/src/worker/logwatcher.cpp" line="187"/>
         <source>Mansion Halls</source>
         <extracomment>Mansion Halls room name. Must match exactly room name displayed in Path of Exile client</extracomment>
         <label>Labyrinth</label>
-        <translation>대저택 복도에</translation>
+        <translation>대저택 복도</translation>
     </message>
     <message id="id-mansion-passage">
         <location filename="../../common/src/worker/logwatcher.cpp" line="191"/>
         <source>Mansion Passage</source>
         <extracomment>Mansion Passage room name. Must match exactly room name displayed in Path of Exile client</extracomment>
         <label>Labyrinth</label>
-        <translation>대저택 통로에</translation>
+        <translation>대저택 통로</translation>
     </message>
     <message id="id-sanitorium-annex">
         <location filename="../../common/src/worker/logwatcher.cpp" line="195"/>
@@ -309,14 +309,14 @@
         <source>Sanitorium Halls</source>
         <extracomment>Sanitorium Halls room name. Must match exactly room name displayed in Path of Exile client</extracomment>
         <label>Labyrinth</label>
-        <translation>요양원 복도에</translation>
+        <translation>요양원 복도</translation>
     </message>
     <message id="id-sanitorium-passage">
         <location filename="../../common/src/worker/logwatcher.cpp" line="203"/>
         <source>Sanitorium Passage</source>
         <extracomment>Sanitorium Passage room name. Must match exactly room name displayed in Path of Exile client</extracomment>
         <label>Labyrinth</label>
-        <translation>요양원 통로에</translation>
+        <translation>요양원 통로</translation>
     </message>
     <message id="id-sepulchre-annex">
         <location filename="../../common/src/worker/logwatcher.cpp" line="207"/>
@@ -337,7 +337,7 @@
         <source>Sepulchre Halls</source>
         <extracomment>Sepulchre Halls room name. Must match exactly room name displayed in Path of Exile client</extracomment>
         <label>Labyrinth</label>
-        <translation>매장소 복도에</translation>
+        <translation>매장소 복도</translation>
     </message>
     <message id="id-sepulchre-passage">
         <location filename="../../common/src/worker/logwatcher.cpp" line="219"/>
@@ -352,14 +352,14 @@
         <oldsource>^: You have entered (.*?)\.$</oldsource>
         <extracomment>Regular expression used to match room entered by player character in Path of Exile client log file (.*?) Matches and captures the room name.</extracomment>
         <label>Labyrinth</label>
-        <translation>^(.*?) 진입했습니다.$</translation>
+        <translation>^(.*?)에 진입했습니다\.$</translation>
     </message>
     <message id="id-labyrinth-aspirants-plaza">
         <location filename="../../common/src/worker/logwatcher.cpp" line="299"/>
         <source>Aspirants&apos; Plaza</source>
         <extracomment>Room name: Aspirants&apos; Plaza. Must match exactly room name displayed in Path of Exile client</extracomment>
         <label>Labyrinth</label>
-        <translation>지망자의 광장에</translation>
+        <translation>지망자의 광장</translation>
     </message>
     <message id="id-switch-puzzle">
         <location filename="../qml/Global.qml" line="46"/>
