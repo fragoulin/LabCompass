@@ -1,3 +1,5 @@
+pragma ComponentBehavior: Bound
+
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Controls.Material
@@ -109,51 +111,103 @@ Window {
         ListModel {
           id: languages
           ListElement {
-            code: 'en';
+            code: 'en'
             text: 'English'
+            image: 'qrc:/qt/qml/labcompass/assets/images/flags/gb.svg'
           }
           ListElement {
-            code: 'pt';
+            code: 'pt'
             text: 'Português'
+            image: 'qrc:/qt/qml/labcompass/assets/images/flags/br.svg'
           }
           ListElement {
-            code: 'ru';
+            code: 'ru'
             text: 'Русский'
+            image: 'qrc:/qt/qml/labcompass/assets/images/flags/ru.svg'
           }
           ListElement {
-            code: 'th';
+            code: 'th'
             text: 'ไทย'
+            image: 'qrc:/qt/qml/labcompass/assets/images/flags/th.svg'
           }
           ListElement {
-            code: 'de';
+            code: 'de'
             text: 'Deutsch'
+            image: 'qrc:/qt/qml/labcompass/assets/images/flags/de.svg'
           }
           ListElement {
             code: 'fr';
             text: 'Français'
+            image: 'qrc:/qt/qml/labcompass/assets/images/flags/fr.svg'
           }
           ListElement {
-            code: 'es';
+            code: 'es'
             text: 'Español'
+            image: 'qrc:/qt/qml/labcompass/assets/images/flags/es.svg'
           }
           ListElement {
-            code: 'ja';
+            code: 'ja'
             text: '日本語'
+            image: 'qrc:/qt/qml/labcompass/assets/images/flags/jp.svg'
           }
           ListElement {
-            code: 'ko';
+            code: 'ko'
             text: '한국어'
+            image: 'qrc:/qt/qml/labcompass/assets/images/flags/kr.svg'
           }
         }
 
         ComboBox {
           id: languageInput
           objectName: 'languageInput'
-          width: 130
+          width: 150
           implicitContentWidthPolicy: ComboBox.ContentItemImplicitWidth
           model: languages
           textRole: "text"
           valueRole: "code"
+          // Add flags next to language name in popup
+          delegate: ItemDelegate {
+              id: delegate
+
+              required property var model
+              required property int index
+
+              width: languageInput.width
+              contentItem: Row {
+                spacing: 10
+                SvgImage {
+                  source: delegate.model['image']
+                  anchors.verticalCenter: parent.verticalCenter
+                }
+                Text {
+                  text: delegate.model[languageInput.textRole]
+                  color: Global.primaryTextColor
+                  font: languageInput.font
+                  elide: Text.ElideRight
+                  verticalAlignment: Text.AlignVCenter
+                  anchors.verticalCenter: parent.verticalCenter
+                }
+              }
+              highlighted: languageInput.highlightedIndex === index
+          }
+          contentItem: Row {
+            spacing: 10
+            leftPadding: 10
+            SvgImage {
+              source: (languageInput.model as ListModel).get(languageInput.currentIndex)['image']
+              anchors.verticalCenter: parent.verticalCenter
+            }
+            Text {
+              leftPadding: 0
+              rightPadding: languageInput.indicator.width + languageInput.spacing
+              color: Global.primaryTextColor
+              text: languageInput.displayText
+              font: languageInput.font
+              verticalAlignment: Text.AlignVCenter
+              anchors.verticalCenter: parent.verticalCenter
+              elide: Text.ElideRight
+            }
+          }
         }
       }
 
