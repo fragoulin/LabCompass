@@ -4,12 +4,14 @@ import '..'
 Rectangle {
   id: root
   property var model
+  // No padding and spacing for korean and thai languages
+  readonly property bool noPadding: Global.model.settings.languageCode == "th" || Global.model.settings.languageCode == "ko"
 
   Grid {
     anchors.horizontalCenter: parent.horizontalCenter
     horizontalItemAlignment: Grid.AlignHCenter
-    padding: 10
-    spacing: 16
+    padding: root.noPadding ? 0 : 10
+    spacing: root.noPadding ? 0 : 16
     columns: 1
     Text {
       //: Label for plan summary displayed in the planner window. Label should be brief because of limited space
@@ -42,7 +44,7 @@ Rectangle {
       // TODO make a custom component for the 4 Rows and Texts
       Row {
         spacing: 4
-        SvgImage { source: 'qrc:/qt/qml/labcompass/assets/images/lab-content/argus.svg' }
+        SvgImage { source: 'qrc:/qt/qml/labcompass/assets/images/lab-content/argus.svg'; anchors.verticalCenter: parent.verticalCenter }
         Text {
           color: Global.primaryTextColor;
           //: Argus label in planner window's caption. Label should be brief because of limited space
@@ -54,7 +56,7 @@ Rectangle {
       Text { color: Global.primaryTextColor; width: 30; horizontalAlignment: Text.AlignHCenter; text: root.model.argus }
       Row {
         spacing: 4
-        SvgImage { source: 'qrc:/qt/qml/labcompass/assets/images/lab-content/gauntlet-puzzle.svg' }
+        SvgImage { source: 'qrc:/qt/qml/labcompass/assets/images/lab-content/gauntlet-puzzle.svg'; anchors.verticalCenter: parent.verticalCenter }
         Text {
           color: Global.primaryTextColor;
           //: Trove/Lockbox label in planner window's caption. Label should be brief because of limited space
@@ -66,7 +68,7 @@ Rectangle {
       Text { color: 'white'; width: 30; horizontalAlignment: Text.AlignHCenter; text: root.model.troves }
       Row {
         spacing: 4
-        SvgImage { source: 'qrc:/qt/qml/labcompass/assets/images/lab-content/darkshrine.svg' }
+        SvgImage { source: 'qrc:/qt/qml/labcompass/assets/images/lab-content/darkshrine.svg'; anchors.verticalCenter: parent.verticalCenter }
         Text {
           color: Global.primaryTextColor;
           //: Darkshrine label in planner window's caption. Label should be brief because of limited space
@@ -78,7 +80,7 @@ Rectangle {
       Text { color: 'white'; width: 30; horizontalAlignment: Text.AlignHCenter; text: root.model.darkshrines }
       Row {
         spacing: 4
-        SvgImage { source: 'qrc:/qt/qml/labcompass/assets/images/lab-content/silver-door.svg' }
+        SvgImage { source: 'qrc:/qt/qml/labcompass/assets/images/lab-content/silver-door.svg'; anchors.verticalCenter: parent.verticalCenter }
         Text {
           color: Global.primaryTextColor;
           //: Silver Cache label in planner window's caption. Label should be brief because of limited space
