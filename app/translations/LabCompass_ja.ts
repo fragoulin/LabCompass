@@ -352,7 +352,7 @@
         <oldsource>^: You have entered (.*?)\.$</oldsource>
         <extracomment>Regular expression used to match room entered by player character in Path of Exile client log file (.*?) Matches and captures the room name.</extracomment>
         <label>Labyrinth</label>
-        <translation>^あなたは(.$?)に入場しました。$</translation>
+        <translation>^あなたは(.*?)に入場しました。$</translation>
     </message>
     <message id="id-labyrinth-aspirants-plaza">
         <location filename="../../common/src/worker/logwatcher.cpp" line="299"/>
