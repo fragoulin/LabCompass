@@ -6,7 +6,7 @@
 using nlohmann::json;
 using nlohmann::json_schema::json_validator;
 
-typedef QHash<QString, qreal> TypeSr;
+using TypeSr = QHash<QString, qreal>;
 
 Q_GLOBAL_STATIC(TypeSr, ROOM_PREFIX_COST, {
     { "sepulchre", 3 },
