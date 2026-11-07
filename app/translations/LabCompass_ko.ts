@@ -4,350 +4,350 @@
 <context>
     <name></name>
     <message id="id-izaro-ascend-with-precision">
-        <location filename="../../common/src/worker/logwatcher.cpp" line="12"/>
+        <location filename="../../common/src/worker/logwatcher.cpp" line="13"/>
         <source>Izaro: Ascend with precision.</source>
         <extracomment>Izaro start line &quot;Ascend with precision.&quot;. Must match exactly lines displayed in Path of Exile client chat</extracomment>
         <label>Labyrinth</label>
         <translation>이자로: 신중하게 올라가라.</translation>
     </message>
     <message id="id-izaro-the-goddess-is-watching">
-        <location filename="../../common/src/worker/logwatcher.cpp" line="16"/>
+        <location filename="../../common/src/worker/logwatcher.cpp" line="17"/>
         <source>Izaro: The Goddess is watching.</source>
         <extracomment>Izaro start line &quot;The Goddess is watching.&quot;. Must match exactly lines displayed in Path of Exile client chat</extracomment>
         <label>Labyrinth</label>
         <translation>이자로: 여신께서 지켜보시노라.</translation>
     </message>
     <message id="id-izaro-justice-will-prevail">
-        <location filename="../../common/src/worker/logwatcher.cpp" line="20"/>
+        <location filename="../../common/src/worker/logwatcher.cpp" line="21"/>
         <source>Izaro: Justice will prevail.</source>
         <extracomment>Izaro start line &quot;Justice will prevail.&quot;. Must match exactly lines displayed in Path of Exile client chat</extracomment>
         <label>Labyrinth</label>
         <translation>이자로: 정의가 승리하리라.</translation>
     </message>
     <message id="id-izaro-I-die-for-the-empire!">
-        <location filename="../../common/src/worker/logwatcher.cpp" line="27"/>
+        <location filename="../../common/src/worker/logwatcher.cpp" line="30"/>
         <source>Izaro: I die for the Empire!</source>
         <extracomment>Izaro finish line &quot;I die for the Empire!&quot;. Must match exactly lines displayed in Path of Exile client chat</extracomment>
         <label>Labyrinth</label>
         <translation>이자로: 나는 제국을 위하여 죽노라!</translation>
     </message>
     <message id="id-izaro-you-are-free">
-        <location filename="../../common/src/worker/logwatcher.cpp" line="55"/>
+        <location filename="../../common/src/worker/logwatcher.cpp" line="58"/>
         <source>Izaro: You are free!</source>
         <extracomment>Izaro finish line &quot;You are free!&quot;. Must match exactly lines displayed in Path of Exile client chat</extracomment>
         <label>Labyrinth</label>
         <translation>이자로: 너는 자유로다!</translation>
     </message>
     <message id="id-izaro-The-trap-of-tyranny-is-inescapable">
-        <location filename="../../common/src/worker/logwatcher.cpp" line="59"/>
+        <location filename="../../common/src/worker/logwatcher.cpp" line="62"/>
         <source>Izaro: The trap of tyranny is inescapable.</source>
         <extracomment>Izaro finish line &quot;The trap of tyranny is inescapable.&quot;. Must match exactly lines displayed in Path of Exile client chat</extracomment>
         <label>Labyrinth</label>
         <translation>이자로: 폭정의 덫은 피할 수가 없도다.</translation>
     </message>
     <message id="id-izaro-complex-machinations-converge">
-        <location filename="../../common/src/worker/logwatcher.cpp" line="66"/>
+        <location filename="../../common/src/worker/logwatcher.cpp" line="71"/>
         <source>Izaro: Complex machinations converge to a single act of power.</source>
         <extracomment>Izaro battle start line &quot;Complex machinations converge to a single act of power.&quot;. Must match exactly lines displayed in Path of Exile client chat</extracomment>
         <label>Labyrinth</label>
         <translation>이자로: 복잡한 책략은 결국 하나의 행동으로 수렴된다.</translation>
     </message>
     <message id="id-izaro-slowness-lends-strength-to-ones-enemies">
-        <location filename="../../common/src/worker/logwatcher.cpp" line="70"/>
+        <location filename="../../common/src/worker/logwatcher.cpp" line="75"/>
         <source>Izaro: Slowness lends strength to one&apos;s enemies.</source>
         <extracomment>Izaro battle start line &quot;Slowness lends strength to one&apos;s enemies.&quot;. Must match exactly lines displayed in Path of Exile client chat</extracomment>
         <label>Labyrinth</label>
         <translation>이자로: 더디게 행동함은 적에게 힘을 주는 것이다.</translation>
     </message>
     <message id="id-izaro-when-one-defiles-the-effigy-one-defiles-the-emperor">
-        <location filename="../../common/src/worker/logwatcher.cpp" line="74"/>
+        <location filename="../../common/src/worker/logwatcher.cpp" line="79"/>
         <source>Izaro: When one defiles the effigy, one defiles the emperor.</source>
         <extracomment>Izaro battle start line &quot;When one defiles the effigy, one defiles the emperor.&quot;. Must match exactly lines displayed in Path of Exile client chat</extracomment>
         <label>Labyrinth</label>
         <translation>이자로: 황제의 조각상을 모욕하는 것은, 곧 황제를 모욕하는 것이다.</translation>
     </message>
     <message id="id-izaro-the-essence-of-an-empire">
-        <location filename="../../common/src/worker/logwatcher.cpp" line="78"/>
+        <location filename="../../common/src/worker/logwatcher.cpp" line="83"/>
         <source>Izaro: The essence of an empire must be shared equally amongst all of its citizens.</source>
         <extracomment>Izaro battle start line &quot;The essence of an empire must be shared equally amongst all of its citizens.&quot;. Must match exactly lines displayed in Path of Exile client chat</extracomment>
         <label>Labyrinth</label>
         <translation>이자로: 만백성이 제국의 정수를 공유해야 하노라.</translation>
     </message>
     <message id="id-izaro-it-is-the-sovereign-who-empowers-the-sceptre">
-        <location filename="../../common/src/worker/logwatcher.cpp" line="82"/>
+        <location filename="../../common/src/worker/logwatcher.cpp" line="87"/>
         <source>Izaro: It is the sovereign who empowers the sceptre. Not the other way round.</source>
         <extracomment>Izaro battle start line &quot;It is the sovereign who empowers the sceptre. Not the other way round.&quot;. Must match exactly lines displayed in Path of Exile client chat</extracomment>
         <label>Labyrinth</label>
         <translation>이자로: 셉터에 권한을 부여하는 것이 군주이다. 그 반대는 있을 수 없다.</translation>
     </message>
     <message id="id-izaro-some-things-that-slumber-should-never-be-awoken">
-        <location filename="../../common/src/worker/logwatcher.cpp" line="86"/>
+        <location filename="../../common/src/worker/logwatcher.cpp" line="91"/>
         <source>Izaro: Some things that slumber should never be awoken.</source>
         <extracomment>Izaro battle start line &quot;Some things that slumber should never be awoken.&quot;. Must match exactly lines displayed in Path of Exile client chat</extracomment>
         <label>Labyrinth</label>
         <translation>이자로: 절대로 깨워서는 안 될 잠도 있는 법이다.</translation>
     </message>
     <message id="id-izaro-an-emperor-is-only-as-efficient-as-those-he-commands">
-        <location filename="../../common/src/worker/logwatcher.cpp" line="90"/>
+        <location filename="../../common/src/worker/logwatcher.cpp" line="95"/>
         <source>Izaro: An emperor is only as efficient as those he commands.</source>
         <extracomment>Izaro battle start line &quot;An emperor is only as efficient as those he commands.&quot;. Must match exactly lines displayed in Path of Exile client chat</extracomment>
         <label>Labyrinth</label>
         <translation>이자로: 황제는 자신이 내리는 명령만큼만 효율적이다.</translation>
     </message>
     <message id="id-izaro-The-emperor-beckons-and-the-world-attends">
-        <location filename="../../common/src/worker/logwatcher.cpp" line="94"/>
+        <location filename="../../common/src/worker/logwatcher.cpp" line="99"/>
         <source>Izaro: The emperor beckons and the world attends.</source>
         <extracomment>Izaro battle start line &quot;The emperor beckons and the world attends.&quot;. Must match exactly lines displayed in Path of Exile client chat</extracomment>
         <label>Labyrinth</label>
         <translation>이자로: 황제가 손짓하면 세상이 주목하노라.</translation>
     </message>
     <message id="id-izaro-by-the-goddess-what-ambition">
-        <location filename="../../common/src/worker/logwatcher.cpp" line="101"/>
+        <location filename="../../common/src/worker/logwatcher.cpp" line="108"/>
         <source>Izaro: By the Goddess! What ambition!</source>
         <extracomment>Izaro battle finish line &quot;By the Goddess! What ambition!&quot;. Must match exactly lines displayed in Path of Exile client chat</extracomment>
         <label>Labyrinth</label>
         <translation>이자로: 여신이시여! 굉장한 패기로구나!</translation>
     </message>
     <message id="id-izaro-such-resilience">
-        <location filename="../../common/src/worker/logwatcher.cpp" line="105"/>
+        <location filename="../../common/src/worker/logwatcher.cpp" line="112"/>
         <source>Izaro: Such resilience!</source>
         <extracomment>Izaro battle finish line &quot;Such resilience!&quot;. Must match exactly lines displayed in Path of Exile client chat</extracomment>
         <label>Labyrinth</label>
         <translation>이자로: 저런 회복력이라니!</translation>
     </message>
     <message id="id-izaro-you-are-inexhaustible">
-        <location filename="../../common/src/worker/logwatcher.cpp" line="109"/>
+        <location filename="../../common/src/worker/logwatcher.cpp" line="116"/>
         <source>Izaro: You are inexhaustible!</source>
         <extracomment>Izaro battle finish line &quot;You are inexhaustible!&quot;. Must match exactly lines displayed in Path of Exile client chat</extracomment>
         <label>Labyrinth</label>
         <translation>이자로: 지칠 줄 모르는 끈기로다!</translation>
     </message>
     <message id="id-izaro-delight-in-your-gilded-dungeon-male">
-        <location filename="../../common/src/worker/logwatcher.cpp" line="31"/>
+        <location filename="../../common/src/worker/logwatcher.cpp" line="34"/>
         <source>Izaro: Delight in your gilded dungeon, ascendant.</source>
         <extracomment>Izaro finish line &quot;Delight in your gilded dungeon, ascendant.&quot; (male version). Must match exactly lines displayed in Path of Exile client chat</extracomment>
         <label>Labyrinth</label>
         <translation>이자로: 빛나는 던전에서 기뻐하라, 어센던트.</translation>
     </message>
     <message id="id-izaro-delight-in-your-gilded-dungeon-female">
-        <location filename="../../common/src/worker/logwatcher.cpp" line="35"/>
+        <location filename="../../common/src/worker/logwatcher.cpp" line="38"/>
         <source>Izaro: Delight in your gilded dungeon, ascendant.</source>
         <extracomment>Izaro finish line &quot;Delight in your gilded dungeon, ascendant.&quot; (female version). Must match exactly lines displayed in Path of Exile client chat</extracomment>
         <label>Labyrinth</label>
         <translation>이자로: 빛나는 던전에서 기뻐하라, 어센던트.</translation>
     </message>
     <message id="id-izaro-your-destination-is-more-dangerous-male">
-        <location filename="../../common/src/worker/logwatcher.cpp" line="39"/>
+        <location filename="../../common/src/worker/logwatcher.cpp" line="42"/>
         <source>Izaro: Your destination is more dangerous than the journey, ascendant.</source>
         <extracomment>Izaro finish line &quot;Your destination is more dangerous than the journey, ascendant.&quot;. (male version). Must match exactly lines displayed in Path of Exile client chat</extracomment>
         <label>Labyrinth</label>
         <translation>이자로: 너의 여정은 여행처럼 편안하지는 않을 것이다, 어센던트.</translation>
     </message>
     <message id="id-izaro-your-destination-is-more-dangerous-female">
-        <location filename="../../common/src/worker/logwatcher.cpp" line="43"/>
+        <location filename="../../common/src/worker/logwatcher.cpp" line="46"/>
         <source>Izaro: Your destination is more dangerous than the journey, ascendant.</source>
         <extracomment>Izaro finish line &quot;Your destination is more dangerous than the journey, ascendant.&quot;. (female version). Must match exactly lines displayed in Path of Exile client chat</extracomment>
         <label>Labyrinth</label>
         <translation>이자로: 너의 여정은 여행처럼 편안하지는 않을 것이다, 어센던트.</translation>
     </message>
     <message id="id-izaro-triumphant-at-last-male">
-        <location filename="../../common/src/worker/logwatcher.cpp" line="47"/>
+        <location filename="../../common/src/worker/logwatcher.cpp" line="50"/>
         <source>Izaro: Triumphant at last!</source>
         <extracomment>Izaro finish line &quot;Triumphant at last!&quot;. (male version). Must match exactly lines displayed in Path of Exile client chat</extracomment>
         <label>Labyrinth</label>
         <translation>이자로: 마침내 성공하였구나!</translation>
     </message>
     <message id="id-izaro-triumphant-at-last-female">
-        <location filename="../../common/src/worker/logwatcher.cpp" line="51"/>
+        <location filename="../../common/src/worker/logwatcher.cpp" line="54"/>
         <source>Izaro: Triumphant at last!</source>
         <extracomment>Izaro finish line &quot;Triumphant at last!&quot;. (female version). Must match exactly lines displayed in Path of Exile client chat</extracomment>
         <label>Labyrinth</label>
         <translation>이자로: 마침내 성공하였구나!</translation>
     </message>
     <message id="id-izaro-you-were-born-for-this-male">
-        <location filename="../../common/src/worker/logwatcher.cpp" line="113"/>
+        <location filename="../../common/src/worker/logwatcher.cpp" line="120"/>
         <source>Izaro: You were born for this!</source>
         <extracomment>Izaro battle finish line &quot;You were born for this!&quot;. (male version). Must match exactly lines displayed in Path of Exile client chat</extracomment>
         <label>Labyrinth</label>
         <translation>이자로: 너는 이 순간을 위해 태어났구나!</translation>
     </message>
     <message id="id-izaro-you-were-born-for-this-female">
-        <location filename="../../common/src/worker/logwatcher.cpp" line="117"/>
+        <location filename="../../common/src/worker/logwatcher.cpp" line="124"/>
         <source>Izaro: You were born for this!</source>
         <extracomment>Izaro battle finish line &quot;You were born for this!&quot;. (female version). Must match exactly lines displayed in Path of Exile client chat</extracomment>
         <label>Labyrinth</label>
         <translation>이자로: 너는 이 순간을 위해 태어났구나!</translation>
     </message>
     <message id="id-labyrinth-a-portal-to-izaro-appears">
-        <location filename="../../common/src/worker/logwatcher.cpp" line="124"/>
+        <location filename="../../common/src/worker/logwatcher.cpp" line="133"/>
         <source>A portal to Izaro appears.</source>
         <extracomment>Portal spawn. Must match exactly lines displayed in Path of Exile client chat</extracomment>
         <label>Labyrinth</label>
         <translation type="unfinished"></translation>
     </message>
     <message id="id-basilica-annex">
-        <location filename="../../common/src/worker/logwatcher.cpp" line="131"/>
+        <location filename="../../common/src/worker/logwatcher.cpp" line="142"/>
         <source>Basilica Annex</source>
         <extracomment>Basilica Annex room name. Must match exactly room name displayed in Path of Exile client</extracomment>
         <label>Labyrinth</label>
         <translation>교회당 별관</translation>
     </message>
     <message id="id-basilica-atrium">
-        <location filename="../../common/src/worker/logwatcher.cpp" line="135"/>
+        <location filename="../../common/src/worker/logwatcher.cpp" line="146"/>
         <source>Basilica Atrium</source>
         <extracomment>Basilica Atrium room name. Must match exactly room name displayed in Path of Exile client</extracomment>
         <label>Labyrinth</label>
         <translation>교회당 안마당</translation>
     </message>
     <message id="id-basilica-halls">
-        <location filename="../../common/src/worker/logwatcher.cpp" line="139"/>
+        <location filename="../../common/src/worker/logwatcher.cpp" line="150"/>
         <source>Basilica Halls</source>
         <extracomment>Basilica Halls room name. Must match exactly room name displayed in Path of Exile client</extracomment>
         <label>Labyrinth</label>
         <translation>교회당 복도</translation>
     </message>
     <message id="id-basilica-passage">
-        <location filename="../../common/src/worker/logwatcher.cpp" line="143"/>
+        <location filename="../../common/src/worker/logwatcher.cpp" line="154"/>
         <source>Basilica Passage</source>
         <extracomment>Basilica Passage room name. Must match exactly room name displayed in Path of Exile client</extracomment>
         <label>Labyrinth</label>
         <translation>교회당 통로</translation>
     </message>
     <message id="id-domain-crossing">
-        <location filename="../../common/src/worker/logwatcher.cpp" line="147"/>
+        <location filename="../../common/src/worker/logwatcher.cpp" line="158"/>
         <source>Domain Crossing</source>
         <extracomment>Domain Crossing room name. Must match exactly room name displayed in Path of Exile client</extracomment>
         <label>Labyrinth</label>
         <translation>영토 교차로</translation>
     </message>
     <message id="id-domain-enclosure">
-        <location filename="../../common/src/worker/logwatcher.cpp" line="151"/>
+        <location filename="../../common/src/worker/logwatcher.cpp" line="162"/>
         <source>Domain Enclosure</source>
         <extracomment>Domain Enclosure room name. Must match exactly room name displayed in Path of Exile client</extracomment>
         <label>Labyrinth</label>
         <translation>영토 울타리</translation>
     </message>
     <message id="id-domain-path">
-        <location filename="../../common/src/worker/logwatcher.cpp" line="155"/>
+        <location filename="../../common/src/worker/logwatcher.cpp" line="166"/>
         <source>Domain Path</source>
         <extracomment>Domain Path room name. Must match exactly room name displayed in Path of Exile client</extracomment>
         <label>Labyrinth</label>
         <translation>영토 보도</translation>
     </message>
     <message id="id-domain-walkways">
-        <location filename="../../common/src/worker/logwatcher.cpp" line="159"/>
+        <location filename="../../common/src/worker/logwatcher.cpp" line="170"/>
         <source>Domain Walkways</source>
         <extracomment>Domain Walkways room name. Must match exactly room name displayed in Path of Exile client</extracomment>
         <label>Labyrinth</label>
         <translation>영토 통로</translation>
     </message>
     <message id="id-estate-crossing">
-        <location filename="../../common/src/worker/logwatcher.cpp" line="163"/>
+        <location filename="../../common/src/worker/logwatcher.cpp" line="174"/>
         <source>Estate Crossing</source>
         <extracomment>Estate Crossing room name. Must match exactly room name displayed in Path of Exile client</extracomment>
         <label>Labyrinth</label>
         <translation>사유지 교차로</translation>
     </message>
     <message id="id-estate-enclosure">
-        <location filename="../../common/src/worker/logwatcher.cpp" line="167"/>
+        <location filename="../../common/src/worker/logwatcher.cpp" line="178"/>
         <source>Estate Enclosure</source>
         <extracomment>Estate Enclosure room name. Must match exactly room name displayed in Path of Exile client</extracomment>
         <label>Labyrinth</label>
         <translation>사유지 울타리</translation>
     </message>
     <message id="id-estate-path">
-        <location filename="../../common/src/worker/logwatcher.cpp" line="171"/>
+        <location filename="../../common/src/worker/logwatcher.cpp" line="182"/>
         <source>Estate Path</source>
         <extracomment>Estate Path room name. Must match exactly room name displayed in Path of Exile client</extracomment>
         <label>Labyrinth</label>
         <translation>사유지 보도</translation>
     </message>
     <message id="id-estate-walkways">
-        <location filename="../../common/src/worker/logwatcher.cpp" line="175"/>
+        <location filename="../../common/src/worker/logwatcher.cpp" line="186"/>
         <source>Estate Walkways</source>
         <extracomment>Estate Walkways room name. Must match exactly room name displayed in Path of Exile client</extracomment>
         <label>Labyrinth</label>
         <translation>사유지 통로</translation>
     </message>
     <message id="id-mansion-annex">
-        <location filename="../../common/src/worker/logwatcher.cpp" line="179"/>
+        <location filename="../../common/src/worker/logwatcher.cpp" line="190"/>
         <source>Mansion Annex</source>
         <extracomment>Mansion Annex room name. Must match exactly room name displayed in Path of Exile client</extracomment>
         <label>Labyrinth</label>
         <translation>대저택 별관</translation>
     </message>
     <message id="id-mansion-atrium">
-        <location filename="../../common/src/worker/logwatcher.cpp" line="183"/>
+        <location filename="../../common/src/worker/logwatcher.cpp" line="194"/>
         <source>Mansion Atrium</source>
         <extracomment>Mansion Atrium room name. Must match exactly room name displayed in Path of Exile client</extracomment>
         <label>Labyrinth</label>
         <translation>대저택 안마당</translation>
     </message>
     <message id="id-mansion-halls">
-        <location filename="../../common/src/worker/logwatcher.cpp" line="187"/>
+        <location filename="../../common/src/worker/logwatcher.cpp" line="198"/>
         <source>Mansion Halls</source>
         <extracomment>Mansion Halls room name. Must match exactly room name displayed in Path of Exile client</extracomment>
         <label>Labyrinth</label>
         <translation>대저택 복도</translation>
     </message>
     <message id="id-mansion-passage">
-        <location filename="../../common/src/worker/logwatcher.cpp" line="191"/>
+        <location filename="../../common/src/worker/logwatcher.cpp" line="202"/>
         <source>Mansion Passage</source>
         <extracomment>Mansion Passage room name. Must match exactly room name displayed in Path of Exile client</extracomment>
         <label>Labyrinth</label>
         <translation>대저택 통로</translation>
     </message>
     <message id="id-sanitorium-annex">
-        <location filename="../../common/src/worker/logwatcher.cpp" line="195"/>
+        <location filename="../../common/src/worker/logwatcher.cpp" line="206"/>
         <source>Sanitorium Annex</source>
         <extracomment>Sanitorium Annex room name. Must match exactly room name displayed in Path of Exile client</extracomment>
         <label>Labyrinth</label>
         <translation>요양원 별관</translation>
     </message>
     <message id="id-sanitorium-halls">
-        <location filename="../../common/src/worker/logwatcher.cpp" line="199"/>
+        <location filename="../../common/src/worker/logwatcher.cpp" line="210"/>
         <source>Sanitorium Halls</source>
         <extracomment>Sanitorium Halls room name. Must match exactly room name displayed in Path of Exile client</extracomment>
         <label>Labyrinth</label>
         <translation>요양원 복도</translation>
     </message>
     <message id="id-sanitorium-passage">
-        <location filename="../../common/src/worker/logwatcher.cpp" line="203"/>
+        <location filename="../../common/src/worker/logwatcher.cpp" line="214"/>
         <source>Sanitorium Passage</source>
         <extracomment>Sanitorium Passage room name. Must match exactly room name displayed in Path of Exile client</extracomment>
         <label>Labyrinth</label>
         <translation>요양원 통로</translation>
     </message>
     <message id="id-sepulchre-annex">
-        <location filename="../../common/src/worker/logwatcher.cpp" line="207"/>
+        <location filename="../../common/src/worker/logwatcher.cpp" line="218"/>
         <source>Sepulchre Annex</source>
         <extracomment>Sepulchre Annex room name. Must match exactly room name displayed in Path of Exile client</extracomment>
         <label>Labyrinth</label>
         <translation>매장소 별관</translation>
     </message>
     <message id="id-sepulchre-atrium">
-        <location filename="../../common/src/worker/logwatcher.cpp" line="211"/>
+        <location filename="../../common/src/worker/logwatcher.cpp" line="222"/>
         <source>Sepulchre Atrium</source>
         <extracomment>Sepulchre Atrium room name. Must match exactly room name displayed in Path of Exile client</extracomment>
         <label>Labyrinth</label>
         <translation>매장소 안마당</translation>
     </message>
     <message id="id-sepulchre-halls">
-        <location filename="../../common/src/worker/logwatcher.cpp" line="215"/>
+        <location filename="../../common/src/worker/logwatcher.cpp" line="226"/>
         <source>Sepulchre Halls</source>
         <extracomment>Sepulchre Halls room name. Must match exactly room name displayed in Path of Exile client</extracomment>
         <label>Labyrinth</label>
         <translation>매장소 복도</translation>
     </message>
     <message id="id-sepulchre-passage">
-        <location filename="../../common/src/worker/logwatcher.cpp" line="219"/>
+        <location filename="../../common/src/worker/logwatcher.cpp" line="230"/>
         <source>Sepulchre Passage</source>
         <extracomment>Sepulchre Passage room name. Must match exactly room name displayed in Path of Exile client</extracomment>
         <label>Labyrinth</label>
         <translation>매장소 통로</translation>
     </message>
     <message id="id-labyrinth-regex-you-have-entered">
-        <location filename="../../common/src/worker/logwatcher.cpp" line="287"/>
+        <location filename="../../common/src/worker/logwatcher.cpp" line="299"/>
         <source>^You have entered (.*?)\.$</source>
         <oldsource>^: You have entered (.*?)\.$</oldsource>
         <extracomment>Regular expression used to match room entered by player character in Path of Exile client log file (.*?) Matches and captures the room name.</extracomment>
@@ -355,7 +355,7 @@
         <translation>^(.*?)에 진입했습니다\.$</translation>
     </message>
     <message id="id-labyrinth-aspirants-plaza">
-        <location filename="../../common/src/worker/logwatcher.cpp" line="299"/>
+        <location filename="../../common/src/worker/logwatcher.cpp" line="311"/>
         <source>Aspirants&apos; Plaza</source>
         <extracomment>Room name: Aspirants&apos; Plaza. Must match exactly room name displayed in Path of Exile client</extracomment>
         <label>Labyrinth</label>
@@ -788,168 +788,168 @@ You can try to:
 - 최신 지도를 보려면 poelab.com을 방문하세요.</translation>
     </message>
     <message id="id-update-available">
-        <location filename="../qml/options/Options.qml" line="101"/>
+        <location filename="../qml/options/Options.qml" line="103"/>
         <source>Update Available</source>
         <extracomment>Label indicating that an update for LabCompass is available</extracomment>
         <label>Options</label>
         <translation>업데이트 가능</translation>
     </message>
     <message id="id-options">
-        <location filename="../qml/options/Options.qml" line="172"/>
+        <location filename="../qml/options/Options.qml" line="226"/>
         <source>Options</source>
         <extracomment>Title for options window</extracomment>
         <label>Options</label>
         <translation>옵션</translation>
     </message>
     <message id="id-menu-client">
-        <location filename="../qml/options/Options.qml" line="189"/>
+        <location filename="../qml/options/Options.qml" line="243"/>
         <source>Client</source>
         <extracomment>Menu label for client options</extracomment>
         <label>Options</label>
         <translation>클라이언트</translation>
     </message>
     <message id="id-menu-ui">
-        <location filename="../qml/options/Options.qml" line="193"/>
+        <location filename="../qml/options/Options.qml" line="247"/>
         <source>UI</source>
         <extracomment>Menu label for UI options</extracomment>
         <label>Options</label>
         <translation>UI</translation>
     </message>
     <message id="id-meby-navigation">
-        <location filename="../qml/options/Options.qml" line="197"/>
+        <location filename="../qml/options/Options.qml" line="251"/>
         <source>Navigation</source>
         <extracomment>Menu label for Navigation options</extracomment>
         <label>Options</label>
         <translation>항해술</translation>
     </message>
     <message id="id-menu-hotkeys">
-        <location filename="../qml/options/Options.qml" line="201"/>
+        <location filename="../qml/options/Options.qml" line="255"/>
         <source>Hotkeys</source>
         <extracomment>Menu label for Hotkeys options</extracomment>
         <label>Options</label>
         <translation>단축키</translation>
     </message>
     <message id="id-game-client-path">
-        <location filename="../qml/options/Options.qml" line="223"/>
+        <location filename="../qml/options/Options.qml" line="277"/>
         <source>Game Client Path</source>
         <extracomment>Label for Game Client Path option. Label should be brief because of small space available</extracomment>
         <label>Options</label>
         <translation>게임 클라이언트 경로</translation>
     </message>
     <message id="id-multi-client-support">
-        <location filename="../qml/options/Options.qml" line="249"/>
+        <location filename="../qml/options/Options.qml" line="303"/>
         <source>Multi-client Support (Experimental)</source>
         <extracomment>Label for Multi-client Support option. Label should be brief because of small space available</extracomment>
         <label>Options</label>
         <translation>다중 클라이언트 지원 (실험적 기능)</translation>
     </message>
     <message id="id-show-minimap-when-available">
-        <location filename="../qml/options/Options.qml" line="268"/>
+        <location filename="../qml/options/Options.qml" line="322"/>
         <source>Show Minimap When Available</source>
         <extracomment>Label for Show Minimap When Available option. Label should be brief because of small space available</extracomment>
         <label>Options</label>
         <translation>미니맵이 있으면 표시합니다.</translation>
     </message>
     <message id="id-ui-scale-factor">
-        <location filename="../qml/options/Options.qml" line="284"/>
+        <location filename="../qml/options/Options.qml" line="338"/>
         <source>UI Scale Factor &lt;sup&gt;*&lt;/sup&gt;</source>
         <extracomment>Label for Show UI Scale Factor option. Label should be brief because of small space available</extracomment>
         <label>Options</label>
         <translation>UI 스케일 팩터&lt;sup&gt;*&lt;/sup&gt;</translation>
     </message>
     <message id="id-ui-scale-factor-0.5">
-        <location filename="../qml/options/Options.qml" line="296"/>
+        <location filename="../qml/options/Options.qml" line="350"/>
         <source>0.5x</source>
         <extracomment>Label for UI Scale Factor 0.5</extracomment>
         <label>Options</label>
         <translation></translation>
     </message>
     <message id="id-ui-scale-factor-0.75">
-        <location filename="../qml/options/Options.qml" line="303"/>
+        <location filename="../qml/options/Options.qml" line="357"/>
         <source>0.75x</source>
         <extracomment>Label for UI Scale Factor 0.75</extracomment>
         <label>Options</label>
         <translation></translation>
     </message>
     <message id="id-ui-scale-factor-1">
-        <location filename="../qml/options/Options.qml" line="310"/>
+        <location filename="../qml/options/Options.qml" line="364"/>
         <source>1x</source>
         <extracomment>Label for UI Scale Factor 1</extracomment>
         <label>Options</label>
         <translation></translation>
     </message>
     <message id="id-ui-scale-factor-1.25">
-        <location filename="../qml/options/Options.qml" line="317"/>
+        <location filename="../qml/options/Options.qml" line="371"/>
         <source>1.25x</source>
         <extracomment>Label for UI Scale Factor 1.25</extracomment>
         <label>Options</label>
         <translation></translation>
     </message>
     <message id="id-ui-scale-factor-1.5">
-        <location filename="../qml/options/Options.qml" line="324"/>
+        <location filename="../qml/options/Options.qml" line="378"/>
         <source>1.5x</source>
         <extracomment>Label for UI Scale Factor 1.5</extracomment>
         <label>Options</label>
         <translation></translation>
     </message>
     <message id="id-ui-scale-factor-1.75">
-        <location filename="../qml/options/Options.qml" line="331"/>
+        <location filename="../qml/options/Options.qml" line="385"/>
         <source>1.75x</source>
         <extracomment>Label for UI Scale Factor 1.75</extracomment>
         <label>Options</label>
         <translation></translation>
     </message>
     <message id="id-ui-scale-factor-2">
-        <location filename="../qml/options/Options.qml" line="338"/>
+        <location filename="../qml/options/Options.qml" line="392"/>
         <source>2x</source>
         <extracomment>Label for UI Scale Factor 2</extracomment>
         <label>Options</label>
         <translation></translation>
     </message>
     <message id="id-ui-scale-factor-2.5">
-        <location filename="../qml/options/Options.qml" line="345"/>
+        <location filename="../qml/options/Options.qml" line="399"/>
         <source>2.5x</source>
         <extracomment>Label for UI Scale Factor 2.5</extracomment>
         <label>Options</label>
         <translation></translation>
     </message>
     <message id="id-taking-portals-skips-current-section">
-        <location filename="../qml/options/Options.qml" line="366"/>
+        <location filename="../qml/options/Options.qml" line="420"/>
         <source>Taking Portals Skips Current Section</source>
         <extracomment>Label related to player taking a portal. This action should skips current section. Label should be brief because of small space available</extracomment>
         <label>Options</label>
         <translation>포털을 이용하면 현재 섹션을 건너뜁니다.</translation>
     </message>
     <message id="id-hide-show-compass">
-        <location filename="../qml/options/Options.qml" line="385"/>
+        <location filename="../qml/options/Options.qml" line="439"/>
         <source>Hide/Show Compass</source>
         <extracomment>Label for Hide/Show Compass option. Label should be brief because of small space available</extracomment>
         <label>Options</label>
         <translation>나침반 숨기기/표시</translation>
     </message>
     <message id="id-restart-labcompass-to-apply-changes">
-        <location filename="../qml/options/Options.qml" line="401"/>
+        <location filename="../qml/options/Options.qml" line="455"/>
         <source>&lt;sup&gt;*&lt;/sup&gt; Restart LabCompass to Apply Changes</source>
         <extracomment>Label for indicating that LabCompass must be restarted to apply changes. Label should be brief because of small space available</extracomment>
         <label>Options</label>
         <translation>&lt;sup&gt;*&lt;/sup&gt;재시작 필요</translation>
     </message>
     <message id="id-options-ok">
-        <location filename="../qml/options/Options.qml" line="444"/>
+        <location filename="../qml/options/Options.qml" line="498"/>
         <source>OK</source>
         <extracomment>Label for OK button in options window</extracomment>
         <label>Options</label>
         <translation>네</translation>
     </message>
     <message id="id-dialog-find-game-client">
-        <location filename="../qml/options/Options.qml" line="456"/>
+        <location filename="../qml/options/Options.qml" line="510"/>
         <source>Find Game Client</source>
         <extracomment>File dialog title to find game client</extracomment>
         <label>Options</label>
         <translation>게임 클라이언트 찾기</translation>
     </message>
     <message id="id-dialog-poe-client">
-        <location filename="../qml/options/Options.qml" line="460"/>
+        <location filename="../qml/options/Options.qml" line="514"/>
         <source>Path of Exile Client (*.exe)</source>
         <extracomment>File dialog info and extension type</extracomment>
         <label>Options</label>
@@ -963,49 +963,49 @@ You can try to:
         <translation>가져오기</translation>
     </message>
     <message id="id-plan-summary">
-        <location filename="../qml/planner/PlanSummaryDisplay.qml" line="18"/>
+        <location filename="../qml/planner/PlanSummaryDisplay.qml" line="20"/>
         <source>Plan Summary</source>
         <extracomment>Label for plan summary displayed in the planner window. Label should be brief because of limited space</extracomment>
         <label>Planner</label>
         <translation>계획 요약</translation>
     </message>
     <message id="id-planner-rooms">
-        <location filename="../qml/planner/PlanSummaryDisplay.qml" line="32"/>
+        <location filename="../qml/planner/PlanSummaryDisplay.qml" line="34"/>
         <source>Rooms</source>
         <extracomment>Room label in planner window&apos;s caption. Label should be brief because of limited space</extracomment>
         <label>Planner</label>
         <translation>한조의 방</translation>
     </message>
     <message id="id-planner-length">
-        <location filename="../qml/planner/PlanSummaryDisplay.qml" line="40"/>
+        <location filename="../qml/planner/PlanSummaryDisplay.qml" line="42"/>
         <source>Length</source>
         <extracomment>Length label in planner window&apos;s caption. This is the number of rooms in the labyrinth. Label should be brief because of limited space</extracomment>
         <label>Planner</label>
         <translation>길이</translation>
     </message>
     <message id="id-planner-argus">
-        <location filename="../qml/planner/PlanSummaryDisplay.qml" line="51"/>
+        <location filename="../qml/planner/PlanSummaryDisplay.qml" line="53"/>
         <source>Argus</source>
         <extracomment>Argus label in planner window&apos;s caption. Label should be brief because of limited space</extracomment>
         <label>Planner</label>
         <translation>아거스</translation>
     </message>
     <message id="id-planner-trove-lockbox">
-        <location filename="../qml/planner/PlanSummaryDisplay.qml" line="63"/>
+        <location filename="../qml/planner/PlanSummaryDisplay.qml" line="65"/>
         <source>Trove/Lockbox</source>
         <extracomment>Trove/Lockbox label in planner window&apos;s caption. Label should be brief because of limited space</extracomment>
         <label>Planner</label>
         <translation>보물창고/금고</translation>
     </message>
     <message id="id-planner-darkshrine">
-        <location filename="../qml/planner/PlanSummaryDisplay.qml" line="75"/>
+        <location filename="../qml/planner/PlanSummaryDisplay.qml" line="77"/>
         <source>Darkshrine</source>
         <extracomment>Darkshrine label in planner window&apos;s caption. Label should be brief because of limited space</extracomment>
         <label>Planner</label>
         <translation>검은 성소</translation>
     </message>
     <message id="id-silver-cache">
-        <location filename="../qml/planner/PlanSummaryDisplay.qml" line="87"/>
+        <location filename="../qml/planner/PlanSummaryDisplay.qml" line="89"/>
         <source>Silver Cache</source>
         <extracomment>Silver Cache label in planner window&apos;s caption. Label should be brief because of limited space</extracomment>
         <label>Planner</label>
@@ -1034,49 +1034,49 @@ You can try to:
         <translation>준비: %1 %2</translation>
     </message>
     <message id="id-planner-no-map-loaded">
-        <location filename="../qml/planner/Planner.qml" line="106"/>
+        <location filename="../qml/planner/Planner.qml" line="104"/>
         <source>No lab notes loaded</source>
         <extracomment>Label displayed in the planner when no map is loaded</extracomment>
         <label>Planner</label>
         <translation>실험 노트가 로드되지 않았습니다.</translation>
     </message>
     <message id="id-get-maps">
-        <location filename="../qml/planner/Planner.qml" line="120"/>
+        <location filename="../qml/planner/Planner.qml" line="118"/>
         <source>Get Maps</source>
         <extracomment>Get Maps button label to access poelab website. Label should be brief because of limited space available</extracomment>
         <label>Planner</label>
         <translation>지도 가져오기</translation>
     </message>
     <message id="id-import-maps">
-        <location filename="../qml/planner/Planner.qml" line="142"/>
+        <location filename="../qml/planner/Planner.qml" line="140"/>
         <source>Import Maps</source>
         <extracomment>Import Maps button label to open file dialog. Label should be brief because of limited space available</extracomment>
         <label>Planner</label>
         <translation>지도 가져오기</translation>
     </message>
     <message id="id-planner-donate">
-        <location filename="../qml/planner/Planner.qml" line="218"/>
+        <location filename="../qml/planner/Planner.qml" line="216"/>
         <source>Donate: </source>
         <extracomment>Donate button label displayed before Paypal and Patreon buttons. Label should be brief because of limited space available</extracomment>
         <label>Planner</label>
         <translation>기부하다: </translation>
     </message>
     <message id="id-dialog-import-lab-notes">
-        <location filename="../qml/planner/Planner.qml" line="257"/>
+        <location filename="../qml/planner/Planner.qml" line="255"/>
         <source>Import Lab Notes</source>
         <extracomment>File dialog title to import lab notes</extracomment>
         <label>Planner</label>
         <translation>실험실 노트 가져오기</translation>
     </message>
     <message id="id-dialog-import-info">
-        <location filename="../qml/planner/Planner.qml" line="261"/>
+        <location filename="../qml/planner/Planner.qml" line="259"/>
         <source>Lab Maps (*.json *.map)</source>
         <extracomment>File dialog info and authorized file extensions</extracomment>
         <label>Planner</label>
         <translation>연구실 지도 (*.json *.map)</translation>
     </message>
     <message id="id-aspirants-trial">
-        <location filename="../../common/src/worker/logwatcher.cpp" line="395"/>
+        <location filename="../../common/src/worker/logwatcher.cpp" line="405"/>
         <source>Aspirant&apos;s Trial</source>
         <extracomment>Label &quot;Aspirant&apos;s Trial&quot;</extracomment>
         <label>Planner</label>
@@ -1146,7 +1146,7 @@ You can try to:
         <translation>사전 설정 적용</translation>
     </message>
     <message id="id-trayicon-labcompass">
-        <location filename="../src/application.cpp" line="114"/>
+        <location filename="../src/application.cpp" line="140"/>
         <source>LabCompass</source>
         <extracomment>Tooltip for tray icon</extracomment>
         <label>TrayIcon</label>
@@ -1167,18 +1167,19 @@ You can try to:
         <translation>벗어난</translation>
     </message>
     <message id="id-failed-to-import-file-title">
-        <location filename="../src/application.cpp" line="297"/>
+        <location filename="../src/application.cpp" line="265"/>
         <source>Failed to import file.</source>
         <extracomment>Title for import file error</extracomment>
         <label>Error</label>
         <translation>파일을 가져오지 못했습니다.</translation>
     </message>
     <message id="id-failed-to-import-file-text">
-        <location filename="../src/application.cpp" line="302"/>
-        <source>JSON file cannot be imported. Please check logs.</source>
+        <location filename="../src/application.cpp" line="270"/>
+        <source>JSON file cannot be imported. Please check logs at %1</source>
+        <oldsource>JSON file cannot be imported. Please check logs at %1.</oldsource>
         <extracomment>Text for import file error</extracomment>
         <label>Error</label>
-        <translation>JSON 파일을 가져올 수 없습니다. 로그를 확인해 주십시오.</translation>
+        <translation>JSON 파일을 가져올 수 없습니다. %1에서 로그를 확인하십시오.</translation>
     </message>
 </context>
 <context>

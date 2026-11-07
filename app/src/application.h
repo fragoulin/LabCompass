@@ -15,11 +15,6 @@ class Application : public QApplication {
     ApplicationModel model;
     QQmlApplicationEngine engine;
     QObject* global;
-    QWindow* window;
-    QWindow* plannerWindow;
-    QWindow* roomPresetsWindow;
-    QWindow* puzzleWindow;
-    QWindow* optionsWindow;
     QTranslator translator;
 
     std::unique_ptr<QSystemTrayIcon> trayIcon;
@@ -36,11 +31,25 @@ class Application : public QApplication {
 
 public:
     Application(int& argc, char** argv);
+    struct Window {
+        QUrl url;
+        void (Application::*connectionsHandler)(QWindow*);
+    };
+    using Windows = QMap<QString, Window>;
+    void handleMainWindowConnections(QWindow* window);
+    void handlePlannerWindowConnections(QWindow* window);
+    void handleRoomPresetsWindowConnections(QWindow* window);
+    void handlePuzzleWindowConnections(QWindow* window);
+    void handleOptionsWindowConnections(QWindow* window);
+
+signals:
+    void mainWindowCreated(QWindow* window);
 
 private slots:
-    void onAboutToQuit();
+    void onAboutToQuit(QPoint windowPosition);
     void onSettingsUpdated();
     void onImportFileFailed();
+    void onWindowCreated(QString windowName, QWindow* window);
 
 private:
     void init();
@@ -54,7 +63,7 @@ private:
     void initWorkers();
     void initControllers();
     void initHotkeys();
-
+    void createWindow(QString windowName, QUrl windowUrl);
     void restorePreviouslyLoadedMap();
     void updateLanguage(QString languageCode);
 };

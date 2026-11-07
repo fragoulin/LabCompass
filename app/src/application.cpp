@@ -7,12 +7,38 @@
 #include <QStringBuilder>
 #include <QWKQuick/qwkquickglobal.h>
 
+Q_GLOBAL_STATIC(Application::Windows, windows, {
+    {
+        "MainWindow",
+        Application::Window(
+            QUrl(QStringLiteral("qrc:/qt/qml/labcompass/MainWindow.qml")),
+            &Application::handleMainWindowConnections)
+    }, {
+        "PlannerWindow",
+        Application::Window(
+            QUrl(QStringLiteral("qrc:/qt/qml/labcompass/planner/Planner.qml")),
+            &Application::handlePlannerWindowConnections)
+    }, {
+        "RoomPresetsWindow",
+        Application::Window(
+            QUrl(QStringLiteral("qrc:/qt/qml/labcompass/roompresets/RoomPresets.qml")),
+            &Application::handleRoomPresetsWindowConnections)
+    }, {
+        "PuzzleWindow",
+        Application::Window(
+            QUrl(QStringLiteral("qrc:/qt/qml/labcompass/Puzzle.qml")),
+            &Application::handlePuzzleWindowConnections)
+    }, {
+        "OptionsWindow",
+        Application::Window(
+            QUrl(QStringLiteral("qrc:/qt/qml/labcompass/options/Options.qml")),
+            &Application::handleOptionsWindowConnections)
+    },
+});
+
 Application::Application(int& argc, char** argv)
     : QApplication(argc, argv)
 {
-    connect(this, &Application::aboutToQuit,
-        this, &Application::onAboutToQuit);
-
     init();
     restorePreviouslyLoadedMap();
 }
@@ -36,14 +62,14 @@ void Application::init()
     qInfo() << "Init helpers";
     initHelpers();
 
-    qInfo() << "Init windows";
-    initWindows();
-
     qInfo() << "Init workers";
     initWorkers();
 
     qInfo() << "Init controllers";
     initControllers();
+
+    qInfo() << "Init windows";
+    initWindows();
 
     qInfo() << "Init hotkeys";
     initHotkeys();
@@ -123,85 +149,29 @@ void Application::initHelpers()
     RoomPresetHelper::instance = new RoomPresetHelper();
 }
 
+void Application::createWindow(QString windowName, QUrl windowUrl)
+{
+    connect(&engine, &QQmlApplicationEngine::objectCreated, this, [this, windowName](QObject *object) {
+        onWindowCreated(windowName, static_cast<QWindow*>(object));
+    }, Qt::QueuedConnection);
+    connect(&engine, &QQmlApplicationEngine::objectCreationFailed, this, []() {
+        QCoreApplication::exit(-1);
+    }, Qt::QueuedConnection);
+    engine.load(windowUrl);
+
+    disconnect(&engine, &QQmlApplicationEngine::objectCreated, this, nullptr);
+    disconnect(&engine, &QQmlApplicationEngine::objectCreationFailed, this, nullptr);
+}
+
 void Application::initWindows()
 {
-    connect(&engine, &QQmlApplicationEngine::objectCreated, this, [this](QObject *object) {
-        if (object->objectName() == "MainWindow" && object->isWindowType())
-            window = static_cast<QWindow*>(object);
-    });
-    engine.load(QUrl(QStringLiteral("qrc:/qt/qml/labcompass/MainWindow.qml")));
-    if (engine.rootObjects().isEmpty()) {
-        qCritical() << "Failed to load main window";
-        quit();
-    }
-    disconnect(&engine, &QQmlApplicationEngine::objectCreated, this, nullptr);
-
-    connect(&engine, &QQmlApplicationEngine::objectCreated, this, [this](QObject *object) {
-        if (object->objectName() == "PlannerWindow" && object->isWindowType())
-            plannerWindow = static_cast<QWindow*>(object);
-    });
-    engine.load(QUrl(QStringLiteral("qrc:/qt/qml/labcompass/planner/Planner.qml")));
-    if (engine.rootObjects().isEmpty()) {
-        qCritical() << "Failed to load planner window";
-        quit();
-    }
-    disconnect(&engine, &QQmlApplicationEngine::objectCreated, this, nullptr);
-
-    connect(&engine, &QQmlApplicationEngine::objectCreated, this, [this](QObject *object) {
-        if (object->objectName() == "RoomPresetsWindow" && object->isWindowType())
-            roomPresetsWindow = static_cast<QWindow*>(object);
-    });
-    engine.load(QUrl(QStringLiteral("qrc:/qt/qml/labcompass/roompresets/RoomPresets.qml")));
-    if (engine.rootObjects().isEmpty()) {
-        qCritical() << "Failed to load room presets window";
-        quit();
-    }
-    disconnect(&engine, &QQmlApplicationEngine::objectCreated, this, nullptr);
-
-    connect(&engine, &QQmlApplicationEngine::objectCreated, this, [this](QObject *object) {
-        if (object->objectName() == "PuzzleWindow" && object->isWindowType())
-            puzzleWindow = static_cast<QWindow*>(object);
-    });
-    engine.load(QUrl(QStringLiteral("qrc:/qt/qml/labcompass/Puzzle.qml")));
-    if (engine.rootObjects().isEmpty()) {
-        qCritical() << "Failed to load puzzle window";
-        quit();
-    }
-    disconnect(&engine, &QQmlApplicationEngine::objectCreated, this, nullptr);
-
-    connect(&engine, &QQmlApplicationEngine::objectCreated, this, [this](QObject *object) {
-        if (object->objectName() == "OptionsWindow" && object->isWindowType())
-            optionsWindow = static_cast<QWindow*>(object);
-    });
-    engine.load(QUrl(QStringLiteral("qrc:/qt/qml/labcompass/options/Options.qml")));
-    if (engine.rootObjects().isEmpty()) {
-        qCritical() << "Failed to load options window";
-        quit();
-    }
-    disconnect(&engine, &QQmlApplicationEngine::objectCreated, this, nullptr);
-
-    connect(optionsWindow, SIGNAL(settingsUpdated()),
-            this, SLOT(onSettingsUpdated()));
+    for (auto i = windows->cbegin(), end = windows->cend(); i != end; ++i)
+        createWindow(i.key(), i.value().url);
 }
 
 void Application::initWorkers()
 {
     logWatcher.reset(new LogWatcher(&model));
-
-    auto compass = window->findChild<QQuickItem*>("compass");
-    connect(logWatcher.get(), SIGNAL(labStarted()),
-            compass, SLOT(restartTimer()));
-    connect(logWatcher.get(), SIGNAL(labFinished()),
-            compass, SLOT(stopTimer()));
-    connect(logWatcher.get(), SIGNAL(labExit()),
-            compass, SLOT(closeTimer()));
-
-    auto izaroInstructionItemIcon = window->findChild<QQuickItem*>("izaroInstructionItemIcon");
-    connect(logWatcher.get(), SIGNAL(roomChanged(QString)),
-            izaroInstructionItemIcon, SLOT(onRoomChanged()));
-    connect(logWatcher.get(), SIGNAL(izaroBattleStarted()),
-            izaroInstructionItemIcon, SLOT(onIzaroBattleStarted()));
-
     versionChecker.reset(new VersionChecker(&model));
     dateChecker.reset(new DateChecker(&model));
 }
@@ -209,31 +179,24 @@ void Application::initWorkers()
 void Application::initControllers()
 {
     labyrinthController.reset(new LabyrinthController(&model));
-    connect(plannerWindow, SIGNAL(importFile(QString)),
-            labyrinthController.get(), SLOT(importFile(QString)));
-    connect(roomPresetsWindow, SIGNAL(applyPresetButtonClicked(QString,QString)),
-            labyrinthController.get(), SLOT(onRoomPresetSet(QString,QString)));
 
     connect(labyrinthController.get(), SIGNAL(importFileFailed()),
             this, SLOT(onImportFileFailed()));
 
     navigationController.reset(new NavigationController(&model));
-    connect(logWatcher.get(), &LogWatcher::plazaEntered,
-        navigationController.get(), &NavigationController::onPlazaEntered);
-    connect(logWatcher.get(), &LogWatcher::labStarted,
-        navigationController.get(), &NavigationController::onLabStarted);
-    connect(logWatcher.get(), &LogWatcher::sectionFinished,
-        navigationController.get(), &NavigationController::onSectionFinished);
-    connect(logWatcher.get(), &LogWatcher::labExit,
-        navigationController.get(), &NavigationController::onLabExit);
-    connect(logWatcher.get(), &LogWatcher::roomChanged,
-        navigationController.get(), &NavigationController::onRoomChanged);
-    connect(logWatcher.get(), &LogWatcher::portalSpawned,
-        navigationController.get(), &NavigationController::onPortalSpawned);
-    connect(plannerWindow, SIGNAL(setRoomIsTarget(QString,bool)),
-            navigationController.get(), SLOT(onRoomIsTargetSet(QString,bool)));
-    connect(plannerWindow, SIGNAL(setCurrentRoom(QString)),
-            navigationController.get(), SLOT(onRoomIdSet(QString)));
+
+    connect(logWatcher.get(), SIGNAL(plazaEntered()),
+        navigationController.get(), SLOT(onPlazaEntered()));
+    connect(logWatcher.get(), SIGNAL(labStarted()),
+        navigationController.get(),SLOT(onLabStarted()));
+    connect(logWatcher.get(), SIGNAL(sectionFinished()),
+        navigationController.get(), SLOT(onSectionFinished()));
+    connect(logWatcher.get(), SIGNAL(labExit()),
+        navigationController.get(), SLOT(onLabExit()));
+    connect(logWatcher.get(), SIGNAL(roomChanged(QString)),
+        navigationController.get(), SLOT(onRoomChanged(QString)));
+    connect(logWatcher.get(), SIGNAL(portalSpawned()),
+        navigationController.get(), SLOT(onPortalSpawned()));
 }
 
 void Application::initHotkeys()
@@ -291,22 +254,27 @@ void Application::updateLanguage(QString languageCode)
 void Application::onImportFileFailed()
 {
     QMessageBox msgBox(nullptr);
+
+    // Retrieve log file path
+    QDir dir(QStandardPaths::writableLocation(QStandardPaths::AppDataLocation));
+    auto logFilePath = dir.absoluteFilePath("log.txt");
+
     //: Title for import file error
     //% "Failed to import file."
     //@ Error
     msgBox.setText(qtTrId("id-failed-to-import-file-title"));
     msgBox.setIcon(QMessageBox::Warning);
     //: Text for import file error
-    //% "JSON file cannot be imported. Please check logs."
+    //% "JSON file cannot be imported. Please check logs at %1"
     //@ Error
-    msgBox.setInformativeText(qtTrId("id-failed-to-import-file-text"));
+    msgBox.setInformativeText(qtTrId("id-failed-to-import-file-text").arg(logFilePath));
     msgBox.setStandardButtons(QMessageBox::Ok);
     msgBox.exec();
 }
 
-void Application::onAboutToQuit()
+void Application::onAboutToQuit(QPoint windowPosition)
 {
-    model.get_settings()->set_mainWindowPosition(QPoint(window->x(), window->y()));
+    model.get_settings()->set_mainWindowPosition(windowPosition);
     model.get_settings()->save();
 }
 
@@ -317,4 +285,59 @@ void Application::onSettingsUpdated()
     updateLanguage(languageCode);
 
     engine.retranslate();
+}
+
+void Application::onWindowCreated(QString windowName, QWindow* window)
+{
+    auto handler = windows->value(windowName).connectionsHandler;
+    (this->*handler)(window);
+}
+
+void Application::handleMainWindowConnections(QWindow* window)
+{
+    connect(this, &Application::aboutToQuit,
+            this, [this, window]() {
+                onAboutToQuit(QPoint(window->x(), window->y()));
+            });
+
+    auto compass = window->findChild<QQuickItem*>("compass");
+    connect(logWatcher.get(), SIGNAL(labStarted()),
+            compass, SLOT(restartTimer()));
+    connect(logWatcher.get(), SIGNAL(labFinished()),
+            compass, SLOT(stopTimer()));
+    connect(logWatcher.get(), SIGNAL(labExit()),
+            compass, SLOT(closeTimer()));
+
+    auto izaroInstructionItemIcon = window->findChild<QQuickItem*>("izaroInstructionItemIcon");
+    connect(logWatcher.get(), SIGNAL(roomChanged(QString)),
+            izaroInstructionItemIcon, SLOT(onRoomChanged()));
+    connect(logWatcher.get(), SIGNAL(izaroBattleStarted()),
+            izaroInstructionItemIcon, SLOT(onIzaroBattleStarted()));
+}
+
+void Application::handlePlannerWindowConnections(QWindow* window)
+{
+    connect(window, SIGNAL(importFile(QString)),
+            labyrinthController.get(), SLOT(importFile(QString)));
+    connect(window, SIGNAL(setRoomIsTarget(QString,bool)),
+            navigationController.get(), SLOT(onRoomIsTargetSet(QString,bool)));
+    connect(window, SIGNAL(setCurrentRoom(QString)),
+            navigationController.get(), SLOT(onRoomIdSet(QString)));
+}
+
+void Application::handleRoomPresetsWindowConnections(QWindow* window)
+{
+    connect(window, SIGNAL(applyPresetButtonClicked(QString,QString)),
+            labyrinthController.get(), SLOT(onRoomPresetSet(QString,QString)));
+}
+
+void Application::handlePuzzleWindowConnections([[maybe_unused]] QWindow* window)
+{
+
+}
+
+void Application::handleOptionsWindowConnections(QWindow* window)
+{
+    connect(window, SIGNAL(settingsUpdated()),
+            this, SLOT(onSettingsUpdated()));
 }
