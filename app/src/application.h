@@ -52,6 +52,7 @@ private slots:
     void onImportFileFailed();
     void onWindowCreated(QString objectName, QWindow* window);
     void onHandlerCompleted(QString objectName);
+    void onResourcesLoaded();
 
 private:
     void init();

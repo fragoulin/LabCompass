@@ -54,31 +54,12 @@ void Application::init()
 
     qInfo() << "Init resources";
     initResources();
-
-    qInfo() << "Init system tray icon";
-    initSystemTrayIcon();
-
-    qInfo() << "Init helpers";
-    initHelpers();
-
-    qInfo() << "Init workers";
-    initWorkers();
-
-    qInfo() << "Init controllers";
-    initControllers();
-
-    qInfo() << "Init windows";
-    initWindows();
-
-    qInfo() << "Init hotkeys";
-    initHotkeys();
-
-    qInfo() << "Initialization finished";
 }
 
 void Application::initWindowKit()
 {
-    qputenv("QT_QUICK_CONTROLS_STYLE", "Basic");
+    if (!qputenv("QT_QUICK_CONTROLS_STYLE", "Basic"))
+        qWarning() << "Failed to set environment variable: QT_QUICK_CONTROLS_STYLE";
     QQuickWindow::setDefaultAlphaBuffer(true);
     QWK::registerTypes(&engine);
 }
@@ -103,22 +84,35 @@ void Application::initResources()
     QQuickStyle::setStyle("Material");
 
     qmlRegisterType<KeySequenceHelper>("labcompass", 1, 0, "KeySequenceHelper");
-    engine.load(QUrl("qrc:/qt/qml/labcompass/GlobalAccessor.qml"));
-    if (engine.rootObjects().isEmpty()) {
-        qFatal() << "Failed to initialize global resources";
-    }
 
-    auto rootObjects = engine.rootObjects();
-    global = rootObjects[0]->property("o").value<QObject*>();
-    global->setProperty("model", QVariant::fromValue<QObject*>(&model));
-    global->setProperty("version", VERSION);
+    QUrl globalUrl = QUrl(QStringLiteral("qrc:/qt/qml/labcompass/GlobalAccessor.qml"));
+    connect(&engine, &QQmlApplicationEngine::objectCreated, this, [this, globalUrl](QObject *object, const QUrl &url) {
+        qInfo() << "Resoures loaded";
+        if (!object && globalUrl == url)
+            exit(-1);
+        global = object->property("o").value<QObject*>();
+        global->setProperty("model", QVariant::fromValue<QObject*>(&model));
+        global->setProperty("version", VERSION);
 #ifdef QT_DEBUG
-    global->setProperty("debug", true);
+        global->setProperty("debug", true);
 #endif
+        onResourcesLoaded();
+    }, Qt::QueuedConnection);
 
-    if (-1 == QFontDatabase::addApplicationFont(":/assets/fonts/Fontin-SmallCaps.ttf"))
+    connect(&engine, &QQmlApplicationEngine::objectCreationFailed, this, []() {
+        exit(-1);
+    }, Qt::QueuedConnection);
+
+    engine.load(globalUrl);
+
+    if (!disconnect(&engine, &QQmlApplicationEngine::objectCreated, this, nullptr))
+        qWarning() << "Failed to disconnect signal for object created (resources)";
+    if (!disconnect(&engine, &QQmlApplicationEngine::objectCreationFailed, this, nullptr))
+        qWarning() << "Failed to disconnect signal for object creation failed (resources)";
+
+    if (-1 == QFontDatabase::addApplicationFont(QStringLiteral(":/assets/fonts/Fontin-SmallCaps.ttf")))
         qWarning() << "Failed to load font Fontin-SmallCaps.ttf";
-    if (-1 == QFontDatabase::addApplicationFont(":/assets/fonts/OpenSans-Regular.ttf"))
+    if (-1 == QFontDatabase::addApplicationFont(QStringLiteral(":/assets/fonts/OpenSans-Regular.ttf")))
         qWarning() << "Failed to load font OpenSans-Regular.ttf";
 
     QFont font("Fontin SmallCaps");
@@ -126,10 +120,33 @@ void Application::initResources()
     setFont(font);
 }
 
+void Application::onResourcesLoaded()
+{
+    qInfo() << "Init system tray icon";
+    initSystemTrayIcon();
+
+    qInfo() << "Init helpers";
+    initHelpers();
+
+    qInfo() << "Init workers";
+    initWorkers();
+
+    qInfo() << "Init controllers";
+    initControllers();
+
+    qInfo() << "Init windows";
+    initWindows();
+
+    qInfo() << "Init hotkeys";
+    initHotkeys();
+
+    qInfo() << "Initialization finished";
+}
+
 void Application::initSystemTrayIcon()
 {
     if (QSystemTrayIcon::isSystemTrayAvailable()) {
-        trayIcon.reset(new QSystemTrayIcon(QIcon(":/assets/icons/LabCompass.ico")));
+        trayIcon.reset(new QSystemTrayIcon(QIcon(QStringLiteral(":/assets/icons/LabCompass.ico"))));
         trayIconMenu.reset(new TrayIconMenu());
         trayIcon->setContextMenu(trayIconMenu.get());
         //: Tooltip for tray icon
@@ -145,15 +162,6 @@ void Application::initSystemTrayIcon()
 void Application::initHelpers()
 {
     RoomPresetHelper::instance = new RoomPresetHelper();
-}
-
-void Application::initWindows()
-{
-    connect(this, SIGNAL(handlerCompleted(QString)),
-                         this, SLOT(onHandlerCompleted(QString)));
-
-    for (auto i = windows->cbegin(), end = windows->cend(); i != end; ++i)
-        createWindow(i.key(), i.value().url);
 }
 
 void Application::initWorkers()
@@ -184,6 +192,15 @@ void Application::initControllers()
         navigationController.get(), SLOT(onRoomChanged(QString)));
     connect(logWatcher.get(), SIGNAL(portalSpawned()),
         navigationController.get(), SLOT(onPortalSpawned()));
+}
+
+void Application::initWindows()
+{
+    connect(this, SIGNAL(handlerCompleted(QString)),
+            this, SLOT(onHandlerCompleted(QString)));
+
+    for (auto i = windows->cbegin(), end = windows->cend(); i != end; ++i)
+        createWindow(i.key(), i.value().url);
 }
 
 void Application::initHotkeys()
@@ -225,9 +242,9 @@ void Application::createWindow(QString objectName, QUrl windowUrl)
     engine.load(windowUrl);
 
     if (!disconnect(&engine, &QQmlApplicationEngine::objectCreated, this, nullptr))
-        qWarning() << "Failed to disconnect signal for object created";
+        qWarning() << "Failed to disconnect signal for object created (window)";
     if (!disconnect(&engine, &QQmlApplicationEngine::objectCreationFailed, this, nullptr))
-        qWarning() << "Failed to disconnect signal for object creation failed";
+        qWarning() << "Failed to disconnect signal for object creation failed (window)";
 }
 
 void Application::updateLanguage(QString languageCode)
