@@ -16,7 +16,7 @@ Window {
   maximumHeight: minimumHeight
   color: "transparent"
   visible: false
-  flags: Qt.WindowStaysOnTopHint | Qt.FramelessWindowHint | Qt.WA_TranslucentBackground //| Qt.WindowTransparentForInput | Qt.X11BypassWindowManagerHint
+  flags: Qt.WindowStaysOnTopHint | Qt.FramelessWindowHint | Qt.WA_TranslucentBackground
 
   Component.onCompleted: {
     windowAgent.setup(window)
