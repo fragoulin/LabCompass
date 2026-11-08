@@ -1,25 +1,27 @@
 #include "settings.h"
 #include "version.h"
 
+using namespace Qt::StringLiterals;
+
 QVariantMap defaultSettings {
-    { "mainWindowPosition", QPoint(-1, -1) },
-    { "poeClientPath", "" },
-    { "latestVersion", "" },
-    { "lastVersionCheckAttempt", 0LL },
-    { "lastVersionCheckSuccess", 0LL },
-    { "lastLoadedMapDate", QDate() },
-    { "importDirectory", "" },
+    { u"mainWindowPosition"_s, QPoint(-1, -1) },
+    { u"poeClientPath"_s, "" },
+    { u"latestVersion"_s, "" },
+    { u"lastVersionCheckAttempt"_s, 0LL },
+    { u"lastVersionCheckSuccess"_s, 0LL },
+    { u"lastLoadedMapDate"_s, QDate() },
+    { u"importDirectory"_s, "" },
 
-    { "multiclientSupport", false },
+    { u"multiclientSupport"_s, false },
 
-    { "portalSkipsSection", true },
+    { u"portalSkipsSection"_s, true },
 
-    { "scaleFactor", "1" },
-    { "showMinimap", true },
+    { u"scaleFactor"_s, "1" },
+    { u"showMinimap"_s, true },
 
-    { "toggleHideUiHotkey", "" },
+    { u"toggleHideUiHotkey"_s, "" },
 
-    { "languageCode", "en" },
+    { u"languageCode"_s, "en" },
 };
 
 Settings::Settings(QObject* parent)
@@ -40,8 +42,8 @@ void Settings::load()
         setProperty(propertyName.toLocal8Bit().constData(), propertyValue);
     }
 
-    if (settings->value("version").toString() != VERSION) {
-        settings->setValue("version", VERSION);
+    if (settings->value(u"version"_s).toString() != VERSION) {
+        settings->setValue(u"version"_s, VERSION);
         set_latestVersion("");
         set_lastVersionCheckAttempt(0LL);
         set_lastVersionCheckSuccess(0LL);
@@ -70,10 +72,10 @@ QVariant Settings::toVariant() const
 
         switch (value.typeId()) {
         case QMetaType::QPoint:
-            value = QVariantMap { { "x", value.toPoint().x() }, { "y", value.toPoint().y() } };
+            value = QVariantMap { { u"x"_s, value.toPoint().x() }, { u"y"_s, value.toPoint().y() } };
             break;
         case QMetaType::QDate:
-            value = value.toDate().toString("yyyy-MM-dd");
+            value = value.toDate().toString(u"yyyy-MM-dd"_s);
             break;
         default:;
         }

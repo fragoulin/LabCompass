@@ -2,8 +2,9 @@
 #include <vector>
 
 using namespace std;
+using namespace Qt::StringLiterals;
 
-Q_GLOBAL_STATIC(QList<DirectionCode>, REGULAR_DIRECTION_LIST, {"N", "NE", "E", "SE", "S", "SW", "W", "NW"})
+Q_GLOBAL_STATIC(QList<DirectionCode>, REGULAR_DIRECTION_LIST, {u"N"_s, u"NE"_s, u"E"_s, u"SE"_s, u"S"_s, u"SW"_s, u"W"_s, u"NW"_s})
 
 DirectionNormalizer::DirectionNormalizer()
 {
@@ -62,7 +63,7 @@ DirectionNormalizer::ConnectionDetails DirectionNormalizer::breakdownConnections
             if (direction.isEmpty())
                 breakdown.unknownDirectionRooms.append(room);
 
-            if (direction == "C")
+            if (direction == u"C"_s)
                 breakdown.secretPassageRooms.append(room);
 
             if (REGULAR_DIRECTION_LIST->contains(direction))
@@ -87,10 +88,10 @@ RoomConnections DirectionNormalizer::reconstructConnections(const DirectionNorma
     }
 
     foreach (const auto& room, breakdown.secretPassageRooms)
-        connections[room].append("C");
+        connections[room].append(u"C"_s);
 
     foreach (const auto& room, breakdown.unknownDirectionRooms)
-        connections[room].append("");
+        connections[room].append(u""_s);
 
     return connections;
 }

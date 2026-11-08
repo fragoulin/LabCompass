@@ -5,6 +5,8 @@
 #include "psapi.h"
 #endif
 
+using namespace Qt::StringLiterals;
+
 const QStringList getStartLines() {
     return {
         //: Izaro start line "Ascend with precision.". Must match exactly lines displayed in Path of Exile client chat
@@ -231,13 +233,13 @@ const QStringList getRoomNames() {
     };
 };
 
-Q_GLOBAL_STATIC(QRegularExpression, LOG_REGEX, R"(^\d+\/\d+\/\d+ \d+:\d+:\d+ \d+ \w+ \[INFO Client (\d+)\](?: :)? (?:<<set:\w+>>)*(.*)$)")
+Q_GLOBAL_STATIC(QRegularExpression, LOG_REGEX, uR"(^\d+\/\d+\/\d+ \d+:\d+:\d+ \d+ \w+ \[INFO Client (\d+)\](?: :)? (?:<<set:\w+>>)*(.*)$)"_s)
 
 LogWatcher::LogWatcher(ApplicationModel* applicationModel)
 {
     this->model = applicationModel;
     clientPath = model->get_settings()->get_poeClientPath();
-    file.reset(new QFile(QDir(clientPath).filePath("logs/Client.txt")));
+    file.reset(new QFile(QDir(clientPath).filePath(u"logs/Client.txt"_s)));
 
     timer.setInterval(1000);
     timer.setSingleShot(false);
@@ -252,7 +254,7 @@ void LogWatcher::work()
     auto newClientPath = model->get_settings()->get_poeClientPath();
     if (clientPath != newClientPath) {
         clientPath = newClientPath;
-        file.reset(new QFile(QDir(clientPath).filePath("logs/Client.txt")));
+        file.reset(new QFile(QDir(clientPath).filePath(u"logs/Client.txt"_s)));
     }
 
     // attempt to open file
@@ -265,7 +267,7 @@ void LogWatcher::work()
                 model->update_logFileOpen(false);
                 return;
             }
-            file.reset(new QFile(QDir(clientPath).filePath("logs/Client.txt")));
+            file.reset(new QFile(QDir(clientPath).filePath(u"logs/Client.txt"_s)));
             if (!file->open(QIODevice::ReadOnly)) {
                 model->update_logFileOpen(false);
                 return;
@@ -371,9 +373,9 @@ QString LogWatcher::findGameClientPath()
     CloseHandle(handle);
     return path;
 #elifdef Q_OS_LINUX
-    const QString pathSteam = QDir::homePath() + "/.steam/steam/steamapps/common/Path of Exile";
-    const QString heroicPath1 = QDir::homePath() + "/Games/Path of Exile";
-    const QString heroicPath2 = QDir::homePath() + "/Games/PathOfExile";
+    const QString pathSteam = QDir::homePath() + u"/.steam/steam/steamapps/common/Path of Exile"_s;
+    const QString heroicPath1 = QDir::homePath() + u"/Games/Path of Exile"_s;
+    const QString heroicPath2 = QDir::homePath() + u"/Games/PathOfExile"_s;
     if (QDir(pathSteam).exists()) {
         return pathSteam;
     } else if(QDir(heroicPath1).exists()) {

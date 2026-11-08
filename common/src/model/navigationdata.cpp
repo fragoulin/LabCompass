@@ -1,16 +1,18 @@
 #include "navigationdata.h"
 #include <queue>
 
+using namespace Qt::StringLiterals;
+
 void NavigationData::loadFromData(const LabyrinthData* labData, const PlanData& plan)
 {
     this->lab = labData;
 
     currentRoomDetermined = true;
-    currentRoom = "plaza";
-    possibleCurrentRooms = { "plaza" };
+    currentRoom = u"plaza"_s;
+    possibleCurrentRooms = { u"plaza"_s };
 
     foreach (const auto& room, lab->rooms) {
-        if (room.contents.contains("golden-key")) {
+        if (room.contents.contains(u"golden-key"_s)) {
             contentState.goldenKeyLocations.append(room.id);
         }
     }
@@ -31,7 +33,7 @@ void NavigationData::updatePlannedRouteAndInstructions()
 
     int startSection = lab->getRoomFromId(currentRoom).section;
     if (startSection == -1) {
-        newPlannedRoute.append("plaza");
+        newPlannedRoute.append(u"plaza"_s);
 
     } else {
         auto begin = currentRoom;

@@ -1,5 +1,7 @@
 #include "keysequencehelper.h"
 
+using namespace Qt::StringLiterals;
+
 uint qHash(const QKeySequence& seq)
 {
     return static_cast<uint>(qHash(seq.toString()));
@@ -208,7 +210,7 @@ void KeySequenceHelperPrivate::updateShortcutDisplay()
 {
     // empty string if no non-modifier was pressed
     QString s = keySequence.toString(QKeySequence::NativeText);
-    s.replace(QLatin1Char('&'), QStringLiteral("&&"));
+    s.replace(QLatin1Char('&'), u"&&"_s);
 
     if (isRecording) {
         if (modifierKeys) {
@@ -220,7 +222,7 @@ void KeySequenceHelperPrivate::updateShortcutDisplay()
             s = "Press Keys";
         }
         // make it clear that input is still going on
-        s.append(QStringLiteral(" ..."));
+        s.append(u" ..."_s);
     }
 
     if (s.isEmpty()) {

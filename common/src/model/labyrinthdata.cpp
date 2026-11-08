@@ -8,24 +8,26 @@ using nlohmann::json_schema::json_validator;
 
 using TypeSr = QHash<QString, qreal>;
 
+using namespace Qt::StringLiterals;
+
 Q_GLOBAL_STATIC(TypeSr, ROOM_PREFIX_COST, {
-    { "sepulchre", 3 },
-    { "estate", 5 },
-    { "basilica", 7 },
-    { "sanitorium", 8 },
-    { "mansion", 9 },
-    { "domain", 10 },
+    { u"sepulchre"_s, 3 },
+    { u"estate"_s, 5 },
+    { u"basilica"_s, 7 },
+    { u"sanitorium"_s, 8 },
+    { u"mansion"_s, 9 },
+    { u"domain"_s, 10 },
 })
 
 Q_GLOBAL_STATIC(TypeSr, ROOM_SUFFIX_COST, {
-    { "path", 6 },
-    { "passage", 6 },
-    { "walkways", 8 },
-    { "halls", 8 },
-    { "annex", 10 },
-    { "enclosure", 10 },
-    { "crossing", 12 },
-    { "atrium", 12 },
+    { u"path"_s, 6 },
+    { u"passage"_s, 6 },
+    { u"walkways"_s, 8 },
+    { u"halls"_s, 8 },
+    { u"annex"_s, 10 },
+    { u"enclosure"_s, 10 },
+    { u"crossing"_s, 12 },
+    { u"atrium"_s, 12 },
 })
 
 Q_GLOBAL_STATIC(DirectionNormalizer, directionNormalizer, {})
@@ -50,7 +52,7 @@ bool LabyrinthData::loadFromString(const QByteArray& str)
 
 bool LabyrinthData::loadFromJson(const QJsonObject& jsonLab)
 {
-    QFile fileSchema(":/map.schema.json");
+    QFile fileSchema(u":/map.schema.json"_s);
     if (!fileSchema.open(QIODevice::ReadOnly))
         return false;
     const std::string schema = fileSchema.readAll().toStdString();
@@ -65,21 +67,21 @@ bool LabyrinthData::loadFromJson(const QJsonObject& jsonLab)
         return false;
     }
 
-    const QString difficultyFromJSON = jsonLab["difficulty"].toString();
-    if ("Normal" == difficultyFromJSON)
+    const QString difficultyFromJSON = jsonLab[u"difficulty"_s].toString();
+    if (u"Normal"_s == difficultyFromJSON)
         difficulty = Difficulty::NORMAL;
-    else if ("Cruel" == difficultyFromJSON)
+    else if (u"Cruel"_s == difficultyFromJSON)
         difficulty = Difficulty::CRUEL;
-    else if ("Merciless" == difficultyFromJSON)
+    else if (u"Merciless"_s == difficultyFromJSON)
         difficulty = Difficulty::MERCILESS;
-    else if ("Uber" == difficultyFromJSON)
+    else if (u"Uber"_s == difficultyFromJSON)
         difficulty = Difficulty::UBER;
     else {
         qWarning() << "Invalid difficulty" << difficultyFromJSON << "Expected 'Normal', 'Cruel', 'Merciless' or 'Uber'";
         return false;
     }
 
-    date = QDate::fromString(jsonLab["date"].toString(), "yyyy-MM-dd");
+    date = QDate::fromString(jsonLab["date"].toString(), u"yyyy-MM-dd"_s);
 
     weapon = jsonLab["weapon"].toString();
     sectionMechanics[0] = jsonLab["phase1"].toString();
@@ -118,7 +120,7 @@ void LabyrinthData::normalizeDoorDirections(const RoomId& id)
     const auto& preset = helper->getPresetByAreaCode(room.areaCode);
 
     if (!preset.isEmpty()) {
-        const auto& pattern = preset["doorLocations"].toStringList();
+        const auto& pattern = preset[u"doorLocations"_s].toStringList();
         auto normalized = directionNormalizer->normalize(originalConnections, pattern);
         normalizedConnections[id] = normalized;
     } else {
@@ -145,7 +147,7 @@ bool LabyrinthData::hasConnection(const RoomId& from, const RoomId& to) const
 bool LabyrinthData::hasDoorConnection(const RoomId& from, const RoomId& to) const
 {
     auto& l = connections[from][to];
-    return !l.isEmpty() && l[0] != "C" && l[0] != "P";
+    return !l.isEmpty() && l[0] != u"C"_s && l[0] != u"P"_s;
 }
 
 bool LabyrinthData::roomIsFirstRoomInSection(const RoomId& id) const
@@ -157,7 +159,7 @@ bool LabyrinthData::roomIsFirstRoomInSection(const RoomId& id) const
 bool LabyrinthData::roomIsTrial(const RoomId& id) const
 {
     const Room& room = rooms[roomIdIndex.value(id)];
-    return room.nameId == "id-aspirants-trial";
+    return room.nameId == u"id-aspirants-trial"_s;
 }
 
 bool LabyrinthData::roomIsDeadEnd(const RoomId& id) const
@@ -177,7 +179,7 @@ bool LabyrinthData::roomHasSecretPassage(const RoomId& id) const
 {
     auto roomConnections = connections[id];
     for (auto i = roomConnections.constBegin(); i != roomConnections.constEnd(); i++)
-        if (i.value().contains("C"))
+        if (i.value().contains(u"C"_s))
             return true;
     return false;
 }
@@ -202,7 +204,7 @@ bool LabyrinthData::loadRooms(const QJsonArray& array)
         return false;
     }
 
-    rooms.append(Room({ "Aspirant\'s Plaza", "id-labyrinth-aspirants-plaza", "labyrinth_airlock", "plaza", { -100, 128 }, {}, {}, -1, false }));
+    rooms.append(Room({ u"Aspirant\'s Plaza"_s, u"id-labyrinth-aspirants-plaza"_s, u"labyrinth_airlock"_s, u"plaza"_s, { -100, 128 }, {}, {}, -1, false }));
 
     for (int i = 0; i < array.size(); i++) {
         if (!array[i].isObject()) {
@@ -248,7 +250,7 @@ void LabyrinthData::predictRoomAreaCodes()
 
     for (auto& room : rooms)
         if (room.areaCode.isEmpty()) {
-            const auto& presetList = helper->getPresetListByName(room.name, room.contents.contains("golden-door"));
+            const auto& presetList = helper->getPresetListByName(room.name, room.contents.contains(u"golden-door"_s));
             if (presetList.size() == 1)
                 room.areaCode = presetList[0].first;
         }
@@ -282,7 +284,7 @@ bool LabyrinthData::loadConnectionMatrix(const QJsonArray& array)
         for (auto j = exitsJson.constBegin(); j != exitsJson.constEnd(); j++) {
             auto toId = j.value().toString();
             auto direction = j.key();
-            if (direction != "C")
+            if (direction != u"C"_s)
                 connections[roomId][toId].append(direction);
         }
     }
@@ -298,7 +300,7 @@ bool LabyrinthData::loadConnectionMatrix(const QJsonArray& array)
         for (auto j = exitsJson.constBegin(); j != exitsJson.constEnd(); j++) {
             auto toId = j.value().toString();
             auto direction = j.key();
-            if (direction != "C" && !hasConnection(toId, roomId) && !(roomIsTrial(roomId) && rooms[roomIdIndex.value(toId)].isFirstRoomInSection))
+            if (direction != u"C"_s && !hasConnection(toId, roomId) && !(roomIsTrial(roomId) && rooms[roomIdIndex.value(toId)].isFirstRoomInSection))
                 connections[toId][roomId].append("");
         }
     }
@@ -311,13 +313,13 @@ bool LabyrinthData::loadConnectionMatrix(const QJsonArray& array)
         for (auto j = exitsJson.constBegin(); j != exitsJson.constEnd(); j++) {
             auto toId = j.value().toString();
             auto direction = j.key();
-            if (direction == "C")
-                connections[roomId][toId].append("C");
+            if (direction == u"C"_s)
+                connections[roomId][toId].append(u"C"_s);
         }
     }
 
     // add plaza connection
-    connections["plaza"][rooms[1].id].append("NW");
+    connections[u"plaza"_s][rooms[1].id].append(u"NW"_s);
 
     return true;
 }
@@ -362,9 +364,9 @@ bool LabyrinthData::loadSections()
 bool LabyrinthData::loadGoldenDoors()
 {
     for (int i = 0; i < rooms.size(); i++)
-        if (rooms[i].contents.contains("golden-door"))
+        if (rooms[i].contents.contains(u"golden-door"_s))
             for (int j = i + 1; j < rooms.size(); j++) // golden doors can't lead to rooms before it
-                if (!roomIsDeadEnd(rooms[j].id) && hasDoorConnection(rooms[i].id, rooms[j].id) && !rooms[j].contents.contains("golden-key") && rooms[j].coordinate.x() > rooms[i].coordinate.x())
+                if (!roomIsDeadEnd(rooms[j].id) && hasDoorConnection(rooms[i].id, rooms[j].id) && !rooms[j].contents.contains(u"golden-key"_s) && rooms[j].coordinate.x() > rooms[i].coordinate.x())
                     goldenDoors.append(std::pair<RoomId, RoomId>(rooms[i].id, rooms[j].id));
     return true;
 }
@@ -372,14 +374,14 @@ bool LabyrinthData::loadGoldenDoors()
 bool LabyrinthData::roomIsAnnexOrEnclosure(const RoomId& id) const
 {
     const Room& room = rooms[roomIdIndex.value(id)];
-    return room.name.endsWith("Annex") || room.name.endsWith("Enclosure");
+    return room.name.endsWith(u"Annex"_s) || room.name.endsWith(u"Enclosure"_s);
 }
 
 bool LabyrinthData::checkExits()
 {
     for (int i = 0; i < rooms.size(); i++) {
         Room room = rooms[i];
-        if ("plaza" != room.id
+        if (u"plaza"_s != room.id
             && !roomIsTrial(room.id)
             && !roomIsAnnexOrEnclosure(room.id)
             && 0 == room.exitsNumber) {

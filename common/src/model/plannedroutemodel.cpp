@@ -1,5 +1,7 @@
 #include "plannedroutemodel.h"
 
+using namespace Qt::StringLiterals;
+
 PlannedRouteModel::PlannedRouteModel()
 {
 }
@@ -10,7 +12,7 @@ void PlannedRouteModel::loadFromData(const NavigationData& data)
 
     d.clear();
     foreach (auto& id, data.plannedRoute) {
-        if (id != "plaza") {
+        if (id != u"plaza"_s) {
             ModelData modelData;
             modelData.id = id;
             d.append(modelData);

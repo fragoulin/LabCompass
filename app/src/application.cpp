@@ -6,18 +6,19 @@
 #include "version.h"
 #include <QStringBuilder>
 #include <QWKQuick/qwkquickglobal.h>
+using namespace Qt::StringLiterals;
 
 Q_GLOBAL_STATIC(Application::Modules, windows, {
     {
-        "Main", &Application::handleMainWindowConnections
+        u"Main"_s, &Application::handleMainWindowConnections
     }, {
-        "Planner", &Application::handlePlannerWindowConnections
+        u"Planner"_s, &Application::handlePlannerWindowConnections
     }, {
-        "RoomPresets", &Application::handleRoomPresetsWindowConnections
+        u"RoomPresets"_s, &Application::handleRoomPresetsWindowConnections
     }, {
-        "Puzzle", &Application::handlePuzzleWindowConnections
+        u"Puzzle"_s, &Application::handlePuzzleWindowConnections
     }, {
-        "Options", &Application::handleOptionsWindowConnections
+        u"Options"_s, &Application::handleOptionsWindowConnections
     },
 });
 
@@ -66,7 +67,7 @@ void Application::initTranslations()
 
 void Application::initResources()
 {
-    QQuickStyle::setStyle("Material");
+    QQuickStyle::setStyle(u"Material"_s);
 
     qmlRegisterType<KeySequenceHelper>("labcompass", 1, 0, "KeySequenceHelper");
 
@@ -94,12 +95,12 @@ void Application::initResources()
     if (!disconnect(&engine, &QQmlApplicationEngine::objectCreationFailed, this, nullptr))
         qWarning() << "Failed to disconnect signal for object creation failed (resources)";
 
-    if (-1 == QFontDatabase::addApplicationFont(QStringLiteral(":/assets/fonts/Fontin-SmallCaps.ttf")))
+    if (-1 == QFontDatabase::addApplicationFont(u":/assets/fonts/Fontin-SmallCaps.ttf"_s))
         qWarning() << "Failed to load font Fontin-SmallCaps.ttf";
-    if (-1 == QFontDatabase::addApplicationFont(QStringLiteral(":/assets/fonts/OpenSans-Regular.ttf")))
+    if (-1 == QFontDatabase::addApplicationFont(u":/assets/fonts/OpenSans-Regular.ttf"_s))
         qWarning() << "Failed to load font OpenSans-Regular.ttf";
 
-    QFont font("Fontin SmallCaps");
+    QFont font(u"Fontin SmallCaps"_s);
     font.setPixelSize(16);
     setFont(font);
 }
@@ -130,7 +131,7 @@ void Application::onResourcesLoaded()
 void Application::initSystemTrayIcon()
 {
     if (QSystemTrayIcon::isSystemTrayAvailable()) {
-        trayIcon.reset(new QSystemTrayIcon(QIcon(QStringLiteral(":/assets/icons/LabCompass.ico"))));
+        trayIcon.reset(new QSystemTrayIcon(QIcon(u":/assets/icons/LabCompass.ico"_s)));
         trayIconMenu.reset(new TrayIconMenu());
         trayIcon->setContextMenu(trayIconMenu.get());
         //: Tooltip for tray icon
@@ -265,7 +266,7 @@ void Application::onImportFileFailed()
 
     // Retrieve log file path
     QDir dir(QStandardPaths::writableLocation(QStandardPaths::AppDataLocation));
-    auto logFilePath = dir.absoluteFilePath("log.txt");
+    auto logFilePath = dir.absoluteFilePath(u"log.txt"_s);
 
     //: Title for import file error
     //% "Failed to import file."

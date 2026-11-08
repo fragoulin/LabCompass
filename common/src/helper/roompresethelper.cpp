@@ -1,10 +1,12 @@
 #include "roompresethelper.h"
 
+using namespace Qt::StringLiterals;
+
 RoomPresetHelper* RoomPresetHelper::instance = nullptr;
 
 RoomPresetHelper::RoomPresetHelper()
 {
-    QFile roomPresetsFile(":/room-presets.json");
+    QFile roomPresetsFile(u":/room-presets.json"_s);
     if (!roomPresetsFile.open(QIODevice::ReadOnly)) {
         qCritical() << "Failed to open :/room-presets.json resource";
     }
@@ -12,9 +14,9 @@ RoomPresetHelper::RoomPresetHelper()
     const auto& roomTypeList = QJsonDocument::fromJson(roomPresetsFile.readAll()).toVariant().toList();
 
     for (const auto& roomType : roomTypeList) {
-        const auto& roomName = roomType.toMap()["roomName"].toString();
-        const auto& goldenDoor = roomType.toMap()["goldenDoor"].toBool();
-        const auto& variantList = roomType.toMap()["variants"].toList();
+        const auto& roomName = roomType.toMap()[u"roomName"_s].toString();
+        const auto& goldenDoor = roomType.toMap()[u"goldenDoor"_s].toBool();
+        const auto& variantList = roomType.toMap()[u"variants"_s].toList();
 
         QPair<QString, bool> index { roomName, goldenDoor };
         cacheByNameAndGoldenDoor.insert(index, {});
@@ -44,9 +46,9 @@ DoorExitLocationModel RoomPresetHelper::getDoorExitLocationModel(const Preset& p
 {
     DoorExitLocationModel result;
 
-    auto list = preset["doorLocations"].toStringList();
+    auto list = preset[u"doorLocations"_s].toStringList();
     for (const auto& direction : std::as_const(list))
-        result.append(QVariantMap { { "direction", direction }, { "tileRect", getTileRect(preset, direction) } });
+        result.append(QVariantMap { { u"direction"_s, direction }, { u"tileRect"_s, getTileRect(preset, direction) } });
 
     return result;
 }
@@ -57,22 +59,22 @@ ContentLocationModel RoomPresetHelper::getContentLocationModel(const Preset& pre
 
     const auto& contentLocations = preset["contentLocations"].toMap();
 
-    if (generalLocations && contentLocations.contains("generic")) {
-        auto list = contentLocations["generic"].toStringList();
+    if (generalLocations && contentLocations.contains(u"generic"_s)) {
+        auto list = contentLocations[u"generic"_s].toStringList();
         for (const auto& direction : std::as_const(list))
-            result.append(QVariantMap { { "direction", direction }, { "major", false }, { "tileRect", getTileRect(preset, direction) } });
+            result.append(QVariantMap { { u"direction"_s, direction }, { u"major"_s, false }, { u"tileRect"_s, getTileRect(preset, direction) } });
     }
 
-    if (majorLocations && contentLocations.contains("major")) {
-        auto list = contentLocations["major"].toStringList();
+    if (majorLocations && contentLocations.contains(u"major"_s)) {
+        auto list = contentLocations[u"major"_s].toStringList();
         for (const auto& direction : std::as_const(list))
-            result.append(QVariantMap { { "direction", direction }, { "major", true }, { "tileRect", getTileRect(preset, direction) } });
+            result.append(QVariantMap { { u"direction"_s, direction }, { u"major"_s, true }, { u"tileRect"_s, getTileRect(preset, direction) } });
     }
 
-    if (minorLocations && contentLocations.contains("minor")) {
+    if (minorLocations && contentLocations.contains(u"minor"_s)) {
         auto list = contentLocations["minor"].toStringList();
         for (const auto& direction : std::as_const(list))
-            result.append(QVariantMap { { "direction", direction }, { "major", false }, { "tileRect", getTileRect(preset, direction) } });
+            result.append(QVariantMap { { u"direction"_s, direction }, { u"major"_s, false }, { u"tileRect"_s, getTileRect(preset, direction) } });
     }
 
     return result;
@@ -80,11 +82,11 @@ ContentLocationModel RoomPresetHelper::getContentLocationModel(const Preset& pre
 
 QRectF RoomPresetHelper::getTileRect(const Preset& preset, const QString& direction) const
 {
-    const auto& coord = preset["minimap"].toMap()["directions"].toMap()[direction].toList();
+    const auto& coord = preset[u"minimap"_s].toMap()[u"directions"_s].toMap()[direction].toList();
     int row = coord[0].toInt();
     int column = coord[1].toInt();
-    int rows = preset["minimap"].toMap()["rows"].toInt();
-    int columns = preset["minimap"].toMap()["columns"].toInt();
+    int rows = preset[u"minimap"_s].toMap()[u"rows"_s].toInt();
+    int columns = preset[u"minimap"_s].toMap()[u"columns"_s].toInt();
     qreal rowd = row - (rows - 1) / 2.0;
     qreal columnd = column - (columns - 1) / 2.0;
     qreal scale = 10.0 / std::max(std::max(rows, columns), 7);

@@ -1,26 +1,28 @@
 #include "helper/roompresethelper.h"
 #include "instructionmodel.h"
 
+using namespace Qt::StringLiterals;
+
 Q_GLOBAL_STATIC(QStringList, LOOT_LIST, {
-     "Switch puzzle",
-     "Floor puzzle",
-     "Escort gauntlet",
-     "Trap gauntlet",
-     "darkshrine",
-     "argus",
-     "golden-key",
-     "silver-key",
-     "silver-door",
+     u"Switch puzzle"_s,
+     u"Floor puzzle"_s,
+     u"Escort gauntlet"_s,
+     u"Trap gauntlet"_s,
+     u"darkshrine"_s,
+     u"argus"_s,
+     u"golden-key"_s,
+     u"silver-key"_s,
+     u"silver-door"_s,
  })
 
 Q_GLOBAL_STATIC(QStringList, MAJOR_LOOT_LIST, {
-    "golden-key",
-    "silver-key",
-    "silver-door",
+    u"golden-key"_s,
+    u"silver-key"_s,
+    u"silver-door"_s,
 })
 
 Q_GLOBAL_STATIC(QList<DirectionCode>, REGULAR_DIRECTION_LIST, {
-    "N", "NE", "E", "SE", "S", "SW", "W", "NW"
+    u"N"_s, u"NE"_s, u"E"_s, u"SE"_s, u"S"_s, u"SW"_s, u"W"_s, u"NW"_s
 })
 
 InstructionModel::InstructionModel(QObject* parent)
@@ -67,13 +69,13 @@ void InstructionModel::loadFromData(const NavigationData& data)
         update_nextRoomName(data.lab->getRoomFromId(nextRoomId).nameId);
 
         if (connections.isEmpty())
-            update_nextRoomConnectionType("none"); // should not happen
-        else if (connections.contains("P"))
-            update_nextRoomConnectionType("portal");
-        else if (connections.first() == "C")
-            update_nextRoomConnectionType("secret");
+            update_nextRoomConnectionType(u"none"_s); // should not happen
+        else if (connections.contains(u"P"_s))
+            update_nextRoomConnectionType(u"portal"_s);
+        else if (connections.first() == u"C"_s)
+            update_nextRoomConnectionType(u"secret"_s);
         else
-            update_nextRoomConnectionType("door");
+            update_nextRoomConnectionType(u"door"_s);
 
         update_nextRoomDirection(connections.isEmpty() ? "" : connections.first());
     }
@@ -106,7 +108,7 @@ void InstructionModel::updateExitLocations(const NavigationData& data)
         for (const auto& l : exits)
             for (const auto& direction : l)
                 if (REGULAR_DIRECTION_LIST->contains(direction))
-                    doorExitLocations.append(QVariantMap { { "direction", direction }, { "tileRect", QRectF() } });
+                    doorExitLocations.append(QVariantMap { { u"direction"_s, direction }, { u"tileRect"_s, QRectF() } });
 
     } else {
         doorExitLocations = helper->getDoorExitLocationModel(preset);
@@ -137,8 +139,8 @@ void InstructionModel::updateContentsAndLocations(const NavigationData& data)
     update_roomLoot(loot);
 
     if (data.lab->roomHasSecretPassage(data.currentRoom)) {
-        loot.append("secret_passage");
-        minorLoot.append("secret_passage");
+        loot.append(u"secret_passage"_s);
+        minorLoot.append(u"secret_passage"_s);
     }
 
     QVariantList visibleContentLocations;

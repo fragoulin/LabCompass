@@ -1,6 +1,8 @@
 #include "helper/roompresethelper.h"
 #include "roompresetmodel.h"
 
+using namespace Qt::StringLiterals;
+
 RoomPresetModel::RoomPresetModel(QObject* parent)
     : QObject(parent)
 {
@@ -21,7 +23,7 @@ void RoomPresetModel::loadFromData(const NavigationData& data)
         update_roomName(room.name);
 
         auto helper = RoomPresetHelper::instance;
-        const auto& presetList = helper->getPresetListByName(room.name, room.contents.contains("golden-door"));
+        const auto& presetList = helper->getPresetListByName(room.name, room.contents.contains(u"golden-door"_s));
 
         QVariantList presetsModel;
         int current = -1;
@@ -31,18 +33,18 @@ void RoomPresetModel::loadFromData(const NavigationData& data)
             for (auto i = presetList.size() - 1; i >= 0; i--) {
                 const auto& preset = presetList[i].second;
                 QVariantMap item;
-                item["areaCode"] = preset["areaCode"];
-                item["doorExitLocations"] = helper->getDoorExitLocationModel(preset);
-                item["contentLocations"] = helper->getContentLocationModel(preset);
+                item[u"areaCode"_s] = preset[u"areaCode"_s];
+                item[u"doorExitLocations"_s] = helper->getDoorExitLocationModel(preset);
+                item[u"contentLocations"_s] = helper->getContentLocationModel(preset);
                 presetsModel.append(item);
 
-                if (item["areaCode"].toString() == room.areaCode) {
+                if (item[u"areaCode"_s].toString() == room.areaCode) {
                     current = static_cast<int>(presetList.size()) - 1 - static_cast<int>(i);
                 }
             }
 
-            presetsModel.append(QVariantMap { { "areaCode", "disabled" }, { "doorExitLocations", QVariantList {} }, { "contentLocations", QVariantList {} } });
-            if (room.areaCode == "disabled") {
+            presetsModel.append(QVariantMap { { u"areaCode"_s, u"disabled"_s }, { u"doorExitLocations"_s, QVariantList {} }, { u"contentLocations"_s, QVariantList {} } });
+            if (room.areaCode == u"disabled"_s) {
                 current = static_cast<int>(presetsModel.size()) - 1;
             }
         }

@@ -1,5 +1,7 @@
 #include "navigationcontroller.h"
 
+using namespace Qt::StringLiterals;
+
 NavigationController::NavigationController(ApplicationModel* applicationModel)
 {
     this->model = applicationModel;
@@ -61,7 +63,7 @@ void NavigationController::onRoomChanged(const QString& name)
         data.possibleCurrentRooms = { data.plannedRoute[1] };
 
         // the user takes a portal to the next trial room
-    } else if (data.currentRoomDetermined && data.contentState.portalLocations.contains(data.currentRoom) && name == "Aspirant's Trial") {
+    } else if (data.currentRoomDetermined && data.contentState.portalLocations.contains(data.currentRoom) && name == u"Aspirant's Trial"_s) {
         int currentSection = data.lab->getRoomFromId(data.currentRoom).section;
         data.possibleCurrentRooms = { data.lab->sections[currentSection].trialRoom };
 

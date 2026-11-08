@@ -1,10 +1,12 @@
 #include "plansummarymodel.h"
 
+using namespace Qt::StringLiterals;
+
 static const QStringList TROVE_LIST {
-    "Switch puzzle",
-    "Floor puzzle",
-    "Escort gauntlet",
-    "Trap gauntlet",
+    u"Switch puzzle"_s,
+    u"Floor puzzle"_s,
+    u"Escort gauntlet"_s,
+    u"Trap gauntlet"_s,
 };
 
 PlanSummaryModel::PlanSummaryModel(QObject* parent)
@@ -28,7 +30,7 @@ void PlanSummaryModel::loadFromData(const NavigationData& data)
     int unusedSilverKeys = 0;
 
     for (const auto& roomId : data.plannedRoute) {
-        if (roomId != "plaza" && !rooms.contains(roomId)) {
+        if (roomId != u"plaza"_s && !rooms.contains(roomId)) {
             rooms.append(roomId);
         }
     }
@@ -38,18 +40,18 @@ void PlanSummaryModel::loadFromData(const NavigationData& data)
         auto roomContents = room.contents;
 
         for (const auto& content : roomContents) {
-            if (content == "argus")
+            if (content == u"argus"_s)
                 argus += 1;
-            if (content == "darkshrine")
+            if (content == u"darkshrine"_s)
                 darkshrines += 1;
-            if (content == "silver-key")
+            if (content == u"silver-key"_s)
                 unusedSilverKeys += 1;
             if (TROVE_LIST.contains(content))
                 troves += 1;
         }
 
         for (const auto& content : roomContents) {
-            if (content == "silver-door" && unusedSilverKeys > 0) {
+            if (content == u"silver-door"_s && unusedSilverKeys > 0) {
                 silverCaches += 1;
                 unusedSilverKeys -= 1;
             }
