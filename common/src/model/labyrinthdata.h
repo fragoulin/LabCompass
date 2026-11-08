@@ -21,8 +21,14 @@ struct LabyrinthData {
         RoomId trialRoom;
     };
 
-    // Normal, Cruel, Merciless or Uber
-    QString difficulty;
+    enum Difficulty {
+        NORMAL,
+        CRUEL,
+        MERCILESS,
+        UBER
+    };
+
+    Difficulty difficulty;
     QDate date;
 
     QString weapon;

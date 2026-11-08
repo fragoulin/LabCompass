@@ -44,12 +44,14 @@ public:
 
 signals:
     void mainWindowCreated(QWindow* window);
+    void handlerCompleted(QString objectName);
 
 private slots:
     void onAboutToQuit(QPoint windowPosition);
     void onSettingsUpdated();
     void onImportFileFailed();
-    void onWindowCreated(QString windowName, QWindow* window);
+    void onWindowCreated(QString objectName, QWindow* window);
+    void onHandlerCompleted(QString objectName);
 
 private:
     void init();
@@ -63,9 +65,10 @@ private:
     void initWorkers();
     void initControllers();
     void initHotkeys();
-    void createWindow(QString windowName, QUrl windowUrl);
+    void createWindow(QString objectName, QUrl windowUrl);
     void restorePreviouslyLoadedMap();
     void updateLanguage(QString languageCode);
+    int handlersCount = 0;
 };
 
 #endif // APPLICATION_H

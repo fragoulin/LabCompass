@@ -40,7 +40,6 @@ Application::Application(int& argc, char** argv)
     : QApplication(argc, argv)
 {
     init();
-    restorePreviouslyLoadedMap();
 }
 
 void Application::init()
@@ -106,8 +105,7 @@ void Application::initResources()
     qmlRegisterType<KeySequenceHelper>("labcompass", 1, 0, "KeySequenceHelper");
     engine.load(QUrl("qrc:/qt/qml/labcompass/GlobalAccessor.qml"));
     if (engine.rootObjects().isEmpty()) {
-        qCritical() << "Failed to initialize global resources";
-        quit();
+        qFatal() << "Failed to initialize global resources";
     }
 
     auto rootObjects = engine.rootObjects();
@@ -149,22 +147,11 @@ void Application::initHelpers()
     RoomPresetHelper::instance = new RoomPresetHelper();
 }
 
-void Application::createWindow(QString windowName, QUrl windowUrl)
-{
-    connect(&engine, &QQmlApplicationEngine::objectCreated, this, [this, windowName](QObject *object) {
-        onWindowCreated(windowName, static_cast<QWindow*>(object));
-    }, Qt::QueuedConnection);
-    connect(&engine, &QQmlApplicationEngine::objectCreationFailed, this, []() {
-        QCoreApplication::exit(-1);
-    }, Qt::QueuedConnection);
-    engine.load(windowUrl);
-
-    disconnect(&engine, &QQmlApplicationEngine::objectCreated, this, nullptr);
-    disconnect(&engine, &QQmlApplicationEngine::objectCreationFailed, this, nullptr);
-}
-
 void Application::initWindows()
 {
+    connect(this, SIGNAL(handlerCompleted(QString)),
+                         this, SLOT(onHandlerCompleted(QString)));
+
     for (auto i = windows->cbegin(), end = windows->cend(); i != end; ++i)
         createWindow(i.key(), i.value().url);
 }
@@ -221,6 +208,26 @@ void Application::restorePreviouslyLoadedMap()
         const auto& lastLoadedMap = appData.absoluteFilePath("lastLoaded.map");
         labyrinthController->importFile(lastLoadedMap);
     }
+}
+
+void Application::createWindow(QString objectName, QUrl windowUrl)
+{
+    connect(&engine, &QQmlApplicationEngine::objectCreated, this, [this, objectName, windowUrl](QObject *object, const QUrl &url) {
+        if (!object && windowUrl == url)
+            exit(-1);
+        onWindowCreated(objectName, static_cast<QWindow*>(object));
+    }, Qt::QueuedConnection);
+
+    connect(&engine, &QQmlApplicationEngine::objectCreationFailed, this, []() {
+        exit(-1);
+    }, Qt::QueuedConnection);
+
+    engine.load(windowUrl);
+
+    if (!disconnect(&engine, &QQmlApplicationEngine::objectCreated, this, nullptr))
+        qWarning() << "Failed to disconnect signal for object created";
+    if (!disconnect(&engine, &QQmlApplicationEngine::objectCreationFailed, this, nullptr))
+        qWarning() << "Failed to disconnect signal for object creation failed";
 }
 
 void Application::updateLanguage(QString languageCode)
@@ -287,10 +294,19 @@ void Application::onSettingsUpdated()
     engine.retranslate();
 }
 
-void Application::onWindowCreated(QString windowName, QWindow* window)
+void Application::onWindowCreated(QString objectName, QWindow* window)
 {
-    auto handler = windows->value(windowName).connectionsHandler;
+    auto handler = windows->value(objectName).connectionsHandler;
     (this->*handler)(window);
+    emit handlerCompleted(window->objectName());
+}
+
+void Application::onHandlerCompleted([[maybe_unused]] QString objectName) {
+    // All handlers have to finish their work before trying to restore previous loaded map
+    handlersCount++;
+    if (windows->size() == handlersCount) {
+        restorePreviouslyLoadedMap();
+    }
 }
 
 void Application::handleMainWindowConnections(QWindow* window)
@@ -333,7 +349,6 @@ void Application::handleRoomPresetsWindowConnections(QWindow* window)
 
 void Application::handlePuzzleWindowConnections([[maybe_unused]] QWindow* window)
 {
-
 }
 
 void Application::handleOptionsWindowConnections(QWindow* window)

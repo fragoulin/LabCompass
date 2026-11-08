@@ -42,7 +42,14 @@ void LabyrinthModelPropertiesTest::test()
     model.loadFromData(data);
 
     QFETCH(QString, difficulty);
-    QCOMPARE(model.get_difficulty(), difficulty);
+    if ("Normal" == difficulty)
+        QCOMPARE(model.get_difficulty(), 0);
+    else if ("Cruel" == difficulty)
+        QCOMPARE(model.get_difficulty(), 1);
+    else if ("Merciless" == difficulty)
+        QCOMPARE(model.get_difficulty(), 2);
+    else if ("Uber" == difficulty)
+        QCOMPARE(model.get_difficulty(), 3);
 
     QFETCH(QDate, date);
     QCOMPARE(model.get_date(), date);

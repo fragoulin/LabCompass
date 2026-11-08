@@ -6,7 +6,14 @@
 class LabyrinthModel : public QObject {
     Q_OBJECT
 
-    QML_READONLY_VAR_PROPERTY(QString, difficulty)
+    enum Difficulty {
+        NORMAL,
+        CRUEL,
+        MERCILESS,
+        ETERNAL
+    };
+
+    QML_READONLY_VAR_PROPERTY(Difficulty, difficulty)
     QML_READONLY_VAR_PROPERTY(QDate, date)
 
 public:

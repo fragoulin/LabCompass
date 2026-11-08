@@ -65,7 +65,20 @@ bool LabyrinthData::loadFromJson(const QJsonObject& jsonLab)
         return false;
     }
 
-    difficulty = jsonLab["difficulty"].toString();
+    const QString difficultyFromJSON = jsonLab["difficulty"].toString();
+    if ("Normal" == difficultyFromJSON)
+        difficulty = Difficulty::NORMAL;
+    else if ("Cruel" == difficultyFromJSON)
+        difficulty = Difficulty::CRUEL;
+    else if ("Merciless" == difficultyFromJSON)
+        difficulty = Difficulty::MERCILESS;
+    else if ("Uber" == difficultyFromJSON)
+        difficulty = Difficulty::UBER;
+    else {
+        qWarning() << "Invalid difficulty" << difficultyFromJSON << "Expected 'Normal', 'Cruel', 'Merciless' or 'Uber'";
+        return false;
+    }
+
     date = QDate::fromString(jsonLab["date"].toString(), "yyyy-MM-dd");
 
     weapon = jsonLab["weapon"].toString();
