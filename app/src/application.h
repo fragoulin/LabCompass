@@ -31,11 +31,8 @@ class Application : public QApplication {
 
 public:
     Application(int& argc, char** argv);
-    struct Window {
-        QUrl url;
-        void (Application::*connectionsHandler)(QWindow*);
-    };
-    using Windows = QMap<QString, Window>;
+    using Handler = void (Application::*)(QWindow*);
+    using Modules = QMap<QString, Handler>;
     void handleMainWindowConnections(QWindow* window);
     void handlePlannerWindowConnections(QWindow* window);
     void handleRoomPresetsWindowConnections(QWindow* window);
@@ -50,7 +47,7 @@ private slots:
     void onAboutToQuit(QPoint windowPosition);
     void onSettingsUpdated();
     void onImportFileFailed();
-    void onWindowCreated(QString objectName, QWindow* window);
+    void onWindowCreated(QString objectName, QWindow* window, Handler handler);
     void onHandlerCompleted(QString objectName);
     void onResourcesLoaded();
 
@@ -66,7 +63,7 @@ private:
     void initWorkers();
     void initControllers();
     void initHotkeys();
-    void createWindow(QString objectName, QUrl windowUrl);
+    void createWindow(QString typeName, Handler handler);
     void restorePreviouslyLoadedMap();
     void updateLanguage(QString languageCode);
     int handlersCount = 0;

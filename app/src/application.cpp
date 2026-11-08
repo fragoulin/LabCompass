@@ -7,32 +7,17 @@
 #include <QStringBuilder>
 #include <QWKQuick/qwkquickglobal.h>
 
-Q_GLOBAL_STATIC(Application::Windows, windows, {
+Q_GLOBAL_STATIC(Application::Modules, windows, {
     {
-        "MainWindow",
-        Application::Window(
-            QUrl(QStringLiteral("qrc:/qt/qml/labcompass/MainWindow.qml")),
-            &Application::handleMainWindowConnections)
+        "Main", &Application::handleMainWindowConnections
     }, {
-        "PlannerWindow",
-        Application::Window(
-            QUrl(QStringLiteral("qrc:/qt/qml/labcompass/planner/Planner.qml")),
-            &Application::handlePlannerWindowConnections)
+        "Planner", &Application::handlePlannerWindowConnections
     }, {
-        "RoomPresetsWindow",
-        Application::Window(
-            QUrl(QStringLiteral("qrc:/qt/qml/labcompass/roompresets/RoomPresets.qml")),
-            &Application::handleRoomPresetsWindowConnections)
+        "RoomPresets", &Application::handleRoomPresetsWindowConnections
     }, {
-        "PuzzleWindow",
-        Application::Window(
-            QUrl(QStringLiteral("qrc:/qt/qml/labcompass/Puzzle.qml")),
-            &Application::handlePuzzleWindowConnections)
+        "Puzzle", &Application::handlePuzzleWindowConnections
     }, {
-        "OptionsWindow",
-        Application::Window(
-            QUrl(QStringLiteral("qrc:/qt/qml/labcompass/options/Options.qml")),
-            &Application::handleOptionsWindowConnections)
+        "Options", &Application::handleOptionsWindowConnections
     },
 });
 
@@ -85,10 +70,9 @@ void Application::initResources()
 
     qmlRegisterType<KeySequenceHelper>("labcompass", 1, 0, "KeySequenceHelper");
 
-    QUrl globalUrl = QUrl(QStringLiteral("qrc:/qt/qml/labcompass/GlobalAccessor.qml"));
-    connect(&engine, &QQmlApplicationEngine::objectCreated, this, [this, globalUrl](QObject *object, const QUrl &url) {
+    connect(&engine, &QQmlApplicationEngine::objectCreated, this, [this](QObject *object) {
         qInfo() << "Resoures loaded";
-        if (!object && globalUrl == url)
+        if (!object)
             exit(-1);
         global = object->property("o").value<QObject*>();
         global->setProperty("model", QVariant::fromValue<QObject*>(&model));
@@ -103,7 +87,7 @@ void Application::initResources()
         exit(-1);
     }, Qt::QueuedConnection);
 
-    engine.load(globalUrl);
+    engine.loadFromModule("labcompass", "GlobalAccessor");
 
     if (!disconnect(&engine, &QQmlApplicationEngine::objectCreated, this, nullptr))
         qWarning() << "Failed to disconnect signal for object created (resources)";
@@ -200,7 +184,7 @@ void Application::initWindows()
             this, SLOT(onHandlerCompleted(QString)));
 
     for (auto i = windows->cbegin(), end = windows->cend(); i != end; ++i)
-        createWindow(i.key(), i.value().url);
+        createWindow(i.key(), i.value());
 }
 
 void Application::initHotkeys()
@@ -227,19 +211,19 @@ void Application::restorePreviouslyLoadedMap()
     }
 }
 
-void Application::createWindow(QString objectName, QUrl windowUrl)
+void Application::createWindow(QString typeName, Handler handler)
 {
-    connect(&engine, &QQmlApplicationEngine::objectCreated, this, [this, objectName, windowUrl](QObject *object, const QUrl &url) {
-        if (!object && windowUrl == url)
+    connect(&engine, &QQmlApplicationEngine::objectCreated, this, [this, typeName, handler](QObject *object) {
+        if (!object)
             exit(-1);
-        onWindowCreated(objectName, static_cast<QWindow*>(object));
+        onWindowCreated(typeName, static_cast<QWindow*>(object), handler);
     }, Qt::QueuedConnection);
 
     connect(&engine, &QQmlApplicationEngine::objectCreationFailed, this, []() {
         exit(-1);
     }, Qt::QueuedConnection);
 
-    engine.load(windowUrl);
+    engine.loadFromModule("labcompass", typeName);
 
     if (!disconnect(&engine, &QQmlApplicationEngine::objectCreated, this, nullptr))
         qWarning() << "Failed to disconnect signal for object created (window)";
@@ -311,11 +295,10 @@ void Application::onSettingsUpdated()
     engine.retranslate();
 }
 
-void Application::onWindowCreated(QString objectName, QWindow* window)
+void Application::onWindowCreated(QString objectName, QWindow* window, Handler handler)
 {
-    auto handler = windows->value(objectName).connectionsHandler;
     (this->*handler)(window);
-    emit handlerCompleted(window->objectName());
+    emit handlerCompleted(objectName);
 }
 
 void Application::onHandlerCompleted([[maybe_unused]] QString objectName) {
