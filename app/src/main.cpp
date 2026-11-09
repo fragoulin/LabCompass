@@ -24,9 +24,6 @@ int main(int argc, char** argv)
     if (!qputenv("QT_QUICK_CONTROLS_MATERIAL_ACCENT", "#2196F3"))
         qWarning() << "Failed to set environment variable QT_QUICK_CONTROLS_MATERIAL_ACCENT";
 
-    QGuiApplication::setHighDpiScaleFactorRoundingPolicy(
-        Qt::HighDpiScaleFactorRoundingPolicy::PassThrough);
-
     Application app(argc, argv);
     int r = app.exec();
     qInfo() << "Exiting with code:" << r;
