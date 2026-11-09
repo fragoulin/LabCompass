@@ -24,6 +24,7 @@ Window {
 
   Component.onCompleted: {
     windowAgent.setup(root)
+    windowAgent.setTitleBar(titlebar);
   }
 
   WindowAgent {
@@ -56,6 +57,7 @@ Window {
         height: 60
         spacing: 30
         Text {
+          id: titlebar
           anchors.verticalCenter: parent.verticalCenter
           text: 'LabCompass'
           color: Global.primaryTextColor
