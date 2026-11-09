@@ -146,6 +146,10 @@ Window {
     }
   }
 
+  onClosing: () => {
+    Global.puzzleWindowOpen = false
+  }
+
   Connections {
     target: Global
     function onPuzzleWindowOpenChanged() {

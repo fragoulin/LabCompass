@@ -547,6 +547,10 @@ Window {
     ];
   }
 
+  onClosing: () => {
+    Global.optionsWindowOpen = false
+  }
+
   Connections {
     target: Global
     function onOptionsWindowOpenChanged() {

@@ -283,6 +283,10 @@ Window {
     window.presetListViewCurrentIndex = window.roomPresetModel.current
   }
 
+  onClosing: () => {
+    Global.roomPresetsWindowOpen = false
+  }
+
   Connections {
     target: Global
 

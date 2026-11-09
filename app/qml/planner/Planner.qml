@@ -260,6 +260,10 @@ Window {
         onAccepted: window.importFile(selectedFile)
     }
 
+    onClosing: () => {
+      Global.plannerWindowOpen = false
+    }
+
     function getLabyrinthDifficulty(difficulty: string): string {
         switch (difficulty) {
         case "Normal":
