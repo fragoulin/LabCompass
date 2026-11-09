@@ -11,7 +11,7 @@ QtObject {
   property bool puzzleWindowOpen: false
   property bool optionsWindowOpen: false
   property bool roomPresetsWindowOpen: false
-  property MouseArea lastActiveTooltipHoverArea
+  property TooltipHoverArea lastActiveTooltipHoverArea
 
   property var model
   property bool loadedMapUpToDate: model ? String(model.currentUtcDate) === String(model.labyrinthModel.date) : true
