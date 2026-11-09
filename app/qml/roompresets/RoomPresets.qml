@@ -243,7 +243,7 @@ Window {
             height: 40
             anchors.centerIn: parent
             visible: (grid.state === '' || grid.state === 'Disabled') && presetListView.currentIndex !== window.roomPresetModel.current
-            onClicked: window.applyPresetButtonClicked(window.roomPresetModel.roomId, window.roomPresetModel.presets[presetListView.currentIndex].areaCode)
+            onClicked: window.applyPresets()
             Rectangle {
               anchors.fill: parent
               color: Global.accentColor
@@ -281,6 +281,11 @@ Window {
 
   function resetIndex() {
     window.presetListViewCurrentIndex = window.roomPresetModel.current
+  }
+
+  function applyPresets() {
+    window.applyPresetButtonClicked(window.roomPresetModel.roomId, window.roomPresetModel.presets[presetListView.currentIndex].areaCode)
+    window.close()
   }
 
   onClosing: () => {
