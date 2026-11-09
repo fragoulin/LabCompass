@@ -8,9 +8,9 @@ MouseArea {
   clip: true
   cursorShape: enabled ? Qt.PointingHandCursor : Qt.ArrowCursor
   property point focusPoint
-  property bool pressed: false
+  property bool buttonPressed: false
   onPressed: {
-    pressed = true;
+    buttonPressed = true;
     layer1FadeOut.stop();
     layer1FadeIn.start();
   }
@@ -84,8 +84,8 @@ MouseArea {
   }
 
   function release() {
-    if (pressed) {
-      pressed = false;
+    if (buttonPressed) {
+      buttonPressed = false;
       layer1FadeIn.stop();
       layer1FadeOut.start();
       showRipple(Qt.point(root.mouseX, root.mouseY));
