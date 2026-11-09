@@ -1,9 +1,11 @@
+pragma ComponentBehavior: Bound
+
 import QtQuick
 
 HighlightTab {
   id: root
 
-  property var model: []
+  property list<string> model: []
 
   items: model.length ? model.length : 1
   onItemClicked: index => currentItem = index
@@ -12,6 +14,7 @@ HighlightTab {
     Repeater {
       model: root.model
       TabLabel {
+        required property string modelData
         width: root.width / root.items
         height: root.height
         active: true
@@ -24,6 +27,7 @@ HighlightTab {
     Repeater {
       model: root.model
       TabLabel {
+        required property string modelData
         width: root.width / root.items
         height: root.height
         active: false
