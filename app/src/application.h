@@ -54,6 +54,7 @@ private:
     void initWindowKit();
     void initTranslations();
     void initResources();
+    void initFonts();
     void initSystemTrayIcon();
     void initHelpers();
     void initWindows();

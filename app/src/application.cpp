@@ -97,18 +97,13 @@ void Application::initResources()
     if (!disconnect(&engine, &QQmlApplicationEngine::objectCreationFailed, this, nullptr))
         qWarning() << "Failed to disconnect signal for object creation failed (resources)";
 
-    if (-1 == QFontDatabase::addApplicationFont(u":/assets/fonts/Fontin-SmallCaps.ttf"_s))
-        qWarning() << "Failed to load font Fontin-SmallCaps.ttf";
-    if (-1 == QFontDatabase::addApplicationFont(u":/assets/fonts/OpenSans-Regular.ttf"_s))
-        qWarning() << "Failed to load font OpenSans-Regular.ttf";
-
-    QFont font(u"Fontin SmallCaps"_s);
-    font.setPixelSize(16);
-    setFont(font);
 }
 
 void Application::onResourcesLoaded()
 {
+    qInfo() << "Init fonts";
+    initFonts();
+
     qInfo() << "Init system tray icon";
     initSystemTrayIcon();
 
@@ -128,6 +123,18 @@ void Application::onResourcesLoaded()
     initHotkeys();
 
     qInfo() << "Initialization finished";
+}
+
+void Application::initFonts()
+{
+    if (-1 == QFontDatabase::addApplicationFont(u":/assets/fonts/Fontin-SmallCaps.ttf"_s))
+        qWarning() << "Failed to load font Fontin-SmallCaps.ttf";
+    if (-1 == QFontDatabase::addApplicationFont(u":/assets/fonts/OpenSans-Regular.ttf"_s))
+        qWarning() << "Failed to load font OpenSans-Regular.ttf";
+
+    QFont font(u"Fontin SmallCaps"_s);
+    font.setPixelSize(16);
+    setFont(font);
 }
 
 void Application::initSystemTrayIcon()
