@@ -14,7 +14,7 @@ Item {
   SvgImage {
     id: icon
     anchors.fill: root
-    source: root.content in Global.contentIconMapping ? 'qrc:/qt/qml/labcompass/assets/images/lab-content/' + Global.contentIconMapping[content] + '.svg' : ''
+    source: root.content in Global.contentIconMapping ? 'qrc:/qt/qml/labcompass/assets/images/lab-content/' + Global.contentIconMapping[root.content] + '.svg' : ''
   }
 
   MultiEffect {

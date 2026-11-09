@@ -12,6 +12,7 @@ Row {
     model: root.model
 
     RoomContentIcon {
+      required property string modelData
       content: modelData
     }
   }

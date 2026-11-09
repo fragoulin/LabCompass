@@ -1,6 +1,5 @@
 import QtQuick
 import labcompass
-import '../point.js' as Point
 import '..'
 
 Item {
@@ -15,8 +14,8 @@ Item {
   Repeater {
     id: exitDirectionView
     model: root.presetModel ? root.presetModel.doorExitLocations : []
-
     SvgImage {
+      required property var modelData
       x: modelData.tileRect.x * root.width
       y: modelData.tileRect.y * root.height
       width: modelData.tileRect.width * root.width
@@ -30,6 +29,7 @@ Item {
     model: root.presetModel ? root.presetModel.contentLocations: []
 
     SvgImage {
+      required property var modelData
       x: modelData.tileRect.x * root.width
       y: modelData.tileRect.y * root.height
       width: modelData.tileRect.width * root.width
