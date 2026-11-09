@@ -6,7 +6,7 @@ include(CMake/JsonSchemaValidator.cmake)
 
 file(GLOB_RECURSE SOURCES CONFIGURE_DEPENDS *.cpp *.h *.qrc)
 
-add_library(${TARGET_NAME} ${SOURCES})
+qt_add_library(${TARGET_NAME} ${SOURCES})
 
 configure_file("src/version.h.in" "include/version.h")
 

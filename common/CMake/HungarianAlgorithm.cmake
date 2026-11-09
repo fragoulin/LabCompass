@@ -9,5 +9,5 @@ FetchContent_MakeAvailable(${TARGET_HUNGARIAN})
 
 set(SOURCE_DIR_HUNGARIAN ${FETCHCONTENT_BASE_DIR}/hungarianalgorithm-src)
 
-add_library(hungarian ${SOURCE_DIR_HUNGARIAN}/Hungarian.cpp
-                      ${SOURCE_DIR_HUNGARIAN}/Hungarian.h)
+qt_add_library(hungarian ${SOURCE_DIR_HUNGARIAN}/Hungarian.cpp
+                         ${SOURCE_DIR_HUNGARIAN}/Hungarian.h)
