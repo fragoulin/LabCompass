@@ -23,7 +23,6 @@ Item {
 
     RectangularShadow {
       anchors.fill: contents
-      color: Qt.darker(contents.color, 1.6)
     }
   }
 }
