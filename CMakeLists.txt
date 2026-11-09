@@ -34,7 +34,7 @@ find_package(
   GuiPrivate
   QuickPrivate)
 
-qt_standard_project_setup(REQUIRES 6.12 I18N_TRANSLATED_LANGUAGES en pt ru th de fr es ja ko)
+qt_standard_project_setup(REQUIRES 6.12 I18N_TRANSLATED_LANGUAGES pt ru th de fr es ja ko)
 
 # Require out-of-source builds
 file(TO_CMAKE_PATH "${PROJECT_BINARY_DIR}/CMakeLists.txt" LOC_PATH)
