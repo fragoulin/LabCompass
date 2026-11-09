@@ -37,7 +37,7 @@ if(WIN32)
                     ${app_icon_resource_windows})
   # ! [appicon_windows]
 else()
-  qt_add_executable(${TARGET_NAME} WIN32 ${SOURCES})
+  qt_add_executable(${TARGET_NAME} ${SOURCES})
 endif()
 
 set_source_files_properties(qml/Global.qml PROPERTIES QT_QML_SINGLETON_TYPE
