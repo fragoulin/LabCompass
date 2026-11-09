@@ -72,9 +72,8 @@ void Application::initResources()
     qmlRegisterType<KeySequenceHelper>("labcompass", 1, 0, "KeySequenceHelper");
 
     connect(&engine, &QQmlApplicationEngine::objectCreated, this, [this](QObject *object) {
-        qInfo() << "Resoures loaded";
         if (!object)
-            exit(-1);
+            qFatal() << "Failed to load global accessor";
         global = object->property("o").value<QObject*>();
         global->setProperty("model", QVariant::fromValue<QObject*>(&model));
         global->setProperty("version", VERSION);
@@ -181,9 +180,6 @@ void Application::initControllers()
 
 void Application::initWindows()
 {
-    connect(this, SIGNAL(handlerCompleted(QString)),
-            this, SLOT(onHandlerCompleted(QString)));
-
     for (auto i = windows->cbegin(), end = windows->cend(); i != end; ++i)
         createWindow(i.key(), i.value());
 }
@@ -216,8 +212,8 @@ void Application::createWindow(QString typeName, Handler handler)
 {
     connect(&engine, &QQmlApplicationEngine::objectCreated, this, [this, typeName, handler](QObject *object) {
         if (!object)
-            exit(-1);
-        onWindowCreated(typeName, static_cast<QWindow*>(object), handler);
+            qFatal() << "Failed to load from module" << typeName;
+        onWindowCreated(static_cast<QWindow*>(object), handler);
     }, Qt::QueuedConnection);
 
     connect(&engine, &QQmlApplicationEngine::objectCreationFailed, this, []() {
@@ -296,14 +292,11 @@ void Application::onSettingsUpdated()
     engine.retranslate();
 }
 
-void Application::onWindowCreated(QString objectName, QWindow* window, Handler handler)
+void Application::onWindowCreated(QWindow* window, Handler handler)
 {
     (this->*handler)(window);
-    emit handlerCompleted(objectName);
-}
 
-void Application::onHandlerCompleted([[maybe_unused]] QString objectName) {
-    // All handlers have to finish their work before trying to restore previous loaded map
+    // All handlers have to finish their work before application is ready
     handlersCount++;
     if (windows->size() == handlersCount) {
         restorePreviouslyLoadedMap();

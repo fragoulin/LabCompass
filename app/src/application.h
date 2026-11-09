@@ -29,6 +29,8 @@ class Application : public QApplication {
 
     std::unique_ptr<HotkeyBinding> toggleHideUiHotkey;
 
+    int handlersCount = 0;
+
 public:
     Application(int& argc, char** argv);
     using Handler = void (Application::*)(QWindow*);
@@ -39,16 +41,11 @@ public:
     void handlePuzzleWindowConnections(QWindow* window);
     void handleOptionsWindowConnections(QWindow* window);
 
-signals:
-    void mainWindowCreated(QWindow* window);
-    void handlerCompleted(QString objectName);
-
 private slots:
     void onAboutToQuit(QPoint windowPosition);
     void onSettingsUpdated();
     void onImportFileFailed();
-    void onWindowCreated(QString objectName, QWindow* window, Handler handler);
-    void onHandlerCompleted(QString objectName);
+    void onWindowCreated(QWindow* window, Handler handler);
     void onResourcesLoaded();
 
 private:
@@ -66,7 +63,6 @@ private:
     void createWindow(QString typeName, Handler handler);
     void restorePreviouslyLoadedMap();
     void updateLanguage(QString languageCode);
-    int handlersCount = 0;
 };
 
 #endif // APPLICATION_H
