@@ -15,7 +15,7 @@ Window {
   maximumWidth: minimumWidth
   maximumHeight: minimumHeight
   color: "transparent"
-  visible: Global.compassVisible
+  visible: false
   flags: Qt.WindowStaysOnTopHint | Qt.FramelessWindowHint | Qt.WA_TranslucentBackground
 
   Component.onCompleted: {
@@ -26,7 +26,7 @@ Window {
     windowAgent.setHitTestVisible(optionsButton, true);
     windowAgent.setSystemButton(WindowAgent.Close, closeButton)
     setWindowPosition()
-    Global.compassVisible = true
+    window.visible = true
   }
 
   WindowAgent {

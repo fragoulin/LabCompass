@@ -5,7 +5,7 @@ QtObject {
   property string version
   property bool debug: false
 
-  property bool compassVisible: false
+  property bool compassVisible: true
   property bool compassToolbarVisible: compassVisible && model && model.roomPresetModel ? model.roomPresetModel.presets.length : false
   property bool plannerWindowOpen: false
   property bool puzzleWindowOpen: false

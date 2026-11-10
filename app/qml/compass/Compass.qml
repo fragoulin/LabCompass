@@ -13,6 +13,8 @@ Item {
   property bool useMinimapDisplay: Global.model.settings.showMinimap && displayActive && Object.keys(Global.model.instructionModel.preset).length
   property bool compassToolbarVisible: Global.compassToolbarVisible
 
+  visible: Global.compassVisible
+
   Item {
     id: directionDisplay
     implicitWidth: 170
