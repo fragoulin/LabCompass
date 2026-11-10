@@ -4,8 +4,6 @@ import QtQuick
 import QtQuick.Controls
 import QtQuick.Controls.Material
 import QtQuick.Layouts
-import labcompass
-import '..'
 import QWindowKit
 import QtQuick.Dialogs
 
