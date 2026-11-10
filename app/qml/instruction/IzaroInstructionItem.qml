@@ -14,7 +14,7 @@ InstructionItem {
     //% "Defeat Izaro"
     //@ Instruction
     text: qsTrId("id-defeat-izaro")
-    color: Global.primaryTextColor
+    color: Styles.primaryTextColor
   }
   Row {
     visible: root.mechanics
@@ -24,7 +24,7 @@ InstructionItem {
     }
     Text {
       text: root.mechanics in Global.nameMapping ? Global.nameMapping[root.mechanics] : root.mechanics
-      color: Global.primaryTextColor
+      color: Styles.primaryTextColor
     }
   }
 

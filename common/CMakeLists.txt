@@ -21,3 +21,10 @@ target_link_libraries(
                          Qt6::QuickWidgets Qt6::QuickControls2)
 
 set_project_warnings(${TARGET_NAME})
+
+qt_add_qml_module(
+  ${TARGET_NAME}
+  URI
+  common
+  SOURCES
+  ${SOURCES})

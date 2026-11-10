@@ -54,7 +54,7 @@ Window {
             //@ RoomPresets
             text: qsTrId("id-roompresets-room-layout")
             anchors.centerIn: parent
-            color: Global.primaryTextColor
+            color: Styles.primaryTextColor
             font.pixelSize: 32
           }
         }
@@ -77,7 +77,7 @@ Window {
       Rectangle {
         width: grid.width
         height: 2
-        color: Qt.lighter(Global.primaryColor)
+        color: Qt.lighter(Styles.primaryColor)
       }
 
       Item {
@@ -93,7 +93,7 @@ Window {
             bottom: parent.bottom
             leftMargin: 30
           }
-          color: Global.primaryColor
+          color: Styles.primaryColor
 
           ListView {
             id: presetListView
@@ -115,7 +115,7 @@ Window {
                   presetModel: modelData
                 }
                 Text {
-                  color: Global.primaryTextColor
+                  color: Styles.primaryTextColor
                   text: modelData.areaCode
                 }
               }
@@ -173,7 +173,7 @@ Window {
                   anchors.verticalCenter: parent.verticalCenter
                   text: model ? window.roomPresetModel.roomName + ' > ' + model.areaCode : ''
                   font.pixelSize: 24
-                  color: Global.primaryTextColor
+                  color: Styles.primaryTextColor
                 }
               }
               Row {
@@ -201,7 +201,7 @@ Window {
               Text {
                 anchors.centerIn: parent
                 font.pixelSize: 24
-                color: Global.primaryTextColor
+                color: Styles.primaryTextColor
                 //: Label displayed in room presets. Label should be brief because of limited space available
                 //% "No Presets Available for This Room"
                 //@ RoomPresets
@@ -217,7 +217,7 @@ Window {
               Text {
                 anchors.centerIn: parent
                 font.pixelSize: 24
-                color: Global.primaryTextColor
+                color: Styles.primaryTextColor
                 //: Label displayed in room presets. Label should be brief because of limited space available
                 //% "Presets Will Be Disabled for This Room"
                 //@ RoomPresets
@@ -246,7 +246,7 @@ Window {
             onClicked: window.applyPresets()
             Rectangle {
               anchors.fill: parent
-              color: Global.accentColor
+              color: Styles.accentColor
               radius: 2
               z: -1
               Text {
@@ -255,7 +255,7 @@ Window {
                 //% "Apply Preset"
                 //@ RoomPresets
                 text: qsTrId("id-roompresets-apply-preset")
-                color: Global.primaryTextColor
+                color: Styles.primaryTextColor
               }
             }
           }

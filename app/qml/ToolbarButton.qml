@@ -11,7 +11,7 @@ Rectangle {
   width: 24
   height: root.buttonHeight
 
-  color: active ? Global.backgroundColor : Global.lightPrimaryColor
+  color: active ? Styles.backgroundColor : Styles.lightPrimaryColor
   SvgImage {
     source: root.source
     anchors.centerIn: root

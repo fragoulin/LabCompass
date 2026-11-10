@@ -238,7 +238,7 @@ Q_GLOBAL_STATIC(QRegularExpression, LOG_REGEX, uR"(^\d+\/\d+\/\d+ \d+:\d+:\d+ \d
 LogWatcher::LogWatcher(ApplicationModel* applicationModel)
 {
     this->model = applicationModel;
-    clientPath = model->get_settings()->get_poeClientPath();
+    clientPath = model->get_settings()->poeClientPath();
     file.reset(new QFile(QDir(clientPath).filePath(u"logs/Client.txt"_s)));
 
     timer.setInterval(1000);
@@ -251,7 +251,7 @@ LogWatcher::LogWatcher(ApplicationModel* applicationModel)
 void LogWatcher::work()
 {
     // reset file if client path settings have changed
-    auto newClientPath = model->get_settings()->get_poeClientPath();
+    auto newClientPath = model->get_settings()->poeClientPath();
     if (clientPath != newClientPath) {
         clientPath = newClientPath;
         file.reset(new QFile(QDir(clientPath).filePath(u"logs/Client.txt"_s)));
@@ -272,7 +272,7 @@ void LogWatcher::work()
                 model->update_logFileOpen(false);
                 return;
             }
-            model->get_settings()->set_poeClientPath(clientPath);
+            model->get_settings()->setPoeClientPath(clientPath);
         }
         model->update_logFileOpen(true);
         file->seek(file->size());
@@ -396,7 +396,7 @@ void LogWatcher::setActiveClient(const QString& clientId)
 
 bool LogWatcher::isLogFromValidClient(const QString& clientId) const
 {
-    return !model->get_settings()->get_multiclientSupport() || clientId == activeClientId;
+    return !model->get_settings()->multiclientSupport() || clientId == activeClientId;
 }
 
 bool LogWatcher::isValidRoomName(const QString& roomName)

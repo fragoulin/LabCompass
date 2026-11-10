@@ -17,14 +17,14 @@ InstructionItem {
   }
 
   Text {
-    color: Global.primaryTextColor
+    color: Styles.primaryTextColor
     //: Label displayed before the name of the loaded map
     //% "Loaded Map:"
     //@ Instruction
     text: qsTrId("id-loaded-map")
   }
   Text {
-    color: Global.primaryTextColor
+    color: Styles.primaryTextColor
     //: Text displayed under compass when player teleports to labyrinth plaza.
     //: First parameter is date (formatted using current locale)
     //: Second parameter is difficulty (Normal, Cruel, Merciless or Uber)

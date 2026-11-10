@@ -41,7 +41,7 @@ Window {
           id: titleBar
           Layout.fillWidth: true
           implicitHeight: 42
-          color: Global.lightPrimaryColor
+          color: Styles.lightPrimaryColor
 
           RowLayout {
               anchors.fill: parent
@@ -49,7 +49,7 @@ Window {
 
               Text {
                   text: window.title
-                  color: Global.primaryTextColor
+                  color: Styles.primaryTextColor
                   elide: Text.ElideRight
                   verticalAlignment: Text.AlignVCenter
                   Layout.leftMargin: 12

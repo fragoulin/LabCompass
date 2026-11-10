@@ -17,7 +17,7 @@ Item {
 
     Rectangle {
       anchors.fill: parent
-      color: Global.backgroundColor
+      color: Styles.backgroundColor
       radius: 8
     }
 

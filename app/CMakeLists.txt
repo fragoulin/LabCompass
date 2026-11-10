@@ -1,12 +1,7 @@
 set(TARGET_NAME labcompass)
 
-qt_add_translations(
-  ${TARGET_NAME}
-  TS_FILE_DIR
-  translations
-  LUPDATE_OPTIONS
-  -no-obsolete
-  LRELEASE_OPTIONS)
+qt_add_translations(${TARGET_NAME} TS_FILE_DIR translations LUPDATE_OPTIONS
+                    -no-obsolete LRELEASE_OPTIONS)
 
 include(CMake/QHotkey.cmake)
 include(CMake/Qwindowkit.cmake)
@@ -40,8 +35,8 @@ else()
   qt_add_executable(${TARGET_NAME} ${SOURCES})
 endif()
 
-set_source_files_properties(qml/Global.qml PROPERTIES QT_QML_SINGLETON_TYPE
-                                                      TRUE)
+set_source_files_properties(qml/Global.qml qml/Styles.qml
+                            PROPERTIES QT_QML_SINGLETON_TYPE TRUE)
 
 # Set alias for qml files stored in qml directory
 # https://doc.qt.io/qt-6/qt-add-qml-module.html#caching-compiled-qml-sources
@@ -87,4 +82,8 @@ qt_add_qml_module(
   QML_FILES
   ${QML_SOURCES}
   RESOURCES
-  ${IMAGES_RESOURCES})
+  ${IMAGES_RESOURCES}
+  DEPENDENCIES
+  TARGET
+  common
+  QML_FILES)

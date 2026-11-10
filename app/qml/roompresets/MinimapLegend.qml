@@ -9,7 +9,7 @@ Item {
 
   Rectangle {
     anchors.fill: parent
-    color: Global.primaryColor
+    color: Styles.primaryColor
   }
 
   Grid {
@@ -25,7 +25,7 @@ Item {
 
     Text {
       font.pixelSize: 20
-      color: Global.primaryTextColor
+      color: Styles.primaryTextColor
       //: Legend label title displayed in room presets. Label should be brief because of limited space available
       //% "Legend"
       //@ RoomPresets
@@ -45,7 +45,7 @@ Item {
         SvgImage { width: 26; height: 20; source: 'qrc:/qt/qml/labcompass/assets/images/compass/tile-cross.svg' }
       }
       Text {
-        color: Global.primaryTextColor;
+        color: Styles.primaryTextColor;
         //: Path label caption displayed in room presets. Label should be brief because of limited space available
         //% "Path"
         //@ RoomPresets
@@ -54,7 +54,7 @@ Item {
 
       SvgImage { width: 26; height: 20; source: 'qrc:/qt/qml/labcompass/assets/images/compass/tile-trap.svg' }
       Text {
-        color: Global.primaryTextColor;
+        color: Styles.primaryTextColor;
         //: Traps label caption displayed in room presets. Label should be brief because of limited space available
         //% "Traps"
         //@ RoomPresets
@@ -63,7 +63,7 @@ Item {
 
       SvgImage { width: 26; height: 20; source: 'qrc:/qt/qml/labcompass/assets/images/compass/door-target.svg' }
       Text {
-        color: Global.primaryTextColor;
+        color: Styles.primaryTextColor;
         //: Exit label caption displayed in room presets. Label should be brief because of limited space available
         //% "Exit"
         //@ RoomPresets
@@ -72,7 +72,7 @@ Item {
 
       SvgImage { width: 26; height: 20; source: 'qrc:/qt/qml/labcompass/assets/images/compass/loot-normal.svg' }
       Text {
-        color: Global.primaryTextColor;
+        color: Styles.primaryTextColor;
         //: Loot label caption displayed in room presets. Label should be brief because of limited space available
         //% "Loot"
         //@ RoomPresets

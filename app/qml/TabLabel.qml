@@ -10,6 +10,6 @@ Item {
     id: text
     anchors.centerIn: parent
     font.pixelSize: 16
-    color: root.active ? Global.primaryTextColor : Global.secondaryTextColor
+    color: root.active ? Styles.primaryTextColor : Styles.secondaryTextColor
   }
 }

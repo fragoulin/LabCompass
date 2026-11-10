@@ -23,7 +23,7 @@ Item {
         width: 16
         height: 16
         radius: 8
-        color: modelData.direction === root.instructionModel.nextRoomDirection ? Global.activePathColor : '#909090'
+        color: modelData.direction === root.instructionModel.nextRoomDirection ? Styles.activePathColor : '#909090'
         border {
           width: 1
           color: 'black'
@@ -42,7 +42,7 @@ Item {
         width: 8
         height: 8
         rotation: 45
-        color: root.instructionModel.nextRoomConnectionType === 'secret' && !modelData.major ? Global.activePathColor : '#FFA726'
+        color: root.instructionModel.nextRoomConnectionType === 'secret' && !modelData.major ? Styles.activePathColor : '#FFA726'
         border {
           width: 1
           color: 'black'

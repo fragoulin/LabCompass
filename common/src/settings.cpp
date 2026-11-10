@@ -29,9 +29,9 @@ Settings::Settings(QObject* parent)
 {
     settings.reset(new QSettings());
 
-    m_multiclientSupport = false;
-    m_portalSkipsSection = true;
-    m_showMinimap = true;
+    setMulticlientSupport(false);
+    setPortalSkipsSection(true);
+    setShowMinimap(true);
 }
 
 void Settings::load()
@@ -44,9 +44,9 @@ void Settings::load()
 
     if (settings->value(u"version"_s).toString() != VERSION) {
         settings->setValue(u"version"_s, VERSION);
-        set_latestVersion("");
-        set_lastVersionCheckAttempt(0LL);
-        set_lastVersionCheckSuccess(0LL);
+        setLatestVersion("");
+        setLastVersionCheckAttempt(0LL);
+        setLastVersionCheckSuccess(0LL);
     }
 
     qInfo().noquote() << "Settings loaded" << QJsonDocument::fromVariant(toVariant()).toJson(QJsonDocument::Compact);

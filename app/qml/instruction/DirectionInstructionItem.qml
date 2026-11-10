@@ -24,7 +24,7 @@ InstructionItem {
 
   Text {
     visible: root.atPlaza
-    color: Global.primaryTextColor
+    color: Styles.primaryTextColor
     //: Instruction displayed when the player location is at plaza (i.e. before choosing the labyrinth difficulty)
     //% "Enter the Labyrinth"
     //@ Instruction
@@ -33,7 +33,7 @@ InstructionItem {
 
   Text {
     visible: !root.atPlaza
-    color: Global.primaryTextColor
+    color: Styles.primaryTextColor
     text: root.nextRoomIsPreviousRoom ? //: Instruction indicating to player to back to previous room (e.g. after farming a darkshrine, or a key)
                                         //% "Back to Previous Room"
                                         //@ Instruction
@@ -57,7 +57,7 @@ InstructionItem {
 
   Text {
     visible: !root.atPlaza
-    color: Global.primaryTextColor
+    color: Styles.primaryTextColor
     text: root.nextRoomIsPreviousRoom ? '' : root.labelToDirection
   }
 }

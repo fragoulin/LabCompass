@@ -49,14 +49,14 @@ Window {
               radius: 10
               anchors.centerIn: parent
               color: 'transparent'
-              border { width: 2; color: Global.primaryTextColor }
+              border { width: 2; color: Styles.primaryTextColor }
             }
 
             Rectangle {
               id: activeIndicator
               x: -width / 2
               y: -height / 2
-              color: Global.primaryTextColor
+              color: Styles.primaryTextColor
               state: root.switchModel & (1 << circle.index) ? 'active' : 'inactive'
               states: [
                 State { name: 'active'; PropertyChanges { activeIndicator.width: 10; activeIndicator.height: 10; activeIndicator.radius: 5 }},

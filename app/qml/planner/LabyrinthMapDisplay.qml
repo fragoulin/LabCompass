@@ -13,7 +13,7 @@ Rectangle {
   property var connectionModel
   property var goldenDoorModel
 
-  color: Global.primaryColor
+  color: Styles.primaryColor
 
   Canvas {
     id: connectionView
@@ -26,7 +26,7 @@ Rectangle {
         const connection = root.connectionModel.get(i);
 
         ctx.lineWidth = connection.isSecretPassage ? 2 : 4;
-        ctx.strokeStyle = connection.isPlanned ? Global.activePathColor : Global.inactivePathColor;
+        ctx.strokeStyle = connection.isPlanned ? Styles.activePathColor : Styles.inactivePathColor;
 
         ctx.beginPath();
         ctx.moveTo(connection.fromCoordinate.x, connection.fromCoordinate.y);

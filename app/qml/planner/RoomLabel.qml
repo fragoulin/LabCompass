@@ -19,7 +19,7 @@ Rectangle {
     columns: 1
     horizontalItemAlignment: Grid.AlignHCenter
     Text {
-      color: Global.primaryTextColor
+      color: Styles.primaryTextColor
       text: root.roomName
     }
     Grid {
@@ -36,7 +36,7 @@ Rectangle {
           }
           Text {
             text: parent.modelData in Global.nameMapping ? Global.nameMapping[parent.modelData] : parent.modelData
-            color: Global.primaryTextColor
+            color: Styles.primaryTextColor
             font.pixelSize: 14
           }
         }
@@ -48,7 +48,7 @@ Rectangle {
     y: 36
     width: grid.width - 20
     height: 1
-    color: Qt.lighter(Global.primaryColor)
+    color: Qt.lighter(Styles.primaryColor)
     visible: root.roomContents.length
   }
 }

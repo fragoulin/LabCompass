@@ -27,10 +27,10 @@ Item {
       anchors.bottom: parent.bottom
       x: root.width / root.items * root.currentItem
       width: root.width / root.items
-      color: root.enabled ? Global.lightPrimaryColor : Global.primaryColor
+      color: root.enabled ? Styles.lightPrimaryColor : Styles.primaryColor
       radius: 4
       border.width: 2
-      border.color: Global.lightPrimaryColor
+      border.color: Styles.lightPrimaryColor
 
       Behavior on x {
         NumberAnimation {

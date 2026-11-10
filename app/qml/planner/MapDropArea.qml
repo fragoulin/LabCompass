@@ -65,7 +65,7 @@ Item {
       }
 
       Text {
-        color: Global.primaryTextColor
+        color: Styles.primaryTextColor
         //: Label shown when drop area is available in order to use drag and drop to import a map. Label should be brief because of limited space
         //% "Drop to Import"
         //@ Planner

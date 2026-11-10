@@ -14,11 +14,11 @@ Widget::Widget(Settings* widgetSettings, QWidget* parent)
     ui->roomTable->verticalHeader()->setVisible(false);
     ui->roomTable->setSelectionMode(QAbstractItemView::SingleSelection);
 
-    ui->clientPathEdit->setText(this->settings->get_poeClientPath());
+    ui->clientPathEdit->setText(this->settings->poeClientPath());
 
     connect(ui->mapBrowseButton, &QPushButton::clicked, this,
         [this]() {
-            auto fileName = QFileDialog::getOpenFileName(this, "Open File", this->settings->get_importDirectory(), "Maps (*.json *.map)");
+            auto fileName = QFileDialog::getOpenFileName(this, "Open File", this->settings->importDirectory(), "Maps (*.json *.map)");
             if (!fileName.isEmpty())
                 loadMapFile(fileName);
         });

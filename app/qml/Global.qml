@@ -16,17 +16,7 @@ QtObject {
   property var model
   property bool loadedMapUpToDate: model ? String(model.currentUtcDate) === String(model.labyrinthModel.date) : true
 
-  property color backgroundColor: '#181818'
-  property color primaryColor: '#212121'
-  property color lightPrimaryColor: '#616161'
-  property color primaryTextColor: '#FAFAFA'
-  property color secondaryTextColor: '#A0A0A0'
-  property color accentColor: '#2196F3'
-
-  property color activePathColor: '#8BC34A'
-  property color inactivePathColor: '#404440'
-
-  property var contentIconMapping: {
+  readonly property var contentIconMapping: {
     'Switch puzzle': 'gauntlet-puzzle',
     'Lever puzzle': 'gauntlet-puzzle',
     'Floor puzzle': 'gauntlet-puzzle',
@@ -39,7 +29,7 @@ QtObject {
     'silver-door': 'silver-door'
   }
 
-  property var nameMapping: {
+  readonly property var nameMapping: {
     //: Switch puzzle label in the labyrinth planner
     //% "Switch Puzzle"
     //@ Labyrinth
@@ -166,7 +156,7 @@ QtObject {
     'TwoHandedMace': qsTrId("id-two-handed-mace")
   }
 
-  property var directionMapping: {
+  readonly property var directionMapping: {
     'N': {
       //: North label for direction
       //% "North"

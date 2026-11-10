@@ -13,6 +13,6 @@ InstructionItem {
     width: parent.width
     wrapMode: Text.WordWrap
     text: root.text
-    color: Global.primaryTextColor
+    color: Styles.primaryTextColor
   }
 }

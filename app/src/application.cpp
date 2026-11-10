@@ -53,11 +53,11 @@ void Application::initWindowKit()
 void Application::initTranslations()
 {
     QString languageCode;
-    const QString languageCodeFromSettings = model.get_settings()->get_languageCode();
+    const QString languageCodeFromSettings = model.get_settings()->languageCode();
     if (languageCodeFromSettings.isEmpty()) {
         QLocale locale = QLocale::system();
         languageCode = QLocale::languageToCode(locale.language());
-        model.get_settings()->set_languageCode(languageCode);
+        model.get_settings()->setLanguageCode(languageCode);
     }
     else
         languageCode = languageCodeFromSettings;
@@ -187,8 +187,13 @@ void Application::initControllers()
 
 void Application::initWindows()
 {
-    for (auto i = windows->cbegin(), end = windows->cend(); i != end; ++i)
-        createWindow(i.key(), i.value());
+    QVariantMap initialProperties;
+    initialProperties["settings"] = QVariant::fromValue<Settings*>(model.get_settings());
+
+    engine.setInitialProperties(initialProperties);
+
+    for (auto [key, value] : windows->asKeyValueRange())
+        createWindow(key, value);
 }
 
 void Application::initHotkeys()
@@ -204,7 +209,7 @@ void Application::initHotkeys()
 void Application::restorePreviouslyLoadedMap()
 {
     const auto& currentDate = model.get_currentUtcDate();
-    const auto& lastLoadedMapDate = model.get_settings()->get_lastLoadedMapDate();
+    const auto& lastLoadedMapDate = model.get_settings()->lastLoadedMapDate();
 
     if (currentDate == lastLoadedMapDate) {
         qInfo() << "Loading previously loaded map from cache";
@@ -249,7 +254,7 @@ void Application::updateLanguage(QString languageCode)
         qWarning() << "Cannot load translation" << applicationName << "from directory" << directory << "and locale" << locale << ". Fallback to english locale";
         if(translator.load(QLocale("en"), applicationName, "_", directory)) {
             qInfo() << "    Using english as fallback language";
-            model.get_settings()->set_languageCode(languageCode);
+            model.get_settings()->setLanguageCode(languageCode);
             installTranslator(&translator);
             QLocale::setDefault(QLocale("en"));
         }
@@ -286,13 +291,13 @@ void Application::onImportFileFailed()
 
 void Application::onAboutToQuit(QPoint windowPosition)
 {
-    model.get_settings()->set_mainWindowPosition(windowPosition);
+    model.get_settings()->setMainWindowPosition(windowPosition);
     model.get_settings()->save();
 }
 
 void Application::onSettingsUpdated()
 {
-    const auto languageCode = model.get_settings()->get_languageCode();
+    const auto languageCode = model.get_settings()->languageCode();
 
     updateLanguage(languageCode);
 
@@ -305,7 +310,7 @@ void Application::onWindowCreated(QWindow* window, Handler handler)
 
     // All handlers have to finish their work before application is ready
     handlersCount++;
-    if (windows->size() == handlersCount) {
+    if (handlersCount == windows->size()) {
         restorePreviouslyLoadedMap();
     }
 }

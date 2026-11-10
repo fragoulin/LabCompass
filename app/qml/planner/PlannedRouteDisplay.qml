@@ -18,7 +18,7 @@ Item {
       //% "Plan: "
       //@ Planner
       text: qsTrId("id-planner-plan")
-      color: Global.primaryTextColor
+      color: Styles.primaryTextColor
       font.pixelSize: 20
     }
     Repeater {
@@ -27,11 +27,11 @@ Item {
       Rectangle {
         width: 28
         height: 28
-        color: Global.primaryColor
+        color: Styles.primaryColor
         Text {
           anchors.centerIn: parent
           text: model.id
-          color: Global.primaryTextColor
+          color: Styles.primaryTextColor
           font.pixelSize: 16
         }
       }

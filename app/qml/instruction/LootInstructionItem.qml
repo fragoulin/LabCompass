@@ -10,7 +10,7 @@ InstructionItem {
   iconSource: 'qrc:/qt/qml/labcompass/assets/images/instruction/loot.svg'
 
   Text {
-    color: Global.primaryTextColor
+    color: Styles.primaryTextColor
     //: Label displayed before the name of a loot
     //% "Loot:"
     //@ Instruction
@@ -34,7 +34,7 @@ InstructionItem {
       }
 
       Text {
-        color: Global.primaryTextColor
+        color: Styles.primaryTextColor
         text: grid.modelData in Global.nameMapping ? Global.nameMapping[grid.modelData] : grid.modelData
       }
     }

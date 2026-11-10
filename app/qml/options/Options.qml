@@ -6,6 +6,7 @@ import QtQuick.Controls.Material
 import QtQuick.Layouts
 import QWindowKit
 import QtQuick.Dialogs
+import common
 
 Window {
   id: root
@@ -20,11 +21,6 @@ Window {
 
   signal settingsUpdated()
 
-  Component.onCompleted: {
-    windowAgent.setup(root)
-    windowAgent.setTitleBar(titlebar);
-  }
-
   WindowAgent {
     id: windowAgent
   }
@@ -32,15 +28,14 @@ Window {
   property int contentWidth: 600
   Material.theme: Material.Dark
 
-  property alias poeClientPath: clientPathInput.text
-  property alias portalSkipsSection: portalSkipsSectionInput.checked
-  property alias multiclientSupport: multiclientSupportInput.checked
-  property alias showMinimap: showMinimapInput.checked
-  property alias uiScaleFactorIndex: uiScaleFactorInput.currentIndex
-  property alias languageIndex: languageInput.currentIndex
   property alias toggleHideUiHotkey: toggleHideUiHotkeyEdit.keySequence
 
-  property var settings: Global.model.settings
+  required property Settings settings
+
+  Component.onCompleted: {
+    windowAgent.setup(root)
+    windowAgent.setTitleBar(titlebar);
+  }
 
   WindowWithShadow {
     Column {
@@ -58,13 +53,13 @@ Window {
           id: titlebar
           anchors.verticalCenter: parent.verticalCenter
           text: 'LabCompass'
-          color: Global.primaryTextColor
+          color: Styles.primaryTextColor
           font.pixelSize: 32
         }
         Column {
           anchors.verticalCenter: parent.verticalCenter
           Text {
-            color: Global.primaryTextColor
+            color: Styles.primaryTextColor
             text: Global.version
           }
           Row {
@@ -89,10 +84,10 @@ Window {
           width: 150
           height: 30
           visible: Global.model.newVersionAvailable
-          onClicked: Qt.openUrlExternally('https://github.com/fragoulin/LabCompass/releases/tag/' + Global.model.settings.latestVersion)
+          onClicked: Qt.openUrlExternally('https://github.com/fragoulin/LabCompass/releases/tag/' + root.settings.latestVersion)
           Rectangle {
             anchors.fill: parent
-            color: Global.accentColor
+            color: Styles.accentColor
             radius: 2
             z: -1
             Text {
@@ -102,7 +97,7 @@ Window {
               //@ Options
               text: qsTrId("id-update-available")
               font.preferShaping: false
-              color: Global.primaryTextColor
+              color: Styles.primaryTextColor
             }
           }
           NotificationIndicator {}
@@ -165,6 +160,7 @@ Window {
           model: languages
           textRole: "text"
           valueRole: "code"
+          currentValue: root.settings.languageCode ?? 'en'
           // Add flags next to language name in popup
           delegate: ItemDelegate {
               id: delegate
@@ -181,7 +177,7 @@ Window {
                 }
                 Text {
                   text: delegate.model[languageInput.textRole]
-                  color: Global.primaryTextColor
+                  color: Styles.primaryTextColor
                   font: languageInput.font
                   elide: Text.ElideRight
                   verticalAlignment: Text.AlignVCenter
@@ -200,7 +196,7 @@ Window {
             Text {
               leftPadding: 0
               rightPadding: languageInput.indicator.width + languageInput.spacing
-              color: Global.primaryTextColor
+              color: Styles.primaryTextColor
               text: languageInput.displayText
               font: languageInput.font
               verticalAlignment: Text.AlignVCenter
@@ -214,12 +210,12 @@ Window {
       Rectangle {
         width: root.contentWidth
         height: 2
-        color: Qt.lighter(Global.primaryColor)
+        color: Qt.lighter(Styles.primaryColor)
       }
 
       Text {
         x: 40
-        color: Global.primaryTextColor
+        color: Styles.primaryTextColor
         //: Title for options window
         //% "Options"
         //@ Options
@@ -270,7 +266,7 @@ Window {
           id: clientTab
           Text {
             Layout.columnSpan: 2
-            color: Global.primaryTextColor
+            color: Styles.primaryTextColor
             //: Label for Game Client Path option. Label should be brief because of small space available
             //% "Game Client Path"
             //@ Options
@@ -281,6 +277,7 @@ Window {
             id: clientPathInput
             Layout.fillWidth: true
             font.family: 'Open Sans'
+            text: root.settings.poeClientPath
           }
           MaterialInk {
             implicitWidth: 32
@@ -296,7 +293,7 @@ Window {
           }
 
           Text {
-            color: Global.primaryTextColor
+            color: Styles.primaryTextColor
             //: Label for Multi-client Support option. Label should be brief because of small space available
             //% "Multi-client Support (Experimental)"
             //@ Options
@@ -308,6 +305,7 @@ Window {
             id: multiclientSupportInput
             implicitWidth: 24
             implicitHeight: 24
+            checked: root.settings.multiclientSupport
           }
         }
 
@@ -315,7 +313,7 @@ Window {
           id: uiTab
           Text {
             Layout.fillWidth: true
-            color: Global.primaryTextColor
+            color: Styles.primaryTextColor
             //: Label for Show Minimap When Available option. Label should be brief because of small space available
             //% "Show Minimap When Available"
             //@ Options
@@ -327,11 +325,12 @@ Window {
             id: showMinimapInput
             implicitWidth: 24
             implicitHeight: 24
+            checked: root.settings.showMinimap
           }
 
           Text {
             Layout.fillWidth: true
-            color: Global.primaryTextColor
+            color: Styles.primaryTextColor
             //: Label for Show UI Scale Factor option. Label should be brief because of small space available
             //% "UI Scale Factor <sup>*</sup>"
             //@ Options
@@ -343,56 +342,56 @@ Window {
           ListModel {
               id: scaleFactors
               ListElement {
-                value: 0.5;
+                value: 0.5
                 //: Label for UI Scale Factor 0.5
                 //% "0.5x"
                 //@ Options
                 text: qsTrId("id-ui-scale-factor-0.5")
               }
               ListElement {
-                value: 0.75;
+                value: 0.75
                 //: Label for UI Scale Factor 0.75
                 //% "0.75x"
                 //@ Options
                 text: qsTrId("id-ui-scale-factor-0.75")
               }
               ListElement {
-                value: 1;
+                value: 1
                 //: Label for UI Scale Factor 1
                 //% "1x"
                 //@ Options
                 text: qsTrId("id-ui-scale-factor-1")
               }
               ListElement {
-                value: 1.25;
+                value: 1.25
                 //: Label for UI Scale Factor 1.25
                 //% "1.25x"
                 //@ Options
                 text: qsTrId("id-ui-scale-factor-1.25")
               }
               ListElement {
-                value: 1.5;
+                value: 1.5
                 //: Label for UI Scale Factor 1.5
                 //% "1.5x"
                 //@ Options
                 text: qsTrId("id-ui-scale-factor-1.5")
               }
               ListElement {
-                value: 1.75;
+                value: 1.75
                 //: Label for UI Scale Factor 1.75
                 //% "1.75x"
                 //@ Options
                 text: qsTrId("id-ui-scale-factor-1.75")
               }
               ListElement {
-                value: 2;
+                value: 2
                 //: Label for UI Scale Factor 2
                 //% "2x"
                 //@ Options
                 text: qsTrId("id-ui-scale-factor-2")
               }
               ListElement {
-                value: 2.5;
+                value: 2.5
                 //: Label for UI Scale Factor 2.5
                 //% "2.5x"
                 //@ Options
@@ -406,6 +405,7 @@ Window {
             model: scaleFactors
             textRole: "text"
             valueRole: "value"
+            currentValue: root.settings.scaleFactor ?? 1
           }
         }
 
@@ -413,8 +413,10 @@ Window {
           id: navigationTab
           Text {
             Layout.fillWidth: true
-            color: Global.primaryTextColor
-            //: Label related to player taking a portal. This action should skips current section. Label should be brief because of small space available
+            color: Styles.primaryTextColor
+            //: Label related to player taking a portal.
+            //: This action should skips current section.
+            //: Label should be brief because of small space available
             //% "Taking Portals Skips Current Section"
             //@ Options
             text: qsTrId("id-taking-portals-skips-current-section")
@@ -425,6 +427,7 @@ Window {
             id: portalSkipsSectionInput
             implicitWidth: 24
             implicitHeight: 24
+            checked: root.settings.portalSkipsSection
           }
         }
 
@@ -432,8 +435,9 @@ Window {
           id: shortcutTab
           Text {
             Layout.fillWidth: true
-            color: Global.primaryTextColor
-            //: Label for Hide/Show Compass option. Label should be brief because of small space available
+            color: Styles.primaryTextColor
+            //: Label for Hide/Show Compass option.
+            //: Label should be brief because of small space available
             //% "Hide/Show Compass"
             //@ Options
             text: qsTrId("id-hide-show-compass")
@@ -442,14 +446,16 @@ Window {
           }
           KeySequenceEdit {
             id: toggleHideUiHotkeyEdit
+            keySequence: root.settings.toggleHideUiHotkey
           }
         }
       }
 
       Text {
         x: 40
-        color: Global.secondaryTextColor
-        //: Label for indicating that LabCompass must be restarted to apply changes. Label should be brief because of small space available
+        color: Styles.secondaryTextColor
+        //: Label for indicating that LabCompass must be restarted to apply changes.
+        //: Label should be brief because of small space available
         //% "<sup>*</sup> Restart LabCompass to Apply Changes"
         //@ Options
         text: qsTrId("id-restart-labcompass-to-apply-changes")
@@ -487,7 +493,7 @@ Window {
       }
       Rectangle {
         anchors.fill: parent
-        color: Global.accentColor
+        color: Styles.accentColor
         radius: 2
         z: -1
         Text {
@@ -496,7 +502,7 @@ Window {
           //% "OK"
           //@ Options
           text: qsTrId("id-options-ok")
-          color: Global.primaryTextColor
+          color: Styles.primaryTextColor
         }
       }
     }
@@ -512,52 +518,22 @@ Window {
       //% "Path of Exile Client (*.exe)"
       //@ Options
       nameFilters: qsTrId("id-dialog-poe-client")
-      onAccepted: root.poeClientPath = selectedFile
+      onAccepted: clientPathInput.text = selectedFile
   }
 
   function saveSettings() {
-    getSettingsNames().forEach(name => {
-      settings[name] = root[name]
-    })
+    settings.poeClientPath = clientPathInput.text
+    settings.portalSkipsSection = portalSkipsSectionInput.checked
+    settings.multiclientSupport = multiclientSupportInput.checked
+    settings.showMinimap = showMinimapInput.checked
+    settings.toggleHideUiHotkey = toggleHideUiHotkeyEdit.keySequence
+    settings.scaleFactor = uiScaleFactorInput.currentValue
+    settings.languageCode = languageInput.currentValue
 
-    settings['scaleFactor'] = uiScaleFactorInput.currentValue
-    settings['languageCode'] = languageInput.currentValue
     root.settingsUpdated()
-  }
-
-  function loadSettings() {
-    getSettingsNames().forEach(name => {
-      root[name] = settings[name]
-    })
-
-    const scaleFactor = settings['scaleFactor'] ?? 1
-    root.uiScaleFactorIndex = uiScaleFactorInput.indexOfValue(scaleFactor)
-
-    const languageCode = settings['languageCode'] ?? 'en';
-    root.languageIndex = languageInput.indexOfValue(languageCode);
-  }
-
-  function getSettingsNames() {
-    return [
-      "poeClientPath",
-      "portalSkipsSection",
-      "multiclientSupport",
-      "showMinimap",
-      "toggleHideUiHotkey",
-    ];
   }
 
   onClosing: () => {
     Global.optionsWindowOpen = false
-  }
-
-  Connections {
-    target: Global
-    function onOptionsWindowOpenChanged() {
-      const open = Global.optionsWindowOpen
-      if (open) {
-        root.loadSettings()
-      }
-    }
   }
 }

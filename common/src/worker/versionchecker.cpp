@@ -19,12 +19,12 @@ VersionChecker::VersionChecker(ApplicationModel* applicationModel, QObject* pare
 
 void VersionChecker::work()
 {
-    auto latestVersion = model->get_settings()->get_latestVersion();
+    auto latestVersion = model->get_settings()->latestVersion();
     model->update_newVersionAvailable(!latestVersion.isEmpty() && latestVersion != VERSION);
 
     auto now = QDateTime::currentSecsSinceEpoch();
-    if (now - model->get_settings()->get_lastVersionCheckAttempt() > 600 && now - model->get_settings()->get_lastVersionCheckSuccess() > 86400) {
-        model->get_settings()->set_lastVersionCheckAttempt(now);
+    if (now - model->get_settings()->lastVersionCheckAttempt() > 600 && now - model->get_settings()->lastVersionCheckSuccess() > 86400) {
+        model->get_settings()->setLastVersionCheckAttempt(now);
 
         qInfo() << "Checking github for latest version";
         auto reply = nam.get(QNetworkRequest(QUrl(u"https://api.github.com/repos/fragoulin/LabCompass/releases/latest"_s)));
@@ -42,8 +42,8 @@ void VersionChecker::onReplyFinished()
         if (json.isObject() && json.object().contains(u"tag_name"_s)) {
             auto object = json.object();
             auto latestVersion = object[u"tag_name"_s].toString();
-            model->get_settings()->set_latestVersion(latestVersion);
-            model->get_settings()->set_lastVersionCheckSuccess(QDateTime::currentSecsSinceEpoch());
+            model->get_settings()->setLatestVersion(latestVersion);
+            model->get_settings()->setLastVersionCheckSuccess(QDateTime::currentSecsSinceEpoch());
 
             qInfo() << "Received version checking response. Latest version:" << latestVersion;
         }

@@ -16,7 +16,7 @@ void LabyrinthController::importFile(const QString& file)
 
     if (model->loadFromFile(fileToImport)) {
         // update last loaded map date
-        model->get_settings()->set_lastLoadedMapDate(model->labyrinthData.date);
+        model->get_settings()->setLastLoadedMapDate(model->labyrinthData.date);
 
         // copy the file to appdata directory
         const auto& appData = QDir(QStandardPaths::writableLocation(QStandardPaths::AppDataLocation));

@@ -82,7 +82,7 @@ Window {
                             //@ Planner
                             text: qsTrId("id-labyrinth-planner")
                             anchors.centerIn: parent
-                            color: Global.primaryTextColor
+                            color: Styles.primaryTextColor
                             font.pixelSize: 32
                         }
                     }
@@ -102,7 +102,7 @@ Window {
                             //% "No lab notes loaded"
                             //@ Planner
                             qsTrId("id-planner-no-map-loaded")
-                            color: Global.primaryTextColor
+                            color: Styles.primaryTextColor
                         }
                     }
 
@@ -116,7 +116,7 @@ Window {
                             //% "Get Maps"
                             //@ Planner
                             text: qsTrId("id-get-maps")
-                            color: Global.primaryTextColor
+                            color: Styles.primaryTextColor
                         }
                         NotificationIndicator {
                             visible: !Global.loadedMapUpToDate
@@ -129,7 +129,7 @@ Window {
                         onClicked: fileDialog.open()
                         Rectangle {
                             anchors.fill: parent
-                            color: Global.accentColor
+                            color: Styles.accentColor
                             radius: 2
                             z: -1
                             Text {
@@ -138,7 +138,7 @@ Window {
                                 //% "Import Maps"
                                 //@ Planner
                                 text: qsTrId("id-import-maps")
-                                color: Global.primaryTextColor
+                                color: Styles.primaryTextColor
                             }
                         }
                     }
@@ -161,7 +161,7 @@ Window {
             Rectangle {
                 width: grid.width
                 height: 2
-                color: Qt.lighter(Global.primaryColor)
+                color: Qt.lighter(Styles.primaryColor)
             }
 
             Grid {
@@ -189,7 +189,7 @@ Window {
                     id: planSummaryDisplay
                     width: 280
                     height: 260
-                    color: Global.primaryColor
+                    color: Styles.primaryColor
                     model: Global.model.planSummaryModel
                 }
 
@@ -214,7 +214,7 @@ Window {
                             //% "Donate: "
                             //@ Planner
                             text: qsTrId("id-planner-donate")
-                            color: Global.primaryTextColor
+                            color: Styles.primaryTextColor
                             font.pixelSize: 20
                         }
                         MaterialInk {
