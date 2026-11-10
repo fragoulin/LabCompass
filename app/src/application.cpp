@@ -44,9 +44,6 @@ void Application::init()
 
 void Application::initWindowKit()
 {
-    QGuiApplication::setHighDpiScaleFactorRoundingPolicy(
-        Qt::HighDpiScaleFactorRoundingPolicy::PassThrough);
-
     if (!qputenv("QT_QUICK_CONTROLS_STYLE", "Basic"))
         qWarning() << "Failed to set environment variable: QT_QUICK_CONTROLS_STYLE";
     QQuickWindow::setDefaultAlphaBuffer(true);
