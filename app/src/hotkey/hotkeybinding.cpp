@@ -17,7 +17,8 @@ HotkeyBinding::HotkeyBinding(QObject* globalObject, QObject* hotKeySettings, QBy
 void HotkeyBinding::rebindHotkey()
 {
     setRegistered(false);
-    setShortcut(QKeySequence(settings->property(propertyName.toLatin1().constData()).toString()));
+    if (!setShortcut(QKeySequence(settings->property(propertyName.toLatin1().constData()).toString())))
+        qWarning() << "Failed to set hotkey";
     setRegistered(true);
 }
 
