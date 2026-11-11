@@ -1,11 +1,13 @@
 import QtQuick
-import '..'
 
 Rectangle {
   id: root
   property var model
+
+  required property string languageCode;
+
   // No padding and spacing for korean and thai languages
-  readonly property bool noPadding: Global.model.settings.languageCode == "th" || Global.model.settings.languageCode == "ko"
+  readonly property bool noPadding: languageCode == "th" || languageCode == "ko"
 
   Grid {
     anchors.horizontalCenter: parent.horizontalCenter

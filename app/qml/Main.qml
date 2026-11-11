@@ -2,8 +2,7 @@ import QtQuick
 import QtQuick.Layouts
 import QtQuick.Window
 import labcompass
-import "compass"
-import "instruction"
+import common
 import QWindowKit
 
 Window {
@@ -17,6 +16,8 @@ Window {
   color: "transparent"
   visible: false
   flags: Qt.WindowStaysOnTopHint | Qt.FramelessWindowHint | Qt.WA_TranslucentBackground
+
+  required property Settings settings;
 
   Component.onCompleted: {
     windowAgent.setup(window)
@@ -123,6 +124,7 @@ Window {
 
             Compass {
               id: compass
+              showMinimap: window.settings.showMinimap
             }
 
             InstructionList {
@@ -134,7 +136,7 @@ Window {
   }
 
   function setWindowPosition() {
-    const mainWindowPosition = Global.model.settings.mainWindowPosition
+    const mainWindowPosition = settings.mainWindowPosition
     if (mainWindowPosition.x < window.screen.width & mainWindowPosition.y < window.screen.height) {
       window.x = mainWindowPosition.x
       window.y = mainWindowPosition.y

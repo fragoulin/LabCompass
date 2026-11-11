@@ -1,6 +1,5 @@
 import QtQuick
 import labcompass
-import '..'
 
 Item {
   id: root
@@ -9,8 +8,10 @@ Item {
   implicitWidth: useMinimapDisplay ? minimapDisplay.implicitWidth : directionDisplay.implicitWidth + 40
   implicitHeight: useMinimapDisplay ? minimapDisplay.implicitHeight : directionDisplay.implicitHeight
 
+  required property bool showMinimap;
+
   property bool displayActive: Global.model.inLab && Global.model.currentRoomDetermined
-  property bool useMinimapDisplay: Global.model.settings.showMinimap && displayActive && Object.keys(Global.model.instructionModel.preset).length
+  property bool useMinimapDisplay: showMinimap && displayActive && Object.keys(Global.model.instructionModel.preset).length
   property bool compassToolbarVisible: Global.compassToolbarVisible
 
   visible: Global.compassVisible

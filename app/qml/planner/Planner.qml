@@ -1,7 +1,7 @@
 import QtCore
 import QtQuick
 import labcompass
-import ".."
+import common
 import QWindowKit
 import QtQuick.Dialogs
 
@@ -12,6 +12,8 @@ Window {
     minimumHeight: grid.height + 20
     maximumWidth: minimumWidth
     maximumHeight: minimumHeight
+
+    required property Settings settings;
 
     property var labyrinthModel: Global.model.labyrinthModel
 
@@ -191,6 +193,7 @@ Window {
                     height: 260
                     color: Styles.primaryColor
                     model: Global.model.planSummaryModel
+                    languageCode: window.settings.languageCode
                 }
 
                 PlannedRouteDisplay {
@@ -248,7 +251,7 @@ Window {
 
     FileDialog {
         id: fileDialog
-        currentFolder: Global.model.settings.importDirectory ? ("file://" + Global.model.settings.importDirectory) : StandardPaths.standardLocations(StandardPaths.DownloadLocation)[0]
+        currentFolder: window.settings.importDirectory ? ("file://" + window.settings.importDirectory) : StandardPaths.standardLocations(StandardPaths.DownloadLocation)[0]
         //: File dialog title to import lab notes
         //% "Import Lab Notes"
         //@ Planner
