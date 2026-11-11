@@ -303,11 +303,13 @@ void Application::onAboutToQuit(QPoint windowPosition)
 
 void Application::onSettingsUpdated()
 {
-    const auto languageCode = model.get_settings()->languageCode();
+    QString currentLanguageCode = QLocale::languageToCode(QLocale().language());
+    const auto newLanguageCode = model.get_settings()->languageCode();
 
-    updateLanguage(languageCode);
-
-    engine.retranslate();
+    if (currentLanguageCode != newLanguageCode) {
+        updateLanguage(newLanguageCode);
+        engine.retranslate();
+    }
 }
 
 void Application::onWindowCreated(QWindow* window, Handler handler)
