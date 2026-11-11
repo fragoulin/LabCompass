@@ -31,6 +31,7 @@ Window {
   property alias toggleHideUiHotkey: toggleHideUiHotkeyEdit.keySequence
 
   required property Settings settings
+  required property string version
 
   Component.onCompleted: {
     windowAgent.setup(root)
@@ -60,7 +61,7 @@ Window {
           anchors.verticalCenter: parent.verticalCenter
           Text {
             color: Styles.primaryTextColor
-            text: Global.version
+            text: root.version
           }
           Row {
             MaterialInk {

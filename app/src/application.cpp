@@ -76,10 +76,7 @@ void Application::initResources()
             qFatal() << "Failed to load global accessor";
         global = object->property("o").value<QObject*>();
         global->setProperty("model", QVariant::fromValue<QObject*>(&model));
-        global->setProperty("version", VERSION);
-#ifdef QT_DEBUG
-        global->setProperty("debug", true);
-#endif
+
         onResourcesLoaded();
     }, Qt::QueuedConnection);
 
@@ -189,6 +186,7 @@ void Application::initWindows()
 {
     QVariantMap initialProperties;
     initialProperties["settings"] = QVariant::fromValue<Settings*>(model.get_settings());
+    initialProperties["version"] = VERSION;
 
     engine.setInitialProperties(initialProperties);
 
