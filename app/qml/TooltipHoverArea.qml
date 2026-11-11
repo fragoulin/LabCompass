@@ -6,13 +6,15 @@ MouseArea {
   property bool shouldDisplayTooltip: false
   hoverEnabled: true
 
+  property TooltipHoverArea lastActiveTooltipHoverArea
+
   onContainsMouseChanged: {
     if (containsMouse) {
       exitTimer.stop();
-      if (Global.lastActiveTooltipHoverArea && Global.lastActiveTooltipHoverArea.shouldDisplayTooltip) {
-        Global.lastActiveTooltipHoverArea.shouldDisplayTooltip = false;
+      if (lastActiveTooltipHoverArea && lastActiveTooltipHoverArea.shouldDisplayTooltip) {
+        lastActiveTooltipHoverArea.shouldDisplayTooltip = false;
         shouldDisplayTooltip = true;
-        Global.lastActiveTooltipHoverArea = root;
+        lastActiveTooltipHoverArea = root;
       } else {
         enterTimer.restart();
       }
@@ -32,7 +34,7 @@ MouseArea {
     interval: 800
     onTriggered: {
       root.shouldDisplayTooltip = true;
-      Global.lastActiveTooltipHoverArea = root;
+      root.lastActiveTooltipHoverArea = root;
     }
   }
   Timer {
