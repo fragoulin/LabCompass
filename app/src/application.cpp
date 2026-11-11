@@ -189,6 +189,7 @@ void Application::initWindows()
     QVariantMap initialProperties;
     initialProperties["settings"] = QVariant::fromValue<Settings*>(model.get_settings());
     initialProperties["version"] = VERSION;
+    initialProperties["logWatcher"] = QVariant::fromValue<LogWatcher*>(logWatcher.get());
 
     engine.setInitialProperties(initialProperties);
 
@@ -329,20 +330,6 @@ void Application::handleMainWindowConnections(QWindow* window)
             this, [this, window]() {
                 onAboutToQuit(QPoint(window->x(), window->y()));
             });
-
-    auto compass = window->findChild<QQuickItem*>("compass");
-    connect(logWatcher.get(), SIGNAL(labStarted()),
-            compass, SLOT(restartTimer()));
-    connect(logWatcher.get(), SIGNAL(labFinished()),
-            compass, SLOT(stopTimer()));
-    connect(logWatcher.get(), SIGNAL(labExit()),
-            compass, SLOT(closeTimer()));
-
-    auto izaroInstructionItemIcon = window->findChild<QQuickItem*>("izaroInstructionItemIcon");
-    connect(logWatcher.get(), SIGNAL(roomChanged(QString)),
-            izaroInstructionItemIcon, SLOT(onRoomChanged()));
-    connect(logWatcher.get(), SIGNAL(izaroBattleStarted()),
-            izaroInstructionItemIcon, SLOT(onIzaroBattleStarted()));
 }
 
 void Application::handlePlannerWindowConnections(QWindow* window)

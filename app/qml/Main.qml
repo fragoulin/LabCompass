@@ -17,7 +17,8 @@ Window {
   visible: false
   flags: Qt.WindowStaysOnTopHint | Qt.FramelessWindowHint | Qt.WA_TranslucentBackground
 
-  required property Settings settings;
+  required property Settings settings
+  required property LogWatcher logWatcher
 
   Component.onCompleted: {
     windowAgent.setup(window)
@@ -125,11 +126,13 @@ Window {
             Compass {
               id: compass
               showMinimap: window.settings.showMinimap
+              logWatcher: window.logWatcher
             }
 
             InstructionList {
               id: instructionList
               anchors.right: parent.right
+              logWatcher: window.logWatcher
             }
           }
       }

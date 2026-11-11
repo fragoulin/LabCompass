@@ -1,5 +1,6 @@
 import QtQuick
 import labcompass
+import common
 
 Column {
   id: root
@@ -11,6 +12,7 @@ Column {
   property bool currentRoomDetermined: Global.model.currentRoomDetermined
   property bool showInstructions: modelValid && inLab && currentRoomDetermined
   property var instructionModel: Global.model.instructionModel
+  required property LogWatcher logWatcher
 
   WarningInstructionItem {
     visible: !Global.model.logFileOpen
@@ -56,6 +58,7 @@ Column {
              root.instructionModel.shouldKillIzaro &&
              root.instructionModel.finishedSections <= root.instructionModel.currentSection
     mechanics: root.instructionModel.izaroMechanics
+    logWatcher: root.logWatcher
   }
 
   DirectionInstructionItem {

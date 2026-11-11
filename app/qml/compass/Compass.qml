@@ -1,5 +1,6 @@
 import QtQuick
 import labcompass
+import common
 
 Item {
   id: root
@@ -8,7 +9,8 @@ Item {
   implicitWidth: useMinimapDisplay ? minimapDisplay.implicitWidth : directionDisplay.implicitWidth + 40
   implicitHeight: useMinimapDisplay ? minimapDisplay.implicitHeight : directionDisplay.implicitHeight
 
-  required property bool showMinimap;
+  required property bool showMinimap
+  required property LogWatcher logWatcher
 
   property bool displayActive: Global.model.inLab && Global.model.currentRoomDetermined
   property bool useMinimapDisplay: showMinimap && displayActive && Object.keys(Global.model.instructionModel.preset).length
@@ -108,5 +110,18 @@ Item {
   function closeTimer() {
     stopTimer();
     timerView.visible = false;
+  }
+
+  Connections {
+    target: root.logWatcher
+    function onLabStarted() {
+      root.restartTimer()
+    }
+    function onLabFinished() {
+      root.stopTimer()
+    }
+    function onLabExit() {
+      root.closeTimer()
+    }
   }
 }

@@ -2,12 +2,13 @@ pragma ComponentBehavior: Bound
 
 import QtQuick
 import labcompass
-import '..'
+import common
 
 InstructionItem {
   id: root
 
   property string mechanics
+  required property LogWatcher logWatcher
 
   Text {
     //: Instruction displayed when the player is ready to face Izaro
@@ -105,13 +106,16 @@ InstructionItem {
       State { name: 'countdownFinished' }
     ]
 
-    function onRoomChanged() {
-      izaroInstructionItemIcon.state = ''
-    }
+    Connections {
+      target: root.logWatcher
+        function onRoomChanged() {
+          izaroInstructionItemIcon.state = ''
+        }
 
-    function onIzaroBattleStarted() {
-      if (root.mechanics === 'ChargeDisruptors' || root.mechanics === 'Idols')
-        izaroInstructionItemIcon.state = 'countdownRunning';
+        function onIzaroBattleStarted() {
+          if (root.mechanics === 'ChargeDisruptors' || root.mechanics === 'Idols')
+            izaroInstructionItemIcon.state = 'countdownRunning';
+        }
     }
   }
 }

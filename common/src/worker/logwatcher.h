@@ -2,9 +2,12 @@
 #define LOGWATCHER_H
 
 #include "model/applicationmodel.h"
+#include <QtQmlIntegration/qqmlintegration.h>
 
 class LogWatcher : public QObject {
     Q_OBJECT
+    QML_ELEMENT
+    QML_UNCREATABLE("")
 
     ApplicationModel* model;
     QTimer timer;
