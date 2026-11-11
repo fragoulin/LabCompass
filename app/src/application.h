@@ -44,6 +44,7 @@ public:
 private slots:
     void onAboutToQuit(QPoint windowPosition);
     void onSettingsUpdated();
+    void onImportFileSuccess(QString fileName, QDate fileDate);
     void onImportFileFailed();
     void onWindowCreated(QWindow* window, Handler handler);
     void onResourcesLoaded();

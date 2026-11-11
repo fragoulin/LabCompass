@@ -163,6 +163,8 @@ void Application::initControllers()
 {
     labyrinthController.reset(new LabyrinthController(&model));
 
+    connect(labyrinthController.get(), SIGNAL(importFileSuccess(QString,QDate)),
+            this, SLOT(onImportFileSuccess(QString,QDate)));
     connect(labyrinthController.get(), SIGNAL(importFileFailed()),
             this, SLOT(onImportFileFailed()));
 
@@ -264,6 +266,12 @@ void Application::updateLanguage(QString languageCode)
         QLocale::setDefault(locale);
     }
     qInfo() << "Default locale set to" << QLocale();
+}
+
+void Application::onImportFileSuccess([[maybe_unused]] QString fileName, QDate fileDate)
+{
+    // update last loaded map date
+    model.get_settings()->setLastLoadedMapDate(fileDate);
 }
 
 void Application::onImportFileFailed()

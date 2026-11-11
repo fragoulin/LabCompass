@@ -9,6 +9,7 @@ class LabyrinthController : public QObject {
     ApplicationModel* model;
 
 signals:
+    void importFileSuccess(QString fileName, QDate fileDate);
     void importFileFailed();
 
 public:
