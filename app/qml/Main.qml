@@ -23,11 +23,6 @@ Window {
 
   Component.onCompleted: {
     windowAgent.setup(window)
-    windowAgent.setTitleBar(titleBar)
-    windowAgent.setHitTestVisible(plannerButton, true);
-    windowAgent.setHitTestVisible(puzzleButton, true);
-    windowAgent.setHitTestVisible(optionsButton, true);
-    windowAgent.setSystemButton(WindowAgent.Close, closeButton)
     setWindowPosition()
     window.visible = true
   }
@@ -46,6 +41,7 @@ Window {
           implicitHeight: 42
           color: Styles.lightPrimaryColor
 
+          Component.onCompleted: windowAgent.setTitleBar(titleBar)
           RowLayout {
               anchors.fill: parent
               spacing: 0
@@ -73,6 +69,7 @@ Window {
                 NotificationIndicator {
                   visible: !Global.loadedMapUpToDate
                 }
+                Component.onCompleted: windowAgent.setHitTestVisible(plannerButton, true)
               }
 
               ToolbarButton {
@@ -86,6 +83,7 @@ Window {
                   if (!open)
                     Global.puzzleWindowOpen = true;
                 }
+                Component.onCompleted: windowAgent.setHitTestVisible(puzzleButton, true)
               }
 
               ToolbarButton {
@@ -103,6 +101,8 @@ Window {
                 NotificationIndicator {
                   visible: Global.model.newVersionAvailable
                 }
+
+                Component.onCompleted: windowAgent.setHitTestVisible(optionsButton, true)
               }
 
               ToolbarButton {
@@ -110,6 +110,7 @@ Window {
                 source: 'qrc:/qt/qml/labcompass/assets/images/close.svg'
                 onClicked: Qt.quit()
                 buttonHeight: 24
+                Component.onCompleted: windowAgent.setSystemButton(WindowAgent.Close, closeButton)
               }
           }
       }
