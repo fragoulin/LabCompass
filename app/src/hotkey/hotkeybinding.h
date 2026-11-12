@@ -2,9 +2,12 @@
 #define HOTKEYBINDING_H
 
 #include <QHotkey>
+#include <QtQmlIntegration/qqmlintegration.h>
 
 class HotkeyBinding : public QHotkey {
     Q_OBJECT
+    QML_ELEMENT
+    QML_UNCREATABLE("")
 
     QObject* global;
     QObject* settings;

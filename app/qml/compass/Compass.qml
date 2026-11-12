@@ -11,12 +11,12 @@ Item {
 
   required property bool showMinimap
   required property LogWatcher logWatcher
+  required property var hotkey
 
   property bool displayActive: Global.model.inLab && Global.model.currentRoomDetermined
   property bool useMinimapDisplay: showMinimap && displayActive && Object.keys(Global.model.instructionModel.preset).length
-  property bool compassToolbarVisible: Global.compassToolbarVisible
 
-  visible: Global.compassVisible
+  visible: true
 
   Item {
     id: directionDisplay
@@ -67,7 +67,7 @@ Item {
 
   CompassToolbar {
     objectName: "compassToolbar"
-    visible: root.compassToolbarVisible
+    visible: root.visible && Global.model && Global.model.roomPresetModel ? Global.model.roomPresetModel.presets.length : false
     x: 172
     y: 132
   }
@@ -122,6 +122,13 @@ Item {
     }
     function onLabExit() {
       root.closeTimer()
+    }
+  }
+
+  Connections {
+    target: root.hotkey
+    function onActivated() {
+      root.visible = !root.visible
     }
   }
 }

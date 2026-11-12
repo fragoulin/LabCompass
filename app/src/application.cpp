@@ -110,11 +110,11 @@ void Application::onResourcesLoaded()
     qInfo() << "Init controllers";
     initControllers();
 
-    qInfo() << "Init windows";
-    initWindows();
-
     qInfo() << "Init hotkeys";
     initHotkeys();
+
+    qInfo() << "Init windows";
+    initWindows();
 
     qInfo() << "Initialization finished";
 }
@@ -190,6 +190,7 @@ void Application::initWindows()
     initialProperties["settings"] = QVariant::fromValue<Settings*>(model.get_settings());
     initialProperties["version"] = VERSION;
     initialProperties["logWatcher"] = QVariant::fromValue<LogWatcher*>(logWatcher.get());
+    initialProperties["hotkey"] = QVariant::fromValue<HotkeyBinding*>(toggleHideUiHotkey.get());
 
     engine.setInitialProperties(initialProperties);
 
@@ -200,11 +201,6 @@ void Application::initWindows()
 void Application::initHotkeys()
 {
     toggleHideUiHotkey.reset(new HotkeyBinding(global, model.get_settings(), "toggleHideUiHotkey", SIGNAL(toggleHideUiHotkeyChanged(QString))));
-    connect(toggleHideUiHotkey.get(), &HotkeyBinding::activated, this,
-        [this]() {
-            bool visible = global->property("compassVisible").toBool();
-            global->setProperty("compassVisible", !visible);
-        });
 }
 
 void Application::restorePreviouslyLoadedMap()

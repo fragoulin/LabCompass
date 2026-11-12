@@ -50,7 +50,7 @@ endforeach()
 
 set_project_warnings(${TARGET_NAME})
 
-target_include_directories(${TARGET_NAME} PRIVATE src)
+target_include_directories(${TARGET_NAME} PRIVATE src src/hotkey)
 
 target_precompile_headers(${TARGET_NAME} PRIVATE src/stdafx.h)
 
@@ -85,5 +85,4 @@ qt_add_qml_module(
   ${IMAGES_RESOURCES}
   DEPENDENCIES
   TARGET
-  common
-  QML_FILES)
+  common)

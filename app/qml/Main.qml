@@ -19,6 +19,7 @@ Window {
 
   required property Settings settings
   required property LogWatcher logWatcher
+  required property var hotkey
 
   Component.onCompleted: {
     windowAgent.setup(window)
@@ -127,6 +128,7 @@ Window {
               id: compass
               showMinimap: window.settings.showMinimap
               logWatcher: window.logWatcher
+              hotkey: window.hotkey
             }
 
             InstructionList {

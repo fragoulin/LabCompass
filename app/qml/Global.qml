@@ -2,8 +2,6 @@ pragma Singleton
 import QtQuick
 
 QtObject {
-  property bool compassVisible: true
-  property bool compassToolbarVisible: compassVisible && model && model.roomPresetModel ? model.roomPresetModel.presets.length : false
   property bool plannerWindowOpen: false
   property bool puzzleWindowOpen: false
   property bool optionsWindowOpen: false
