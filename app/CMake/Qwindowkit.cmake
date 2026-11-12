@@ -11,5 +11,5 @@ set(QWINDOWKIT_BUILD_STATIC
 FetchContent_Declare(
   ${TARGET_WINDOW_KIT}
   GIT_REPOSITORY https://github.com/stdware/qwindowkit
-  GIT_TAG 5626b3ae5f22508d77361495f589abedb39c2ee4)
+  GIT_TAG 2072958b04820e9e7629f6c40068dee0ce0e9915)
 FetchContent_MakeAvailable(${TARGET_WINDOW_KIT})
