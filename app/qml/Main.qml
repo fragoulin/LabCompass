@@ -15,7 +15,6 @@ Window {
   maximumHeight: minimumHeight
   color: "transparent"
   visible: false
-  flags: Qt.WindowStaysOnTopHint | Qt.FramelessWindowHint | Qt.WA_TranslucentBackground
 
   required property Settings settings
   required property LogWatcher logWatcher
@@ -23,6 +22,8 @@ Window {
 
   Component.onCompleted: {
     windowAgent.setup(window)
+    windowAgent.setWindowAttribute("dark-mode", true)
+    windowAgent.setWindowAttribute("dwm-border-color", "transparent")
     setWindowPosition()
     window.visible = true
   }

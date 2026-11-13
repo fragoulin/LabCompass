@@ -44,9 +44,9 @@ void Application::init()
 
 void Application::initWindowKit()
 {
-    if (!qputenv("QT_QUICK_CONTROLS_STYLE", "Basic"))
-        qWarning() << "Failed to set environment variable: QT_QUICK_CONTROLS_STYLE";
-    QQuickWindow::setDefaultAlphaBuffer(true);
+    constexpr bool curveRenderingAvailable = true;
+    engine.rootContext()->setContextProperty(u"$curveRenderingAvailable"_s, QVariant(curveRenderingAvailable));
+
     QWK::registerTypes(&engine);
 }
 
@@ -186,6 +186,8 @@ void Application::initControllers()
 
 void Application::initWindows()
 {
+    QQuickWindow::setDefaultAlphaBuffer(true);
+
     QVariantMap initialProperties;
     initialProperties["settings"] = QVariant::fromValue<Settings*>(model.get_settings());
     initialProperties["version"] = VERSION;
@@ -322,6 +324,8 @@ void Application::onWindowCreated(QWindow* window, Handler handler)
 
 void Application::handleMainWindowConnections(QWindow* window)
 {
+    window->setFlags(window->flags() | Qt::WindowStaysOnTopHint | Qt::FramelessWindowHint);
+
     connect(this, &Application::aboutToQuit,
             this, [this, window]() {
                 onAboutToQuit(QPoint(window->x(), window->y()));

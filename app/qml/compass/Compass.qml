@@ -16,7 +16,7 @@ Item {
   property bool displayActive: Global.model.inLab && Global.model.currentRoomDetermined
   property bool useMinimapDisplay: showMinimap && displayActive && Object.keys(Global.model.instructionModel.preset).length
 
-  visible: true
+  visible: Global.model.logFileOpen
 
   Item {
     id: directionDisplay
@@ -128,7 +128,9 @@ Item {
   Connections {
     target: root.hotkey
     function onActivated() {
-      root.visible = !root.visible
+      if (Global.model.logFileOpen) {
+        root.visible = !root.visible
+      }
     }
   }
 }
