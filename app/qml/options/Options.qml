@@ -35,7 +35,6 @@ Window {
 
   Component.onCompleted: {
     windowAgent.setup(root)
-    windowAgent.setTitleBar(titlebar);
   }
 
   WindowWithShadow {
@@ -56,6 +55,7 @@ Window {
           text: 'LabCompass'
           color: Styles.primaryTextColor
           font.pixelSize: 32
+          Component.onCompleted: windowAgent.setTitleBar(titlebar)
         }
         Column {
           anchors.verticalCenter: parent.verticalCenter

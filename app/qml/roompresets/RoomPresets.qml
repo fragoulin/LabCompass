@@ -21,7 +21,6 @@ Window {
 
   Component.onCompleted: {
     windowAgent.setup(window)
-    windowAgent.setTitleBar(titlebar)
   }
 
   WindowAgent {
@@ -47,6 +46,8 @@ Window {
           height: 80
           anchors.verticalCenter: parent.verticalCenter
           color: "transparent"
+
+          Component.onCompleted: windowAgent.setTitleBar(titlebar)
 
           Text {
             //: Room Layout Presets label displayed in room presets. Label should be brief because of limited space available

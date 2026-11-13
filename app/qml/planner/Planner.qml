@@ -45,8 +45,7 @@ Window {
     readonly property string labyrinthDifficultyEternal: qsTrId("id-labyrinth-difficulty-uber")
 
     Component.onCompleted: {
-        windowAgent.setup(window);
-        windowAgent.setTitleBar(titlebar);
+        windowAgent.setup(window)
     }
 
     WindowAgent {
@@ -77,6 +76,8 @@ Window {
                         width: 350
                         height: 80
                         color: "transparent"
+
+                        Component.onCompleted: windowAgent.setTitleBar(titlebar)
 
                         Text {
                             //: Labyrinth Planner window title
